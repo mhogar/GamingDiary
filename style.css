@@ -1,12 +1,21 @@
-/* Remove default bullets */
-ul, #myUL {
-  list-style-type: none;
+body {
+  font-family: Roboto, sans;
+  letter-spacing: .5px;
 }
 
-/* Remove margins and padding from the parent ul */
-#myUL {
-  margin: 0;
-  padding: 0;
+.dates {
+  font-family: 'FOT-PopJoy Std';
+  margin-top: -30px;
+  margin-bottom: 30px;
+}
+
+.series-title {
+  font-family: 'FOT-PopJoy Std';
+  font-size: 30pt;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .list-toggle {
@@ -15,9 +24,7 @@ ul, #myUL {
 }
 
 .content {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  /* display: none; */
+  display: none;
 }
 
 .active {
@@ -27,5 +34,5 @@ ul, #myUL {
 .content-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 2rem;
+  gap: 30px;
 }
