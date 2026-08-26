@@ -14,11 +14,18 @@ ul, #myUL {
   user-select: none;
 }
 
-/* Hide the nested list */
 .content {
-  display: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* display: none; */
 }
 
 .active {
   display: block;
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
 }
