@@ -1,21 +1,38 @@
 body {
   font-family: Roboto, sans;
   letter-spacing: .5px;
+  background-color: rgb(215, 245, 250);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.dates {
-  font-family: 'FOT-PopJoy Std';
-  margin-top: -30px;
-  margin-bottom: 30px;
+.page-container {
+  width: 100%;             /* Fills mobile screens completely */
+  max-width: 1600px;       /* Caps max width on large monitors */
+  margin-left: auto;       /* Centers the container horizontally */
+  margin-right: auto;      /* Centers the container horizontally */
+  padding-left: 20px;      /* Prevents content from touching screen edges */
+  padding-right: 20px;     /* Prevents content from touching screen edges */
+  box-sizing: border-box;  /* Includes padding in the total width calculation */  
 }
 
 .series-title {
-  font-family: 'FOT-PopJoy Std';
-  font-size: 30pt;
+  font-size: 40pt;
+  font-weight: 800;
+}
+
+.dates {
+  margin-top: -20px;
+}
+
+.divider {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 ul {
   list-style-type: none;
+  padding-left: 0px;
 }
 
 .list-toggle {
@@ -23,16 +40,29 @@ ul {
   user-select: none;
 }
 
-.content {
-  display: none;
+.collapsable {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
 }
 
-.active {
-  display: block;
+.collapsable.show {
+  max-height: 300px;
+  transition: max-height 0.5s;
 }
 
-.content-container {
+.entry {
+  background-color: rgb(254, 251, 228);
+  /* box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15); */
+}
+
+.grid-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 30px;
+  gap: 35px;
+}
+
+.video-link {
+  font-weight: 600;
+  font-size: 15pt;
 }
