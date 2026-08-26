@@ -15,7 +15,7 @@
           <p>
             <a class="video-link" href="{{.Prologue.Video}}" target="_blank">Watch Prologue</a>
           </p>
-          <p>Our Super Mario Sunshine story begins! But first, a little pre-reamble...</p>
+          <p>{{.Prologue.Description}}</p>
         </div>
       </li>
     </ul>
@@ -29,10 +29,11 @@
             <img src="{{.Thumbnail}}" width="100%"/>
             <div class="entry-body">
               <p><a class="video-link" href="{{.Video}}" target="_blank">Play Video</a></p>
-              <p>Our Super Mario Sunshine story continues! We land on Delfino Airstrip to be greeted by chaos... and a lot of cutsceens!</p>
+              <p>{{.Description}}</p>
             </div>
           </li>
         </ul>
+        <hr class="divider" />
       </li>
       {{end}}
     </ul>

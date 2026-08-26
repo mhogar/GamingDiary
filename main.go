@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 
 	"github.com/binarysoupdev/go-extensions/json"
 )
@@ -46,12 +47,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	data.Prologue = buildVideo("00")
+	data.Prologue = buildVideo(files[0], "00")
 	files = files[1:]
 
 	data.Videos = make([]Video, len(files))
 	for i, file := range files {
-		data.Videos[i] = buildVideo(regex.FindStringSubmatch(file)[1])
+		data.Videos[i] = buildVideo(file, regex.FindStringSubmatch(file)[1])
 	}
 
 	//-- execute the template
@@ -69,10 +70,17 @@ func main() {
 	fmt.Printf("+ %s\n", out)
 }
 
-func buildVideo(index string) Video {
+func buildVideo(path string, index string) Video {
+	meta, err := os.ReadFile(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	lines := strings.Split(string(meta), "\n")
+
 	return Video{
-		Title:     fmt.Sprintf("Chapter %s", index),
-		Thumbnail: fmt.Sprintf("src/t%s.png", index),
-		Video:     fmt.Sprintf("src/v%s.mp4", index),
+		Title:       fmt.Sprintf("Chapter %s | %s\n", index, strings.SplitN(lines[2], " | ", 2)[0]),
+		Description: lines[5],
+		Thumbnail:   fmt.Sprintf("src/t%s.png", index),
+		Video:       fmt.Sprintf("src/v%s.mp4", index),
 	}
 }
