@@ -8,6 +8,17 @@
   <div class="page-container">
     <h1 class="series-title">{{.Title}}</h1>
     <h3 class="dates">{{.Dates}}</h3>
+    <ul class="entry">
+      <li class="grid-container">
+        <img src="{{.Prologue.Thumbnail}}" width="100%"/>
+        <div class="entry-body">
+          <p>
+            <a class="video-link" href="{{.Prologue.Video}}" target="_blank">Watch Prologue</a>
+          </p>
+          <p>Our Super Mario Sunshine story begins! But first, a little pre-reamble...</p>
+        </div>
+      </li>
+    </ul>
     <hr class="divider" />
     <ul>
       {{range .Videos}}

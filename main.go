@@ -18,9 +18,10 @@ const (
 )
 
 type Data struct {
-	Title  string `json:"title"`
-	Dates  string `json:"dates"`
-	Videos []Video
+	Title    string `json:"title"`
+	Dates    string `json:"dates"`
+	Prologue Video
+	Videos   []Video
 }
 
 type Video struct {
@@ -45,15 +46,12 @@ func main() {
 		log.Fatal(err)
 	}
 
+	data.Prologue = buildVideo("00")
+	files = files[1:]
+
 	data.Videos = make([]Video, len(files))
 	for i, file := range files {
-		index := regex.FindStringSubmatch(file)[1]
-
-		data.Videos[i] = Video{
-			Title:     fmt.Sprintf("Chapter %s", index),
-			Thumbnail: fmt.Sprintf("src/t%s.png", index),
-			Video:     fmt.Sprintf("src/v%s.mp4", index),
-		}
+		data.Videos[i] = buildVideo(regex.FindStringSubmatch(file)[1])
 	}
 
 	//-- execute the template
@@ -69,4 +67,12 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("+ %s\n", out)
+}
+
+func buildVideo(index string) Video {
+	return Video{
+		Title:     fmt.Sprintf("Chapter %s", index),
+		Thumbnail: fmt.Sprintf("src/t%s.png", index),
+		Video:     fmt.Sprintf("src/v%s.mp4", index),
+	}
 }
