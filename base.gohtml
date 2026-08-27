@@ -10,8 +10,8 @@
     <ul>
         {{range .Series}}
         <li class="{{.Theme}}">
-            <h1 class="entry-title series-color">{{.Title}}</h1>
-            <div class="entry">
+            <h1 class="entry-title list-toggle series-color">{{.Title}}</h1>
+            <div class="entry collapsable">
                 <div class="grid-container">
                     <img src="{{.Thumbnail}}" width="100%"/>
                     <div class="entry-body">
@@ -24,5 +24,6 @@
         {{end}}
     </ul>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
