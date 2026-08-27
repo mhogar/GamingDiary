@@ -3,9 +3,10 @@ package cmds
 import (
 	"flag"
 	"fmt"
-	"os"
+	"path/filepath"
 
 	"github.com/binarysoupdev/go-extensions/errors"
+	"github.com/binarysoupdev/go-extensions/json"
 )
 
 type SeriesSelect struct {
@@ -19,24 +20,17 @@ func NewSeriesSelect(flags *flag.FlagSet) SeriesSelect {
 }
 
 func (s SeriesSelect) Select(path string) (string, error) {
-	files, err := os.ReadDir(path)
+	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
 	if err != nil {
-		return "", errors.Chain(err, "error reading directory")
-	}
-	series := make([]string, 0, len(files))
-
-	for _, file := range files {
-		if file.IsDir() {
-			series = append(series, file.Name())
-		}
+		return "", errors.Chain(err, "error reading data file")
 	}
 
-	if *s.Index <= 0 || *s.Index > len(series) {
-		for _, s := range series {
+	if *s.Index <= 0 || *s.Index > len(data.URLs) {
+		for _, s := range data.URLs {
 			fmt.Println(s)
 		}
 		return "", errors.Format("invalid index \"%d\"", *s.Index)
 	}
 
-	return series[*s.Index-1], nil
+	return data.URLs[*s.Index-1], nil
 }
