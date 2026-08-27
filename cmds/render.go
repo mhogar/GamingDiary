@@ -16,25 +16,26 @@ import (
 )
 
 const (
-	REGEX = `meta(.+)\.txt$`
-	GLOB  = "meta*.txt"
+	GLOB = "meta*.txt"
 )
 
 type Data struct {
-	Title    string `json:"title"`
-	Dates    string `json:"dates"`
+	Title    string            `json:"title"`
+	Dates    string            `json:"dates"`
+	Groups   map[string]string `json:"groups"`
 	Prologue Video
 	Videos   []Video
 }
 
 type Video struct {
+	Groups      []string
 	Title       string
 	Description string
 	Thumbnail   string
 	Video       string
 }
 
-//=============================================
+//====================================================
 
 type RenderCommand struct {
 	command.CommandBase
@@ -70,17 +71,22 @@ func (cmd RenderCommand) Run(args []string) error {
 		return errors.Chain(err, "error reading data file")
 	}
 
+	groups := make(map[string]*regexp.Regexp)
+	for key, val := range data.Groups {
+		groups[key] = regexp.MustCompile(val)
+	}
+
 	files, err := filepath.Glob(filepath.Join(PATH, s, "src", GLOB))
 	if err != nil {
 		return errors.Chain(err, "error reading source directory")
 	}
 
-	data.Prologue = cmd.buildVideo(files[0])
+	data.Prologue = cmd.buildVideo(files[0], groups)
 	files = files[1:]
 
 	data.Videos = make([]Video, len(files))
 	for i, file := range files {
-		data.Videos[i] = cmd.buildVideo(file)
+		data.Videos[i] = cmd.buildVideo(file, groups)
 	}
 
 	//-- execute the template
@@ -100,8 +106,15 @@ func (cmd RenderCommand) Run(args []string) error {
 	return nil
 }
 
-func (RenderCommand) buildVideo(path string) Video {
-	index := regexp.MustCompile(REGEX).FindStringSubmatch(path)[1]
+func (RenderCommand) buildVideo(path string, groupExps map[string]*regexp.Regexp) Video {
+	index := regexp.MustCompile(`meta(.+)\.txt$`).FindStringSubmatch(path)[1]
+
+	groups := []string{}
+	for group, regex := range groupExps {
+		if regex.MatchString(index) {
+			groups = append(groups, group)
+		}
+	}
 
 	meta, err := os.ReadFile(path)
 	if err != nil {
@@ -110,6 +123,7 @@ func (RenderCommand) buildVideo(path string) Video {
 	lines := strings.Split(string(meta), "\n")
 
 	return Video{
+		Groups:      groups,
 		Title:       fmt.Sprintf("Chapter %s | %s\n", index, strings.SplitN(lines[2], " | ", 2)[0]),
 		Description: lines[5],
 		Thumbnail:   fmt.Sprintf("src/t%s.png", index),
