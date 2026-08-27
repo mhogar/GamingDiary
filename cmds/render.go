@@ -38,7 +38,6 @@ type SeriesData struct {
 	Groups     map[string]string `json:"groups"`
 
 	ResourcePath string
-	Prologue     Video
 	Videos       []Video
 }
 
@@ -171,7 +170,7 @@ func (cmd RenderCommand) renderSeries(series string) error {
 	}
 
 	durations := []string{}
-	bytes, err := os.ReadFile(filepath.Join(PATH, series, "src", "durations.txt"))
+	bytes, err := os.ReadFile(filepath.Join(PATH, series, "src", "video_stats.txt"))
 	if err == nil {
 		durations = strings.Split(string(bytes), "\n")
 	}
@@ -181,12 +180,9 @@ func (cmd RenderCommand) renderSeries(series string) error {
 		return errors.Chain(err, "error reading source directory")
 	}
 
-	data.Prologue, _ = cmd.buildVideo(files[0], groups, cmd.parseDuration(durations, 0))
-	files = files[1:]
-
 	data.Videos = make([]Video, len(files))
 	for i, file := range files {
-		data.Videos[i], _ = cmd.buildVideo(file, groups, cmd.parseDuration(durations, i+1))
+		data.Videos[i], _ = cmd.buildVideo(file, groups, cmd.parseDuration(durations, i))
 	}
 
 	//-- execute the template

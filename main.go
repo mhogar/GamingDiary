@@ -13,7 +13,7 @@ func main() {
 	runner := command.NewRunner(
 		cmds.NewRenderCommand(),
 		cmds.NewRenameCommand(),
-		cmds.NewStatCommand(),
+		cmds.NewVideoStatCommand(),
 	)
 
 	if len(os.Args) < 2 {

@@ -8,18 +8,6 @@
   <div class="page-container">
     <h1 class="series-title series-color">{{.Title}}</h1>
     <h3 class="dates">{{.Dates}}</h3>
-    <div class="entry">
-      <div class="grid-container">
-        <img src="{{.Prologue.Thumbnail}}" width="100%"/>
-        <div class="entry-body">
-          <p>
-            <a class="video-link" href="{{.Prologue.Video}}" target="_blank">Watch Prologue</a>
-          </p>
-          <p>[{{.Prologue.Duration}}]</p>
-          <p>{{.Prologue.Description}}</p>
-        </div>
-      </div>
-    </div>
     <hr class="divider" />
     <ul>
       {{range .Videos}}
