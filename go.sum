@@ -1,5 +1,9 @@
+github.com/binarysoupdev/go-commando v1.5.1 h1:iS6d/C3fnXPEFdgU+cIQ3kAoHI4MEKETqfRkLLfbVcA=
+github.com/binarysoupdev/go-commando v1.5.1/go.mod h1:tEzA+qBRaRFn8mezl0qzfUvR5C10hHNpDWFs7E3Do2s=
 github.com/binarysoupdev/go-extensions v0.2.0 h1:laIxth9L7smb05xCN4nFRGrhAoVikgP6+vfa5Zqo8ds=
 github.com/binarysoupdev/go-extensions v0.2.0/go.mod h1:bDoRYhZnVuz0kstMfdy/6gEotFK3tICIDtboX5pANnw=
+github.com/binarysoupdev/got-style v1.1.0 h1:f5D2tsWE5ttftoYPSuF33J74tnTQ4uiAbkuvdZzrack=
+github.com/binarysoupdev/got-style v1.1.0/go.mod h1:3Dp1Ng/kovJAeDxPrLaSVFNfa4tFVUucFZ7jG44DQFc=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
