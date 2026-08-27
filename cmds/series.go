@@ -26,8 +26,8 @@ func (s SeriesSelect) Select(path string) (string, error) {
 	}
 
 	if *s.Index <= 0 || *s.Index > len(data.URLs) {
-		for _, s := range data.URLs {
-			fmt.Println(s)
+		for i, s := range data.URLs {
+			fmt.Printf("[%d] %s\n", i+1, s)
 		}
 		return "", errors.Format("invalid index \"%d\"", *s.Index)
 	}

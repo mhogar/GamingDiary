@@ -35,8 +35,10 @@ type SeriesData struct {
 	Dates      string            `json:"dates"`
 	Thumbnail  string            `json:"thumbnail"`
 	Groups     map[string]string `json:"groups"`
-	Prologue   Video
-	Videos     []Video
+
+	ResourcePath string
+	Prologue     Video
+	Videos       []Video
 }
 
 type Video struct {
@@ -159,6 +161,7 @@ func (cmd RenderCommand) renderSeries(series string) error {
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
+	data.ResourcePath, _ = filepath.Rel(filepath.Join(PATH, series), PATH)
 
 	groups := make(map[string]*regexp.Regexp)
 	for key, val := range data.Groups {
