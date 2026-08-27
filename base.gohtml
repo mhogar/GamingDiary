@@ -9,8 +9,8 @@
     <h1 class="series-title">The Gaming Diary</h1>
     <ul>
         {{range .Series}}
-        <li>
-            <h1 class="entry-title">{{.Title}}</h1>
+        <li class="{{.Theme}}">
+            <h1 class="entry-title series-color">{{.Title}}</h1>
             <div class="entry">
                 <div class="grid-container">
                     <img src="{{.Thumbnail}}" width="100%"/>

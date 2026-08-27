@@ -15,10 +15,6 @@ import (
 	"github.com/binarysoupdev/got-style/style"
 )
 
-const (
-	GLOB = "meta*.txt"
-)
-
 type BaseData struct {
 	URLs   []string `json:"series"`
 	Series []SeriesHeader
@@ -26,18 +22,21 @@ type BaseData struct {
 
 type SeriesHeader struct {
 	URL       string
+	Theme     string
 	Title     string
 	Thumbnail string
 	Dates     string
 }
 
 type SeriesData struct {
-	Title     string            `json:"title"`
-	Dates     string            `json:"dates"`
-	Thumbnail string            `json:"thumbnail"`
-	Groups    map[string]string `json:"groups"`
-	Prologue  Video
-	Videos    []Video
+	Theme      string            `json:"theme"`
+	Background string            `json:"background"`
+	Title      string            `json:"title"`
+	Dates      string            `json:"dates"`
+	Thumbnail  string            `json:"thumbnail"`
+	Groups     map[string]string `json:"groups"`
+	Prologue   Video
+	Videos     []Video
 }
 
 type Video struct {
@@ -68,13 +67,22 @@ func (cmd *RenderCommand) Initialize() error {
 
 func (cmd RenderCommand) Run(args []string) error {
 	series := NewSeriesSelect(cmd.Flags)
+	all := cmd.Flags.Bool("all", false, "render all templates")
 	cmd.ParseFlags(args)
 
-	if *series.Index == 0 {
-		return cmd.renderBase()
-	} else {
-		return cmd.renderSeries(series)
+	if *all || *series.Index == 0 {
+		if err := cmd.renderBase(); err != nil {
+			return err
+		}
 	}
+
+	if *all {
+		return cmd.renderAllSeries()
+	} else if *series.Index != 0 {
+		return cmd.renderSingleSeries(series)
+	}
+
+	return nil
 }
 
 func (cmd RenderCommand) renderBase() error {
@@ -94,6 +102,7 @@ func (cmd RenderCommand) renderBase() error {
 
 		data.Series[i] = SeriesHeader{
 			URL:       url,
+			Theme:     s.Theme,
 			Title:     fmt.Sprintf("(%d) %s", i+1, s.Title),
 			Thumbnail: filepath.Join(PATH, url, s.Thumbnail),
 			Dates:     s.Dates,
@@ -117,17 +126,36 @@ func (cmd RenderCommand) renderBase() error {
 	return nil
 }
 
-func (cmd RenderCommand) renderSeries(series SeriesSelect) error {
-	t := template.Must(template.ParseFiles("series.gohtml"))
+func (cmd RenderCommand) renderAllSeries() error {
+	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
+	if err != nil {
+		return errors.Chain(err, "error reading data file")
+	}
 
+	for _, series := range data.URLs {
+		if err := cmd.renderSeries(series); err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (cmd RenderCommand) renderSingleSeries(series SeriesSelect) error {
 	s, err := series.Select(PATH)
 	if err != nil {
 		return err
 	}
+
 	style.BoldInfo.Println(s)
+	return cmd.renderSeries(s)
+}
+
+func (cmd RenderCommand) renderSeries(series string) error {
+	t := template.Must(template.ParseFiles("series.gohtml"))
 
 	//-- load data
-	data, err := json.UnmarshalFile[SeriesData](filepath.Join(PATH, s, "index.json"))
+	data, err := json.UnmarshalFile[SeriesData](filepath.Join(PATH, series, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
@@ -137,7 +165,7 @@ func (cmd RenderCommand) renderSeries(series SeriesSelect) error {
 		groups[key] = regexp.MustCompile(val)
 	}
 
-	files, err := filepath.Glob(filepath.Join(PATH, s, "src", GLOB))
+	files, err := filepath.Glob(filepath.Join(PATH, series, "src", "meta*.txt"))
 	if err != nil {
 		return errors.Chain(err, "error reading source directory")
 	}
@@ -151,7 +179,7 @@ func (cmd RenderCommand) renderSeries(series SeriesSelect) error {
 	}
 
 	//-- execute the template
-	out := filepath.Join(PATH, s, "index.html")
+	out := filepath.Join(PATH, series, "index.html")
 
 	file, err := os.Create(out)
 	if err != nil {
