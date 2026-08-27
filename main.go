@@ -12,6 +12,7 @@ import (
 func main() {
 	runner := command.NewRunner(
 		cmds.NewRenderCommand(),
+		cmds.NewRenameCommand(),
 	)
 
 	if len(os.Args) < 2 {

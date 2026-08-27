@@ -16,8 +16,6 @@ import (
 )
 
 const (
-	//PATH  = "/media/ryan/Seagate Portable Drive/Videos/Gaming Diary/(1) The Sunshine Story"
-	PATH  = "/media/ryan/Seagate Portable Drive/Videos/Gaming Diary/(2) The Thousand Year Tale"
 	REGEX = `meta(.+)\.txt$`
 	GLOB  = "meta*.txt"
 )
@@ -55,15 +53,24 @@ func (cmd *RenderCommand) Initialize() error {
 }
 
 func (cmd RenderCommand) Run(args []string) error {
+	series := NewSeriesSelect(cmd.Flags)
+	cmd.ParseFlags(args)
+
 	t := template.Must(template.ParseFiles("template.gohtml"))
 
+	s, err := series.Select(PATH)
+	if err != nil {
+		return err
+	}
+	style.BoldInfo.Println(s)
+
 	//-- load data
-	data, err := json.UnmarshalFile[Data](filepath.Join(PATH, "index.json"))
+	data, err := json.UnmarshalFile[Data](filepath.Join(PATH, s, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	files, err := filepath.Glob(filepath.Join(PATH, "src", GLOB))
+	files, err := filepath.Glob(filepath.Join(PATH, s, "src", GLOB))
 	if err != nil {
 		return errors.Chain(err, "error reading source directory")
 	}
@@ -77,7 +84,7 @@ func (cmd RenderCommand) Run(args []string) error {
 	}
 
 	//-- execute the template
-	out := filepath.Join(PATH, "index.html")
+	out := filepath.Join(PATH, s, "index.html")
 
 	file, err := os.Create(out)
 	if err != nil {
