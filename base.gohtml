@@ -7,6 +7,7 @@
 <body>
   <div class="page-container">
     <h1 class="series-title">The Gaming Diary</h1>
+    <hr class="divider" />
     <ul>
         {{range .Series}}
         <li class="{{.Theme}}">
@@ -15,7 +16,7 @@
                 <div class="grid-container">
                     <img src="{{.Thumbnail}}" width="100%"/>
                     <div class="entry-body">
-                    <p><a class="video-link" href="{{.URL}}/index.html" target="_blank">Watch Series</a></p>
+                    <p><a class="video-link" href="{{.URL}}/index.html">Watch Series</a></p>
                     <p>{{.Dates}}</p>
                     </div>
                 </div>

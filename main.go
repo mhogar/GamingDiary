@@ -13,6 +13,7 @@ func main() {
 	runner := command.NewRunner(
 		cmds.NewRenderCommand(),
 		cmds.NewRenameCommand(),
+		cmds.NewStatCommand(),
 	)
 
 	if len(os.Args) < 2 {
@@ -21,6 +22,6 @@ func main() {
 	}
 
 	if err := runner.RunCommand(os.Args[1], os.Args[2:]); err != nil {
-		fmt.Printf("%s %s\n", style.BoldError.Sprint("ERROR: "), err)
+		fmt.Printf("%s %s\n", style.BoldError.Sprint("ERROR:"), err)
 	}
 }
