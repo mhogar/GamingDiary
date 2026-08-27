@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../base.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <div class="page-container">
     <h1 class="series-title">{{.Title}}</h1>
     <h3 class="dates">{{.Dates}}</h3>
-    <ul class="entry">
-      <li class="grid-container">
+    <div class="entry">
+      <div class="grid-container">
         <img src="{{.Prologue.Thumbnail}}" width="100%"/>
         <div class="entry-body">
           <p>
@@ -17,34 +17,26 @@
           </p>
           <p>{{.Prologue.Description}}</p>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
     <hr class="divider" />
     <ul>
       {{range .Videos}}
       <li>
         <h2 class="list-toggle entry-title{{range .Groups}} {{.}}{{end}}">{{.Title}}</h2>
-        <ul class="collapsable entry">
-          <li class="grid-container">
+        <div class="collapsable entry">
+          <div class="grid-container">
             <img src="{{.Thumbnail}}" width="100%"/>
             <div class="entry-body">
               <p><a class="video-link" href="{{.Video}}" target="_blank">Play Video</a></p>
               <p>{{.Description}}</p>
             </div>
-          </li>
-        </ul>
+          </div>
+        </div>
       </li>
       {{end}}
     </ul>
   </div>
-  <script>
-    var toggles = document.getElementsByClassName("list-toggle");
-
-    for (var i = 0; i < toggles.length; i++) {
-      toggles[i].addEventListener("click", function() {
-        this.parentElement.querySelector(".collapsable").classList.toggle("show");
-      });
-    } 
-  </script>
+  <script src="../base.js"></script>
 </body>
 </html>

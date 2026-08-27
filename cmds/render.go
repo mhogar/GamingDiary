@@ -19,12 +19,25 @@ const (
 	GLOB = "meta*.txt"
 )
 
-type Data struct {
-	Title    string            `json:"title"`
-	Dates    string            `json:"dates"`
-	Groups   map[string]string `json:"groups"`
-	Prologue Video
-	Videos   []Video
+type BaseData struct {
+	URLs   []string `json:"series"`
+	Series []SeriesHeader
+}
+
+type SeriesHeader struct {
+	URL       string
+	Title     string
+	Thumbnail string
+	Dates     string
+}
+
+type SeriesData struct {
+	Title     string            `json:"title"`
+	Dates     string            `json:"dates"`
+	Thumbnail string            `json:"thumbnail"`
+	Groups    map[string]string `json:"groups"`
+	Prologue  Video
+	Videos    []Video
 }
 
 type Video struct {
@@ -57,7 +70,55 @@ func (cmd RenderCommand) Run(args []string) error {
 	series := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
-	t := template.Must(template.ParseFiles("template.gohtml"))
+	if *series.Index == 0 {
+		return cmd.renderBase()
+	} else {
+		return cmd.renderSeries(series)
+	}
+}
+
+func (cmd RenderCommand) renderBase() error {
+	t := template.Must(template.ParseFiles("base.gohtml"))
+
+	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
+	if err != nil {
+		return errors.Chain(err, "error reading data file")
+	}
+
+	data.Series = make([]SeriesHeader, len(data.URLs))
+	for i, url := range data.URLs {
+		s, err := json.UnmarshalFile[SeriesData](filepath.Join(PATH, url, "index.json"))
+		if err != nil {
+			return errors.Chain(err, "error reading series data file")
+		}
+
+		data.Series[i] = SeriesHeader{
+			URL:       url,
+			Title:     fmt.Sprintf("(%d) %s", i+1, s.Title),
+			Thumbnail: filepath.Join(PATH, url, s.Thumbnail),
+			Dates:     s.Dates,
+		}
+	}
+
+	//-- execute the template
+	out := filepath.Join(PATH, "index.html")
+
+	file, err := os.Create(out)
+	if err != nil {
+		return errors.Chain(err, "error creating index file")
+	}
+	defer file.Close()
+
+	if err := t.Execute(file, data); err != nil {
+		return errors.Chain(err, "error executing template")
+	}
+
+	style.Create.Printf("+ %s\n", out)
+	return nil
+}
+
+func (cmd RenderCommand) renderSeries(series SeriesSelect) error {
+	t := template.Must(template.ParseFiles("series.gohtml"))
 
 	s, err := series.Select(PATH)
 	if err != nil {
@@ -66,7 +127,7 @@ func (cmd RenderCommand) Run(args []string) error {
 	style.BoldInfo.Println(s)
 
 	//-- load data
-	data, err := json.UnmarshalFile[Data](filepath.Join(PATH, s, "index.json"))
+	data, err := json.UnmarshalFile[SeriesData](filepath.Join(PATH, s, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}

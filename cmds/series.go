@@ -9,12 +9,12 @@ import (
 )
 
 type SeriesSelect struct {
-	index *int
+	Index *int
 }
 
 func NewSeriesSelect(flags *flag.FlagSet) SeriesSelect {
 	return SeriesSelect{
-		index: flags.Int("x", 0, "series index"),
+		Index: flags.Int("x", 0, "series index"),
 	}
 }
 
@@ -31,12 +31,12 @@ func (s SeriesSelect) Select(path string) (string, error) {
 		}
 	}
 
-	if *s.index <= 0 || *s.index > len(series) {
+	if *s.Index <= 0 || *s.Index > len(series) {
 		for _, s := range series {
 			fmt.Println(s)
 		}
-		return "", errors.Format("invalid index \"%d\"", *s.index)
+		return "", errors.Format("invalid index \"%d\"", *s.Index)
 	}
 
-	return series[*s.index-1], nil
+	return series[*s.Index-1], nil
 }

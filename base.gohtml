@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="page-container">
+    <h1 class="series-title">The Gaming Diary</h1>
+    <ul>
+        {{range .Series}}
+        <li>
+            <h1 class="entry-title">{{.Title}}</h1>
+            <div class="entry">
+                <div class="grid-container">
+                    <img src="{{.Thumbnail}}" width="100%"/>
+                    <div class="entry-body">
+                    <p><a class="video-link" href="{{.URL}}/index.html" target="_blank">Watch Series</a></p>
+                    <p>{{.Dates}}</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{end}}
+    </ul>
+  </div>
+</body>
+</html>
