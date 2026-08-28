@@ -17,8 +17,8 @@ import (
 )
 
 type BaseData struct {
-	URLs   []string `json:"series"`
-	Series []SeriesHeader
+	Series  []string `json:"series"`
+	Headers []SeriesHeader
 }
 
 type SeriesHeader struct {
@@ -99,26 +99,28 @@ func (cmd RenderCommand) renderBase() error {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	data.Series = make([]SeriesHeader, len(data.URLs))
-	for i, url := range data.URLs {
-		s, err := json.UnmarshalFile[SeriesData](filepath.Join(PATH, url, "index.json"))
+	data.Headers = make([]SeriesHeader, len(data.Series))
+	for i, series := range data.Series {
+		path := filepath.Join(PATH, "public", series)
+
+		s, err := json.UnmarshalFile[SeriesData](filepath.Join(path, "index.json"))
 		if err != nil {
 			return errors.Chain(err, "error reading series data file")
 		}
 
-		data.Series[i] = SeriesHeader{
-			URL:           url,
+		data.Headers[i] = SeriesHeader{
+			URL:           filepath.Join(path, "index.html"),
 			Theme:         s.Theme,
 			Title:         fmt.Sprintf("(%d) %s", i+1, s.Title),
-			Thumbnail:     filepath.Join(PATH, url, s.Thumbnail),
+			Thumbnail:     filepath.Join(series, s.Thumbnail),
 			Dates:         s.Dates,
-			TotalDuration: cmd.formatDuration(cmd.parseTotalDuration(filepath.Join(PATH, url, "video_stats.txt"))),
+			TotalDuration: cmd.formatDuration(cmd.parseTotalDuration(filepath.Join(path, "data", "video_stats.txt"))),
 			Description:   s.Description,
 		}
 	}
 
 	//-- execute the template
-	out := filepath.Join(PATH, "index.html")
+	out := filepath.Join(PATH, "public", "index.html")
 
 	file, err := os.Create(out)
 	if err != nil {
@@ -140,8 +142,8 @@ func (cmd RenderCommand) renderAllSeries() error {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	for _, series := range data.URLs {
-		if err := cmd.renderSeries(series); err != nil {
+	for _, series := range data.Series {
+		if err := cmd.renderSeries(filepath.Join(PATH, "public", series)); err != nil {
 			return err
 		}
 	}
@@ -156,30 +158,30 @@ func (cmd RenderCommand) renderSingleSeries(series SeriesSelect) error {
 	}
 
 	style.BoldInfo.Println(s)
-	return cmd.renderSeries(s)
+	return cmd.renderSeries(filepath.Join(PATH, "public", s))
 }
 
-func (cmd RenderCommand) renderSeries(series string) error {
+func (cmd RenderCommand) renderSeries(path string) error {
 	t := template.Must(template.ParseFiles("series.gohtml"))
 
 	//-- load data
-	data, err := json.UnmarshalFile[SeriesData](filepath.Join(PATH, series, "index.json"))
+	data, err := json.UnmarshalFile[SeriesData](filepath.Join(path, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
-	data.ResourcePath, _ = filepath.Rel(filepath.Join(PATH, series), PATH)
+	data.ResourcePath, _ = filepath.Rel(path, filepath.Join(PATH, "public"))
 
 	groups := make(map[string]*regexp.Regexp)
 	for key, val := range data.Groups {
 		groups[key] = regexp.MustCompile(val)
 	}
 
-	files, err := filepath.Glob(filepath.Join(PATH, series, "src", "meta*.txt"))
+	files, err := filepath.Glob(filepath.Join(path, "data", "meta*.txt"))
 	if err != nil {
 		return errors.Chain(err, "error reading source directory")
 	}
 
-	durations := cmd.parseDurations(filepath.Join(PATH, series, "video_stats.txt"))
+	durations := cmd.parseDurations(filepath.Join(path, "data", "video_stats.txt"))
 
 	data.Videos = make([]Video, len(files))
 	for i, file := range files {
@@ -192,7 +194,7 @@ func (cmd RenderCommand) renderSeries(series string) error {
 	}
 
 	//-- execute the template
-	out := filepath.Join(PATH, series, "index.html")
+	out := filepath.Join(path, "index.html")
 
 	file, err := os.Create(out)
 	if err != nil {
@@ -258,8 +260,8 @@ func (cmd RenderCommand) buildVideo(path string, groupExps map[string]*regexp.Re
 		Title:       fmt.Sprintf("Chapter %s | %s\n", index, strings.SplitN(lines[2], " | ", 2)[0]),
 		Description: lines[5],
 		Duration:    cmd.formatDuration(duration),
-		Thumbnail:   fmt.Sprintf("src/t%s.png", index),
-		Video:       fmt.Sprintf("src/v%s.mp4", index),
+		Thumbnail:   fmt.Sprintf("imgs/t%s.png", index),
+		Video:       fmt.Sprintf("videos/v%s.mp4", index),
 	}, nil
 }
 

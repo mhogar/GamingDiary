@@ -25,12 +25,12 @@ func (s SeriesSelect) Select(path string) (string, error) {
 		return "", errors.Chain(err, "error reading data file")
 	}
 
-	if *s.Index <= 0 || *s.Index > len(data.URLs) {
-		for i, s := range data.URLs {
+	if *s.Index <= 0 || *s.Index > len(data.Series) {
+		for i, s := range data.Series {
 			fmt.Printf("[%d] %s\n", i+1, s)
 		}
 		return "", errors.Format("invalid index \"%d\"", *s.Index)
 	}
 
-	return data.URLs[*s.Index-1], nil
+	return data.Series[*s.Index-1], nil
 }

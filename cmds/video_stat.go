@@ -43,7 +43,7 @@ func (cmd VideoStatCommand) Run(args []string) error {
 		return errors.Chain(err, "error reading source directory")
 	}
 
-	outFile := filepath.Join(PATH, url, "video_stats.txt")
+	outFile := filepath.Join(PATH, url, "data", "video_stats.txt")
 
 	out, err := os.Create(outFile)
 	if err != nil {

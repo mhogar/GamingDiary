@@ -9,14 +9,14 @@
     <h1 class="series-title">The Gaming Diary</h1>
     <hr class="divider" />
     <ul>
-        {{range .Series}}
+        {{range .Headers}}
         <li class="{{.Theme}}">
             <h1 class="entry-title list-toggle series-color">{{.Title}}</h1>
             <div class="entry collapsable">
                 <div class="grid-container">
                     <img src="{{.Thumbnail}}" width="100%"/>
                     <div class="entry-body">
-                    <p><a class="video-link" href="{{.URL}}/index.html">Watch Series</a></p>
+                    <p><a class="video-link" href="{{.URL}}">Watch Series</a></p>
                     <p>{{.Dates}}</p>
                     <p>[{{.TotalDuration}}]</p>
                     <hr />
