@@ -26,8 +26,9 @@ type SeriesHeader struct {
 	Theme         string
 	Title         string
 	Thumbnail     string
-	Dates         string
+	VideoCount    int
 	TotalDuration string
+	Dates         string
 	Description   string
 }
 
@@ -108,13 +109,21 @@ func (cmd RenderCommand) renderBase() error {
 			return errors.Chain(err, "error reading series data file")
 		}
 
+		durations := cmd.parseDurations(filepath.Join(path, "data", "video_stats.txt"))
+		var total float32
+
+		for _, d := range durations {
+			total += d
+		}
+
 		data.Headers[i] = SeriesHeader{
 			URL:           filepath.Join(path, "index.html"),
 			Theme:         s.Theme,
 			Title:         fmt.Sprintf("(%d) %s", i+1, s.Title),
 			Thumbnail:     filepath.Join(series, s.Thumbnail),
+			VideoCount:    len(durations),
+			TotalDuration: cmd.formatDuration(total),
 			Dates:         s.Dates,
-			TotalDuration: cmd.formatDuration(cmd.parseTotalDuration(filepath.Join(path, "data", "video_stats.txt"))),
 			Description:   s.Description,
 		}
 	}
@@ -208,16 +217,6 @@ func (cmd RenderCommand) renderSeries(path string) error {
 
 	style.Create.Printf("+ %s\n", out)
 	return nil
-}
-
-func (cmd RenderCommand) parseTotalDuration(path string) float32 {
-	var total float32
-
-	for _, d := range cmd.parseDurations(path) {
-		total += d
-	}
-
-	return total
 }
 
 func (RenderCommand) parseDurations(path string) []float32 {
