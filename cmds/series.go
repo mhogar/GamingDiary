@@ -15,7 +15,7 @@ type SeriesSelect struct {
 
 func NewSeriesSelect(flags *flag.FlagSet) SeriesSelect {
 	return SeriesSelect{
-		Index: flags.Int("x", 0, "series index"),
+		Index: flags.Int("x", -1, "series index"),
 	}
 }
 

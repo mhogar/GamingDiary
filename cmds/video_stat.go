@@ -29,8 +29,6 @@ func (cmd *VideoStatCommand) Initialize() error {
 }
 
 func (cmd VideoStatCommand) Run(args []string) error {
-	//ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1
-
 	series := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
@@ -45,7 +43,7 @@ func (cmd VideoStatCommand) Run(args []string) error {
 		return errors.Chain(err, "error reading source directory")
 	}
 
-	outFile := filepath.Join(PATH, url, "src", "video_stats.txt")
+	outFile := filepath.Join(PATH, url, "video_stats.txt")
 
 	out, err := os.Create(outFile)
 	if err != nil {
