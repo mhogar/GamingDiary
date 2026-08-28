@@ -28,15 +28,17 @@ type SeriesHeader struct {
 	Thumbnail     string
 	Dates         string
 	TotalDuration string
+	Description   string
 }
 
 type SeriesData struct {
-	Theme      string            `json:"theme"`
-	Background string            `json:"background"`
-	Title      string            `json:"title"`
-	Dates      string            `json:"dates"`
-	Thumbnail  string            `json:"thumbnail"`
-	Groups     map[string]string `json:"groups"`
+	Theme       string            `json:"theme"`
+	Background  string            `json:"background"`
+	Title       string            `json:"title"`
+	Dates       string            `json:"dates"`
+	Thumbnail   string            `json:"thumbnail"`
+	Description string            `json:"description"`
+	Groups      map[string]string `json:"groups"`
 
 	ResourcePath string
 	Videos       []Video
@@ -111,6 +113,7 @@ func (cmd RenderCommand) renderBase() error {
 			Thumbnail:     filepath.Join(PATH, url, s.Thumbnail),
 			Dates:         s.Dates,
 			TotalDuration: cmd.formatDuration(cmd.parseTotalDuration(filepath.Join(PATH, url, "video_stats.txt"))),
+			Description:   s.Description,
 		}
 	}
 
