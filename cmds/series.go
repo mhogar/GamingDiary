@@ -3,7 +3,6 @@ package cmds
 import (
 	"flag"
 	"fmt"
-	"path/filepath"
 
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
@@ -19,8 +18,8 @@ func NewSeriesSelect(flags *flag.FlagSet) SeriesSelect {
 	}
 }
 
-func (s SeriesSelect) Select(path string) (string, error) {
-	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
+func (s SeriesSelect) Select() (string, error) {
+	data, err := json.UnmarshalFile[BaseData]("data/index.json")
 	if err != nil {
 		return "", errors.Chain(err, "error reading data file")
 	}

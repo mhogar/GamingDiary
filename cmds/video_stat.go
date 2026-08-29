@@ -2,6 +2,7 @@ package cmds
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"os"
 	"os/exec"
@@ -29,34 +30,48 @@ func (cmd *VideoStatCommand) Initialize() error {
 }
 
 func (cmd VideoStatCommand) Run(args []string) error {
-	series := NewSeriesSelect(cmd.Flags)
+	public := cmd.Flags.String("public", "", "the public path")
+	s := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
-	url, err := series.Select(PATH)
+	if *public == "" {
+		return errors.New("\"public\" cannot be empty")
+	}
+
+	series, err := s.Select()
 	if err != nil {
 		return err
 	}
-	style.BoldInfo.Println(url)
+	style.BoldInfo.Println(series)
 
-	files, err := filepath.Glob(filepath.Join(PATH, url, "src", "v*.mp4"))
+	files, err := filepath.Glob(filepath.Join(*public, series, "videos", "v*.mp4"))
 	if err != nil {
-		return errors.Chain(err, "error reading source directory")
+		return errors.Chain(err, "error reading videos directory")
 	}
 
-	outFile := filepath.Join(PATH, url, "data", "video_stats.txt")
+	if len(files) == 0 {
+		return errors.New("no video files found")
+	}
+
+	outFile := filepath.Join("data", series, "video_stats.txt")
 
 	out, err := os.Create(outFile)
 	if err != nil {
-		return errors.Chain(err, "error creating durations file")
+		return errors.Chain(err, "error creating video stats file")
 	}
 	defer out.Close()
 
 	for _, file := range files {
+		fmt.Print(file)
+
 		err := cmd.calcVideoDuration(file, out)
 		if err != nil {
 			return errors.Chain(err, "error calculating video duration")
 		}
+
+		fmt.Print("\r")
 	}
+	fmt.Println()
 
 	style.Create.Printf("+ %s\n", outFile)
 	return nil

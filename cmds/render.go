@@ -59,6 +59,8 @@ type Video struct {
 type RenderCommand struct {
 	command.CommandBase
 	command.FlagCommand
+
+	publicPath string
 }
 
 func NewRenderCommand() *RenderCommand {
@@ -73,11 +75,14 @@ func (cmd *RenderCommand) Initialize() error {
 }
 
 func (cmd RenderCommand) Run(args []string) error {
-	series := NewSeriesSelect(cmd.Flags)
+	path := cmd.Flags.String("path", "public", "output root directory for rendered files")
 	all := cmd.Flags.Bool("all", false, "render all templates")
+	s := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
-	if *all || *series.Index == 0 {
+	cmd.publicPath = *path
+
+	if *all || *s.Index == 0 {
 		if err := cmd.renderBase(); err != nil {
 			return err
 		}
@@ -85,8 +90,8 @@ func (cmd RenderCommand) Run(args []string) error {
 
 	if *all {
 		return cmd.renderAllSeries()
-	} else if *series.Index != 0 {
-		return cmd.renderSingleSeries(series)
+	} else if *s.Index != 0 {
+		return cmd.renderSingleSeries(s)
 	}
 
 	return nil
@@ -95,14 +100,14 @@ func (cmd RenderCommand) Run(args []string) error {
 func (cmd RenderCommand) renderBase() error {
 	t := template.Must(template.ParseFiles("templates/base.gohtml"))
 
-	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
+	data, err := json.UnmarshalFile[BaseData]("data/index.json")
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
 
 	data.Headers = make([]SeriesHeader, len(data.Series))
 	for i, series := range data.Series {
-		path := filepath.Join(PATH, "public", series)
+		path := filepath.Join(cmd.publicPath, series)
 
 		s, err := json.UnmarshalFile[SeriesData](filepath.Join(path, "index.json"))
 		if err != nil {
@@ -129,7 +134,7 @@ func (cmd RenderCommand) renderBase() error {
 	}
 
 	//-- execute the template
-	out := filepath.Join(PATH, "public", "index.html")
+	out := filepath.Join(cmd.publicPath, "index.html")
 
 	file, err := os.Create(out)
 	if err != nil {
@@ -146,13 +151,13 @@ func (cmd RenderCommand) renderBase() error {
 }
 
 func (cmd RenderCommand) renderAllSeries() error {
-	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
+	data, err := json.UnmarshalFile[BaseData]("data/index.json")
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
 
 	for _, series := range data.Series {
-		if err := cmd.renderSeries(filepath.Join(PATH, "public", series)); err != nil {
+		if err := cmd.renderSeries(series); err != nil {
 			return err
 		}
 	}
@@ -160,37 +165,36 @@ func (cmd RenderCommand) renderAllSeries() error {
 	return nil
 }
 
-func (cmd RenderCommand) renderSingleSeries(series SeriesSelect) error {
-	s, err := series.Select(PATH)
+func (cmd RenderCommand) renderSingleSeries(s SeriesSelect) error {
+	series, err := s.Select()
 	if err != nil {
 		return err
 	}
 
 	style.BoldInfo.Println(s)
-	return cmd.renderSeries(filepath.Join(PATH, "public", s))
+	return cmd.renderSeries(series)
 }
 
-func (cmd RenderCommand) renderSeries(path string) error {
+func (cmd RenderCommand) renderSeries(series string) error {
 	t := template.Must(template.ParseFiles("templates/series.gohtml"))
 
 	//-- load data
-	data, err := json.UnmarshalFile[SeriesData](filepath.Join(path, "index.json"))
+	data, err := json.UnmarshalFile[SeriesData](filepath.Join("data", series, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
-	data.ResourcePath, _ = filepath.Rel(path, filepath.Join(PATH, "public"))
 
 	groups := make(map[string]*regexp.Regexp)
 	for key, val := range data.Groups {
 		groups[key] = regexp.MustCompile(val)
 	}
 
-	files, err := filepath.Glob(filepath.Join(path, "data", "meta*.txt"))
+	files, err := filepath.Glob(filepath.Join("data", series, "meta", "meta*.txt"))
 	if err != nil {
 		return errors.Chain(err, "error reading source directory")
 	}
 
-	durations := cmd.parseDurations(filepath.Join(path, "data", "video_stats.txt"))
+	durations := cmd.parseDurations(filepath.Join("data", series, "video_stats.txt"))
 
 	data.Videos = make([]Video, len(files))
 	for i, file := range files {
@@ -203,7 +207,7 @@ func (cmd RenderCommand) renderSeries(path string) error {
 	}
 
 	//-- execute the template
-	out := filepath.Join(path, "index.html")
+	out := filepath.Join(cmd.publicPath, series, "index.html")
 
 	file, err := os.Create(out)
 	if err != nil {

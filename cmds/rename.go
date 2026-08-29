@@ -28,11 +28,11 @@ func (cmd *RenameCommand) Initialize() error {
 }
 
 func (cmd RenameCommand) Run(args []string) error {
-	series := NewSeriesSelect(cmd.Flags)
+	s := NewSeriesSelect(cmd.Flags)
 	confirm := cmd.Flags.Bool("confirm", false, "confirm rename")
 	cmd.ParseFlags(args)
 
-	s, err := series.Select(PATH)
+	series, err := s.Select()
 	if err != nil {
 		return err
 	}
@@ -40,7 +40,7 @@ func (cmd RenameCommand) Run(args []string) error {
 
 	const PAD = 2
 	REGEX := regexp.MustCompile(`.*[^0-9]([0-9]+)(\..+)`)
-	path := filepath.Join(PATH, s, "src")
+	path := filepath.Join("data", series)
 
 	files, err := os.ReadDir(path)
 	if err != nil {

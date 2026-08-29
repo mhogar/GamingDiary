@@ -1,5 +1,7 @@
 package main
 
+/*/media/ryan/Seagate Portable Drive/Videos/Gaming Diary/public*/
+
 import (
 	"fmt"
 	"local/cmds"
