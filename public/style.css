@@ -1,0 +1,121 @@
+body {
+  font-family: Roboto, sans;
+  letter-spacing: .5px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  background-image: url(background.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.series-title {
+  font-size: 45pt;
+  font-weight: 800;
+
+  color: white;
+  text-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
+}
+
+.dates {
+  margin-top: -25px;
+  color: whitesmoke;
+}
+
+.divider {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+a {
+  color: blue;
+}
+
+.list-toggle {
+  cursor: pointer;
+  user-select: none;
+}
+
+.collapsable {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+
+.collapsable.show {
+  max-height: 300px;
+  transition: max-height 0.5s;
+}
+
+.entry {
+  color: black;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.30);
+}
+
+.entry-title {
+  font-size: 24pt;
+  font-weight: 1000;
+
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.entry-body {
+  padding-right: 30px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+.video-link {
+  font-weight: 600;
+  font-size: 15pt;
+}
+
+/* Sunshine Theme */
+
+.sunshine .series-color {
+  color: rgb(244, 223, 67);
+}
+
+.sunshine .entry {
+  background-color: rgb(251, 242, 198);
+}
+
+.sunshine .entry a {
+  color: rgb(39, 150, 254);
+}
+
+/* TTYD Theme */
+
+.ttyd .series-color {
+  color: rgb(191, 10, 10);
+}
+
+.ttyd .entry {
+  background-color: rgb(190, 181, 105);
+}
+
+.ttyd .entry a {
+  color: red;
+}
