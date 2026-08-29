@@ -93,7 +93,7 @@ func (cmd RenderCommand) Run(args []string) error {
 }
 
 func (cmd RenderCommand) renderBase() error {
-	t := template.Must(template.ParseFiles("base.gohtml"))
+	t := template.Must(template.ParseFiles("templates/base.gohtml"))
 
 	data, err := json.UnmarshalFile[BaseData](filepath.Join(PATH, "index.json"))
 	if err != nil {
@@ -171,7 +171,7 @@ func (cmd RenderCommand) renderSingleSeries(series SeriesSelect) error {
 }
 
 func (cmd RenderCommand) renderSeries(path string) error {
-	t := template.Must(template.ParseFiles("series.gohtml"))
+	t := template.Must(template.ParseFiles("templates/series.gohtml"))
 
 	//-- load data
 	data, err := json.UnmarshalFile[SeriesData](filepath.Join(path, "index.json"))
