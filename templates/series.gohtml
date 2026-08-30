@@ -12,9 +12,9 @@
     <h3 class="dates">{{.Dates}}</h3>
     <hr class="divider" />
     <ul>
-      {{range .Videos}}
+      {{range .Entries}}
       <li>
-        <h2 class="list-toggle entry-title{{range .Groups}} {{.}}{{end}}">{{.Title}}</h2>
+        <h2 class="list-toggle entry-title{{range .Classes}} {{.}}{{end}}">{{.Title}}</h2>
         <div class="collapsable entry">
           <div class="grid-container">
             <img src="{{.Thumbnail}}" width="100%"/>
