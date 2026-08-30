@@ -30,12 +30,12 @@ func (cmd *VideoStatCommand) Initialize() error {
 }
 
 func (cmd VideoStatCommand) Run(args []string) error {
-	public := cmd.Flags.String("public", "", "the public path")
+	src := cmd.Flags.String("src", "", "the source path")
 	s := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
-	if *public == "" {
-		return errors.New("\"public\" cannot be empty")
+	if *src == "" {
+		return errors.New("\"src\" cannot be empty")
 	}
 
 	series, err := s.Select()
@@ -44,7 +44,7 @@ func (cmd VideoStatCommand) Run(args []string) error {
 	}
 	style.BoldInfo.Println(series)
 
-	files, err := filepath.Glob(filepath.Join(*public, series, "videos", "v*.mp4"))
+	files, err := filepath.Glob(filepath.Join(*src, series, "videos", "v*.mp4"))
 	if err != nil {
 		return errors.Chain(err, "error reading videos directory")
 	}
