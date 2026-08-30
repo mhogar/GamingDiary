@@ -16,6 +16,7 @@ func main() {
 		cmds.NewRenderCommand(),
 		cmds.NewRenameCommand(),
 		cmds.NewVideoStatCommand(),
+		cmds.NewDeployCommand(),
 	)
 
 	if len(os.Args) < 2 {

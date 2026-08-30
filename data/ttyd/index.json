@@ -3,8 +3,9 @@
     "background": "door.png",
     "title": "The Thousand-Year Tale",
     "dates": "Jun 5, 2024 - Oct 10, 2024",
-    "thumbnail": "thumbnails/t0-00.png",
+    "thumbnail": "book.png",
     "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
+    "stylesheets": ["groups.css"],
     "groups": {
         "chapter1": "1-.*",
         "chapter2": "2-.*",

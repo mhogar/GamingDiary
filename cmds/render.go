@@ -39,6 +39,7 @@ type SeriesData struct {
 	Dates       string            `json:"dates"`
 	Thumbnail   string            `json:"thumbnail"`
 	Description string            `json:"description"`
+	Stylesheets []string          `json:"stylesheets"`
 	Groups      map[string]string `json:"groups"`
 
 	ResourcePath string

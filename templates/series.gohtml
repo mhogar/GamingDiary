@@ -2,7 +2,9 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <link rel="stylesheet" type="text/css" href="groups.css">
+    {{range .Stylesheets}}
+    <link rel="stylesheet" type="text/css" href="{{.}}">
+    {{end}}
 </head>
 <body class="{{.Theme}}" style="background-image: url('{{.Background}}');">
   <div class="page-container">
