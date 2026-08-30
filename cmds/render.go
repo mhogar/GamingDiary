@@ -36,7 +36,8 @@ type SeriesData struct {
 	Title       string            `json:"title"`
 	Dates       string            `json:"dates"`
 	Description string            `json:"description"`
-	EntryName   string            `json:"entry_name"`
+	RawFiles    string            `json:"raw_files"`
+	Entries     string            `json:"entries"`
 	Theme       string            `json:"theme"`
 	Background  string            `json:"background"`
 	Thumbnail   string            `json:"thumbnail"`
@@ -262,8 +263,8 @@ func (cmd RenderCommand) buildVideo(series SeriesData, path string, groupExps ma
 	lines := strings.Split(string(meta), "\n")
 
 	return Video{
-		Groups:      groups,
-		Title:       fmt.Sprintf("%s %s | %s\n", series.EntryName, index, strings.SplitN(lines[2], " | ", 2)[0]),
+		Groups: groups,
+		//Title:       fmt.Sprintf("%s %s | %s\n", series.EntryName, index, strings.SplitN(lines[2], " | ", 2)[0]),
 		Description: lines[5],
 		Duration:    cmd.formatDuration(duration),
 		Thumbnail:   fmt.Sprintf("thumbnails/t%s.png", index),
