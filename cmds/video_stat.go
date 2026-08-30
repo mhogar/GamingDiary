@@ -44,7 +44,7 @@ func (cmd VideoStatCommand) Run(args []string) error {
 	}
 	style.BoldInfo.Println(series)
 
-	files, err := filepath.Glob(filepath.Join(*src, series, "videos", "v*.mp4"))
+	files, err := filepath.Glob(filepath.Join(*src, "v*.mp4"))
 	if err != nil {
 		return errors.Chain(err, "error reading videos directory")
 	}

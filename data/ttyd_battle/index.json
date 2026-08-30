@@ -1,12 +1,12 @@
 {
-    "title": "The Thousand-Year Tale",
+    "title": "The Thousand-Year Tale Battles",
     "dates": "Jun 5, 2024 - Oct 10, 2024",
     "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
-    "entry_name": "Chapter",
+    "entry_name": "Battle",
     "theme": "ttyd",
-    "background": "door.png",
-    "thumbnail": "book.png",
-    "stylesheets": ["groups.css"],
+    "background": "../ttyd/door.png",
+    "thumbnail": "../ttyd/book.png",
+    "stylesheets": ["../ttyd/groups.css"],
     "groups": {
         "chapter1": "1-.*",
         "chapter2": "2-.*",

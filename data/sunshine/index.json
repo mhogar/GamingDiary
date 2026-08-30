@@ -1,8 +1,9 @@
 {
-    "theme": "sunshine",
-    "background": "isle_delfino.jpg",
     "title": "The Sunshine Story",
     "dates": "May 27, 2024 - Jun 24, 2024",
-    "thumbnail": "title.png",
-    "description": "Super Mario Sunshine (2002) - GCN/Switch"
+    "description": "Super Mario Sunshine (2002) - GCN/Switch",
+    "entry_name": "Chapter",
+    "theme": "sunshine",
+    "background": "isle_delfino.jpg",
+    "thumbnail": "title.png"
 }

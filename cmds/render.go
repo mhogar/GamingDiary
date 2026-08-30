@@ -33,17 +33,16 @@ type SeriesHeader struct {
 }
 
 type SeriesData struct {
-	Theme       string            `json:"theme"`
-	Background  string            `json:"background"`
 	Title       string            `json:"title"`
 	Dates       string            `json:"dates"`
-	Thumbnail   string            `json:"thumbnail"`
 	Description string            `json:"description"`
+	EntryName   string            `json:"entry_name"`
+	Theme       string            `json:"theme"`
+	Background  string            `json:"background"`
+	Thumbnail   string            `json:"thumbnail"`
 	Stylesheets []string          `json:"stylesheets"`
 	Groups      map[string]string `json:"groups"`
-
-	ResourcePath string
-	Videos       []Video
+	Videos      []Video
 }
 
 type Video struct {
@@ -201,23 +200,29 @@ func (cmd RenderCommand) renderSeries(public, series string) error {
 			duration = durations[i]
 		}
 
-		data.Videos[i], _ = cmd.buildVideo(file, groups, duration)
+		data.Videos[i], _ = cmd.buildVideo(data, file, groups, duration)
 	}
 
 	//-- execute the template
-	out := filepath.Join(public, series, "index.html")
+	seriesPath := filepath.Join(public, series)
+	outFile := filepath.Join(seriesPath, "index.html")
 
-	file, err := os.Create(out)
+	err = os.MkdirAll(seriesPath, 0755)
+	if err != nil {
+		return errors.Chain(err, "error creating series path")
+	}
+
+	out, err := os.Create(outFile)
 	if err != nil {
 		return errors.Chain(err, "error creating index file")
 	}
-	defer file.Close()
+	defer out.Close()
 
-	if err := t.Execute(file, data); err != nil {
+	if err := t.Execute(out, data); err != nil {
 		return errors.Chain(err, "error executing template")
 	}
 
-	style.Create.Printf("+ %s\n", out)
+	style.Create.Printf("+ %s\n", outFile)
 	return nil
 }
 
@@ -240,7 +245,7 @@ func (RenderCommand) parseDurations(path string) []float32 {
 	return durations
 }
 
-func (cmd RenderCommand) buildVideo(path string, groupExps map[string]*regexp.Regexp, duration float32) (Video, error) {
+func (cmd RenderCommand) buildVideo(series SeriesData, path string, groupExps map[string]*regexp.Regexp, duration float32) (Video, error) {
 	index := regexp.MustCompile(`meta(.+)\.txt$`).FindStringSubmatch(path)[1]
 
 	groups := []string{}
@@ -258,7 +263,7 @@ func (cmd RenderCommand) buildVideo(path string, groupExps map[string]*regexp.Re
 
 	return Video{
 		Groups:      groups,
-		Title:       fmt.Sprintf("Chapter %s | %s\n", index, strings.SplitN(lines[2], " | ", 2)[0]),
+		Title:       fmt.Sprintf("%s %s | %s\n", series.EntryName, index, strings.SplitN(lines[2], " | ", 2)[0]),
 		Description: lines[5],
 		Duration:    cmd.formatDuration(duration),
 		Thumbnail:   fmt.Sprintf("thumbnails/t%s.png", index),

@@ -28,61 +28,50 @@ func (cmd *RenameCommand) Initialize() error {
 }
 
 func (cmd RenameCommand) Run(args []string) error {
-	s := NewSeriesSelect(cmd.Flags)
+	path := cmd.Flags.String("path", "", "search path")
+	pattern := cmd.Flags.String("pattern", "(.+)", "the pattern regex")
+	replace := cmd.Flags.String("replace", "$", "the replace string")
 	confirm := cmd.Flags.Bool("confirm", false, "confirm rename")
 	cmd.ParseFlags(args)
 
-	series, err := s.Select()
+	regex, err := regexp.Compile(*pattern)
 	if err != nil {
-		return err
+		return errors.Chain(err, "error compiling pattern regex")
 	}
-	style.BoldInfo.Println(s)
 
-	const PAD = 2
-	REGEX := regexp.MustCompile(`.*[^0-9]([0-9]+)(\..+)`)
-	path := filepath.Join("data", series)
-
-	files, err := os.ReadDir(path)
+	files, err := os.ReadDir(*path)
 	if err != nil {
 		return errors.Chain(err, "error reading directory")
 	}
 
 	count := 0
-
 	for _, file := range files {
-		if file.IsDir() || !REGEX.MatchString(file.Name()) {
+		if file.IsDir() || !regex.MatchString(file.Name()) {
 			continue
 		}
+		count++
 
-		matches := REGEX.FindStringSubmatch(file.Name())
-
-		index := matches[1]
-		ext := matches[2]
-
-		if len(index) >= PAD {
-			if !*confirm {
-				style.Info.Println(file.Name())
-			}
-			continue
+		matches := regex.FindStringSubmatch(file.Name())
+		if len(matches) < 2 {
+			return errors.New("pattern regex does not contain a group")
 		}
 
-		renamed := strings.Replace(file.Name(), index+ext, "0"+index+ext, 1)
-		if !*confirm {
-			style.Create.Printf("%s -> %s\n", file.Name(), renamed)
-		}
+		renamed := strings.Replace(*replace, "$", matches[1], 1)
 
 		if *confirm {
-			count++
-
-			err := os.Rename(filepath.Join(path, file.Name()), filepath.Join(path, renamed))
+			err := os.Rename(filepath.Join(*path, file.Name()), filepath.Join(*path, renamed))
 			if err != nil {
 				return errors.Chain(err, "error renaming file")
 			}
+		} else {
+			style.Info.Printf("%s -> %s\n", file.Name(), style.Bold.Sprint(renamed))
 		}
 	}
 
 	if *confirm {
 		style.BoldCreate.Printf("%d Files Renamed\n", count)
+		return nil
 	}
-	return nil
+
+	return errors.New("rerun with \"-confirm\" to apply")
 }
