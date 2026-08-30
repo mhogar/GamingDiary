@@ -1,7 +1,6 @@
 package types
 
 type Entry struct {
-	Filepath    string  `json:"-"`
 	Index       string  `json:"index"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`

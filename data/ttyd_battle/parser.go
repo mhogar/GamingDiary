@@ -24,7 +24,6 @@ func (Parser) Parse(path string) (types.Entry, error) {
 	title := regexp.MustCompile(`^(.+)\s+\|`).FindStringSubmatch(lines[2])[1]
 
 	return types.Entry{
-		Filepath:    fmt.Sprintf("entries/entry_%s.json", index),
 		Index:       index,
 		Title:       fmt.Sprintf("Battle %s | %s", index, title),
 		Description: lines[5],

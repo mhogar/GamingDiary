@@ -2,11 +2,16 @@ package cmds
 
 import (
 	"bytes"
+	"fmt"
 	"local/cmds/types"
+	"local/data/sunshine"
+	"local/data/ttyd"
 	"local/data/ttyd_battle"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"strconv"
+	"strings"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
@@ -15,7 +20,7 @@ import (
 )
 
 type Parser interface {
-	Parse(index, raw string) (types.Entry, error)
+	Parse(raw string) (types.Entry, error)
 }
 
 //=========================================
@@ -38,20 +43,19 @@ func (cmd *BuildCommand) Initialize() error {
 
 func (cmd BuildCommand) Run(args []string) error {
 	public := cmd.Flags.String("public", "", "the public path")
-	//s := NewSeriesSelect(cmd.Flags)
+	s := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
 	if *public == "" {
 		return errors.New("\"public\" cannot be empty")
 	}
 
-	// series, err := s.Select()
-	// if err != nil {
-	// 	return err
-	// }
-	// style.BoldInfo.Println(series)
+	series, err := s.Select()
+	if err != nil {
+		return err
+	}
+	style.BoldInfo.Println(series)
 
-	series := "ttyd_battle"
 	dataPath := filepath.Join("data", series)
 
 	data, err := json.UnmarshalFile[SeriesData](filepath.Join(dataPath, "index.json"))
@@ -64,10 +68,15 @@ func (cmd BuildCommand) Run(args []string) error {
 		return errors.Chain(err, "error finding raw files")
 	}
 
+	err = os.MkdirAll(filepath.Join(dataPath, filepath.Dir(data.Entries)), 0755)
+	if err != nil {
+		return errors.Chain(err, "error creating entry directory")
+	}
+
 	for _, file := range files {
 		style.Info.Printf("%s -> ", file)
 
-		entry, err := ttyd_battle.Parser{}.Parse(file)
+		entry, err := cmd.selectParser(series).Parse(file)
 		if err != nil {
 			return errors.Chain(err, "error parsing raw file")
 		}
@@ -77,15 +86,30 @@ func (cmd BuildCommand) Run(args []string) error {
 			return errors.Chain(err, "error calculating video duration")
 		}
 
-		err = json.MarshalFilePretty(entry, filepath.Join(dataPath, entry.Filepath), "  ")
+		out := filepath.Join(dataPath, strings.Replace(data.Entries, "*", entry.Index, 1))
+
+		err = json.MarshalFilePretty(entry, out, "  ")
 		if err != nil {
 			return errors.Chain(err, "error saving entry file")
 		}
 
-		style.Create.Println(entry.Filepath)
+		style.Create.Println(out)
 	}
 
 	return nil
+}
+
+func (cmd BuildCommand) selectParser(series string) Parser {
+	switch series {
+	case "sunshine":
+		return sunshine.Parser{}
+	case "ttyd":
+		return ttyd.Parser{}
+	case "ttyd_battle":
+		return ttyd_battle.Parser{}
+	default:
+		panic(fmt.Sprintf("no parser for series \"%s\"", series))
+	}
 }
 
 func (cmd BuildCommand) calcVideoDuration(path string) (float32, error) {
