@@ -83,7 +83,14 @@ func (cmd RenameCommand) Run(args []string) error {
 		}
 
 		if *confirm {
-			err := os.Rename(filepath.Join(*path, file.Name()), filepath.Join(*path, renamed))
+			newPath := filepath.Join(*path, renamed)
+
+			_, err := os.Stat(newPath)
+			if err == nil {
+				return errors.Format("new name \"%s\" already exists", newPath)
+			}
+
+			err = os.Rename(filepath.Join(*path, file.Name()), newPath)
 			if err != nil {
 				return errors.Chain(err, "error renaming file")
 			}
