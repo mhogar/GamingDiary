@@ -16,11 +16,21 @@ import (
 )
 
 type HomePageData struct {
-	Series map[string]data.Series
-	Keys   []string
-
+	Series        []SeriesHeaderData
 	VideoCount    int
 	TotalDuration float32
+}
+
+type SeriesHeaderData struct {
+	Path          string
+	Index         string
+	Title         string
+	Dates         string
+	Description   string
+	VideoCount    int
+	TotalDuration float32
+	Thumbnail     string
+	Theme         string
 }
 
 //=======================================
@@ -51,8 +61,7 @@ func (cmd RenderCommand) Run(args []string) error {
 	}
 
 	homePage := HomePageData{
-		Series: map[string]data.Series{},
-		Keys:   make([]string, len(root.Series)),
+		Series: make([]SeriesHeaderData, len(root.Series)),
 	}
 
 	for i, name := range root.Series {
@@ -63,15 +72,23 @@ func (cmd RenderCommand) Run(args []string) error {
 			return errors.Chain(err, "error reading data file")
 		}
 
-		homePage.Series[name] = series
-		homePage.Keys[i] = name
-
 		entires, err := json.UnmarshalFile[data.Entries](filepath.Join(dataPath, series.Entries))
 		if err != nil {
 			return errors.Chain(err, "error reading entries file")
 		}
 
-		homePage.VideoCount++
+		homePage.Series[i] = SeriesHeaderData{
+			Path:          name,
+			Index:         series.Index,
+			Title:         series.Title,
+			Dates:         series.Dates,
+			Description:   series.Description,
+			VideoCount:    entires.VideoCount,
+			TotalDuration: entires.TotalDuration,
+			Thumbnail:     series.Thumbnail,
+			Theme:         series.Theme,
+		}
+		homePage.VideoCount += entires.VideoCount
 		homePage.TotalDuration += entires.TotalDuration
 
 		resourcePath, _ := filepath.Rel(dataPath, "data")
@@ -82,6 +99,37 @@ func (cmd RenderCommand) Run(args []string) error {
 	}
 
 	return cmd.renderHomePage(*public, homePage)
+}
+
+func (cmd RenderCommand) renderHomePage(public string, data HomePageData) error {
+	page := templates.HomePage{
+		VideoCount:    data.VideoCount,
+		TotalDuration: cmd.formatDurationHMS(data.TotalDuration),
+		Series:        make([]templates.SeriesHeader, len(data.Series)),
+	}
+
+	for i, header := range data.Series {
+		page.Series[i] = templates.SeriesHeader{
+			Title:         fmt.Sprintf("(%s) %s", header.Index, header.Title),
+			Dates:         header.Dates,
+			Description:   header.Description,
+			VideoCount:    header.VideoCount,
+			TotalDuration: cmd.formatDurationTimestamp(header.TotalDuration),
+			Thumbnail:     filepath.Join(header.Path, header.Thumbnail),
+			Link:          filepath.Join(header.Path, "index.html"),
+			Theme:         header.Theme,
+		}
+	}
+
+	out := filepath.Join(public, "index.html")
+
+	err := templates.RenderHomePage(out, page)
+	if err != nil {
+		return errors.Chain(err, "error rendering home page")
+	}
+
+	style.Create.Printf("+ %s\n", out)
+	return nil
 }
 
 func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry, resourcePath, public string) error {
@@ -111,7 +159,7 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 		page.Entries[i] = templates.Entry{
 			Title:       entry.Title,
 			Description: entry.Description,
-			Duration:    cmd.formatDuration(entry.Duration),
+			Duration:    cmd.formatDurationTimestamp(entry.Duration),
 			Thumbnail:   entry.Thumbnail,
 			Video:       entry.Video,
 			Classes:     classes,
@@ -134,40 +182,12 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 	return nil
 }
 
-func (cmd RenderCommand) renderHomePage(public string, data HomePageData) error {
-	page := templates.HomePage{
-		VideoCount:    data.VideoCount,
-		TotalDuration: cmd.formatDuration(data.TotalDuration),
-		Series:        make([]templates.SeriesHeader, len(data.Series)),
-	}
-
-	for i, name := range data.Keys {
-		series := data.Series[name]
-
-		page.Series[i] = templates.SeriesHeader{
-			Title:         fmt.Sprintf("(%s) %s", series.Index, series.Title),
-			Dates:         series.Dates,
-			Description:   series.Description,
-			VideoCount:    data.VideoCount,
-			TotalDuration: cmd.formatDuration(data.TotalDuration),
-			Thumbnail:     filepath.Join(name, series.Thumbnail),
-			Link:          filepath.Join(name, "index.html"),
-			Theme:         series.Theme,
-		}
-	}
-
-	out := filepath.Join(public, "index.html")
-
-	err := templates.RenderHomePage(out, page)
-	if err != nil {
-		return errors.Chain(err, "error rendering home page")
-	}
-
-	style.Create.Printf("+ %s\n", out)
-	return nil
-}
-
-func (RenderCommand) formatDuration(duration float32) string {
+func (RenderCommand) formatDurationTimestamp(duration float32) string {
 	d := int(math.Round(float64(duration)))
 	return fmt.Sprintf("%02d:%02d:%02d", d/(60*60), (d/60)%60, d%60)
+}
+
+func (RenderCommand) formatDurationHMS(duration float32) string {
+	d := int(math.Round(float64(duration)))
+	return fmt.Sprintf("%dh %dm %ds", d/(60*60), (d/60)%60, d%60)
 }

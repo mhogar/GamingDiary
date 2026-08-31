@@ -1,26 +1,22 @@
 {
-  "index": "2.2",
-  "title": "The Thousand-Year Battles",
-  "dates": "Jun 5, 2024 - Oct 10, 2024",
-  "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
-  "raw_files": "youtube/*.txt",
-  "entries": "entries/entry_*.json",
-  "theme": "ttyd",
-  "background": "../door.png",
-  "thumbnail": "../book.png",
-  "stylesheets": [
-    "../groups.css"
-  ],
-  "groups": {
-    "chapter1": "1-.*",
-    "chapter2": "2-.*",
-    "chapter3": "3-.*",
-    "chapter4": "4-.*",
-    "chapter5": "5-.*",
-    "chapter6": "6-.*",
-    "chapter7": "7-.*",
-    "chapter8": "8-.*"
-  },
-  "video_count": 26,
-  "total_duration": 13990.049
+    "index": "2.2",
+    "title": "The Thousand-Year Battles",
+    "dates": "Jun 5, 2024 - Oct 10, 2024",
+    "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
+    "raw": "youtube/*.txt",
+    "entries": "entries.json",
+    "theme": "ttyd",
+    "background": "../door.png",
+    "thumbnail": "../book.png",
+    "stylesheets": ["../groups.css"],
+    "groups": {
+        "chapter1": "1-.*",
+        "chapter2": "2-.*",
+        "chapter3": "3-.*",
+        "chapter4": "4-.*",
+        "chapter5": "5-.*",
+        "chapter6": "6-.*",
+        "chapter7": "7-.*",
+        "chapter8": "8-.*"
+    }
 }

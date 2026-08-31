@@ -1,0 +1,753 @@
+{
+  "video_count": 83,
+  "total_duration": 141341.38,
+  "entries": [
+    {
+      "index": "0-00",
+      "title": "Chapter 0-00 | Prelude",
+      "description": "Our Paper Mario: The Thousand-Year Door story begins! Let's all enjoy a wonderfully opening cinematic!",
+      "duration": 382.336,
+      "thumbnail": "thumbnails/t0-00.png",
+      "video": "videos/v0-00.mp4",
+      "youtube": "https://www.youtube.com/watch?v=n5W7vMnlCKg"
+    },
+    {
+      "index": "0-01",
+      "title": "Chapter 0-01 | Taking on the Town",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! We explore and chat with all the lovely (and kinda sketchy) folks of the town!",
+      "duration": 2501.162,
+      "thumbnail": "thumbnails/t0-01.png",
+      "video": "videos/v0-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=If_5hLi24_4"
+    },
+    {
+      "index": "0-02",
+      "title": "Chapter 0-02 | Unfurl with Passion!",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! We finally make our way to the Thousand-Year Door and unfurl the magically map... with passion!",
+      "duration": 2437.461,
+      "thumbnail": "thumbnails/t0-02.png",
+      "video": "videos/v0-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=NbNe2Da_jZw"
+    },
+    {
+      "index": "1-01",
+      "title": "Chapter 1-01 | Castle and Dragon",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! We begin chapter 1 and our journeys in Petal Meadows!",
+      "duration": 1452.736,
+      "thumbnail": "thumbnails/t1-01.png",
+      "video": "videos/v1-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=MrY-Or0QKJM"
+    },
+    {
+      "index": "1-02",
+      "title": "Chapter 1-02 | Who Wants to be a Shhwonk?",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! We continue to Shhwonk Fortress and star in a game show!",
+      "duration": 2373.568,
+      "thumbnail": "thumbnails/t1-02.png",
+      "video": "videos/v1-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=4GrHn13oJXE"
+    },
+    {
+      "index": "1-03",
+      "title": "Chapter 1-03 | Music Turmoil",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! We enter Hooktail Castle and I have some inner turmoil over the music...",
+      "duration": 2208.704,
+      "thumbnail": "thumbnails/t1-03.png",
+      "video": "videos/v1-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=48FU4aGKf1g"
+    },
+    {
+      "index": "1-04",
+      "title": "Chapter 1-04 | Dragon Destiny",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! We reach the end of Hooktail Castle and meet our dragon destiny!",
+      "duration": 2022.912,
+      "thumbnail": "thumbnails/t1-04.png",
+      "video": "videos/v1-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=1KjiGxvgEBU"
+    },
+    {
+      "index": "1-05",
+      "title": "Chapter 1-05 | Voice Actor in Training",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we witness much dialog and put my voice acting to the test!",
+      "duration": 1330.218,
+      "thumbnail": "thumbnails/t1-05.png",
+      "video": "videos/v1-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=SuGWJx8C1Dg"
+    },
+    {
+      "index": "1-06",
+      "title": "Chapter 1-06 | Town Touch-ups",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we tend to  the various events that have become available to us back in Rogueport!",
+      "duration": 1828.522,
+      "thumbnail": "thumbnails/t1-06.png",
+      "video": "videos/v1-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Jg-23q3K-08"
+    },
+    {
+      "index": "1-07",
+      "title": "Chapter 1-07 | West Side Story",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we tackle the fancy west side of Rogueport and prepare for our pit of 100 trials run!",
+      "duration": 2903.338,
+      "thumbnail": "thumbnails/t1-07.png",
+      "video": "videos/v1-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Zm-eNBDX1Ao"
+    },
+    {
+      "index": "1-08",
+      "title": "Chapter 1-08 | Pit of Tragedy",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we take on the first 30 floors of the Pit of 100 Trials... and it ends in tragedy.",
+      "duration": 3099.072,
+      "thumbnail": "thumbnails/t1-08.png",
+      "video": "videos/v1-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=MrBZqVyn5-U"
+    },
+    {
+      "index": "1-09",
+      "title": "Chapter 1-09 | Pit of Victory",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we take on the first 30 floors of the Pit of 100 Trials for a second time, while learning from the mistakes we made last time!",
+      "duration": 3454.869,
+      "thumbnail": "thumbnails/t1-09.png",
+      "video": "videos/v1-09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Ajg1LiCStug"
+    },
+    {
+      "index": "1-10",
+      "title": "Chapter 1-10 | Think Again Nerd!",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we wrap up the last preparations before heading to chapter 2!",
+      "duration": 649.578,
+      "thumbnail": "thumbnails/t1-10.png",
+      "video": "videos/v1-10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=-yW2wstcKGk"
+    },
+    {
+      "index": "2-01",
+      "title": "Chapter 2-01 | The Great Boggly Tree",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we finally begin the long awaited chapter 2!",
+      "duration": 1534.101,
+      "thumbnail": "thumbnails/t2-01.png",
+      "video": "videos/v2-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=LT6iz7-Zh4s"
+    },
+    {
+      "index": "2-02",
+      "title": "Chapter 2-02 | Backtrack Woods",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we backtrack a lot trough the woods to wherever the story requires!",
+      "duration": 1707.285,
+      "thumbnail": "thumbnails/t2-02.png",
+      "video": "videos/v2-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=vmZaqoxK4Gw"
+    },
+    {
+      "index": "2-03",
+      "title": "Chapter 2-03 | A Small Army",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we continue the Great Boggly Tree and recruit a small army!",
+      "duration": 1704.917,
+      "thumbnail": "thumbnails/t2-03.png",
+      "video": "videos/v2-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=yGi_qQU32f0"
+    },
+    {
+      "index": "2-04",
+      "title": "Chapter 2-04 | Punies of Rohirrim",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we continue the Great Boggly Tree and grow our army even more!",
+      "duration": 1811.498,
+      "thumbnail": "thumbnails/t2-04.png",
+      "video": "videos/v2-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=v_K8EaIrack"
+    },
+    {
+      "index": "2-05",
+      "title": "Chapter 2-05 | Buried in Canada",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we finish the Boggly tree and get what we came for!",
+      "duration": 1438.805,
+      "thumbnail": "thumbnails/t2-05.png",
+      "video": "videos/v2-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=jI2iSIoWrWo"
+    },
+    {
+      "index": "2-06",
+      "title": "Chapter 2-06 | Dancing On My Own",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we tackle the Chapter 2 intermission segments!",
+      "duration": 796.736,
+      "thumbnail": "thumbnails/t2-06.png",
+      "video": "videos/v2-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=mtddLgJRCEI"
+    },
+    {
+      "index": "2-07",
+      "title": "Chapter 2-07 | Stories and Star Pieces",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we hunt for a few outstanding star pieces and hear the next chapter in Luigi's story!",
+      "duration": 1577.557,
+      "thumbnail": "thumbnails/t2-07.png",
+      "video": "videos/v2-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=3OpllOPk-dc"
+    },
+    {
+      "index": "2-08",
+      "title": "Chapter 2-08 | Piantas in Crime",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we meet with the Pianta syndicate and obtain the tickets needed to head to Glitzville!",
+      "duration": 1551.104,
+      "thumbnail": "thumbnails/t2-08.png",
+      "video": "videos/v2-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=dX9Dpb4ForE"
+    },
+    {
+      "index": "3-01",
+      "title": "Chapter 3-01 | Of Glitz and Glory",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we finally start chapter 3 and see what Glitzville has to offer!",
+      "duration": 1964.8,
+      "thumbnail": "thumbnails/t3-01.png",
+      "video": "videos/v3-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=gnuTgdjIVk4"
+    },
+    {
+      "index": "3-02",
+      "title": "Chapter 3-02 | King of the Pit",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we climb the ranks of the minor league in the Glitz Pit!",
+      "duration": 2166.784,
+      "thumbnail": "thumbnails/t3-02.png",
+      "video": "videos/v3-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=vvEfGwDpI38"
+    },
+    {
+      "index": "3-03",
+      "title": "Chapter 3-03 | Breaking into Major",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we challenge the notorious Iron Twins to break our way into the major league!",
+      "duration": 1805.034,
+      "thumbnail": "thumbnails/t3-03.png",
+      "video": "videos/v3-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=A3FmGkKrPSQ"
+    },
+    {
+      "index": "3-04",
+      "title": "Chapter 3-04 | Glitz Pit Stop",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we make a brief pit stop back to Rogueport and see what our new Yoshi friend unlocks!",
+      "duration": 1010.368,
+      "thumbnail": "thumbnails/t3-04.png",
+      "video": "videos/v3-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=OOJjB1H5Zew"
+    },
+    {
+      "index": "3-05",
+      "title": "Chapter 3-05 | A Major Debut",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we start the climb in the major league and finally receive a hammer upgrade!",
+      "duration": 1176.384,
+      "thumbnail": "thumbnails/t3-05.png",
+      "video": "videos/v3-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=E6V6nymgq6c"
+    },
+    {
+      "index": "3-06",
+      "title": "Chapter 3-06 | An Unexpected Intermission",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we continue through the major league and fight some unexpected foes!",
+      "duration": 1786.666,
+      "thumbnail": "thumbnails/t3-06.png",
+      "video": "videos/v3-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=0Aw3NkcDVms"
+    },
+    {
+      "index": "3-07",
+      "title": "Chapter 3-07 | Fight to the Finish",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we finish climbing through the major league as we aim for the top spot!",
+      "duration": 2041.066,
+      "thumbnail": "thumbnails/t3-07.png",
+      "video": "videos/v3-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=QrlXCDZ_JSw"
+    },
+    {
+      "index": "3-08",
+      "title": "Chapter 3-08 | Rawking the Hawk",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we at long last take on the champion of the Glitz Pit, Rawk Hawk!",
+      "duration": 1239.4667,
+      "thumbnail": "thumbnails/t3-08.png",
+      "video": "videos/v3-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=QC_-EMgFZTA"
+    },
+    {
+      "index": "3-09",
+      "title": "Chapter 3-09 | The TRUE Champion",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we put an end to the Glitz Pit conspiracy once and for all with a battle to the finish with Macho Grubba!",
+      "duration": 1346.069,
+      "thumbnail": "thumbnails/t3-09.png",
+      "video": "videos/v3-09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=uA-Eu0a9Z64"
+    },
+    {
+      "index": "3-10",
+      "title": "Chapter 3-10 | Mission Possible",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we tackle the chapter 3 intermission segments; where Peach's role starts to get interesting!",
+      "duration": 965.269,
+      "thumbnail": "thumbnails/t3-10.png",
+      "video": "videos/v3-10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=a_8OSwpwr5c"
+    },
+    {
+      "index": "3-11",
+      "title": "Chapter 3-11 | Stories and Shady Investments",
+      "description": "Our Paper Mario: The Thousand-Year Door story continues! Today we head back to Rogueport and catch up with our favourite characters before we embark for chapter 4!",
+      "duration": 1803.861,
+      "thumbnail": "thumbnails/t3-11.png",
+      "video": "videos/v3-11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Yc6IiX72omM"
+    },
+    {
+      "index": "4-01",
+      "title": "Chapter 4-01 | For Pigs the Bell Tolls",
+      "description": "Today we start the well remembered chapter 4! Let's see how the remake has changed things around here...",
+      "duration": 2087.146,
+      "thumbnail": "thumbnails/t4-01.png",
+      "video": "videos/v4-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=0b-ZXEOsPJM"
+    },
+    {
+      "index": "4-02",
+      "title": "Chapter 4-02 | Creepy But Cool",
+      "description": "Today we embark for the Creepy Steeple and encounter some concerningly strong enemies along the way...",
+      "duration": 1418.517,
+      "thumbnail": "thumbnails/t4-02.png",
+      "video": "videos/v4-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=TkOkPrjd9s8"
+    },
+    {
+      "index": "4-03",
+      "title": "Chapter 4-03 | Man of Mystery",
+      "description": "Today we make our way through the Creepy Steeple and face off against the monster of the tower!",
+      "duration": 1126.784,
+      "thumbnail": "thumbnails/t4-03.png",
+      "video": "videos/v4-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=_EeEat2v0fU"
+    },
+    {
+      "index": "4-04",
+      "title": "Chapter 4-04 | Identity Fraud",
+      "description": "Today we track down the ghost who stole our identity!",
+      "duration": 1946.688,
+      "thumbnail": "thumbnails/t4-04.png",
+      "video": "videos/v4-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=4kwweevUsSY"
+    },
+    {
+      "index": "4-05",
+      "title": "Chapter 4-05 | The Alphabet Bandit",
+      "description": "Today we discover the imposter's true name and attempt to take him down!",
+      "duration": 1351.4667,
+      "thumbnail": "thumbnails/t4-05.png",
+      "video": "videos/v4-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=-Oo2Rzgl0jg"
+    },
+    {
+      "index": "4-06",
+      "title": "Chapter 4-06 | TEC-nical Loopholes",
+      "description": "Today we tackle the chapter 4 intermission segments! The Peach story gets more interesting while Bowser goes for a swim!",
+      "duration": 890.517,
+      "thumbnail": "thumbnails/t4-06.png",
+      "video": "videos/v4-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=cGf6FXfIdxE"
+    },
+    {
+      "index": "4-07",
+      "title": "Chapter 4-07 | Stories and Spring Cleaning",
+      "description": "Today we head back to Rogueport and hear the next chapters in all our favourite stories! Oh, and some spring cleaning tasks here and there...",
+      "duration": 1558.698,
+      "thumbnail": "thumbnails/t4-07.png",
+      "video": "videos/v4-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=lVGtCDngE9E"
+    },
+    {
+      "index": "4-08",
+      "title": "Chapter 4-08 | The Great Mouse Bandit",
+      "description": "Today we tackle the mysterious trouble request and run into an old \"friend\"!",
+      "duration": 809.685,
+      "thumbnail": "thumbnails/t4-08.png",
+      "video": "videos/v4-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Nx40YHc4vlQ"
+    },
+    {
+      "index": "4-09",
+      "title": "Chapter 4-09 | The Cook Book Quest",
+      "description": "Today we tackle Zess T's cook book quest, which requires a return once more to the Creepy Steeple! It's all good though, because we missed a few things along the way...",
+      "duration": 1986.837,
+      "thumbnail": "thumbnails/t4-09.png",
+      "video": "videos/v4-09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=0EoK_zN8Pr0"
+    },
+    {
+      "index": "4-10",
+      "title": "Chapter 4-10 | Pit Act II",
+      "description": "Today we make our second run through the Pit of 100 Trials! Let's just say, it goes much better than last time!",
+      "duration": 3230.208,
+      "thumbnail": "thumbnails/t4-10.png",
+      "video": "videos/v4-10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=MbQ_Gw7YlRM"
+    },
+    {
+      "index": "4-11",
+      "title": "Chapter 4-11 | Amazy Dayzee Grinding",
+      "description": "In this bonus episode, we attempt the amazy dayzee grinding strategy to obtain boat loads of experience rather quickly!",
+      "duration": 248.789,
+      "thumbnail": "thumbnails/t4-11.png",
+      "video": "videos/v4-11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=nxofNyOV968"
+    },
+    {
+      "index": "5-00",
+      "title": "Chapter 5-00 | A Wife's Tale",
+      "description": "Today we prepare to embark for Keelhaul Key! But first we need a helmsman, and it's a rather sad story...",
+      "duration": 1337.386,
+      "thumbnail": "thumbnails/t5-00.png",
+      "video": "videos/v5-00.mp4",
+      "youtube": "https://www.youtube.com/watch?v=6KQDN8fNj2Q"
+    },
+    {
+      "index": "5-01",
+      "title": "Chapter 5-01 | The Key to Pirates",
+      "description": "Today we set sail for Keelhaul Key, which doesn't quite go to plan...",
+      "duration": 1733.909,
+      "thumbnail": "thumbnails/t5-01.png",
+      "video": "videos/v5-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=FKpmMhwQfEE"
+    },
+    {
+      "index": "5-02",
+      "title": "Chapter 5-02 | A Last Wish",
+      "description": "Today we set out to save Bobbery from the Embers we definitely could of stopped the first time...",
+      "duration": 1056,
+      "thumbnail": "thumbnails/t5-02.png",
+      "video": "videos/v5-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=VQVZtpHSpNw"
+    },
+    {
+      "index": "5-03",
+      "title": "Chapter 5-03 | The Adventures of Flavio!!!",
+      "description": "Today we take Flavio on an adventure to Pirate Grotto! Although he just waits outside...",
+      "duration": 1517.525,
+      "thumbnail": "thumbnails/t5-03.png",
+      "video": "videos/v5-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=z7FZWxvN-d4"
+    },
+    {
+      "index": "5-04",
+      "title": "Chapter 5-04 | Belly of the Beast",
+      "description": "Today we dive deeper into the Pirate's Grotto and challenge the Pirate King Cortez!",
+      "duration": 2162.901,
+      "thumbnail": "thumbnails/t5-04.png",
+      "video": "videos/v5-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=AQIfSHzsDXk"
+    },
+    {
+      "index": "5-05",
+      "title": "Chapter 5-05 | Engines of War",
+      "description": "Today we make our escape from Keehaul Key with a little help from an new frenemy...",
+      "duration": 1186.624,
+      "thumbnail": "thumbnails/t5-05.png",
+      "video": "videos/v5-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=O7Seo57bDdE"
+    },
+    {
+      "index": "5-06",
+      "title": "Chapter 5-06 | Mission Invisible",
+      "description": "Today we tackle the Peach and Bowser intermission segments!",
+      "duration": 1298.282,
+      "thumbnail": "thumbnails/t5-06.png",
+      "video": "videos/v5-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=x4yYaV2gXf8"
+    },
+    {
+      "index": "5-07",
+      "title": "Chapter 5-07 | Stories and Sailboats",
+      "description": "Today we return to Rogueport and catch up with our favourite story tellers! Oh, and also finally make use of all those boat panels we've seen around...",
+      "duration": 2015.786,
+      "thumbnail": "thumbnails/t5-07.png",
+      "video": "videos/v5-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=v0ECaVGkx08"
+    },
+    {
+      "index": "5-08",
+      "title": "Chapter 5-08 | The Opposite of Down",
+      "description": "Today we return to Hooktail Castle for a third on the request of Merlon's strange riddle...",
+      "duration": 1033.685,
+      "thumbnail": "thumbnails/t5-08.png",
+      "video": "videos/v5-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=e8Hx7J15kuc"
+    },
+    {
+      "index": "6-00",
+      "title": "Chapter 6-00 | Mario meets Mafia",
+      "description": "Today we start our chapter 6 quest with a second meeting of the Pianta Mafia...",
+      "duration": 1061.12,
+      "thumbnail": "thumbnails/t6-00.png",
+      "video": "videos/v6-00.mp4",
+      "youtube": "https://www.youtube.com/watch?v=zo1kL-OfLvA"
+    },
+    {
+      "index": "6-01",
+      "title": "Chapter 6-01 | Three Days of Excess",
+      "description": "Today we embark on out three day journey aboard the Excess Express! A fan favourite chapter!",
+      "duration": 2208.341,
+      "thumbnail": "thumbnails/t6-01.png",
+      "video": "videos/v6-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=wXOy6MpT96A"
+    },
+    {
+      "index": "6-02",
+      "title": "Chapter 6-02 | Unpaid Intern",
+      "description": "Today we start day two aboard the Excess Express! Looks like Pennington has a new mystery for us...",
+      "duration": 826.538,
+      "thumbnail": "thumbnails/t6-02.png",
+      "video": "videos/v6-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=XTeseksuOso"
+    },
+    {
+      "index": "6-03",
+      "title": "Chapter 6-03 | Sunset on the Riverside",
+      "description": "Today we explore the strangely mysterious Riverside station and see if we can get the train moving again!",
+      "duration": 1945.109,
+      "thumbnail": "thumbnails/t6-03.png",
+      "video": "videos/v6-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=UPPtL0KZSuI"
+    },
+    {
+      "index": "6-04",
+      "title": "Chapter 6-04 | Smorgs on a Train",
+      "description": "Today we wake to find the train strangely empty... Guess it time to do what all good train stories do; have a climax on the roof of a speeding train!",
+      "duration": 928.298,
+      "thumbnail": "thumbnails/t6-04.png",
+      "video": "videos/v6-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=hfpPeaL7w50"
+    },
+    {
+      "index": "6-05",
+      "title": "Chapter 6-05 | Sanctum of Secrets",
+      "description": "Today we wake finally arrive in Poshley Heights and make our way to the Sanctum. Once inside, there may be more than meets the eye...",
+      "duration": 1255.893,
+      "thumbnail": "thumbnails/t6-05.png",
+      "video": "videos/v6-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=8WcFjf049Ks"
+    },
+    {
+      "index": "6-06",
+      "title": "Chapter 6-06 | Love and Warriors",
+      "description": "Today we tackle the chapter 6 intermission segments! Peach is in some real trouble, while Bowser duels with a classic foe!",
+      "duration": 856.768,
+      "thumbnail": "thumbnails/t6-06.png",
+      "video": "videos/v6-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=KYKkqe4cuQQ"
+    },
+    {
+      "index": "6-07",
+      "title": "Chapter 6-07 | Stories and Side Quests (part 1)",
+      "description": "Today we catch up with (some of) our favourite story tellers and take care of some odd quests 'round Rogueport!",
+      "duration": 1263.893,
+      "thumbnail": "thumbnails/t6-07.png",
+      "video": "videos/v6-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=-GAhd_I25io"
+    },
+    {
+      "index": "6-08",
+      "title": "Chapter 6-08 | Stories and Side Quests (part 2)",
+      "description": "Today we catch up with (the rest of) our favourite story tellers and some new ones! Oh, and some more odd quests 'round Rogueport and beyond!",
+      "duration": 1514.752,
+      "thumbnail": "thumbnails/t6-08.png",
+      "video": "videos/v6-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Nl9wx0GXn4k"
+    },
+    {
+      "index": "6-09",
+      "title": "Chapter 6-09 | The CURSED Olympics",
+      "description": "Today we tackle the Pianta Parlor mini-games based around the four curses: The Plane Game, The Paper Game, The Tube Game, and The Boat Game!",
+      "duration": 2567.978,
+      "thumbnail": "thumbnails/t6-09.png",
+      "video": "videos/v6-09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=uD51NOlV3hI"
+    },
+    {
+      "index": "6-10",
+      "title": "Chapter 6-10 | Pit Act III - The Old Stuff",
+      "description": "Today we begin our third (and final?) descent into the pit! But first, we have to grind through the old stuff...",
+      "duration": 979.05,
+      "thumbnail": "thumbnails/t6-10.png",
+      "video": "videos/v6-10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=iqBTSfkbflo"
+    },
+    {
+      "index": "6-11",
+      "title": "Chapter 6-11 | Pit Act III - The New Stuff",
+      "description": "Today we continue our descent into the pit! And it's getting pretty dangerous down here...",
+      "duration": 3861.3333,
+      "thumbnail": "thumbnails/t6-11.png",
+      "video": "videos/v6-11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=QoVKM-MVW78"
+    },
+    {
+      "index": "6-12",
+      "title": "Chapter 6-12 | Pit Act III - The Hard Stuff",
+      "description": "Today we complete our descent into the pit! We're so close now; just one last stretch of challenges to go...",
+      "duration": 2815.893,
+      "thumbnail": "thumbnails/t6-12.png",
+      "video": "videos/v6-12.mp4",
+      "youtube": "https://www.youtube.com/watch?v=KfWwXG1XyuU"
+    },
+    {
+      "index": "7-01",
+      "title": "Chapter 7-01 | Mario Shoots the Moon",
+      "description": "Today we begin the long awaited chapter seven and embark on our quest for the final Crystal Star!",
+      "duration": 1511.146,
+      "thumbnail": "thumbnails/t7-01.png",
+      "video": "videos/v7-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=AW42yFIbLmQ"
+    },
+    {
+      "index": "7-02",
+      "title": "Chapter 7-02 | Evil Incarnate",
+      "description": "Today we hunt down the missing bob-omb generals needed to relaunch the cannon project! And one of them is a little trickier than that other...",
+      "duration": 1361.536,
+      "thumbnail": "thumbnails/t7-02.png",
+      "video": "videos/v7-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=gy5eMkS6ZRw"
+    },
+    {
+      "index": "7-03",
+      "title": "Chapter 7-03 | One Small Step for Mario",
+      "description": "Today we make our way to the moon and explore! Turns out this place is pretty big; go figure...",
+      "duration": 1145.322,
+      "thumbnail": "thumbnails/t7-03.png",
+      "video": "videos/v7-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=WoUwoMVvosE"
+    },
+    {
+      "index": "7-04",
+      "title": "Chapter 7-04 | Storming the Fortress",
+      "description": "Today we storm the X-Naut Fortress and see just what puzzles lie within...",
+      "duration": 2438.4,
+      "thumbnail": "thumbnails/t7-04.png",
+      "video": "videos/v7-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=lm-8C7DQn5I"
+    },
+    {
+      "index": "7-05",
+      "title": "Chapter 7-05 | Man in the Moon",
+      "description": "Today we blast through the last area of the fortress and take on the boss! Hey, we know you...",
+      "duration": 808.704,
+      "thumbnail": "thumbnails/t7-05.png",
+      "video": "videos/v7-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=nhHCSr0-8NE"
+    },
+    {
+      "index": "7-06",
+      "title": "Chapter 7-06 | Goodbyes",
+      "description": "Today we tackle the chapter 7 intermission segments! No peach this time, but Mario's gets a little sad...",
+      "duration": 767.616,
+      "thumbnail": "thumbnails/t7-06.png",
+      "video": "videos/v7-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=30yrrTO7aaw"
+    },
+    {
+      "index": "7-07",
+      "title": "Chapter 7-07 | Stories and Sappy Endings",
+      "description": "Today we catch up with our favourite story tellers and hear the ends to their many tales!",
+      "duration": 800.853,
+      "thumbnail": "thumbnails/t7-07.png",
+      "video": "videos/v7-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=svmXkI-4Eek"
+    },
+    {
+      "index": "8-01",
+      "title": "Chapter 8-01 | Beyond the Thousand-Year Door",
+      "description": "Today we at long, long last open the Thousand-Year Door and see what mysteries lie beyond...",
+      "duration": 1537.045,
+      "thumbnail": "thumbnails/t8-01.png",
+      "video": "videos/v8-01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=ZbFwxG4aOfY"
+    },
+    {
+      "index": "8-02",
+      "title": "Chapter 8-02 | Familiar Foes",
+      "description": "Today we explore the strange underground city, and encounter a familiar, yet not so familiar foe...",
+      "duration": 1006.442,
+      "thumbnail": "thumbnails/t8-02.png",
+      "video": "videos/v8-02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=NY4uCBK72MA"
+    },
+    {
+      "index": "8-03",
+      "title": "Chapter 8-03 | Palace of Puzzles",
+      "description": "Today we explore the strange tower which is full of even stranger puzzles... Oh, then a boss fight I suppose!",
+      "duration": 1826.325,
+      "thumbnail": "thumbnails/t8-03.png",
+      "video": "videos/v8-03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Sdya9KZixcM"
+    },
+    {
+      "index": "8-04",
+      "title": "Chapter 8-04 | Homestretch",
+      "description": "Today we tackle the final stretch of the Palace of Shadow! Using almost every ability at our disposal, it does not disappoint!",
+      "duration": 1084.565,
+      "thumbnail": "thumbnails/t8-04.png",
+      "video": "videos/v8-04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=fYzvtyhpGvs"
+    },
+    {
+      "index": "8-05",
+      "title": "Chapter 8-05 | Boss Bros.",
+      "description": "Today we take on Grodus once and for all! Oh, and I guess Bowser shows up too...",
+      "duration": 1347.37,
+      "thumbnail": "thumbnails/t8-05.png",
+      "video": "videos/v8-05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=dm59VVKc_i4"
+    },
+    {
+      "index": "8-06",
+      "title": "Chapter 8-06 | Queen of the Climax",
+      "description": "Today we take on the final boss of the game! It's been a long road, and this battle is certainly no pushover!",
+      "duration": 3731.221,
+      "thumbnail": "thumbnails/t8-06.png",
+      "video": "videos/v8-06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=zHLYY5AWpkg"
+    },
+    {
+      "index": "8-07",
+      "title": "Chapter 8-07 | Victory Lap",
+      "description": "After returning to Rogueport, we travel around the world seeing all the new changes! And let's find those star pieces and badges we missed along the way...",
+      "duration": 2080.917,
+      "thumbnail": "thumbnails/t8-07.png",
+      "video": "videos/v8-07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=l0BKcNYJiSk"
+    },
+    {
+      "index": "8-08",
+      "title": "Chapter 8-08 | Community Service",
+      "description": "Today we tackle every last remaining trouble in the trouble center! Some are interesting, some are strange, and some kinda just suck...",
+      "duration": 5024.618,
+      "thumbnail": "thumbnails/t8-08.png",
+      "video": "videos/v8-08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=rG9NBewHNSI"
+    },
+    {
+      "index": "8-09",
+      "title": "Chapter 8-09 | Iron Chef Challenge",
+      "description": "Today we cook every recipe Zess T. has to offer! We're gonna need a lot of ingredients, so it's a good thing we're rich!",
+      "duration": 1876.842,
+      "thumbnail": "thumbnails/t8-09.png",
+      "video": "videos/v8-09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=YyWJPrdxxLY"
+    },
+    {
+      "index": "8-10",
+      "title": "Chapter 8-10 | Whacka's Revenge",
+      "description": "Today we take on the first of the new secret bosses in this remake! Down down in the dungeon below lies one who awaits his revenge...",
+      "duration": 2326.57,
+      "thumbnail": "thumbnails/t8-10.png",
+      "video": "videos/v8-10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=NBIV0Lzbpcc"
+    },
+    {
+      "index": "8-11",
+      "title": "Chapter 8-11 | Remember the Champions",
+      "description": "Today we conclude our adventure by reclaiming our champion rank in Glitz Pit and taking on the true champion of champions: Prince Mush!",
+      "duration": 2511.253,
+      "thumbnail": "thumbnails/t8-11.png",
+      "video": "videos/v8-11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=_FandhAH8N8"
+    }
+  ]
+}

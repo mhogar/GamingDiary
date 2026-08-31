@@ -51,6 +51,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	if err != nil {
 		return errors.Chain(err, "error reading index file")
 	}
+	style.BoldInfo.Println(dataPath)
 
 	files, err := filepath.Glob(filepath.Join(dataPath, series.Raw))
 	if err != nil {
@@ -61,7 +62,7 @@ func (cmd BuildCommand) Run(args []string) error {
 		Entries: make([]data.Entry, len(files)),
 	}
 
-	for _, file := range files {
+	for i, file := range files {
 		style.Info.Printf("\r%s", file)
 		entries.VideoCount++
 
@@ -75,6 +76,8 @@ func (cmd BuildCommand) Run(args []string) error {
 			return errors.Chain(err, "error calculating video duration")
 		}
 		entries.TotalDuration += entry.Duration
+
+		entries.Entries[i] = entry
 	}
 	fmt.Println()
 
