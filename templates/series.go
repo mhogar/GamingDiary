@@ -13,8 +13,9 @@ type SeriesPage struct {
 	Background string
 	Entries    []Entry
 
-	Theme       string
-	Stylesheets []string
+	Theme        string
+	Stylesheets  []string
+	ResourcePath string
 }
 
 type Entry struct {

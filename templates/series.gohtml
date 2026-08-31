@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="{{.ResourcePath}}/style.css">
     {{range .Stylesheets}}
     <link rel="stylesheet" type="text/css" href="{{.}}">
     {{end}}
@@ -30,6 +30,6 @@
       {{end}}
     </ul>
   </div>
-  <script src="../script.js"></script>
+  <script src="{{.ResourcePath}}/script.js"></script>
 </body>
 </html>

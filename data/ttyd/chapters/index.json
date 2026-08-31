@@ -5,9 +5,11 @@
     "raw_files": "youtube/*.txt",
     "entries": "entries/entry_*.json",
     "theme": "ttyd",
-    "background": "door.png",
-    "thumbnail": "book.png",
-    "stylesheets": ["groups.css"],
+    "background": "../door.png",
+    "thumbnail": "../book.png",
+    "stylesheets": [
+        "../groups.css"
+    ],
     "groups": {
         "chapter1": "1-.*",
         "chapter2": "2-.*",
@@ -17,5 +19,7 @@
         "chapter6": "6-.*",
         "chapter7": "7-.*",
         "chapter8": "8-.*"
-    }
+    },
+    "video_count": 83,
+    "total_duration": 141341.38
 }

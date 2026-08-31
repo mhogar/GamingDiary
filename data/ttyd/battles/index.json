@@ -5,10 +5,10 @@
   "raw_files": "youtube/*.txt",
   "entries": "entries/entry_*.json",
   "theme": "ttyd",
-  "background": "../ttyd/door.png",
-  "thumbnail": "../ttyd/book.png",
+  "background": "../door.png",
+  "thumbnail": "../book.png",
   "stylesheets": [
-    "../ttyd/groups.css"
+    "../groups.css"
   ],
   "groups": {
     "chapter1": "1-.*",

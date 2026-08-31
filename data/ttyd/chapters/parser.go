@@ -1,4 +1,4 @@
-package ttyd
+package ttyd_chapter
 
 import (
 	"fmt"

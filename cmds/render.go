@@ -80,6 +80,7 @@ func (cmd RenderCommand) Run(args []string) error {
 
 func (cmd *RenderCommand) renderSeries(public, series string) error {
 	dataPath := filepath.Join("data", series)
+	rel, _ := filepath.Rel(dataPath, "data")
 
 	data, err := json.UnmarshalFile[SeriesData](filepath.Join(dataPath, "index.json"))
 	if err != nil {
@@ -100,12 +101,13 @@ func (cmd *RenderCommand) renderSeries(public, series string) error {
 	}
 
 	page := templates.SeriesPage{
-		Title:       data.Title,
-		Dates:       data.Dates,
-		Background:  data.Background,
-		Theme:       data.Theme,
-		Stylesheets: data.Stylesheets,
-		Entries:     make([]templates.Entry, len(files)),
+		Title:        data.Title,
+		Dates:        data.Dates,
+		Background:   data.Background,
+		Theme:        data.Theme,
+		Stylesheets:  data.Stylesheets,
+		Entries:      make([]templates.Entry, len(files)),
+		ResourcePath: rel,
 	}
 
 	for i, file := range files {

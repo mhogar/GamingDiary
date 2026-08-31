@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"local/cmds/types"
 	"local/data/sunshine"
-	"local/data/ttyd"
-	"local/data/ttyd_battle"
+	ttyd_battle "local/data/ttyd/battles"
+	ttyd_chapter "local/data/ttyd/chapters"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -102,7 +102,7 @@ func (cmd BuildCommand) Run(args []string) error {
 		style.Create.Println(out)
 	}
 
-	_ = json.MarshalFilePretty(data, indexPath, "  ")
+	_ = json.MarshalFilePretty(data, indexPath, "    ")
 	return nil
 }
 
@@ -110,9 +110,9 @@ func (cmd BuildCommand) selectParser(series string) Parser {
 	switch series {
 	case "sunshine":
 		return sunshine.Parser{}
-	case "ttyd":
-		return ttyd.Parser{}
-	case "ttyd_battle":
+	case "ttyd/chapters":
+		return ttyd_chapter.Parser{}
+	case "ttyd/battles":
 		return ttyd_battle.Parser{}
 	default:
 		panic(fmt.Sprintf("no parser for series \"%s\"", series))
