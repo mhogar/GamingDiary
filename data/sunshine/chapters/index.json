@@ -1,10 +1,9 @@
 {
-    "title": "(1) The Sunshine Story",
+    "title": "(1.1) The Sunshine Story",
     "dates": "May 27, 2024 - Jun 24, 2024",
     "description": "Super Mario Sunshine (2002) - GCN/Switch",
-    "raw": "youtube/*.txt",
     "entries": "entries.json",
     "theme": "sunshine",
-    "background": "isle_delfino.jpg",
-    "thumbnail": "title.png"
+    "background": "../isle_delfino.jpg",
+    "thumbnail": "../title.png"
 }

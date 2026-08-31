@@ -4,7 +4,8 @@ import (
 	"bytes"
 	"fmt"
 	"local/data"
-	"local/data/sunshine"
+	sunshine_chapters "local/data/sunshine/chapters"
+	sunshine_shorts "local/data/sunshine/shorts"
 	ttyd_battle "local/data/ttyd/battles"
 	ttyd_chapter "local/data/ttyd/chapters"
 	"os/exec"
@@ -16,6 +17,13 @@ import (
 	"github.com/binarysoupdev/go-extensions/json"
 	"github.com/binarysoupdev/got-style/style"
 )
+
+type Parser interface {
+	RawFiles(path string) ([]string, error)
+	ParseEntry(path string) (data.Entry, error)
+}
+
+//========================================
 
 type BuildCommand struct {
 	command.CommandBase
@@ -53,9 +61,11 @@ func (cmd BuildCommand) Run(args []string) error {
 	}
 	style.BoldInfo.Println(dataPath)
 
-	files, err := filepath.Glob(filepath.Join(dataPath, series.Raw))
+	parser := cmd.selectParser(*name)
+
+	files, err := parser.RawFiles(dataPath)
 	if err != nil {
-		return errors.Chain(err, "error finding raw files")
+		return errors.Chain(err, "error getting raw files")
 	}
 
 	entries := data.Entries{
@@ -66,7 +76,7 @@ func (cmd BuildCommand) Run(args []string) error {
 		style.Info.Printf("\r%s", file)
 		entries.VideoCount++
 
-		entry, err := cmd.selectParser(*name).Parse(file)
+		entry, err := parser.ParseEntry(file)
 		if err != nil {
 			return errors.Chain(err, "error parsing raw file")
 		}
@@ -92,10 +102,12 @@ func (cmd BuildCommand) Run(args []string) error {
 	return nil
 }
 
-func (cmd BuildCommand) selectParser(series string) data.Parser {
+func (cmd BuildCommand) selectParser(series string) Parser {
 	switch series {
-	case "sunshine":
-		return sunshine.Parser{}
+	case "sunshine/chapters":
+		return sunshine_chapters.Parser{}
+	case "sunshine/shorts":
+		return sunshine_shorts.Parser{}
 	case "ttyd/chapters":
 		return ttyd_chapter.Parser{}
 	case "ttyd/battles":

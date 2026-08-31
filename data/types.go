@@ -5,11 +5,9 @@ type Root struct {
 }
 
 type Series struct {
-	//Index       string            `json:"index"`
 	Title       string            `json:"title"`
 	Dates       string            `json:"dates"`
 	Description string            `json:"description"`
-	Raw         string            `json:"raw"`
 	Entries     string            `json:"entries"`
 	Theme       string            `json:"theme"`
 	Background  string            `json:"background"`
@@ -25,15 +23,10 @@ type Entries struct {
 }
 
 type Entry struct {
-	//Index       string  `json:"index"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
 	Duration    float32 `json:"duration"`
 	Thumbnail   string  `json:"thumbnail"`
 	Video       string  `json:"video"`
 	YouTube     string  `json:"youtube"`
-}
-
-type Parser interface {
-	Parse(raw string) (Entry, error)
 }

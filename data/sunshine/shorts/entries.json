@@ -1,0 +1,142 @@
+{
+  "video_count": 17,
+  "total_duration": 349.1387,
+  "entries": [
+    {
+      "title": "Short 01 | Failure is a Part of Life",
+      "description": "From Chapter 02",
+      "duration": 9.018667,
+      "thumbnail": "../chapters/t02.png",
+      "video": "s01_c02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=SKJ-a1nUt3o"
+    },
+    {
+      "title": "Short 02 | Every Failure Brings Its Own Benefits",
+      "description": "From Chapter 03",
+      "duration": 14.005,
+      "thumbnail": "../chapters/t03.png",
+      "video": "s02_c03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=2tk9fSl7lhw"
+    },
+    {
+      "title": "Short 03 | Blooperless Blooper Surfing Safari",
+      "description": "From Chapter 05",
+      "duration": 41.010666,
+      "thumbnail": "../chapters/t05.png",
+      "video": "s03_c05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=ptMSsrOupE8"
+    },
+    {
+      "title": "Short 06 | Chain Chomplet Clip",
+      "description": "From Chapter 08",
+      "duration": 15.002667,
+      "thumbnail": "../chapters/t08.png",
+      "video": "s06_c08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=gCRAu4IgvfM"
+    },
+    {
+      "title": "Short 09 | Is a Chuckster a Profession?",
+      "description": "From Chapter 09",
+      "duration": 37.008,
+      "thumbnail": "../chapters/t09.png",
+      "video": "s09_c09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=eikkf7nBVoM"
+    },
+    {
+      "title": "Short 10 | I Take Long Showers",
+      "description": "From Chapter 11",
+      "duration": 18.005,
+      "thumbnail": "../chapters/t11.png",
+      "video": "s10_c11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=POaSBwvGLQo"
+    },
+    {
+      "title": "Short 15 | Chuckster Blue Coin Grab",
+      "description": "From Chapter 12",
+      "duration": 13.002667,
+      "thumbnail": "../chapters/t12.png",
+      "video": "s15_c12.mp4",
+      "youtube": "https://www.youtube.com/watch?v=kfxkw2LQWn0"
+    },
+    {
+      "title": "Short 18 | Hit the Cash Register From Below",
+      "description": "From Chapter 14",
+      "duration": 15.016,
+      "thumbnail": "../chapters/t14.png",
+      "video": "s18_c14.mp4",
+      "youtube": "https://www.youtube.com/watch?v=mByrvb0Ia68"
+    },
+    {
+      "title": "Short 21 | At Least We Get Paid For It",
+      "description": "From Chapter 15",
+      "duration": 15,
+      "thumbnail": "../chapters/t15.png",
+      "video": "s21_c15.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Q2lOqVXQ-ts"
+    },
+    {
+      "title": "Short 22 | Don't Say Something Stupid",
+      "description": "From Chapter 16",
+      "duration": 27.016,
+      "thumbnail": "../chapters/t16.png",
+      "video": "s22_c16.mp4",
+      "youtube": "https://www.youtube.com/watch?v=QLxWj9uPDMo"
+    },
+    {
+      "title": "Short 23 | Never Drive on Mountain Roads",
+      "description": "From Chapter 17",
+      "duration": 21,
+      "thumbnail": "../chapters/t17.png",
+      "video": "s23_c17.mp4",
+      "youtube": "https://www.youtube.com/watch?v=lZ3MKThubaU"
+    },
+    {
+      "title": "Short 25 | Speaking of Being Good at this Game...",
+      "description": "From Chapter 18",
+      "duration": 23.013,
+      "thumbnail": "../chapters/t18.png",
+      "video": "s25_c18.mp4",
+      "youtube": "https://www.youtube.com/watch?v=owCuS7cfoTs"
+    },
+    {
+      "title": "Short 27 | Manta Tennis",
+      "description": "From Chapter 19",
+      "duration": 25.016,
+      "thumbnail": "../chapters/t19.png",
+      "video": "s27_c19.mp4",
+      "youtube": "https://www.youtube.com/watch?v=MODSUw5SaTM"
+    },
+    {
+      "title": "Short 30 | That's What it Does, It Squirts Things",
+      "description": "From Chapter 20",
+      "duration": 27.013,
+      "thumbnail": "../chapters/t20.png",
+      "video": "s30_c20.mp4",
+      "youtube": "https://www.youtube.com/watch?v=fxWGy0zewis"
+    },
+    {
+      "title": "Short 33 | All The Doors Are OPEN",
+      "description": "From Chapter 21",
+      "duration": 12.005,
+      "thumbnail": "../chapters/t21.png",
+      "video": "s33_c21.mp4",
+      "youtube": "https://www.youtube.com/watch?v=1Y3JNB3b0ck"
+    },
+    {
+      "title": "Short 40 | This Thing Has a Really Jank Hitbox",
+      "description": "From Chapter 22",
+      "duration": 27.002,
+      "thumbnail": "../chapters/t22.png",
+      "video": "s40_c22.mp4",
+      "youtube": "https://www.youtube.com/watch?v=iwkkhXnymds"
+    },
+    {
+      "title": "Short 43 | Eat your HEART out TURBO Nozzle",
+      "description": "From Chapter 23",
+      "duration": 10.005,
+      "thumbnail": "../chapters/t23.png",
+      "video": "s43_c23.mp4",
+      "youtube": "https://www.youtube.com/watch?v=sIYK8e_9f-c"
+    }
+  ]
+}
