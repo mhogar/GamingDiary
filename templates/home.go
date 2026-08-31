@@ -8,7 +8,9 @@ import (
 )
 
 type HomePage struct {
-	Series []SeriesHeader
+	VideoCount    int
+	TotalDuration string
+	Series        []SeriesHeader
 }
 
 type SeriesHeader struct {

@@ -42,12 +42,12 @@ func (cmd *BuildCommand) Initialize() error {
 }
 
 func (cmd BuildCommand) Run(args []string) error {
-	public := cmd.Flags.String("public", "", "the public path")
+	src := cmd.Flags.String("src", "", "the source path")
 	s := NewSeriesSelect(cmd.Flags)
 	cmd.ParseFlags(args)
 
-	if *public == "" {
-		return errors.New("\"public\" cannot be empty")
+	if *src == "" {
+		return errors.New("\"src\" cannot be empty")
 	}
 
 	series, err := s.Select()
@@ -57,11 +57,15 @@ func (cmd BuildCommand) Run(args []string) error {
 	style.BoldInfo.Println(series)
 
 	dataPath := filepath.Join("data", series)
+	indexPath := filepath.Join(dataPath, "index.json")
 
-	data, err := json.UnmarshalFile[SeriesData](filepath.Join(dataPath, "index.json"))
+	data, err := json.UnmarshalFile[SeriesData](indexPath)
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
+
+	data.VideoCount = 0
+	data.TotalDuration = 0
 
 	files, err := filepath.Glob(filepath.Join(dataPath, data.RawFiles))
 	if err != nil {
@@ -75,16 +79,18 @@ func (cmd BuildCommand) Run(args []string) error {
 
 	for _, file := range files {
 		style.Info.Printf("%s -> ", file)
+		data.VideoCount++
 
 		entry, err := cmd.selectParser(series).Parse(file)
 		if err != nil {
 			return errors.Chain(err, "error parsing raw file")
 		}
 
-		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*public, series, entry.Video))
+		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*src, series, entry.Video))
 		if err != nil {
 			return errors.Chain(err, "error calculating video duration")
 		}
+		data.TotalDuration += entry.Duration
 
 		out := filepath.Join(dataPath, strings.Replace(data.Entries, "*", entry.Index, 1))
 
@@ -96,6 +102,7 @@ func (cmd BuildCommand) Run(args []string) error {
 		style.Create.Println(out)
 	}
 
+	_ = json.MarshalFilePretty(data, indexPath, "  ")
 	return nil
 }
 
