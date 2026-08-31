@@ -1,9 +1,11 @@
 package cmds
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/binarysoupdev/go-commando/command"
@@ -30,7 +32,10 @@ func (cmd *RenameCommand) Initialize() error {
 func (cmd RenameCommand) Run(args []string) error {
 	path := cmd.Flags.String("path", "", "search path")
 	pattern := cmd.Flags.String("pattern", "(.+)", "the pattern regex")
-	replace := cmd.Flags.String("replace", "$", "the replace string")
+	replace := cmd.Flags.String("replace", "&1", "the replace string")
+	num := cmd.Flags.String("num", "0", "iterator starting value and padding")
+	step := cmd.Flags.Int("step", 1, "iterator step size")
+	groupSize := cmd.Flags.Int("group", 1, "iterator group size")
 	confirm := cmd.Flags.Bool("confirm", false, "confirm rename")
 	cmd.ParseFlags(args)
 
@@ -38,6 +43,15 @@ func (cmd RenameCommand) Run(args []string) error {
 	if err != nil {
 		return errors.Chain(err, "error compiling pattern regex")
 	}
+
+	iter64, err := strconv.ParseInt(*num, 10, 16)
+	if err != nil {
+		return errors.Chain(err, "invalid iterator")
+	}
+
+	iter := int(iter64)
+	iterFmt := fmt.Sprintf("%%0%dd", len(*num))
+	groupCount := 0
 
 	files, err := os.ReadDir(*path)
 	if err != nil {
@@ -56,7 +70,17 @@ func (cmd RenameCommand) Run(args []string) error {
 			return errors.New("pattern regex does not contain a group")
 		}
 
-		renamed := strings.Replace(*replace, "$", matches[1], 1)
+		renamed := strings.Replace(*replace, "&0", fmt.Sprintf(iterFmt, iter), -1)
+		groupCount++
+
+		if groupCount >= *groupSize {
+			iter += *step
+			groupCount = 0
+		}
+
+		for i, match := range matches[1:] {
+			renamed = strings.Replace(renamed, fmt.Sprintf("&%d", i+1), match, -1)
+		}
 
 		if *confirm {
 			err := os.Rename(filepath.Join(*path, file.Name()), filepath.Join(*path, renamed))
