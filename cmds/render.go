@@ -20,6 +20,7 @@ type BaseData struct {
 }
 
 type SeriesData struct {
+	Index       string            `json:"index"`
 	Title       string            `json:"title"`
 	Dates       string            `json:"dates"`
 	Description string            `json:"description"`
@@ -166,7 +167,7 @@ func (cmd RenderCommand) renderHomePage(public string, data BaseData) error {
 		}
 
 		page.Series[i] = templates.SeriesHeader{
-			Title:         fmt.Sprintf("(%d) %s", i+1, data.Title),
+			Title:         fmt.Sprintf("(%s) %s", data.Index, data.Title),
 			Dates:         data.Dates,
 			Description:   data.Description,
 			VideoCount:    data.VideoCount,
