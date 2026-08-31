@@ -2,7 +2,7 @@ package cmds
 
 import (
 	"fmt"
-	"local/cmds/types"
+	"local/data"
 	"local/templates"
 	"math"
 	"os"
@@ -15,35 +15,19 @@ import (
 	"github.com/binarysoupdev/got-style/style"
 )
 
-type BaseData struct {
-	Series []string `json:"series"`
+type HomePageData struct {
+	Series map[string]data.Series
+	Keys   []string
+
+	VideoCount    int
+	TotalDuration float32
 }
 
-type SeriesData struct {
-	Index       string            `json:"index"`
-	Title       string            `json:"title"`
-	Dates       string            `json:"dates"`
-	Description string            `json:"description"`
-	RawFiles    string            `json:"raw_files"`
-	Entries     string            `json:"entries"`
-	Theme       string            `json:"theme"`
-	Background  string            `json:"background"`
-	Thumbnail   string            `json:"thumbnail"`
-	Stylesheets []string          `json:"stylesheets"`
-	Groups      map[string]string `json:"groups"`
-
-	VideoCount    int     `json:"video_count"`
-	TotalDuration float32 `json:"total_duration"`
-}
-
-//====================================================
+//=======================================
 
 type RenderCommand struct {
 	command.CommandBase
 	command.FlagCommand
-
-	videoCount    int
-	totalDuration float32
 }
 
 func NewRenderCommand() *RenderCommand {
@@ -54,10 +38,6 @@ func NewRenderCommand() *RenderCommand {
 
 func (cmd *RenderCommand) Initialize() error {
 	cmd.InitFlagSet(cmd.Name, cmd.Description)
-
-	cmd.videoCount = 0
-	cmd.totalDuration = 0
-
 	return nil
 }
 
@@ -65,58 +45,62 @@ func (cmd RenderCommand) Run(args []string) error {
 	public := cmd.Flags.String("public", "public", "the public path")
 	cmd.ParseFlags(args)
 
-	data, err := json.UnmarshalFile[BaseData]("data/index.json")
+	root, err := json.UnmarshalFile[data.Root]("data/index.json")
 	if err != nil {
-		return errors.Chain(err, "error reading data file")
+		return errors.Chain(err, "error reading root file")
 	}
 
-	for _, series := range data.Series {
-		if err := cmd.renderSeries(*public, series); err != nil {
-			return err
+	homePage := HomePageData{
+		Series: map[string]data.Series{},
+		Keys:   make([]string, len(root.Series)),
+	}
+
+	for i, name := range root.Series {
+		dataPath := filepath.Join("data", name)
+
+		series, err := json.UnmarshalFile[data.Series](filepath.Join(dataPath, "index.json"))
+		if err != nil {
+			return errors.Chain(err, "error reading data file")
+		}
+
+		homePage.Series[name] = series
+		homePage.Keys[i] = name
+
+		entires, err := json.UnmarshalFile[data.Entries](filepath.Join(dataPath, series.Entries))
+		if err != nil {
+			return errors.Chain(err, "error reading entries file")
+		}
+
+		homePage.VideoCount++
+		homePage.TotalDuration += entires.TotalDuration
+
+		resourcePath, _ := filepath.Rel(dataPath, "data")
+
+		if err := cmd.renderSeries(series, entires.Entries, resourcePath, filepath.Join(*public, name)); err != nil {
+			return errors.ChainFormat(err, "error rendering series \"%s\"", name)
 		}
 	}
 
-	return cmd.renderHomePage(*public, data)
+	return cmd.renderHomePage(*public, homePage)
 }
 
-func (cmd *RenderCommand) renderSeries(public, series string) error {
-	dataPath := filepath.Join("data", series)
-	rel, _ := filepath.Rel(dataPath, "data")
-
-	data, err := json.UnmarshalFile[SeriesData](filepath.Join(dataPath, "index.json"))
-	if err != nil {
-		return errors.Chain(err, "error reading data file")
-	}
-
-	cmd.videoCount += data.VideoCount
-	cmd.totalDuration += data.TotalDuration
-
+func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry, resourcePath, public string) error {
 	groups := make(map[string]*regexp.Regexp)
-	for key, val := range data.Groups {
+	for key, val := range series.Groups {
 		groups[key] = regexp.MustCompile(val)
 	}
 
-	files, err := filepath.Glob(filepath.Join(dataPath, data.Entries))
-	if err != nil {
-		return errors.Chain(err, "error finding entries")
-	}
-
 	page := templates.SeriesPage{
-		Title:        data.Title,
-		Dates:        data.Dates,
-		Background:   data.Background,
-		Theme:        data.Theme,
-		Stylesheets:  data.Stylesheets,
-		Entries:      make([]templates.Entry, len(files)),
-		ResourcePath: rel,
+		Title:        series.Title,
+		Dates:        series.Dates,
+		Background:   series.Background,
+		Theme:        series.Theme,
+		Stylesheets:  series.Stylesheets,
+		Entries:      make([]templates.Entry, len(entires)),
+		ResourcePath: resourcePath,
 	}
 
-	for i, file := range files {
-		entry, err := json.UnmarshalFile[types.Entry](file)
-		if err != nil {
-			return errors.Chain(err, "error reading entry file")
-		}
-
+	for i, entry := range entires {
 		classes := []string{}
 		for group, regex := range groups {
 			if regex.MatchString(entry.Index) {
@@ -134,10 +118,9 @@ func (cmd *RenderCommand) renderSeries(public, series string) error {
 		}
 	}
 
-	seriesPath := filepath.Join(public, series)
-	out := filepath.Join(seriesPath, "index.html")
+	out := filepath.Join(public, "index.html")
 
-	err = os.MkdirAll(seriesPath, 0755)
+	err := os.MkdirAll(public, 0755)
 	if err != nil {
 		return errors.Chain(err, "error creating series path")
 	}
@@ -151,30 +134,25 @@ func (cmd *RenderCommand) renderSeries(public, series string) error {
 	return nil
 }
 
-func (cmd RenderCommand) renderHomePage(public string, data BaseData) error {
+func (cmd RenderCommand) renderHomePage(public string, data HomePageData) error {
 	page := templates.HomePage{
-		VideoCount:    cmd.videoCount,
-		TotalDuration: cmd.formatDuration(cmd.totalDuration),
+		VideoCount:    data.VideoCount,
+		TotalDuration: cmd.formatDuration(data.TotalDuration),
 		Series:        make([]templates.SeriesHeader, len(data.Series)),
 	}
 
-	for i, series := range data.Series {
-		dataPath := filepath.Join("data", series)
-
-		data, err := json.UnmarshalFile[SeriesData](filepath.Join(dataPath, "index.json"))
-		if err != nil {
-			return errors.Chain(err, "error reading series data file")
-		}
+	for i, name := range data.Keys {
+		series := data.Series[name]
 
 		page.Series[i] = templates.SeriesHeader{
-			Title:         fmt.Sprintf("(%s) %s", data.Index, data.Title),
-			Dates:         data.Dates,
-			Description:   data.Description,
+			Title:         fmt.Sprintf("(%s) %s", series.Index, series.Title),
+			Dates:         series.Dates,
+			Description:   series.Description,
 			VideoCount:    data.VideoCount,
 			TotalDuration: cmd.formatDuration(data.TotalDuration),
-			Thumbnail:     filepath.Join(series, data.Thumbnail),
-			Link:          filepath.Join(series, "index.html"),
-			Theme:         data.Theme,
+			Thumbnail:     filepath.Join(name, series.Thumbnail),
+			Link:          filepath.Join(name, "index.html"),
+			Theme:         series.Theme,
 		}
 	}
 

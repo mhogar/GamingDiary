@@ -2,6 +2,7 @@ package cmds
 
 import (
 	"fmt"
+	"local/data"
 	"os"
 	"path/filepath"
 
@@ -36,7 +37,7 @@ func (cmd DeployCommand) Run(args []string) error {
 		return errors.New("\"dest\" cannot be empty")
 	}
 
-	data, err := json.UnmarshalFile[BaseData]("data/index.json")
+	root, err := json.UnmarshalFile[data.Root]("data/index.json")
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
@@ -46,7 +47,7 @@ func (cmd DeployCommand) Run(args []string) error {
 		return errors.Chain(err, "error copying root files")
 	}
 
-	for _, series := range data.Series {
+	for _, series := range root.Series {
 		err := cmd.copySeries(*dest, series)
 		if err != nil {
 			return errors.Chain(err, fmt.Sprintf("error copying \"%s\" files", series))
@@ -56,24 +57,24 @@ func (cmd DeployCommand) Run(args []string) error {
 	return nil
 }
 
-func (cmd DeployCommand) copySeries(dest, series string) error {
-	data, err := json.UnmarshalFile[SeriesData](filepath.Join("data", series, "index.json"))
+func (cmd DeployCommand) copySeries(dest, name string) error {
+	series, err := json.UnmarshalFile[data.Series](filepath.Join("data", name, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	dest = filepath.Join(dest, series)
+	dest = filepath.Join(dest, name)
 
 	files := []string{"index.html"}
-	files = append(files, data.Stylesheets...)
-	files = append(files, data.Background, data.Thumbnail)
+	files = append(files, series.Stylesheets...)
+	files = append(files, series.Background, series.Thumbnail)
 
 	err = os.MkdirAll(dest, 0755)
 	if err != nil {
 		return errors.Chain(err, "error creating dest directory")
 	}
 
-	err = cmd.copyFiles(dest, filepath.Join("public", series), files)
+	err = cmd.copyFiles(dest, filepath.Join("public", name), files)
 	if err != nil {
 		return errors.Chain(err, "error copying files")
 	}

@@ -2,7 +2,7 @@ package ttyd_battle
 
 import (
 	"fmt"
-	"local/cmds/types"
+	"local/data"
 	"os"
 	"regexp"
 	"strings"
@@ -12,18 +12,18 @@ import (
 
 type Parser struct{}
 
-func (Parser) Parse(path string) (types.Entry, error) {
+func (Parser) Parse(path string) (data.Entry, error) {
 	index := regexp.MustCompile(`meta(.+)\.txt$`).FindStringSubmatch(path)[1]
 
 	bytes, err := os.ReadFile(path)
 	if err != nil {
-		return types.Entry{}, errors.Chain(err, "error reading file")
+		return data.Entry{}, errors.Chain(err, "error reading file")
 	}
 	lines := strings.Split(string(bytes), "\n")
 
 	title := regexp.MustCompile(`^(.+)\s+\|`).FindStringSubmatch(lines[2])[1]
 
-	return types.Entry{
+	return data.Entry{
 		Index:       index,
 		Title:       fmt.Sprintf("Battle %s | %s", index, title),
 		Description: lines[5],

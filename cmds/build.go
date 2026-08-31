@@ -3,27 +3,19 @@ package cmds
 import (
 	"bytes"
 	"fmt"
-	"local/cmds/types"
+	"local/data"
 	"local/data/sunshine"
 	ttyd_battle "local/data/ttyd/battles"
 	ttyd_chapter "local/data/ttyd/chapters"
-	"os"
 	"os/exec"
 	"path/filepath"
 	"strconv"
-	"strings"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
 	"github.com/binarysoupdev/got-style/style"
 )
-
-type Parser interface {
-	Parse(raw string) (types.Entry, error)
-}
-
-//=========================================
 
 type BuildCommand struct {
 	command.CommandBase
@@ -42,71 +34,62 @@ func (cmd *BuildCommand) Initialize() error {
 }
 
 func (cmd BuildCommand) Run(args []string) error {
-	src := cmd.Flags.String("src", "", "the source path")
-	s := NewSeriesSelect(cmd.Flags)
+	public := cmd.Flags.String("public", "", "the public path")
+	name := cmd.Flags.String("name", "", "the name of the series")
 	cmd.ParseFlags(args)
 
-	if *src == "" {
-		return errors.New("\"src\" cannot be empty")
+	if *public == "" {
+		return errors.New("\"public\" cannot be empty")
+	}
+	if *name == "" {
+		return errors.New("\"name\" cannot be empty")
 	}
 
-	series, err := s.Select()
+	dataPath := filepath.Join("data", *name)
+
+	series, err := json.UnmarshalFile[data.Series](filepath.Join(dataPath, "index.json"))
 	if err != nil {
-		return err
-	}
-	style.BoldInfo.Println(series)
-
-	dataPath := filepath.Join("data", series)
-	indexPath := filepath.Join(dataPath, "index.json")
-
-	data, err := json.UnmarshalFile[SeriesData](indexPath)
-	if err != nil {
-		return errors.Chain(err, "error reading data file")
+		return errors.Chain(err, "error reading index file")
 	}
 
-	data.VideoCount = 0
-	data.TotalDuration = 0
-
-	files, err := filepath.Glob(filepath.Join(dataPath, data.RawFiles))
+	files, err := filepath.Glob(filepath.Join(dataPath, series.Raw))
 	if err != nil {
 		return errors.Chain(err, "error finding raw files")
 	}
 
-	err = os.MkdirAll(filepath.Join(dataPath, filepath.Dir(data.Entries)), 0755)
-	if err != nil {
-		return errors.Chain(err, "error creating entry directory")
+	entries := data.Entries{
+		Entries: make([]data.Entry, len(files)),
 	}
 
 	for _, file := range files {
-		style.Info.Printf("%s -> ", file)
-		data.VideoCount++
+		style.Info.Printf("\r%s", file)
+		entries.VideoCount++
 
-		entry, err := cmd.selectParser(series).Parse(file)
+		entry, err := cmd.selectParser(*name).Parse(file)
 		if err != nil {
 			return errors.Chain(err, "error parsing raw file")
 		}
 
-		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*src, series, entry.Video))
+		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*public, *name, entry.Video))
 		if err != nil {
 			return errors.Chain(err, "error calculating video duration")
 		}
-		data.TotalDuration += entry.Duration
+		entries.TotalDuration += entry.Duration
+	}
+	fmt.Println()
 
-		out := filepath.Join(dataPath, strings.Replace(data.Entries, "*", entry.Index, 1))
+	out := filepath.Join(dataPath, series.Entries)
 
-		err = json.MarshalFilePretty(entry, out, "  ")
-		if err != nil {
-			return errors.Chain(err, "error saving entry file")
-		}
-
-		style.Create.Println(out)
+	err = json.MarshalFilePretty(entries, out, "  ")
+	if err != nil {
+		return errors.Chain(err, "error saving entries file")
 	}
 
-	_ = json.MarshalFilePretty(data, indexPath, "    ")
+	style.Create.Printf("+ %s\n", out)
 	return nil
 }
 
-func (cmd BuildCommand) selectParser(series string) Parser {
+func (cmd BuildCommand) selectParser(series string) data.Parser {
 	switch series {
 	case "sunshine":
 		return sunshine.Parser{}
