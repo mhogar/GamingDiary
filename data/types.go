@@ -5,7 +5,7 @@ type Root struct {
 }
 
 type Series struct {
-	Index       string            `json:"index"`
+	//Index       string            `json:"index"`
 	Title       string            `json:"title"`
 	Dates       string            `json:"dates"`
 	Description string            `json:"description"`
@@ -25,7 +25,7 @@ type Entries struct {
 }
 
 type Entry struct {
-	Index       string  `json:"index"`
+	//Index       string  `json:"index"`
 	Title       string  `json:"title"`
 	Description string  `json:"description"`
 	Duration    float32 `json:"duration"`

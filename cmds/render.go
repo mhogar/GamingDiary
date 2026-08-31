@@ -23,7 +23,6 @@ type HomePageData struct {
 
 type SeriesHeaderData struct {
 	Path          string
-	Index         string
 	Title         string
 	Dates         string
 	Description   string
@@ -79,7 +78,6 @@ func (cmd RenderCommand) Run(args []string) error {
 
 		homePage.Series[i] = SeriesHeaderData{
 			Path:          name,
-			Index:         series.Index,
 			Title:         series.Title,
 			Dates:         series.Dates,
 			Description:   series.Description,
@@ -110,7 +108,7 @@ func (cmd RenderCommand) renderHomePage(public string, data HomePageData) error 
 
 	for i, header := range data.Series {
 		page.Series[i] = templates.SeriesHeader{
-			Title:         fmt.Sprintf("(%s) %s", header.Index, header.Title),
+			Title:         header.Title,
 			Dates:         header.Dates,
 			Description:   header.Description,
 			VideoCount:    header.VideoCount,
@@ -151,7 +149,7 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 	for i, entry := range entires {
 		classes := []string{}
 		for group, regex := range groups {
-			if regex.MatchString(entry.Index) {
+			if regex.MatchString(entry.Title) {
 				classes = append(classes, group)
 			}
 		}

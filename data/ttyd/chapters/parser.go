@@ -24,7 +24,6 @@ func (Parser) Parse(path string) (data.Entry, error) {
 	title := regexp.MustCompile(`^(.+)\s+\|`).FindStringSubmatch(lines[2])[1]
 
 	return data.Entry{
-		Index:       index,
 		Title:       fmt.Sprintf("Chapter %s | %s", index, title),
 		Description: lines[5],
 		Thumbnail:   fmt.Sprintf("thumbnails/t%s.png", index),
