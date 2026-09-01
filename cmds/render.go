@@ -64,6 +64,7 @@ func (cmd RenderCommand) Run(args []string) error {
 	}
 
 	for i, name := range root.Series {
+		style.Bold.Println(name)
 		dataPath := filepath.Join("data", name)
 
 		series, err := json.UnmarshalFile[data.Series](filepath.Join(dataPath, "index.json"))
@@ -71,9 +72,9 @@ func (cmd RenderCommand) Run(args []string) error {
 			return errors.Chain(err, "error reading data file")
 		}
 
-		entires, err := json.UnmarshalFile[data.Entries](filepath.Join(dataPath, series.Entries))
+		entries, err := json.UnmarshalFile[data.Entries](filepath.Join(dataPath, series.Entries))
 		if err != nil {
-			return errors.Chain(err, "error reading entries file")
+			style.Error.Printf("x \"%s\" invalid or missing\n", series.Entries)
 		}
 
 		homePage.Series[i] = SeriesHeaderData{
@@ -81,21 +82,22 @@ func (cmd RenderCommand) Run(args []string) error {
 			Title:         series.Title,
 			Dates:         series.Dates,
 			Description:   series.Description,
-			VideoCount:    entires.VideoCount,
-			TotalDuration: entires.TotalDuration,
+			VideoCount:    entries.VideoCount,
+			TotalDuration: entries.TotalDuration,
 			Thumbnail:     series.Thumbnail,
 			Theme:         series.Theme,
 		}
-		homePage.VideoCount += entires.VideoCount
-		homePage.TotalDuration += entires.TotalDuration
+		homePage.VideoCount += entries.VideoCount
+		homePage.TotalDuration += entries.TotalDuration
 
 		resourcePath, _ := filepath.Rel(dataPath, "data")
 
-		if err := cmd.renderSeries(series, entires.Entries, resourcePath, filepath.Join(*dest, name)); err != nil {
+		if err := cmd.renderSeries(series, entries.Entries, resourcePath, filepath.Join(*dest, name)); err != nil {
 			return errors.ChainFormat(err, "error rendering series \"%s\"", name)
 		}
 	}
 
+	style.Bold.Println("root")
 	return cmd.renderHomePage(*dest, homePage)
 }
 

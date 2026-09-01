@@ -10,3 +10,6 @@ data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
 data/ttyd/chapters/youtube/*
 data/ttyd/battles/youtube/*
+
+public/heartgold/entries/*
+!public/heartgold/entries/t00.png

@@ -123,3 +123,17 @@ a {
 .ttyd .entry a {
   color: red;
 }
+
+/* Heartgold Theme */
+
+.heartgold .series-color {
+  color: rgb(217, 152, 11);
+}
+
+.heartgold .entry {
+  background-color: rgb(181, 175, 122);
+}
+
+.heartgold .entry a {
+  color: rgb(199, 75, 15);
+}
