@@ -83,7 +83,7 @@ func (cmd BuildCommand) Run(args []string) error {
 
 		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*public, *name, entry.Video))
 		if err != nil {
-			return errors.Chain(err, "error calculating video duration")
+			style.Error.Printf(" -> [x] %s\n", filepath.Join(*name, entry.Video))
 		}
 		entries.TotalDuration += entry.Duration
 

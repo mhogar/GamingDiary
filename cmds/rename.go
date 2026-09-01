@@ -58,6 +58,8 @@ func (cmd RenameCommand) Run(args []string) error {
 		return errors.Chain(err, "error reading directory")
 	}
 
+	//TODO: change old filenames first to prevent file collisions
+
 	count := 0
 	for _, file := range files {
 		if file.IsDir() || !regex.MatchString(file.Name()) {

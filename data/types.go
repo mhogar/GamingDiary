@@ -5,15 +5,16 @@ type Root struct {
 }
 
 type Series struct {
-	Title       string            `json:"title"`
-	Dates       string            `json:"dates"`
-	Description string            `json:"description"`
-	Entries     string            `json:"entries"`
-	Theme       string            `json:"theme"`
-	Background  string            `json:"background"`
-	Thumbnail   string            `json:"thumbnail"`
-	Stylesheets []string          `json:"stylesheets"`
-	Groups      map[string]string `json:"groups"`
+	Title           string            `json:"title"`
+	Dates           string            `json:"dates"`
+	Description     string            `json:"description"`
+	Entries         string            `json:"entries"`
+	Theme           string            `json:"theme"`
+	Background      string            `json:"background"`
+	Thumbnail       string            `json:"thumbnail"`
+	Stylesheets     []string          `json:"stylesheets"`
+	Groups          map[string]string `json:"groups"`
+	YouTubePlaylist string            `json:"youtube_playlist"`
 }
 
 type Entries struct {
