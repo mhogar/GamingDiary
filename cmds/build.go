@@ -42,12 +42,12 @@ func (cmd *BuildCommand) Initialize() error {
 }
 
 func (cmd BuildCommand) Run(args []string) error {
-	public := cmd.Flags.String("public", "", "the public path")
+	src := cmd.Flags.String("src", "", "the source path")
 	name := cmd.Flags.String("name", "", "the name of the series")
 	cmd.ParseFlags(args)
 
-	if *public == "" {
-		return errors.New("\"public\" cannot be empty")
+	if *src == "" {
+		return errors.New("\"src\" cannot be empty")
 	}
 	if *name == "" {
 		return errors.New("\"name\" cannot be empty")
@@ -81,7 +81,7 @@ func (cmd BuildCommand) Run(args []string) error {
 			return errors.Chain(err, "error parsing raw file")
 		}
 
-		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*public, *name, entry.Video))
+		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*src, *name, entry.Video))
 		if err != nil {
 			style.Error.Printf(" -> [x] %s\n", filepath.Join(*name, entry.Video))
 		}

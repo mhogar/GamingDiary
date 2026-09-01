@@ -30,7 +30,7 @@ func (cmd *DeployCommand) Initialize() error {
 }
 
 func (cmd DeployCommand) Run(args []string) error {
-	dest := cmd.Flags.String("dest", "", "the dest path")
+	dest := cmd.Flags.String("dest", "", "the destination path")
 	cmd.ParseFlags(args)
 
 	if *dest == "" {
@@ -58,20 +58,29 @@ func (cmd DeployCommand) Run(args []string) error {
 }
 
 func (cmd DeployCommand) copySeries(dest, name string) error {
+	dest = filepath.Join(dest, name)
+
 	series, err := json.UnmarshalFile[data.Series](filepath.Join("data", name, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	dest = filepath.Join(dest, name)
-
-	files := []string{"index.html"}
-	files = append(files, series.Stylesheets...)
-	files = append(files, series.Background, series.Thumbnail)
+	entires, err := json.UnmarshalFile[data.Entries](filepath.Join("data", name, series.Entries))
+	if err != nil {
+		return errors.Chain(err, "error reading entires file")
+	}
 
 	err = os.MkdirAll(dest, 0755)
 	if err != nil {
 		return errors.Chain(err, "error creating dest directory")
+	}
+
+	files := make([]string, 0, 3+len(series.Stylesheets)+(len(entires.Entries)*2))
+	files = append(files, "index.html", series.Background, series.Thumbnail)
+	files = append(files, series.Stylesheets...)
+
+	for _, entry := range entires.Entries {
+		files = append(files, entry.Thumbnail, entry.Video)
 	}
 
 	err = cmd.copyFiles(dest, filepath.Join("public", name), files)
@@ -99,7 +108,8 @@ func (cmd DeployCommand) copyFileIfNewer(dest, src string) error {
 
 	newer, err := cmd.isFileNewer(src, dest)
 	if err != nil {
-		return err
+		style.Error.Println(" -> not found")
+		return nil
 	}
 
 	if !newer {

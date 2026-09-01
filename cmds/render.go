@@ -51,7 +51,7 @@ func (cmd *RenderCommand) Initialize() error {
 }
 
 func (cmd RenderCommand) Run(args []string) error {
-	public := cmd.Flags.String("public", "public", "the public path")
+	dest := cmd.Flags.String("dest", "public", "the destination path")
 	cmd.ParseFlags(args)
 
 	root, err := json.UnmarshalFile[data.Root]("data/index.json")
@@ -91,15 +91,15 @@ func (cmd RenderCommand) Run(args []string) error {
 
 		resourcePath, _ := filepath.Rel(dataPath, "data")
 
-		if err := cmd.renderSeries(series, entires.Entries, resourcePath, filepath.Join(*public, name)); err != nil {
+		if err := cmd.renderSeries(series, entires.Entries, resourcePath, filepath.Join(*dest, name)); err != nil {
 			return errors.ChainFormat(err, "error rendering series \"%s\"", name)
 		}
 	}
 
-	return cmd.renderHomePage(*public, homePage)
+	return cmd.renderHomePage(*dest, homePage)
 }
 
-func (cmd RenderCommand) renderHomePage(public string, data HomePageData) error {
+func (cmd RenderCommand) renderHomePage(dest string, data HomePageData) error {
 	page := templates.HomePage{
 		VideoCount:    data.VideoCount,
 		TotalDuration: cmd.formatDurationHMS(data.TotalDuration),
@@ -119,7 +119,7 @@ func (cmd RenderCommand) renderHomePage(public string, data HomePageData) error 
 		}
 	}
 
-	out := filepath.Join(public, "index.html")
+	out := filepath.Join(dest, "index.html")
 
 	err := templates.RenderHomePage(out, page)
 	if err != nil {
