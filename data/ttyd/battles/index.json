@@ -5,7 +5,7 @@
     "entries": "entries.json",
     "theme": "ttyd",
     "background": "../door.png",
-    "thumbnail": "../book.png",
+    "thumbnail": "../chapters/t0-00.png",
     "stylesheets": ["../groups.css"],
     "groups": {
         "chapter1": "1-.*",
