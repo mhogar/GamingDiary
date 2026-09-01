@@ -73,7 +73,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	}
 
 	for i, file := range files {
-		style.Info.Printf("\r%s", file)
+		style.Info.Printf("\r%s ", file)
 		entries.VideoCount++
 
 		entry, err := parser.ParseEntry(file)
