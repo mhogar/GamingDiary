@@ -39,6 +39,6 @@ func (Parser) ParseEntry(path string) (data.Entry, error) {
 		Description: fmt.Sprintf("From Chapter %s", chapter),
 		Thumbnail:   fmt.Sprintf("../chapters/t%s.png", chapter),
 		Video:       fmt.Sprintf("s%s_c%s.mp4", index, chapter),
-		YouTube:     lines[0],
+		Youtube:     lines[0],
 	}, nil
 }

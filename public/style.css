@@ -92,6 +92,10 @@ a {
   font-size: 15pt;
 }
 
+.youtube-link {
+  text-decoration: none;
+}
+
 /* Sunshine Theme */
 
 .sunshine .series-color {

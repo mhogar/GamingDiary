@@ -155,12 +155,14 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 		}
 
 		page.Entries[i] = templates.Entry{
-			Title:       entry.Title,
-			Description: entry.Description,
-			Duration:    cmd.formatDurationTimestamp(entry.Duration),
-			Thumbnail:   entry.Thumbnail,
-			Video:       entry.Video,
-			Classes:     classes,
+			Title:            entry.Title,
+			Description:      entry.Description,
+			Duration:         cmd.formatDurationTimestamp(entry.Duration),
+			Thumbnail:        entry.Thumbnail,
+			DefaultThumbnail: series.Thumbnail,
+			Video:            entry.Video,
+			Youtube:          entry.Youtube,
+			Classes:          classes,
 		}
 	}
 

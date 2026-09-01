@@ -14,7 +14,7 @@ type Series struct {
 	Thumbnail       string            `json:"thumbnail"`
 	Stylesheets     []string          `json:"stylesheets"`
 	Groups          map[string]string `json:"groups"`
-	YouTubePlaylist string            `json:"youtube_playlist"`
+	YoutubePlaylist string            `json:"youtube_playlist"`
 }
 
 type Entries struct {
@@ -29,5 +29,5 @@ type Entry struct {
 	Duration    float32 `json:"duration"`
 	Thumbnail   string  `json:"thumbnail"`
 	Video       string  `json:"video"`
-	YouTube     string  `json:"youtube"`
+	Youtube     string  `json:"youtube"`
 }

@@ -68,7 +68,7 @@ func (cmd YouTubeCommand) Run(args []string) error {
 		return errors.Chain(err, "error creating youtube client")
 	}
 
-	ids, err := cmd.loadVideoIdsPlaylist(yt, ctx, series.YouTubePlaylist)
+	ids, err := cmd.loadVideoIdsPlaylist(yt, ctx, series.YoutubePlaylist)
 	if err != nil {
 		return err
 	}

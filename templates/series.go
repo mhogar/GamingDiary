@@ -8,24 +8,24 @@ import (
 )
 
 type SeriesPage struct {
-	Title      string
-	Dates      string
-	Background string
-	Entries    []Entry
-
+	Title        string
+	Dates        string
+	Background   string
+	Entries      []Entry
 	Theme        string
 	Stylesheets  []string
 	ResourcePath string
 }
 
 type Entry struct {
-	Title       string
-	Description string
-	Duration    string
-	Thumbnail   string
-	Video       string
-
-	Classes []string
+	Title            string
+	Description      string
+	Duration         string
+	Thumbnail        string
+	DefaultThumbnail string
+	Video            string
+	Youtube          string
+	Classes          []string
 }
 
 func RenderSeriesPage(path string, data SeriesPage) error {
