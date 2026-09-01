@@ -3,6 +3,9 @@
 .secrets
 gamingdiary
 
+logs/*
+!logs/.keep
+
 data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
 data/ttyd/chapters/youtube/*

@@ -3,8 +3,10 @@ package cmds
 import (
 	"fmt"
 	"local/data"
+	"log"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
@@ -16,6 +18,8 @@ import (
 type DeployCommand struct {
 	command.CommandBase
 	command.FlagCommand
+
+	logger *log.Logger
 }
 
 func NewDeployCommand() *DeployCommand {
@@ -37,15 +41,25 @@ func (cmd DeployCommand) Run(args []string) error {
 		return errors.New("\"dest\" cannot be empty")
 	}
 
+	err := os.MkdirAll(*dest, 0755)
+	if err != nil {
+		return errors.Chain(err, "error creating dest directory")
+	}
+
+	f, err := os.Create(fmt.Sprintf("logs/deploy-%s.txt", time.Now().Format(time.DateTime)))
+	if err != nil {
+		return errors.Chain(err, "error creating log file")
+	}
+	defer f.Close()
+	cmd.logger = log.New(f, "", log.Ltime)
+
 	root, err := json.UnmarshalFile[data.Root]("data/index.json")
 	if err != nil {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	err = cmd.copyFiles(*dest, "public", []string{"index.html", "style.css", "script.js", "background.png"})
-	if err != nil {
-		return errors.Chain(err, "error copying root files")
-	}
+	style.Bold.Println("root")
+	cmd.copyFiles(*dest, "public", []string{"index.html", "style.css", "script.js", "background.png"})
 
 	for _, series := range root.Series {
 		err := cmd.copySeries(*dest, series)
@@ -83,48 +97,39 @@ func (cmd DeployCommand) copySeries(dest, name string) error {
 		files = append(files, entry.Thumbnail, entry.Video)
 	}
 
-	err = cmd.copyFiles(dest, filepath.Join("public", name), files)
-	if err != nil {
-		return errors.Chain(err, "error copying files")
-	}
-
+	style.Bold.Println(name)
+	cmd.copyFiles(dest, filepath.Join("public", name), files)
 	return nil
 }
 
-func (cmd DeployCommand) copyFiles(dest, src string, files []string) error {
-	errs := errors.Errors{}
-
-	for _, f := range files {
-		if err := cmd.copyFileIfNewer(filepath.Join(dest, f), filepath.Join(src, f)); err != nil {
-			errs.Add(err)
-		}
+func (cmd DeployCommand) copyFiles(dest, src string, files []string) {
+	for i, f := range files {
+		cmd.copyFileIfNewer(i+1, filepath.Join(dest, f), filepath.Join(src, f))
 	}
-
-	return errs.Collapse(", ")
+	fmt.Println()
 }
 
-func (cmd DeployCommand) copyFileIfNewer(dest, src string) error {
-	style.Info.Print(src)
-
+func (cmd DeployCommand) copyFileIfNewer(index int, dest, src string) {
 	newer, err := cmd.isFileNewer(src, dest)
 	if err != nil {
-		style.Error.Println(" -> not found")
-		return nil
+		cmd.logger.Printf("[NOT FOUND] %s\n", src)
+		return
 	}
 
 	if !newer {
-		style.Info.Println(" -> up-to-date")
-		return nil
+		cmd.logger.Printf("[UP_TO_DATE] %s\n", src)
+		return
 	}
 
 	err = file.Copy(dest, src)
 	if err != nil {
-		style.Error.Printf(" -> %s\n", dest)
-		return errors.Chain(err, "error copying file")
+		cmd.logger.Printf("[ERROR] %s -> %s\n", src, dest)
+		cmd.logger.Println(err)
+		return
 	}
 
-	style.Success.Printf(" -> %s\n", dest)
-	return nil
+	cmd.logger.Printf("[COPIED] %s | %s", src, dest)
+	style.Success.Printf("\r[%d] %s -> %s ", index, src, dest)
 }
 
 func (cmd DeployCommand) isFileNewer(src, compare string) (bool, error) {
