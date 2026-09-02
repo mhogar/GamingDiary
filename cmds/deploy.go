@@ -15,6 +15,12 @@ import (
 	"github.com/binarysoupdev/got-style/style"
 )
 
+type DeployStats struct {
+	Copied   int
+	UpToDate int
+	NotFound int
+}
+
 type DeployCommand struct {
 	command.CommandBase
 	command.FlagCommand
@@ -103,33 +109,42 @@ func (cmd DeployCommand) copySeries(dest, name string) error {
 }
 
 func (cmd DeployCommand) copyFiles(dest, src string, files []string) {
-	for i, f := range files {
-		cmd.copyFileIfNewer(i+1, filepath.Join(dest, f), filepath.Join(src, f))
+	stats := DeployStats{}
+
+	for _, f := range files {
+		cmd.copyFileIfNewer(filepath.Join(dest, f), filepath.Join(src, f), &stats)
 	}
-	fmt.Println()
+	fmt.Println("\n---")
+
+	style.Create.Printf("[%d] files copied, ", stats.Copied)
+	style.Info.Printf("[%d] file up-to-date, ", stats.UpToDate)
+	style.Error.Printf("[%d] files not found\n", stats.NotFound)
 }
 
-func (cmd DeployCommand) copyFileIfNewer(index int, dest, src string) {
+func (cmd DeployCommand) copyFileIfNewer(dest, src string, stats *DeployStats) {
 	newer, err := cmd.isFileNewer(src, dest)
 	if err != nil {
 		cmd.logger.Printf("[NOT FOUND] %s\n", src)
+		stats.NotFound++
 		return
 	}
 
 	if !newer {
 		cmd.logger.Printf("[UP_TO_DATE] %s\n", src)
+		stats.UpToDate++
 		return
 	}
 
-	err = file.Copy(dest, src)
-	if err != nil {
+	style.Success.Printf("\rcopying %s -> %s ", src, dest)
+
+	if err := file.Copy(dest, src); err != nil {
 		cmd.logger.Printf("[ERROR] %s -> %s\n", src, dest)
 		cmd.logger.Println(err)
 		return
 	}
 
 	cmd.logger.Printf("[COPIED] %s | %s", src, dest)
-	style.Success.Printf("\r[%d] %s -> %s ", index, src, dest)
+	stats.Copied++
 }
 
 func (cmd DeployCommand) isFileNewer(src, compare string) (bool, error) {
@@ -137,11 +152,13 @@ func (cmd DeployCommand) isFileNewer(src, compare string) (bool, error) {
 	if err != nil {
 		return false, errors.Chain(err, "error reading source file")
 	}
+	srcTime := stat.ModTime().Truncate(time.Second)
 
-	target, err := os.Stat(compare)
+	stat, err = os.Stat(compare)
 	if err != nil {
 		return true, nil
 	}
+	destTime := stat.ModTime().Truncate(time.Second)
 
-	return target.ModTime().Before(stat.ModTime()), nil
+	return destTime.Before(srcTime), nil
 }
