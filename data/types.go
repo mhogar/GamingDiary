@@ -24,10 +24,11 @@ type Entries struct {
 }
 
 type Entry struct {
-	Title       string  `json:"title"`
-	Description string  `json:"description"`
-	Duration    float32 `json:"duration"`
-	Thumbnail   string  `json:"thumbnail"`
-	Video       string  `json:"video"`
-	Youtube     string  `json:"youtube"`
+	Title       string   `json:"title"`
+	Description string   `json:"description"`
+	Duration    float32  `json:"duration"`
+	Thumbnail   string   `json:"thumbnail"`
+	Video       string   `json:"video"`
+	Youtube     string   `json:"youtube"`
+	Groups      []string `json:"groups"`
 }

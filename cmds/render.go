@@ -7,7 +7,6 @@ import (
 	"math"
 	"os"
 	"path/filepath"
-	"regexp"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
@@ -133,11 +132,6 @@ func (cmd RenderCommand) renderHomePage(dest string, data HomePageData) error {
 }
 
 func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry, resourcePath, public string) error {
-	groups := make(map[string]*regexp.Regexp)
-	for key, val := range series.Groups {
-		groups[key] = regexp.MustCompile(val)
-	}
-
 	page := templates.SeriesPage{
 		Title:        series.Title,
 		Dates:        series.Dates,
@@ -149,13 +143,6 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 	}
 
 	for i, entry := range entires {
-		classes := []string{}
-		for group, regex := range groups {
-			if regex.MatchString(entry.Title) {
-				classes = append(classes, group)
-			}
-		}
-
 		page.Entries[i] = templates.Entry{
 			Title:            entry.Title,
 			Description:      entry.Description,
@@ -164,7 +151,7 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 			DefaultThumbnail: series.Thumbnail,
 			Video:            entry.Video,
 			Youtube:          entry.Youtube,
-			Classes:          classes,
+			Classes:          entry.Groups,
 		}
 	}
 

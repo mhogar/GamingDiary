@@ -1,4 +1,4 @@
-package ttyd_battle
+package ttyd_chapters
 
 import (
 	"fmt"
@@ -10,6 +10,8 @@ import (
 
 	"github.com/binarysoupdev/go-extensions/errors"
 )
+
+var CHAPTER_REGEX = regexp.MustCompile(`^Chapter ([1-8])`)
 
 type Parser struct{}
 
@@ -29,10 +31,22 @@ func (Parser) ParseEntry(path string) (data.Entry, error) {
 	title := regexp.MustCompile(`^(.+)\s+\|`).FindStringSubmatch(lines[2])[1]
 
 	return data.Entry{
-		Title:       fmt.Sprintf("Battle %s | %s", index, title),
+		Title:       fmt.Sprintf("Chapter %s | %s", index, title),
 		Description: lines[5],
 		Thumbnail:   fmt.Sprintf("t%s.png", index),
 		Video:       fmt.Sprintf("v%s.mp4", index),
 		Youtube:     lines[0],
 	}, nil
+}
+
+type Upgrader struct{}
+
+func (Upgrader) UpgradeEntry(entry *data.Entry) error {
+	matches := CHAPTER_REGEX.FindStringSubmatch(entry.Title)
+	if len(matches) < 2 {
+		return nil
+	}
+
+	entry.Groups = []string{fmt.Sprintf("chapter%s", matches[1])}
+	return nil
 }

@@ -6,15 +6,5 @@
     "theme": "ttyd",
     "background": "../door.png",
     "thumbnail": "t0-00.png",
-    "stylesheets": ["../groups.css"],
-    "groups": {
-        "chapter1": "1-.*",
-        "chapter2": "2-.*",
-        "chapter3": "3-.*",
-        "chapter4": "4-.*",
-        "chapter5": "5-.*",
-        "chapter6": "6-.*",
-        "chapter7": "7-.*",
-        "chapter8": "8-.*"
-    }
+    "stylesheets": ["../groups.css"]
 }

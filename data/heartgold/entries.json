@@ -1,0 +1,303 @@
+{
+  "video_count": 27,
+  "total_duration": 40422.367,
+  "entries": [
+    {
+      "title": "Entry 00 | Trailer",
+      "description": "Pokemon Heartgold is the next series! But first, let's learn a little about how this game came to be!",
+      "duration": 135.274,
+      "thumbnail": "entries/t00.png",
+      "video": "entries/v00.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Qycvs3qT8eg",
+      "groups": [
+        ""
+      ]
+    },
+    {
+      "title": "Entry 01 | NEW BARK, NEW BEGINNINGS!!!",
+      "description": "Our journey begins! Let's choose our starter Pokemon from this iconic trio!",
+      "duration": 1566.741,
+      "thumbnail": "entries/t01.png",
+      "video": "entries/v01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=AKIe02i4GNo",
+      "groups": [
+        "badge1"
+      ]
+    },
+    {
+      "title": "Entry 02 | ROADS OF CHERRYGROVE",
+      "description": "We explore around Cherrygrove, a charming little town on the edge of the sea!",
+      "duration": 1943.445,
+      "thumbnail": "entries/t02.png",
+      "video": "entries/v02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=46aS0j2blfQ",
+      "groups": [
+        "badge1"
+      ]
+    },
+    {
+      "title": "Entry 03 | THE THIRD GUARANTEE OF LIFE",
+      "description": "We venture into the Dark Cave and discover there are actually THREE guarantees of life!",
+      "duration": 1279.552,
+      "thumbnail": "entries/t03.png",
+      "video": "entries/v03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=PuOGzkU4CVU",
+      "groups": [
+        "badge1"
+      ]
+    },
+    {
+      "title": "Entry 04 | THE ELDER SPROUT",
+      "description": "We scale the Sprout Tower to challenge its Elder!",
+      "duration": 1586.517,
+      "thumbnail": "entries/t04.png",
+      "video": "entries/v04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=nwmN9sFC2aU",
+      "groups": [
+        "badge1"
+      ]
+    },
+    {
+      "title": "Entry 05 | THE BIRD MAN",
+      "description": "We take on the first gym leader of Johto: Falkner, the Bird Man!",
+      "duration": 1635.157,
+      "thumbnail": "entries/t05.png",
+      "video": "entries/v05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=lQPrRm7NXNk",
+      "groups": [
+        "badge1"
+      ]
+    },
+    {
+      "title": "Entry 06 | BEEP BEEP I'M MAREEP",
+      "description": "With Violet gym behind us, we journey on; and catch my favorite pokemon!",
+      "duration": 669.909,
+      "thumbnail": "entries/t06.png",
+      "video": "entries/v06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=inkQ6aOZvyI",
+      "groups": [
+        "badge2"
+      ]
+    },
+    {
+      "title": "Entry 07 | KARPE DIEM",
+      "description": "We journey down beautiful route 32 and encounter the infamous magikarp trainer!",
+      "duration": 1055.296,
+      "thumbnail": "entries/t07.png",
+      "video": "entries/v07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=KGyS0ryxynQ",
+      "groups": [
+        "badge2"
+      ]
+    },
+    {
+      "title": "Entry 08 | THE CAVE THAT UNITES",
+      "description": "We journey through the union cave; that unites... two cave entrances I guess.",
+      "duration": 1091.7333,
+      "thumbnail": "entries/t08.png",
+      "video": "entries/v08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=G85dYcbrZRw",
+      "groups": [
+        "badge2"
+      ]
+    },
+    {
+      "title": "Entry 09 | ALL'S NOT WELL",
+      "description": "All's not well in the slowpoke well. Let's get down there and put a stop to it!",
+      "duration": 1122.005,
+      "thumbnail": "entries/t09.png",
+      "video": "entries/v09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=AYWsQtgxZxw",
+      "groups": [
+        "badge2"
+      ]
+    },
+    {
+      "title": "Entry 10 | THE BUG COLLECTOR",
+      "description": "We finally take on our next gym leader: Bugsy, the walking bug encyclopedia!",
+      "duration": 1616.512,
+      "thumbnail": "entries/t10.png",
+      "video": "entries/v10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=OwEECEzdIbc",
+      "groups": [
+        "badge2"
+      ]
+    },
+    {
+      "title": "Entry 11 | THE FARFETCH'D TEST",
+      "description": "We move out from Azalea Town and into the mysterious Ilex forest — full of mystery, beauty, and Farfetch'd?",
+      "duration": 1669.1194,
+      "thumbnail": "entries/t11.png",
+      "video": "entries/v11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=HqqIooR-_VU",
+      "groups": [
+        "badge3"
+      ]
+    },
+    {
+      "title": "Entry 12 | BABY'S FIRST CASINO",
+      "description": "After arriving in Goldenrod city, we spend the day playing Voltorb Flip: the game that's not technically gambling!",
+      "duration": 1102.5063,
+      "thumbnail": "entries/t12.png",
+      "video": "entries/v12.mp4",
+      "youtube": "https://www.youtube.com/watch?v=4O1dclr2dM4",
+      "groups": [
+        "badge3"
+      ]
+    },
+    {
+      "title": "Entry 13 | THE GOLDEN CITY",
+      "description": "With our casino addiction fulfilled (for now), we turn our attention to the rest of this golden city!",
+      "duration": 1803.9663,
+      "thumbnail": "entries/t13.png",
+      "video": "entries/v13.mp4",
+      "youtube": "https://www.youtube.com/watch?v=qj32_oVyoqg",
+      "groups": [
+        "badge3"
+      ]
+    },
+    {
+      "title": "Entry 14 | THE COW GIRL",
+      "description": "After we track down the gym leader, it's time for one of the trickier fights of the game!",
+      "duration": 1436.5643,
+      "thumbnail": "entries/t14.png",
+      "video": "entries/v14.mp4",
+      "youtube": "https://www.youtube.com/watch?v=LDR3atDYHxg",
+      "groups": [
+        "badge3"
+      ]
+    },
+    {
+      "title": "Entry 15 | FEAR THE OWL",
+      "description": "With our Noctowl finally evolved, it's time to give it some serious power!",
+      "duration": 1904.1263,
+      "thumbnail": "entries/t15.png",
+      "video": "entries/v15.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Ry61VyKaD_s",
+      "groups": [
+        "badge4"
+      ]
+    },
+    {
+      "title": "Entry 16 | LAST PLACE",
+      "description": "We venture into National Park and take place in the bug catching contest! (it doesn't go well)",
+      "duration": 1825.066,
+      "thumbnail": "entries/t16.png",
+      "video": "entries/v16.mp4",
+      "youtube": "https://www.youtube.com/watch?v=2F8wZB2RJUg",
+      "groups": [
+        "badge4"
+      ]
+    },
+    {
+      "title": "Entry 17 | THE LONG DETOUR",
+      "description": "I finally arrive in Ecruteak! Only to get distracted and end up far, far away...",
+      "duration": 2388.138,
+      "thumbnail": "entries/t17.png",
+      "video": "entries/v17.mp4",
+      "youtube": "https://www.youtube.com/watch?v=PpKJqMQxOiA",
+      "groups": [
+        "badge4"
+      ]
+    },
+    {
+      "title": "Entry 18 | CITY OF HISTORY",
+      "description": "Detours aside, it times to explore this city of history!",
+      "duration": 1377.194,
+      "thumbnail": "entries/t18.png",
+      "video": "entries/v18.mp4",
+      "youtube": "https://www.youtube.com/watch?v=05Qj0ZJyfho",
+      "groups": [
+        "badge4"
+      ]
+    },
+    {
+      "title": "Entry 19 | THE NECROMANCER",
+      "description": "We take on Morty, the mystic seer of the future! (although he's not a psychic trainer)",
+      "duration": 1202.944,
+      "thumbnail": "entries/t19.png",
+      "video": "entries/v19.mp4",
+      "youtube": "https://www.youtube.com/watch?v=wz1vOUrGcmE",
+      "groups": [
+        "badge4"
+      ]
+    },
+    {
+      "title": "Entry 20 | UNION UNDERGROUND",
+      "description": "With Surf and Strength added to our arsenal, the world just got a whole lot bigger!",
+      "duration": 2305.877,
+      "thumbnail": "entries/t20.png",
+      "video": "entries/v20.mp4",
+      "youtube": "https://www.youtube.com/watch?v=04xWfGU14O0",
+      "groups": [
+        "badge5"
+      ]
+    },
+    {
+      "title": "Entry 21 | POKEMON PUZZLE LEAGUE",
+      "description": "With Surf and Strength, most of the Ruins of Alph is accessible! So let's see what this mysterious place has to offer!",
+      "duration": 1499.605,
+      "thumbnail": "entries/t21.png",
+      "video": "entries/v21.mp4",
+      "youtube": "https://www.youtube.com/watch?v=u6Vfj-EK3pg",
+      "groups": [
+        "badge5"
+      ]
+    },
+    {
+      "title": "Entry 22 | TALE OF TWO GYARADOS",
+      "description": "The angry lake beckons. Not only does it boast a shiny Gyarados, but a  very strong Magikarp as well!",
+      "duration": 1004.416,
+      "thumbnail": "entries/t22.png",
+      "video": "entries/v22.mp4",
+      "youtube": "https://www.youtube.com/watch?v=ROp2GX37N80",
+      "groups": [
+        "badge5"
+      ]
+    },
+    {
+      "title": "Entry 23 | ROCKET REVENGERS",
+      "description": "We take the fight to Team Rocket in their own base!",
+      "duration": 1923.968,
+      "thumbnail": "entries/t23.png",
+      "video": "entries/v23.mp4",
+      "youtube": "https://www.youtube.com/watch?v=QqNT34M_vYE",
+      "groups": [
+        "badge5"
+      ]
+    },
+    {
+      "title": "Entry 24 | THE NICE GUY",
+      "description": "We take on Pryce, the Winter Trainer, for our fifth gym badge!",
+      "duration": 1337.386,
+      "thumbnail": "entries/t24.png",
+      "video": "entries/v24.mp4",
+      "youtube": "https://www.youtube.com/watch?v=7fcMA5GwtA8",
+      "groups": [
+        "badge5"
+      ]
+    },
+    {
+      "title": "Entry 25 | THROUGH THE OLIVINE",
+      "description": "With fifth badge in hand, we finally trek out towards the sea!",
+      "duration": 2016.234,
+      "thumbnail": "entries/t25.png",
+      "video": "entries/v25.mp4",
+      "youtube": "https://www.youtube.com/watch?v=K9gM71YrpDI",
+      "groups": [
+        "badge6"
+      ]
+    },
+    {
+      "title": "Entry 26 | CATCH OF THE DAY",
+      "description": "We finally catch another team member then explore the mysterious Whirl Islands!",
+      "duration": 1923.114,
+      "thumbnail": "entries/t26.png",
+      "video": "entries/v26.mp4",
+      "youtube": "https://www.youtube.com/watch?v=9ewcSkB_20g",
+      "groups": [
+        "badge6"
+      ]
+    }
+  ]
+}

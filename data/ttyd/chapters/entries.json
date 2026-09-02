@@ -8,7 +8,8 @@
       "duration": 382.336,
       "thumbnail": "t0-00.png",
       "video": "v0-00.mp4",
-      "youtube": "https://www.youtube.com/watch?v=n5W7vMnlCKg"
+      "youtube": "https://www.youtube.com/watch?v=n5W7vMnlCKg",
+      "groups": null
     },
     {
       "title": "Chapter 0-01 | Taking on the Town",
@@ -16,7 +17,8 @@
       "duration": 2501.162,
       "thumbnail": "t0-01.png",
       "video": "v0-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=If_5hLi24_4"
+      "youtube": "https://www.youtube.com/watch?v=If_5hLi24_4",
+      "groups": null
     },
     {
       "title": "Chapter 0-02 | Unfurl with Passion!",
@@ -24,7 +26,8 @@
       "duration": 2437.461,
       "thumbnail": "t0-02.png",
       "video": "v0-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=NbNe2Da_jZw"
+      "youtube": "https://www.youtube.com/watch?v=NbNe2Da_jZw",
+      "groups": null
     },
     {
       "title": "Chapter 1-01 | Castle and Dragon",
@@ -32,7 +35,10 @@
       "duration": 1452.736,
       "thumbnail": "t1-01.png",
       "video": "v1-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=MrY-Or0QKJM"
+      "youtube": "https://www.youtube.com/watch?v=MrY-Or0QKJM",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-02 | Who Wants to be a Shhwonk?",
@@ -40,7 +46,10 @@
       "duration": 2373.568,
       "thumbnail": "t1-02.png",
       "video": "v1-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=4GrHn13oJXE"
+      "youtube": "https://www.youtube.com/watch?v=4GrHn13oJXE",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-03 | Music Turmoil",
@@ -48,7 +57,10 @@
       "duration": 2208.704,
       "thumbnail": "t1-03.png",
       "video": "v1-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=48FU4aGKf1g"
+      "youtube": "https://www.youtube.com/watch?v=48FU4aGKf1g",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-04 | Dragon Destiny",
@@ -56,7 +68,10 @@
       "duration": 2022.912,
       "thumbnail": "t1-04.png",
       "video": "v1-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=1KjiGxvgEBU"
+      "youtube": "https://www.youtube.com/watch?v=1KjiGxvgEBU",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-05 | Voice Actor in Training",
@@ -64,7 +79,10 @@
       "duration": 1330.218,
       "thumbnail": "t1-05.png",
       "video": "v1-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=SuGWJx8C1Dg"
+      "youtube": "https://www.youtube.com/watch?v=SuGWJx8C1Dg",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-06 | Town Touch-ups",
@@ -72,7 +90,10 @@
       "duration": 1828.522,
       "thumbnail": "t1-06.png",
       "video": "v1-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Jg-23q3K-08"
+      "youtube": "https://www.youtube.com/watch?v=Jg-23q3K-08",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-07 | West Side Story",
@@ -80,7 +101,10 @@
       "duration": 2903.338,
       "thumbnail": "t1-07.png",
       "video": "v1-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Zm-eNBDX1Ao"
+      "youtube": "https://www.youtube.com/watch?v=Zm-eNBDX1Ao",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-08 | Pit of Tragedy",
@@ -88,7 +112,10 @@
       "duration": 3099.072,
       "thumbnail": "t1-08.png",
       "video": "v1-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=MrBZqVyn5-U"
+      "youtube": "https://www.youtube.com/watch?v=MrBZqVyn5-U",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-09 | Pit of Victory",
@@ -96,7 +123,10 @@
       "duration": 3454.869,
       "thumbnail": "t1-09.png",
       "video": "v1-09.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Ajg1LiCStug"
+      "youtube": "https://www.youtube.com/watch?v=Ajg1LiCStug",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 1-10 | Think Again Nerd!",
@@ -104,7 +134,10 @@
       "duration": 649.578,
       "thumbnail": "t1-10.png",
       "video": "v1-10.mp4",
-      "youtube": "https://www.youtube.com/watch?v=-yW2wstcKGk"
+      "youtube": "https://www.youtube.com/watch?v=-yW2wstcKGk",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Chapter 2-01 | The Great Boggly Tree",
@@ -112,7 +145,10 @@
       "duration": 1534.101,
       "thumbnail": "t2-01.png",
       "video": "v2-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=LT6iz7-Zh4s"
+      "youtube": "https://www.youtube.com/watch?v=LT6iz7-Zh4s",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-02 | Backtrack Woods",
@@ -120,7 +156,10 @@
       "duration": 1707.285,
       "thumbnail": "t2-02.png",
       "video": "v2-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=vmZaqoxK4Gw"
+      "youtube": "https://www.youtube.com/watch?v=vmZaqoxK4Gw",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-03 | A Small Army",
@@ -128,7 +167,10 @@
       "duration": 1704.917,
       "thumbnail": "t2-03.png",
       "video": "v2-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=yGi_qQU32f0"
+      "youtube": "https://www.youtube.com/watch?v=yGi_qQU32f0",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-04 | Punies of Rohirrim",
@@ -136,7 +178,10 @@
       "duration": 1811.498,
       "thumbnail": "t2-04.png",
       "video": "v2-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=v_K8EaIrack"
+      "youtube": "https://www.youtube.com/watch?v=v_K8EaIrack",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-05 | Buried in Canada",
@@ -144,7 +189,10 @@
       "duration": 1438.805,
       "thumbnail": "t2-05.png",
       "video": "v2-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=jI2iSIoWrWo"
+      "youtube": "https://www.youtube.com/watch?v=jI2iSIoWrWo",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-06 | Dancing On My Own",
@@ -152,7 +200,10 @@
       "duration": 796.736,
       "thumbnail": "t2-06.png",
       "video": "v2-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=mtddLgJRCEI"
+      "youtube": "https://www.youtube.com/watch?v=mtddLgJRCEI",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-07 | Stories and Star Pieces",
@@ -160,7 +211,10 @@
       "duration": 1577.557,
       "thumbnail": "t2-07.png",
       "video": "v2-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=3OpllOPk-dc"
+      "youtube": "https://www.youtube.com/watch?v=3OpllOPk-dc",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 2-08 | Piantas in Crime",
@@ -168,7 +222,10 @@
       "duration": 1551.104,
       "thumbnail": "t2-08.png",
       "video": "v2-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=dX9Dpb4ForE"
+      "youtube": "https://www.youtube.com/watch?v=dX9Dpb4ForE",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Chapter 3-01 | Of Glitz and Glory",
@@ -176,7 +233,10 @@
       "duration": 1964.8,
       "thumbnail": "t3-01.png",
       "video": "v3-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=gnuTgdjIVk4"
+      "youtube": "https://www.youtube.com/watch?v=gnuTgdjIVk4",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-02 | King of the Pit",
@@ -184,7 +244,10 @@
       "duration": 2166.784,
       "thumbnail": "t3-02.png",
       "video": "v3-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=vvEfGwDpI38"
+      "youtube": "https://www.youtube.com/watch?v=vvEfGwDpI38",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-03 | Breaking into Major",
@@ -192,7 +255,10 @@
       "duration": 1805.034,
       "thumbnail": "t3-03.png",
       "video": "v3-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=A3FmGkKrPSQ"
+      "youtube": "https://www.youtube.com/watch?v=A3FmGkKrPSQ",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-04 | Glitz Pit Stop",
@@ -200,7 +266,10 @@
       "duration": 1010.368,
       "thumbnail": "t3-04.png",
       "video": "v3-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=OOJjB1H5Zew"
+      "youtube": "https://www.youtube.com/watch?v=OOJjB1H5Zew",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-05 | A Major Debut",
@@ -208,7 +277,10 @@
       "duration": 1176.384,
       "thumbnail": "t3-05.png",
       "video": "v3-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=E6V6nymgq6c"
+      "youtube": "https://www.youtube.com/watch?v=E6V6nymgq6c",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-06 | An Unexpected Intermission",
@@ -216,7 +288,10 @@
       "duration": 1786.666,
       "thumbnail": "t3-06.png",
       "video": "v3-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=0Aw3NkcDVms"
+      "youtube": "https://www.youtube.com/watch?v=0Aw3NkcDVms",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-07 | Fight to the Finish",
@@ -224,7 +299,10 @@
       "duration": 2041.066,
       "thumbnail": "t3-07.png",
       "video": "v3-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=QrlXCDZ_JSw"
+      "youtube": "https://www.youtube.com/watch?v=QrlXCDZ_JSw",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-08 | Rawking the Hawk",
@@ -232,7 +310,10 @@
       "duration": 1239.4667,
       "thumbnail": "t3-08.png",
       "video": "v3-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=QC_-EMgFZTA"
+      "youtube": "https://www.youtube.com/watch?v=QC_-EMgFZTA",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-09 | The TRUE Champion",
@@ -240,7 +321,10 @@
       "duration": 1346.069,
       "thumbnail": "t3-09.png",
       "video": "v3-09.mp4",
-      "youtube": "https://www.youtube.com/watch?v=uA-Eu0a9Z64"
+      "youtube": "https://www.youtube.com/watch?v=uA-Eu0a9Z64",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-10 | Mission Possible",
@@ -248,7 +332,10 @@
       "duration": 965.269,
       "thumbnail": "t3-10.png",
       "video": "v3-10.mp4",
-      "youtube": "https://www.youtube.com/watch?v=a_8OSwpwr5c"
+      "youtube": "https://www.youtube.com/watch?v=a_8OSwpwr5c",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 3-11 | Stories and Shady Investments",
@@ -256,7 +343,10 @@
       "duration": 1803.861,
       "thumbnail": "t3-11.png",
       "video": "v3-11.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Yc6IiX72omM"
+      "youtube": "https://www.youtube.com/watch?v=Yc6IiX72omM",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Chapter 4-01 | For Pigs the Bell Tolls",
@@ -264,7 +354,10 @@
       "duration": 2087.146,
       "thumbnail": "t4-01.png",
       "video": "v4-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=0b-ZXEOsPJM"
+      "youtube": "https://www.youtube.com/watch?v=0b-ZXEOsPJM",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-02 | Creepy But Cool",
@@ -272,7 +365,10 @@
       "duration": 1418.517,
       "thumbnail": "t4-02.png",
       "video": "v4-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=TkOkPrjd9s8"
+      "youtube": "https://www.youtube.com/watch?v=TkOkPrjd9s8",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-03 | Man of Mystery",
@@ -280,7 +376,10 @@
       "duration": 1126.784,
       "thumbnail": "t4-03.png",
       "video": "v4-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=_EeEat2v0fU"
+      "youtube": "https://www.youtube.com/watch?v=_EeEat2v0fU",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-04 | Identity Fraud",
@@ -288,7 +387,10 @@
       "duration": 1946.688,
       "thumbnail": "t4-04.png",
       "video": "v4-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=4kwweevUsSY"
+      "youtube": "https://www.youtube.com/watch?v=4kwweevUsSY",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-05 | The Alphabet Bandit",
@@ -296,7 +398,10 @@
       "duration": 1351.4667,
       "thumbnail": "t4-05.png",
       "video": "v4-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=-Oo2Rzgl0jg"
+      "youtube": "https://www.youtube.com/watch?v=-Oo2Rzgl0jg",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-06 | TEC-nical Loopholes",
@@ -304,7 +409,10 @@
       "duration": 890.517,
       "thumbnail": "t4-06.png",
       "video": "v4-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=cGf6FXfIdxE"
+      "youtube": "https://www.youtube.com/watch?v=cGf6FXfIdxE",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-07 | Stories and Spring Cleaning",
@@ -312,7 +420,10 @@
       "duration": 1558.698,
       "thumbnail": "t4-07.png",
       "video": "v4-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=lVGtCDngE9E"
+      "youtube": "https://www.youtube.com/watch?v=lVGtCDngE9E",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-08 | The Great Mouse Bandit",
@@ -320,7 +431,10 @@
       "duration": 809.685,
       "thumbnail": "t4-08.png",
       "video": "v4-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Nx40YHc4vlQ"
+      "youtube": "https://www.youtube.com/watch?v=Nx40YHc4vlQ",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-09 | The Cook Book Quest",
@@ -328,7 +442,10 @@
       "duration": 1986.837,
       "thumbnail": "t4-09.png",
       "video": "v4-09.mp4",
-      "youtube": "https://www.youtube.com/watch?v=0EoK_zN8Pr0"
+      "youtube": "https://www.youtube.com/watch?v=0EoK_zN8Pr0",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-10 | Pit Act II",
@@ -336,7 +453,10 @@
       "duration": 3230.208,
       "thumbnail": "t4-10.png",
       "video": "v4-10.mp4",
-      "youtube": "https://www.youtube.com/watch?v=MbQ_Gw7YlRM"
+      "youtube": "https://www.youtube.com/watch?v=MbQ_Gw7YlRM",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 4-11 | Amazy Dayzee Grinding",
@@ -344,7 +464,10 @@
       "duration": 248.789,
       "thumbnail": "t4-11.png",
       "video": "v4-11.mp4",
-      "youtube": "https://www.youtube.com/watch?v=nxofNyOV968"
+      "youtube": "https://www.youtube.com/watch?v=nxofNyOV968",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Chapter 5-00 | A Wife's Tale",
@@ -352,7 +475,10 @@
       "duration": 1337.386,
       "thumbnail": "t5-00.png",
       "video": "v5-00.mp4",
-      "youtube": "https://www.youtube.com/watch?v=6KQDN8fNj2Q"
+      "youtube": "https://www.youtube.com/watch?v=6KQDN8fNj2Q",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-01 | The Key to Pirates",
@@ -360,7 +486,10 @@
       "duration": 1733.909,
       "thumbnail": "t5-01.png",
       "video": "v5-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=FKpmMhwQfEE"
+      "youtube": "https://www.youtube.com/watch?v=FKpmMhwQfEE",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-02 | A Last Wish",
@@ -368,7 +497,10 @@
       "duration": 1056,
       "thumbnail": "t5-02.png",
       "video": "v5-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=VQVZtpHSpNw"
+      "youtube": "https://www.youtube.com/watch?v=VQVZtpHSpNw",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-03 | The Adventures of Flavio!!!",
@@ -376,7 +508,10 @@
       "duration": 1517.525,
       "thumbnail": "t5-03.png",
       "video": "v5-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=z7FZWxvN-d4"
+      "youtube": "https://www.youtube.com/watch?v=z7FZWxvN-d4",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-04 | Belly of the Beast",
@@ -384,7 +519,10 @@
       "duration": 2162.901,
       "thumbnail": "t5-04.png",
       "video": "v5-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=AQIfSHzsDXk"
+      "youtube": "https://www.youtube.com/watch?v=AQIfSHzsDXk",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-05 | Engines of War",
@@ -392,7 +530,10 @@
       "duration": 1186.624,
       "thumbnail": "t5-05.png",
       "video": "v5-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=O7Seo57bDdE"
+      "youtube": "https://www.youtube.com/watch?v=O7Seo57bDdE",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-06 | Mission Invisible",
@@ -400,7 +541,10 @@
       "duration": 1298.282,
       "thumbnail": "t5-06.png",
       "video": "v5-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=x4yYaV2gXf8"
+      "youtube": "https://www.youtube.com/watch?v=x4yYaV2gXf8",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-07 | Stories and Sailboats",
@@ -408,7 +552,10 @@
       "duration": 2015.786,
       "thumbnail": "t5-07.png",
       "video": "v5-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=v0ECaVGkx08"
+      "youtube": "https://www.youtube.com/watch?v=v0ECaVGkx08",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 5-08 | The Opposite of Down",
@@ -416,7 +563,10 @@
       "duration": 1033.685,
       "thumbnail": "t5-08.png",
       "video": "v5-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=e8Hx7J15kuc"
+      "youtube": "https://www.youtube.com/watch?v=e8Hx7J15kuc",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Chapter 6-00 | Mario meets Mafia",
@@ -424,7 +574,10 @@
       "duration": 1061.12,
       "thumbnail": "t6-00.png",
       "video": "v6-00.mp4",
-      "youtube": "https://www.youtube.com/watch?v=zo1kL-OfLvA"
+      "youtube": "https://www.youtube.com/watch?v=zo1kL-OfLvA",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-01 | Three Days of Excess",
@@ -432,7 +585,10 @@
       "duration": 2208.341,
       "thumbnail": "t6-01.png",
       "video": "v6-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=wXOy6MpT96A"
+      "youtube": "https://www.youtube.com/watch?v=wXOy6MpT96A",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-02 | Unpaid Intern",
@@ -440,7 +596,10 @@
       "duration": 826.538,
       "thumbnail": "t6-02.png",
       "video": "v6-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=XTeseksuOso"
+      "youtube": "https://www.youtube.com/watch?v=XTeseksuOso",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-03 | Sunset on the Riverside",
@@ -448,7 +607,10 @@
       "duration": 1945.109,
       "thumbnail": "t6-03.png",
       "video": "v6-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=UPPtL0KZSuI"
+      "youtube": "https://www.youtube.com/watch?v=UPPtL0KZSuI",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-04 | Smorgs on a Train",
@@ -456,7 +618,10 @@
       "duration": 928.298,
       "thumbnail": "t6-04.png",
       "video": "v6-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=hfpPeaL7w50"
+      "youtube": "https://www.youtube.com/watch?v=hfpPeaL7w50",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-05 | Sanctum of Secrets",
@@ -464,7 +629,10 @@
       "duration": 1255.893,
       "thumbnail": "t6-05.png",
       "video": "v6-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=8WcFjf049Ks"
+      "youtube": "https://www.youtube.com/watch?v=8WcFjf049Ks",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-06 | Love and Warriors",
@@ -472,7 +640,10 @@
       "duration": 856.768,
       "thumbnail": "t6-06.png",
       "video": "v6-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=KYKkqe4cuQQ"
+      "youtube": "https://www.youtube.com/watch?v=KYKkqe4cuQQ",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-07 | Stories and Side Quests (part 1)",
@@ -480,7 +651,10 @@
       "duration": 1263.893,
       "thumbnail": "t6-07.png",
       "video": "v6-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=-GAhd_I25io"
+      "youtube": "https://www.youtube.com/watch?v=-GAhd_I25io",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-08 | Stories and Side Quests (part 2)",
@@ -488,7 +662,10 @@
       "duration": 1514.752,
       "thumbnail": "t6-08.png",
       "video": "v6-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Nl9wx0GXn4k"
+      "youtube": "https://www.youtube.com/watch?v=Nl9wx0GXn4k",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-09 | The CURSED Olympics",
@@ -496,7 +673,10 @@
       "duration": 2567.978,
       "thumbnail": "t6-09.png",
       "video": "v6-09.mp4",
-      "youtube": "https://www.youtube.com/watch?v=uD51NOlV3hI"
+      "youtube": "https://www.youtube.com/watch?v=uD51NOlV3hI",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-10 | Pit Act III - The Old Stuff",
@@ -504,7 +684,10 @@
       "duration": 979.05,
       "thumbnail": "t6-10.png",
       "video": "v6-10.mp4",
-      "youtube": "https://www.youtube.com/watch?v=iqBTSfkbflo"
+      "youtube": "https://www.youtube.com/watch?v=iqBTSfkbflo",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-11 | Pit Act III - The New Stuff",
@@ -512,7 +695,10 @@
       "duration": 3861.3333,
       "thumbnail": "t6-11.png",
       "video": "v6-11.mp4",
-      "youtube": "https://www.youtube.com/watch?v=QoVKM-MVW78"
+      "youtube": "https://www.youtube.com/watch?v=QoVKM-MVW78",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 6-12 | Pit Act III - The Hard Stuff",
@@ -520,7 +706,10 @@
       "duration": 2815.893,
       "thumbnail": "t6-12.png",
       "video": "v6-12.mp4",
-      "youtube": "https://www.youtube.com/watch?v=KfWwXG1XyuU"
+      "youtube": "https://www.youtube.com/watch?v=KfWwXG1XyuU",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Chapter 7-01 | Mario Shoots the Moon",
@@ -528,7 +717,10 @@
       "duration": 1511.146,
       "thumbnail": "t7-01.png",
       "video": "v7-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=AW42yFIbLmQ"
+      "youtube": "https://www.youtube.com/watch?v=AW42yFIbLmQ",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 7-02 | Evil Incarnate",
@@ -536,7 +728,10 @@
       "duration": 1361.536,
       "thumbnail": "t7-02.png",
       "video": "v7-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=gy5eMkS6ZRw"
+      "youtube": "https://www.youtube.com/watch?v=gy5eMkS6ZRw",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 7-03 | One Small Step for Mario",
@@ -544,7 +739,10 @@
       "duration": 1145.322,
       "thumbnail": "t7-03.png",
       "video": "v7-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=WoUwoMVvosE"
+      "youtube": "https://www.youtube.com/watch?v=WoUwoMVvosE",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 7-04 | Storming the Fortress",
@@ -552,7 +750,10 @@
       "duration": 2438.4,
       "thumbnail": "t7-04.png",
       "video": "v7-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=lm-8C7DQn5I"
+      "youtube": "https://www.youtube.com/watch?v=lm-8C7DQn5I",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 7-05 | Man in the Moon",
@@ -560,7 +761,10 @@
       "duration": 808.704,
       "thumbnail": "t7-05.png",
       "video": "v7-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=nhHCSr0-8NE"
+      "youtube": "https://www.youtube.com/watch?v=nhHCSr0-8NE",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 7-06 | Goodbyes",
@@ -568,7 +772,10 @@
       "duration": 767.616,
       "thumbnail": "t7-06.png",
       "video": "v7-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=30yrrTO7aaw"
+      "youtube": "https://www.youtube.com/watch?v=30yrrTO7aaw",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 7-07 | Stories and Sappy Endings",
@@ -576,7 +783,10 @@
       "duration": 800.853,
       "thumbnail": "t7-07.png",
       "video": "v7-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=svmXkI-4Eek"
+      "youtube": "https://www.youtube.com/watch?v=svmXkI-4Eek",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Chapter 8-01 | Beyond the Thousand-Year Door",
@@ -584,7 +794,10 @@
       "duration": 1537.045,
       "thumbnail": "t8-01.png",
       "video": "v8-01.mp4",
-      "youtube": "https://www.youtube.com/watch?v=ZbFwxG4aOfY"
+      "youtube": "https://www.youtube.com/watch?v=ZbFwxG4aOfY",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-02 | Familiar Foes",
@@ -592,7 +805,10 @@
       "duration": 1006.442,
       "thumbnail": "t8-02.png",
       "video": "v8-02.mp4",
-      "youtube": "https://www.youtube.com/watch?v=NY4uCBK72MA"
+      "youtube": "https://www.youtube.com/watch?v=NY4uCBK72MA",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-03 | Palace of Puzzles",
@@ -600,7 +816,10 @@
       "duration": 1826.325,
       "thumbnail": "t8-03.png",
       "video": "v8-03.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Sdya9KZixcM"
+      "youtube": "https://www.youtube.com/watch?v=Sdya9KZixcM",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-04 | Homestretch",
@@ -608,7 +827,10 @@
       "duration": 1084.565,
       "thumbnail": "t8-04.png",
       "video": "v8-04.mp4",
-      "youtube": "https://www.youtube.com/watch?v=fYzvtyhpGvs"
+      "youtube": "https://www.youtube.com/watch?v=fYzvtyhpGvs",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-05 | Boss Bros.",
@@ -616,7 +838,10 @@
       "duration": 1347.37,
       "thumbnail": "t8-05.png",
       "video": "v8-05.mp4",
-      "youtube": "https://www.youtube.com/watch?v=dm59VVKc_i4"
+      "youtube": "https://www.youtube.com/watch?v=dm59VVKc_i4",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-06 | Queen of the Climax",
@@ -624,7 +849,10 @@
       "duration": 3731.221,
       "thumbnail": "t8-06.png",
       "video": "v8-06.mp4",
-      "youtube": "https://www.youtube.com/watch?v=zHLYY5AWpkg"
+      "youtube": "https://www.youtube.com/watch?v=zHLYY5AWpkg",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-07 | Victory Lap",
@@ -632,7 +860,10 @@
       "duration": 2080.917,
       "thumbnail": "t8-07.png",
       "video": "v8-07.mp4",
-      "youtube": "https://www.youtube.com/watch?v=l0BKcNYJiSk"
+      "youtube": "https://www.youtube.com/watch?v=l0BKcNYJiSk",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-08 | Community Service",
@@ -640,7 +871,10 @@
       "duration": 5024.618,
       "thumbnail": "t8-08.png",
       "video": "v8-08.mp4",
-      "youtube": "https://www.youtube.com/watch?v=rG9NBewHNSI"
+      "youtube": "https://www.youtube.com/watch?v=rG9NBewHNSI",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-09 | Iron Chef Challenge",
@@ -648,7 +882,10 @@
       "duration": 1876.842,
       "thumbnail": "t8-09.png",
       "video": "v8-09.mp4",
-      "youtube": "https://www.youtube.com/watch?v=YyWJPrdxxLY"
+      "youtube": "https://www.youtube.com/watch?v=YyWJPrdxxLY",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-10 | Whacka's Revenge",
@@ -656,7 +893,10 @@
       "duration": 2326.57,
       "thumbnail": "t8-10.png",
       "video": "v8-10.mp4",
-      "youtube": "https://www.youtube.com/watch?v=NBIV0Lzbpcc"
+      "youtube": "https://www.youtube.com/watch?v=NBIV0Lzbpcc",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Chapter 8-11 | Remember the Champions",
@@ -664,7 +904,10 @@
       "duration": 2511.253,
       "thumbnail": "t8-11.png",
       "video": "v8-11.mp4",
-      "youtube": "https://www.youtube.com/watch?v=_FandhAH8N8"
+      "youtube": "https://www.youtube.com/watch?v=_FandhAH8N8",
+      "groups": [
+        "chapter8"
+      ]
     }
   ]
 }

@@ -4,10 +4,11 @@ import (
 	"bytes"
 	"fmt"
 	"local/data"
+	"local/data/heartgold"
 	sunshine_chapters "local/data/sunshine/chapters"
 	sunshine_shorts "local/data/sunshine/shorts"
-	ttyd_battle "local/data/ttyd/battles"
-	ttyd_chapter "local/data/ttyd/chapters"
+	ttyd_battles "local/data/ttyd/battles"
+	ttyd_chapters "local/data/ttyd/chapters"
 	"os/exec"
 	"path/filepath"
 	"strconv"
@@ -21,6 +22,10 @@ import (
 type Parser interface {
 	RawFiles(path string) ([]string, error)
 	ParseEntry(path string) (data.Entry, error)
+}
+
+type Upgrader interface {
+	UpgradeEntry(entry *data.Entry) error
 }
 
 //========================================
@@ -42,28 +47,76 @@ func (cmd *BuildCommand) Initialize() error {
 }
 
 func (cmd BuildCommand) Run(args []string) error {
-	src := cmd.Flags.String("src", "", "the source path")
 	name := cmd.Flags.String("name", "", "the name of the series")
+	upgrade := cmd.Flags.Bool("upgrade", false, "upgrade existing entries")
+	public := cmd.Flags.String("public", "", "the public path")
 	cmd.ParseFlags(args)
 
-	if *src == "" {
-		return errors.New("\"src\" cannot be empty")
-	}
 	if *name == "" {
 		return errors.New("\"name\" cannot be empty")
 	}
-
+	if !*upgrade && *public == "" {
+		return errors.New("\"public\" cannot be empty")
+	}
 	dataPath := filepath.Join("data", *name)
 
 	series, err := json.UnmarshalFile[data.Series](filepath.Join(dataPath, "index.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading index file")
 	}
-	style.BoldInfo.Println(dataPath)
+	style.BoldInfo.Println(*name)
 
-	parser := cmd.selectParser(*name)
+	if *upgrade {
+		return cmd.runUpgrade(filepath.Join(dataPath, series.Entries), *name)
+	} else {
+		return cmd.runBuild(dataPath, *name, series.Entries, *public)
+	}
+}
 
-	files, err := parser.RawFiles(dataPath)
+func (cmd BuildCommand) runUpgrade(path, name string) error {
+	upgrader, err := cmd.selectUpgrader(name)
+	if err != nil {
+		return err
+	}
+
+	entries, err := json.UnmarshalFile[data.Entries](path)
+	if err != nil {
+		return errors.Chain(err, "error loading entries")
+	}
+
+	for i := range entries.Entries {
+		if err := upgrader.UpgradeEntry(&entries.Entries[i]); err != nil {
+			return errors.Chain(err, "error upgrading entry")
+		}
+	}
+
+	err = json.MarshalFilePretty(entries, path, "  ")
+	if err != nil {
+		return errors.Chain(err, "error saving entries")
+	}
+
+	style.Success.Printf("Upgraded [%d] entries\n", len(entries.Entries))
+	return nil
+}
+
+func (cmd BuildCommand) selectUpgrader(series string) (Upgrader, error) {
+	switch series {
+	case "ttyd/chapters":
+		return ttyd_chapters.Upgrader{}, nil
+	case "ttyd/battles":
+		return ttyd_battles.Upgrader{}, nil
+	default:
+		return nil, errors.Format("no upgrader for series \"%s\"", series)
+	}
+}
+
+func (cmd BuildCommand) runBuild(path, name, entires, public string) error {
+	parser, err := cmd.selectParser(name)
+	if err != nil {
+		return err
+	}
+
+	files, err := parser.RawFiles(path)
 	if err != nil {
 		return errors.Chain(err, "error getting raw files")
 	}
@@ -81,9 +134,9 @@ func (cmd BuildCommand) Run(args []string) error {
 			return errors.Chain(err, "error parsing raw file")
 		}
 
-		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(*src, *name, entry.Video))
+		entry.Duration, err = cmd.calcVideoDuration(filepath.Join(public, name, entry.Video))
 		if err != nil {
-			style.Error.Printf(" -> [x] %s\n", filepath.Join(*name, entry.Video))
+			style.Error.Printf(" -> [x] %s\n", filepath.Join(name, entry.Video))
 		}
 		entries.TotalDuration += entry.Duration
 
@@ -91,7 +144,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	}
 	fmt.Println()
 
-	out := filepath.Join(dataPath, series.Entries)
+	out := filepath.Join(path, entires)
 
 	err = json.MarshalFilePretty(entries, out, "  ")
 	if err != nil {
@@ -102,18 +155,20 @@ func (cmd BuildCommand) Run(args []string) error {
 	return nil
 }
 
-func (cmd BuildCommand) selectParser(series string) Parser {
+func (cmd BuildCommand) selectParser(series string) (Parser, error) {
 	switch series {
 	case "sunshine/chapters":
-		return sunshine_chapters.Parser{}
+		return sunshine_chapters.Parser{}, nil
 	case "sunshine/shorts":
-		return sunshine_shorts.Parser{}
+		return sunshine_shorts.Parser{}, nil
 	case "ttyd/chapters":
-		return ttyd_chapter.Parser{}
+		return ttyd_chapters.Parser{}, nil
 	case "ttyd/battles":
-		return ttyd_battle.Parser{}
+		return ttyd_battles.Parser{}, nil
+	case "heartgold":
+		return heartgold.Parser{}, nil
 	default:
-		panic(fmt.Sprintf("no parser for series \"%s\"", series))
+		return nil, errors.Format("no parser for series \"%s\"", series)
 	}
 }
 

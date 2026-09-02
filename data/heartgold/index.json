@@ -5,5 +5,7 @@
     "entries": "entries.json",
     "theme": "heartgold",
     "background": "JohtoMap.jpg",
-    "thumbnail": "entries/t00.png"
+    "thumbnail": "entries/t00.png",
+    "youtube_playlist": "PL1jGCHHehRJZFGR0R3xqpqlpN1wDRTwY2",
+    "stylesheets": ["groups.css"]
 }

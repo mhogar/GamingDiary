@@ -82,6 +82,10 @@ func (cmd YouTubeCommand) Run(args []string) error {
 }
 
 func (cmd YouTubeCommand) loadVideoIdsPlaylist(yt *client.YTClient, ctx context.Context, playlist string) ([]string, error) {
+	if playlist == "" {
+		return nil, errors.New("playlist ID cannot be empty")
+	}
+
 	fmt.Printf("Finding videos for YouTube playlist %s", style.Bold.Sprint(playlist))
 
 	items, err := yt.GetItemsForPlaylist(ctx, playlist)

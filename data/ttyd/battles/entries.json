@@ -8,7 +8,8 @@
       "duration": 236.757,
       "thumbnail": "t0-1.png",
       "video": "v0-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=FCIJj_DpGu8"
+      "youtube": "https://www.youtube.com/watch?v=FCIJj_DpGu8",
+      "groups": null
     },
     {
       "title": "Battle 1-1 | Gold Fuzzy",
@@ -16,7 +17,10 @@
       "duration": 263.253,
       "thumbnail": "t1-1.png",
       "video": "v1-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=-JgWd2IN6bU"
+      "youtube": "https://www.youtube.com/watch?v=-JgWd2IN6bU",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Battle 1-2 | Red Bones",
@@ -24,7 +28,10 @@
       "duration": 285.33334,
       "thumbnail": "t1-2.png",
       "video": "v1-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=u6oS4o5x_I0"
+      "youtube": "https://www.youtube.com/watch?v=u6oS4o5x_I0",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Battle 1-3 | Hooktail (no FX, 10 HP)",
@@ -32,7 +39,10 @@
       "duration": 537.322,
       "thumbnail": "t1-3.png",
       "video": "v1-3.mp4",
-      "youtube": "https://www.youtube.com/watch?v=dLg5mpoyl0A"
+      "youtube": "https://www.youtube.com/watch?v=dLg5mpoyl0A",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Battle 1-4 | (Just) Gus",
@@ -40,7 +50,10 @@
       "duration": 199.21,
       "thumbnail": "t1-4.png",
       "video": "v1-4.mp4",
-      "youtube": "https://www.youtube.com/watch?v=xe157iule0k"
+      "youtube": "https://www.youtube.com/watch?v=xe157iule0k",
+      "groups": [
+        "chapter1"
+      ]
     },
     {
       "title": "Battle 2-1 | The Three Shadows",
@@ -48,7 +61,10 @@
       "duration": 492.202,
       "thumbnail": "t2-1.png",
       "video": "v2-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=IuVe9j-7KYo"
+      "youtube": "https://www.youtube.com/watch?v=IuVe9j-7KYo",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Battle 2-2 | Magnus von Grapple",
@@ -56,7 +72,10 @@
       "duration": 389.269,
       "thumbnail": "t2-2.png",
       "video": "v2-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=d2ijw7QLV5k"
+      "youtube": "https://www.youtube.com/watch?v=d2ijw7QLV5k",
+      "groups": [
+        "chapter2"
+      ]
     },
     {
       "title": "Battle 3-1 | Bowser (Glitz Pit)",
@@ -64,7 +83,10 @@
       "duration": 370.069,
       "thumbnail": "t3-1.png",
       "video": "v3-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=n9ZzU-_gYdk"
+      "youtube": "https://www.youtube.com/watch?v=n9ZzU-_gYdk",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Battle 3-2 | Rawk Hawk",
@@ -72,7 +94,10 @@
       "duration": 343.829,
       "thumbnail": "t3-2.png",
       "video": "v3-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=YE4YxZHQexk"
+      "youtube": "https://www.youtube.com/watch?v=YE4YxZHQexk",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Battle 3-3 | Macho Grubba",
@@ -80,7 +105,10 @@
       "duration": 597.952,
       "thumbnail": "t3-3.png",
       "video": "v3-3.mp4",
-      "youtube": "https://www.youtube.com/watch?v=Mh2Px-2wPmM"
+      "youtube": "https://www.youtube.com/watch?v=Mh2Px-2wPmM",
+      "groups": [
+        "chapter3"
+      ]
     },
     {
       "title": "Battle 4-1 | Atomic Boo",
@@ -88,7 +116,10 @@
       "duration": 254.848,
       "thumbnail": "t4-1.png",
       "video": "v4-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=6laZpLsw7eg"
+      "youtube": "https://www.youtube.com/watch?v=6laZpLsw7eg",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Battle 4-2 | ?????",
@@ -96,7 +127,10 @@
       "duration": 430.762,
       "thumbnail": "t4-2.png",
       "video": "v4-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=HgTwDgmBKek"
+      "youtube": "https://www.youtube.com/watch?v=HgTwDgmBKek",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Battle 4-3 | Doopliss",
@@ -104,7 +138,10 @@
       "duration": 511.125,
       "thumbnail": "t4-3.png",
       "video": "v4-3.mp4",
-      "youtube": "https://www.youtube.com/watch?v=36-sJJHytuM"
+      "youtube": "https://www.youtube.com/watch?v=36-sJJHytuM",
+      "groups": [
+        "chapter4"
+      ]
     },
     {
       "title": "Battle 5-1 | Cortez",
@@ -112,7 +149,10 @@
       "duration": 577.898,
       "thumbnail": "t5-1.png",
       "video": "v5-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=qVoyt26dyJE"
+      "youtube": "https://www.youtube.com/watch?v=qVoyt26dyJE",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Battle 5-2 | Lord Crump (Pirate Ship)",
@@ -120,7 +160,10 @@
       "duration": 440.618,
       "thumbnail": "t5-2.png",
       "video": "v5-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=524Bsk1YGvQ"
+      "youtube": "https://www.youtube.com/watch?v=524Bsk1YGvQ",
+      "groups": [
+        "chapter5"
+      ]
     },
     {
       "title": "Battle 6-1 | Smorg",
@@ -128,7 +171,10 @@
       "duration": 375.296,
       "thumbnail": "t6-1.png",
       "video": "v6-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=9gcvTaKo0Y8"
+      "youtube": "https://www.youtube.com/watch?v=9gcvTaKo0Y8",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Battle 6-2 | Bonetail",
@@ -136,7 +182,10 @@
       "duration": 1102.549,
       "thumbnail": "t6-2.png",
       "video": "v6-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=7KrcGG9zHc0"
+      "youtube": "https://www.youtube.com/watch?v=7KrcGG9zHc0",
+      "groups": [
+        "chapter6"
+      ]
     },
     {
       "title": "Battle 7-1 | Magnus Von Grapple 2.0",
@@ -144,7 +193,10 @@
       "duration": 504.81,
       "thumbnail": "t7-1.png",
       "video": "v7-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=hjC--ZJ_dFE"
+      "youtube": "https://www.youtube.com/watch?v=hjC--ZJ_dFE",
+      "groups": [
+        "chapter7"
+      ]
     },
     {
       "title": "Battle 8-1 | Dark Bones",
@@ -152,7 +204,10 @@
       "duration": 255.637,
       "thumbnail": "t8-1.png",
       "video": "v8-1.mp4",
-      "youtube": "https://www.youtube.com/watch?v=IgLwZ97m8tM"
+      "youtube": "https://www.youtube.com/watch?v=IgLwZ97m8tM",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-2 | Gloomtail",
@@ -160,7 +215,10 @@
       "duration": 558.186,
       "thumbnail": "t8-2.png",
       "video": "v8-2.mp4",
-      "youtube": "https://www.youtube.com/watch?v=BGCa1BRogR4"
+      "youtube": "https://www.youtube.com/watch?v=BGCa1BRogR4",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-3 | Two Shadows Plus Doopliss",
@@ -168,7 +226,10 @@
       "duration": 716.757,
       "thumbnail": "t8-3.png",
       "video": "v8-3.mp4",
-      "youtube": "https://www.youtube.com/watch?v=J5xDUQCwOd4"
+      "youtube": "https://www.youtube.com/watch?v=J5xDUQCwOd4",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-4 | Grodus",
@@ -176,7 +237,10 @@
       "duration": 654.442,
       "thumbnail": "t8-4.png",
       "video": "v8-4.mp4",
-      "youtube": "https://www.youtube.com/watch?v=QIxS6KETg0g"
+      "youtube": "https://www.youtube.com/watch?v=QIxS6KETg0g",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-5 | Bowser and Kammy Koopa",
@@ -184,7 +248,10 @@
       "duration": 595.114,
       "thumbnail": "t8-5.png",
       "video": "v8-5.mp4",
-      "youtube": "https://www.youtube.com/watch?v=7-a8Idfx6Ps"
+      "youtube": "https://www.youtube.com/watch?v=7-a8Idfx6Ps",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-6 | Shadow Queen",
@@ -192,7 +259,10 @@
       "duration": 1466.581,
       "thumbnail": "t8-6.png",
       "video": "v8-6.mp4",
-      "youtube": "https://www.youtube.com/watch?v=JzS8qC-qpTg"
+      "youtube": "https://www.youtube.com/watch?v=JzS8qC-qpTg",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-7 | Whacka",
@@ -200,7 +270,10 @@
       "duration": 696.085,
       "thumbnail": "t8-7.png",
       "video": "v8-7.mp4",
-      "youtube": "https://www.youtube.com/watch?v=ALDnsEog6Ng"
+      "youtube": "https://www.youtube.com/watch?v=ALDnsEog6Ng",
+      "groups": [
+        "chapter8"
+      ]
     },
     {
       "title": "Battle 8-8 | Prince Mush",
@@ -208,7 +281,10 @@
       "duration": 1134.144,
       "thumbnail": "t8-8.png",
       "video": "v8-8.mp4",
-      "youtube": "https://www.youtube.com/watch?v=pUGX7iSAXsY"
+      "youtube": "https://www.youtube.com/watch?v=pUGX7iSAXsY",
+      "groups": [
+        "chapter8"
+      ]
     }
   ]
 }
