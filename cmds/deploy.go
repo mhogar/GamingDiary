@@ -135,7 +135,7 @@ func (cmd DeployCommand) copyFileIfNewer(dest, src string, stats *DeployStats) {
 		return
 	}
 
-	style.Success.Printf("\rcopying %s -> %s ", src, dest)
+	style.Success.Printf("\r+ %s ", dest)
 
 	if err := file.Copy(dest, src); err != nil {
 		cmd.logger.Printf("[ERROR] %s -> %s\n", src, dest)

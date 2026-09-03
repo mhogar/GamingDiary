@@ -1,0 +1,10 @@
+{
+    "title": "(2.3) The Thousand-Year Shorts",
+    "dates": "Jun 5, 2024 - Oct 10, 2024",
+    "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
+    "entries": "entries.json",
+    "theme": "ttyd",
+    "background": "../door.png",
+    "thumbnail": "../chapters/t0-00.png",
+    "stylesheets": ["../groups.css"]
+}

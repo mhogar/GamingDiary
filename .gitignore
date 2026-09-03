@@ -8,8 +8,11 @@ logs/*
 
 data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
+
 data/ttyd/chapters/youtube/*
 data/ttyd/battles/youtube/*
+data/ttyd/shorts/meta/*
+
 data/heartgold/download/*
 
 public/heartgold/entries/*

@@ -9,6 +9,7 @@ import (
 	sunshine_shorts "local/data/sunshine/shorts"
 	ttyd_battles "local/data/ttyd/battles"
 	ttyd_chapters "local/data/ttyd/chapters"
+	ttyd_shorts "local/data/ttyd/shorts"
 	"os/exec"
 	"path/filepath"
 	"strconv"
@@ -165,6 +166,8 @@ func (cmd BuildCommand) selectParser(series string) (Parser, error) {
 		return ttyd_chapters.Parser{}, nil
 	case "ttyd/battles":
 		return ttyd_battles.Parser{}, nil
+	case "ttyd/shorts":
+		return ttyd_shorts.Parser{}, nil
 	case "heartgold":
 		return heartgold.Parser{}, nil
 	default:
