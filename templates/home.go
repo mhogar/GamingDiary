@@ -10,6 +10,7 @@ import (
 type HomePage struct {
 	VideoCount    int
 	TotalDuration string
+	StartDate     string
 	Series        []SeriesHeader
 }
 

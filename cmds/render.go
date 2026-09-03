@@ -7,6 +7,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
@@ -105,6 +106,10 @@ func (cmd RenderCommand) renderHomePage(dest string, data HomePageData) error {
 		VideoCount:    data.VideoCount,
 		TotalDuration: cmd.formatDurationHMS(data.TotalDuration),
 		Series:        make([]templates.SeriesHeader, len(data.Series)),
+	}
+
+	if len(data.Series) > 0 {
+		page.StartDate = strings.SplitN(data.Series[0].Dates, " -", 2)[0]
 	}
 
 	for i, header := range data.Series {
