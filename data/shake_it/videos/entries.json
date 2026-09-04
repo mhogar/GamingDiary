@@ -1,0 +1,512 @@
+{
+  "video_count": 46,
+  "total_duration": 49373.504,
+  "entries": [
+    {
+      "title": "Prologue | Aboard the Sweet Stuff",
+      "description": "Remembering Wario Land Shake It - Aboard the Sweet Stuff",
+      "duration": 855.637,
+      "thumbnail": "t01_prologue.png",
+      "video": "v01_prologue.mp4",
+      "youtube": "https://www.youtube.com/watch?v=v8O1SZTqyEA",
+      "groups": [
+        ""
+      ]
+    },
+    {
+      "title": "Area 1-1 | Stonecarving City",
+      "description": "Remembering Wario Land Shake It - Stonecarving City",
+      "duration": 703.253,
+      "thumbnail": "t02_a1-1.png",
+      "video": "v02_a1-1.mp4",
+      "youtube": "https://www.youtube.com/watch?v=xHBhrhST96s",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 1-2 | Whoopsy Desert",
+      "description": "Remembering Wario Land Shake It - Whoopsy Desert",
+      "duration": 833.92,
+      "thumbnail": "t03_a1-2.png",
+      "video": "v03_a1-2.mp4",
+      "youtube": "https://www.youtube.com/watch?v=sO-qPbVVFZE",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 1-3 | Foulwater Falls",
+      "description": "Remembering Wario Land Shake It - Foulwater Falls",
+      "duration": 1331.605,
+      "thumbnail": "t04_a1-3.png",
+      "video": "v04_a1-3.mp4",
+      "youtube": "https://www.youtube.com/watch?v=_Cqe5cBfFIs",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 1-4 | Run-Down Pyramid",
+      "description": "Remembering Wario Land Shake It - Run-Down Pyramid",
+      "duration": 1177.408,
+      "thumbnail": "t05_a1-4.png",
+      "video": "v05_a1-4.mp4",
+      "youtube": "https://www.youtube.com/watch?v=zWlQadhFUDs",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 1-5 | Rollanratl Battle",
+      "description": "Remembering Wario Land Shake It - Rollanratl Battle",
+      "duration": 391.466,
+      "thumbnail": "t06_a1-5.png",
+      "video": "v06_a1-5.mp4",
+      "youtube": "https://www.youtube.com/watch?v=N6npf0myLI8",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 2-1 | Just Plains",
+      "description": "Remembering Wario Land Shake It - Just Plains",
+      "duration": 715.37,
+      "thumbnail": "t07_a2-1.png",
+      "video": "v07_a2-1.mp4",
+      "youtube": "https://www.youtube.com/watch?v=n2h1pgVnmn4",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 2-2 | Wavy Waters",
+      "description": "Remembering Wario Land Shake It - Wavy Waters",
+      "duration": 820.565,
+      "thumbnail": "t08_a2-2.png",
+      "video": "v08_a2-2.mp4",
+      "youtube": "https://www.youtube.com/watch?v=CC2dU988wlw",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 2-3 | Mt. Lava Lava",
+      "description": "Remembering Wario Land Shake It - Mt. Lava Lava",
+      "duration": 1028.885,
+      "thumbnail": "t09_a2-3.png",
+      "video": "v09_a2-3.mp4",
+      "youtube": "https://www.youtube.com/watch?v=8pv9lrTUPps",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 2-4 | Savannah Valley",
+      "description": "Remembering Wario Land Shake It - Savannah Valley",
+      "duration": 1242.112,
+      "thumbnail": "t10_a2-4.png",
+      "video": "v10_a2-4.mp4",
+      "youtube": "https://www.youtube.com/watch?v=ImUwPMYf1rM",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 2-5 | Hot Roderick Race",
+      "description": "Remembering Wario Land Shake It - Hot Roderick Race",
+      "duration": 373.86667,
+      "thumbnail": "t11_a2-5.png",
+      "video": "v11_a2-5.mp4",
+      "youtube": "https://www.youtube.com/watch?v=IMtT7GPx7D0",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 3-1 | Wreck Train",
+      "description": "Remembering Wario Land Shake It - Wreck Train",
+      "duration": 767.168,
+      "thumbnail": "t12_a3-1.png",
+      "video": "v12_a3-1.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Z2ummnltuzw",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 3-2 | Stonetooth Cave",
+      "description": "Remembering Wario Land Shake It - Stonetooth Cave",
+      "duration": 1479.296,
+      "thumbnail": "t13_a3-2.png",
+      "video": "v13_a3-2.mp4",
+      "youtube": "https://www.youtube.com/watch?v=8194qaPAe1Q",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 3-3 | Its-all Mine",
+      "description": "Remembering Wario Land Shake It - Its-all Mine",
+      "duration": 1168.81,
+      "thumbnail": "t14_a3-3.png",
+      "video": "v14_a3-3.mp4",
+      "youtube": "https://www.youtube.com/watch?v=I255ITWkVlc",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 3-4 | Glittertown",
+      "description": "Remembering Wario Land Shake It - Glittertown",
+      "duration": 1003.605,
+      "thumbnail": "t15_a3-4.png",
+      "video": "v15_a3-4.mp4",
+      "youtube": "https://www.youtube.com/watch?v=nbj6oymTIlY",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 3-5 | Chortlebot Challenge",
+      "description": "Remembering Wario Land Shake It - Chortlebot Challenge",
+      "duration": 408.768,
+      "thumbnail": "t16_a3-5.png",
+      "video": "v16_a3-5.mp4",
+      "youtube": "https://www.youtube.com/watch?v=cfU5bFQuyH8",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 4-1 | Ropey Jungle",
+      "description": "Remembering Wario Land Shake It - Ropey Jungle",
+      "duration": 1099.2,
+      "thumbnail": "t17_a4-1.png",
+      "video": "v17_a4-1.mp4",
+      "youtube": "https://www.youtube.com/watch?v=dj--YTEg-Y0",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-2 | Windbreak Bay",
+      "description": "Remembering Wario Land Shake It - Windbreak Bay",
+      "duration": 1044.629,
+      "thumbnail": "t18_a4-2.png",
+      "video": "v18_a4-2.mp4",
+      "youtube": "https://www.youtube.com/watch?v=jMIAoY_Zf8s",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-3 | Airytale Castle",
+      "description": "Remembering Wario Land Shake It - Airytale Castle",
+      "duration": 1229.12,
+      "thumbnail": "t19_a4-3.png",
+      "video": "v19_a4-3.mp4",
+      "youtube": "https://www.youtube.com/watch?v=5cQggf98ttQ",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-4 | Soggybog River",
+      "description": "Remembering Wario Land Shake It - Soggybog River",
+      "duration": 1259.242,
+      "thumbnail": "t20_a4-4.png",
+      "video": "v20_a4-4.mp4",
+      "youtube": "https://www.youtube.com/watch?v=uEYYs9CuwZg",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-5 | Bloomsday Blowout",
+      "description": "Remembering Wario Land Shake It - Bloomsday Blowout",
+      "duration": 722.453,
+      "thumbnail": "t21_a4-5.png",
+      "video": "v21_a4-5.mp4",
+      "youtube": "https://www.youtube.com/watch?v=IVmfcmIzKzA",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 5-1 | Mount Bighill",
+      "description": "Remembering Wario Land Shake It - Mount Bighill",
+      "duration": 929.984,
+      "thumbnail": "t22_a5-1.png",
+      "video": "v22_a5-1.mp4",
+      "youtube": "https://www.youtube.com/watch?v=ass_6nhuuJQ",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-2 | Creep Blue Sea",
+      "description": "Remembering Wario Land Shake It - Creep Blue Sea",
+      "duration": 789.418,
+      "thumbnail": "t23_a5-2.png",
+      "video": "v23_a5-2.mp4",
+      "youtube": "https://www.youtube.com/watch?v=vLiocyt5vpY",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-3 | Slipshod Slopes",
+      "description": "Remembering Wario Land Shake It - Slipshod Slopes",
+      "duration": 1395.05,
+      "thumbnail": "t24_a5-3.png",
+      "video": "v24_a5-3.mp4",
+      "youtube": "https://www.youtube.com/watch?v=RzUgOtVVYww",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-4 | Bad Manor",
+      "description": "Remembering Wario Land Shake It - Bad Manor",
+      "duration": 823.509,
+      "thumbnail": "t25_a5-4.png",
+      "video": "v25_a5-4.mp4",
+      "youtube": "https://www.youtube.com/watch?v=6Qcpc-Pmiw0",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-5 | Large Fry Cook-Off",
+      "description": "Remembering Wario Land Shake It - Large Fry Cook-Off",
+      "duration": 480.49,
+      "thumbnail": "t26_a5-5.png",
+      "video": "v26_a5-5.mp4",
+      "youtube": "https://www.youtube.com/watch?v=4NtBkoxsDXk",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 6-1 | VS the Shake King",
+      "description": "Remembering Wario Land Shake It - VS the Shake King",
+      "duration": 915.52,
+      "thumbnail": "t27_a6-1.png",
+      "video": "v27_a6-1.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Ur-NPr9IMkg",
+      "groups": [
+        "area6"
+      ]
+    },
+    {
+      "title": "Area 1-6 | Disturbing Tomb",
+      "description": "Remembering Wario Land Shake It - Disturbing Tomb",
+      "duration": 1978.538,
+      "thumbnail": "t28_a1-6.png",
+      "video": "v28_a1-6.mp4",
+      "youtube": "https://www.youtube.com/watch?v=a5v_IiVyx6A",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 1-7 | Gurgle Gulch",
+      "description": "Remembering Wario Land Shake It - Gurgle Gulch",
+      "duration": 2320.234,
+      "thumbnail": "t29_a1-7.png",
+      "video": "v29_a1-7.mp4",
+      "youtube": "https://www.youtube.com/watch?v=pK6MXREwTfY",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 1-8 | [REMATCH] Rollanratl Battle",
+      "description": "Remembering Wario Land Shake It - [REMATCH] Rollanratl Battle",
+      "duration": 574.08,
+      "thumbnail": "t30_a1-8.png",
+      "video": "v30_a1-8.mp4",
+      "youtube": "https://www.youtube.com/watch?v=3PGV-_CxtQ4",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Area 3-6 | Neon City",
+      "description": "Remembering Wario Land Shake It - Neon City",
+      "duration": 1513.301,
+      "thumbnail": "t31_a3-6.png",
+      "video": "v31_a3-6.mp4",
+      "youtube": "https://www.youtube.com/watch?v=kF2ylXMjcRA",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 3-7 | Derailed Express",
+      "description": "Remembering Wario Land Shake It - Derailed Express",
+      "duration": 1317.29,
+      "thumbnail": "t32_a3-7.png",
+      "video": "v32_a3-7.mp4",
+      "youtube": "https://www.youtube.com/watch?v=C22hmq6nEYQ",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 3-8 | [REMATCH] Chortlebot Challenge",
+      "description": "Remembering Wario Land Shake It - [REMATCH] Chortlebot Challenge",
+      "duration": 1055.744,
+      "thumbnail": "t33_a3-8.png",
+      "video": "v33_a3-8.mp4",
+      "youtube": "https://www.youtube.com/watch?v=43qgqUQYiew",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Area 5-6 | Bamboozle Village",
+      "description": "Remembering Wario Land Shake It - Bamboozle Village",
+      "duration": 1449.216,
+      "thumbnail": "t34_a5-6.png",
+      "video": "v34_a5-6.mp4",
+      "youtube": "https://www.youtube.com/watch?v=uKU6joNLJNI",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-7 | Freezing Fields",
+      "description": "Remembering Wario Land Shake It - Freezing Fields",
+      "duration": 1686.378,
+      "thumbnail": "t35_a5-7.png",
+      "video": "v35_a5-7.mp4",
+      "youtube": "https://www.youtube.com/watch?v=N8l_LFK7K1w",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-8 | Boogie Mansion",
+      "description": "Remembering Wario Land Shake It - Boogie Mansion",
+      "duration": 1814.613,
+      "thumbnail": "t36_a5-8.png",
+      "video": "v36_a5-8.mp4",
+      "youtube": "https://www.youtube.com/watch?v=pX43rE2l6xQ",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 5-9 | [REMATCH] Large Fry Cook-Off",
+      "description": "Remembering Wario Land Shake It - [REMATCH] Large Fry Cook-Off",
+      "duration": 449.06668,
+      "thumbnail": "t37_a5-9.png",
+      "video": "v37_a5-9.mp4",
+      "youtube": "https://www.youtube.com/watch?v=6wxDfmZEeI8",
+      "groups": [
+        "area5"
+      ]
+    },
+    {
+      "title": "Area 2-6 | Sneak Peak",
+      "description": "Remembering Wario Land Shake It - Sneak Peak",
+      "duration": 1538.176,
+      "thumbnail": "t38_a2-6.png",
+      "video": "v38_a2-6.mp4",
+      "youtube": "https://www.youtube.com/watch?v=tH3qRHC2sIA",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 2-7 | Lowdown Depths",
+      "description": "Remembering Wario Land Shake It - Lowdown Depths",
+      "duration": 1435.2,
+      "thumbnail": "t39_a2-7.png",
+      "video": "v39_a2-7.mp4",
+      "youtube": "https://www.youtube.com/watch?v=xwz9xjpsAEk",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 2-8 | [REMATCH] Hot Roderick Race",
+      "description": "Remembering Wario Land Shake It - [REMATCH] Hot Roderick Race",
+      "duration": 646.314,
+      "thumbnail": "t40_a2-8.png",
+      "video": "v40_a2-8.mp4",
+      "youtube": "https://www.youtube.com/watch?v=-A7EjTlwPUs",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Area 4-6 | Launchpad Labyrinth",
+      "description": "Remembering Wario Land Shake It - Launchpad Labyrinth",
+      "duration": 1305.13,
+      "thumbnail": "t41_a4-6.png",
+      "video": "v41_a4-6.mp4",
+      "youtube": "https://www.youtube.com/watch?v=imLj0pQq_Jk",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-7 | Riverbloat Rapids",
+      "description": "Remembering Wario Land Shake It - Riverbloat Rapids",
+      "duration": 1662.08,
+      "thumbnail": "t42_a4-7.png",
+      "video": "v42_a4-7.mp4",
+      "youtube": "https://www.youtube.com/watch?v=SEJvtTp87Fo",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-8 | Prism Prison",
+      "description": "Remembering Wario Land Shake It - Prism Prison",
+      "duration": 1349.76,
+      "thumbnail": "t43_a4-8.png",
+      "video": "v43_a4-8.mp4",
+      "youtube": "https://www.youtube.com/watch?v=LtYXw09gUU4",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 4-9 | [REMATCH] Bloomsday Blowout",
+      "description": "Remembering Wario Land Shake It - [REMATCH] Bloomsday Blowout",
+      "duration": 594.496,
+      "thumbnail": "t44_a4-9.png",
+      "video": "v44_a4-9.mp4",
+      "youtube": "https://www.youtube.com/watch?v=_Z3O-cIFn48",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Area 6-2 | [REMATCH] VS the Shake King",
+      "description": "Remembering Wario Land Shake It - [REMATCH] VS the Shake King",
+      "duration": 1288.49,
+      "thumbnail": "t45_a6-2.png",
+      "video": "v45_a6-2.mp4",
+      "youtube": "https://www.youtube.com/watch?v=kUzQwuBB19g",
+      "groups": [
+        "area6"
+      ]
+    },
+    {
+      "title": "Epilogue | The EPICLOGUE Montage",
+      "description": "Remembering Wario Land Shake It - The EPICLOGUE Montage",
+      "duration": 405.056,
+      "thumbnail": "t46_epilogue.png",
+      "video": "v46_epilogue.mp4",
+      "youtube": "https://www.youtube.com/watch?v=SaKwavIcKLg",
+      "groups": [
+        ""
+      ]
+    }
+  ]
+}

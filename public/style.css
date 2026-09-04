@@ -138,6 +138,20 @@ a {
   color: rgb(176, 36, 186);
 }
 
+/* Shake-It Theme */
+
+.shake-it .series-color {
+  color: rgb(203, 183, 34);
+}
+
+.shake-it .entry {
+  background-color: rgb(251, 242, 198);
+}
+
+.shake-it .entry a {
+  color: rgb(227, 39, 254);
+}
+
 /* Heartgold Theme */
 
 .heartgold .series-color {

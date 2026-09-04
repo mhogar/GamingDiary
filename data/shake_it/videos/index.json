@@ -1,0 +1,10 @@
+{
+    "title": "(4) Wario Land Shake-It",
+    "dates": "Jan 18, 2025 - May 10, 2025",
+    "description": "Wario Land Shake It (2008) - Wii",
+    "entries": "entries.json",
+    "theme": "shake-it",
+    "background": "../globe.png",
+    "thumbnail": "t01.png",
+    "stylesheets": ["../groups.css"]
+}
