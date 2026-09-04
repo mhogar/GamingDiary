@@ -49,15 +49,12 @@ func (cmd *BuildCommand) Initialize() error {
 
 func (cmd BuildCommand) Run(args []string) error {
 	name := cmd.Flags.String("name", "", "the name of the series")
+	public := cmd.Flags.String("public", "public", "the public path")
 	upgrade := cmd.Flags.Bool("upgrade", false, "upgrade existing entries")
-	public := cmd.Flags.String("public", "", "the public path")
 	cmd.ParseFlags(args)
 
 	if *name == "" {
 		return errors.New("\"name\" cannot be empty")
-	}
-	if !*upgrade && *public == "" {
-		return errors.New("\"public\" cannot be empty")
 	}
 	dataPath := filepath.Join("data", *name)
 
