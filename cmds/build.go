@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"local/data"
 	"local/data/heartgold"
+	luigi_mansion_videos "local/data/luigi_mansion/videos"
 	sunshine_chapters "local/data/sunshine/chapters"
 	sunshine_shorts "local/data/sunshine/shorts"
 	ttyd_battles "local/data/ttyd/battles"
@@ -165,6 +166,8 @@ func (cmd BuildCommand) selectParser(series string) (Parser, error) {
 		return ttyd_battles.Parser{}, nil
 	case "ttyd/shorts":
 		return ttyd_shorts.Parser{}, nil
+	case "luigi_mansion/videos":
+		return luigi_mansion_videos.Parser{}, nil
 	case "heartgold":
 		return heartgold.Parser{}, nil
 	default:

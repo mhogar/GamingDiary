@@ -6,12 +6,18 @@ gamingdiary
 logs/*
 !logs/.keep
 
+*.kra~
+*.png~
+*.jpg~
+
 data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
 
 data/ttyd/chapters/youtube/*
 data/ttyd/battles/youtube/*
 data/ttyd/shorts/meta/*
+
+data/luigi_mansion/videos/meta/*
 
 data/heartgold/download/*
 

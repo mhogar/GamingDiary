@@ -1,0 +1,149 @@
+{
+  "video_count": 13,
+  "total_duration": 18113.105,
+  "entries": [
+    {
+      "title": "Entry 01 | Hello, Luigi! Welcome To My Hut!",
+      "description": "It's time begin the quintessential Nintendo spooky game! Let's join Luigi on his breakout adventure!",
+      "duration": 731.584,
+      "thumbnail": "t01.png",
+      "video": "v01.mp4",
+      "youtube": "https://www.youtube.com/watch?v=1j4kggnxOjw",
+      "groups": [
+        ""
+      ]
+    },
+    {
+      "title": "Entry 02 | Tantrum Of Terror",
+      "description": "Today we take on Area 1! We've got ghosts galore, but be careful not to wake the baby...",
+      "duration": 1796.032,
+      "thumbnail": "t02.png",
+      "video": "v02.mp4",
+      "youtube": "https://www.youtube.com/watch?v=dVstrib6_Ts",
+      "groups": [
+        "area1"
+      ]
+    },
+    {
+      "title": "Entry 03 | Big Boo's Hunt",
+      "description": "Today we begin Area 2! Mush more expansive then the first area, and many more buttons to press...",
+      "duration": 1593.109,
+      "thumbnail": "t03.png",
+      "video": "v03.mp4",
+      "youtube": "https://www.youtube.com/watch?v=UAFBLcOPaOc",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Entry 04 | The Seer, The Servant, And The Soloist",
+      "description": "Today we explore deeper into Area 2! More ghosts, more portraits, and more secrets!",
+      "duration": 1538.176,
+      "thumbnail": "t04.png",
+      "video": "v04.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Odz6El0GhLw",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Entry 05 | Spooky Scary Skeletons",
+      "description": "Today we finish Area 2 and take on the area boss!",
+      "duration": 1576.362,
+      "thumbnail": "t05.png",
+      "video": "v05.mp4",
+      "youtube": "https://www.youtube.com/watch?v=Up7c12IMzaI",
+      "groups": [
+        "area2"
+      ]
+    },
+    {
+      "title": "Entry 06 | What Lies Beneath The Well",
+      "description": "Today we delve into Area 3 and discover a very troubling secret...",
+      "duration": 1447.4667,
+      "thumbnail": "t06.png",
+      "video": "v06.mp4",
+      "youtube": "https://www.youtube.com/watch?v=6y_5HtIqaDU",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Entry 07 | Prop Hunt",
+      "description": "Today we search the bulk of Area 3 for the remainder of Mario's missing items!",
+      "duration": 2339.776,
+      "thumbnail": "t07.png",
+      "video": "v07.mp4",
+      "youtube": "https://www.youtube.com/watch?v=ECvgQs4nmm8",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Entry 08 | United They Stand",
+      "description": "Today we take on the boss of Area 3! And they are quite infamous...",
+      "duration": 1297.258,
+      "thumbnail": "t08.png",
+      "video": "v08.mp4",
+      "youtube": "https://www.youtube.com/watch?v=TH-IAe69xtA",
+      "groups": [
+        "area3"
+      ]
+    },
+    {
+      "title": "Entry 09 | Chaos In The Dark",
+      "description": "Today we (attempt) to start on Area 4 but the weather has other plans...",
+      "duration": 1283.946,
+      "thumbnail": "t09.png",
+      "video": "v09.mp4",
+      "youtube": "https://www.youtube.com/watch?v=LZ1SzmCUwEQ",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Entry 10 | Roof Party",
+      "description": "Today we start on Area 4 proper climb all the way to the roof!",
+      "duration": 1251.093,
+      "thumbnail": "t10.png",
+      "video": "v10.mp4",
+      "youtube": "https://www.youtube.com/watch?v=IT48CXpukvM",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Entry 11 | Ceramics And Canadians",
+      "description": "Today we trudge through Area 4, it's cold underbelly, and catch every boo along the way!",
+      "duration": 1570.922,
+      "thumbnail": "t11.png",
+      "video": "v11.mp4",
+      "youtube": "https://www.youtube.com/watch?v=tstIAfrYfWI",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Entry 12 | Till Death Do We Art",
+      "description": "Today we take on Area 4's boss and collect the 50th and final boo! Just remember to collect that diamond...",
+      "duration": 626.13336,
+      "thumbnail": "t12.png",
+      "video": "v12.mp4",
+      "youtube": "https://www.youtube.com/watch?v=tIBSI_qW8wc",
+      "groups": [
+        "area4"
+      ]
+    },
+    {
+      "title": "Entry 13 | King Boo Down Below",
+      "description": "Today we take on King Boo at long last and finish the game!",
+      "duration": 1061.248,
+      "thumbnail": "t13.png",
+      "video": "v13.mp4",
+      "youtube": "https://www.youtube.com/watch?v=s1ikbDXD9kY",
+      "groups": [
+        "area5"
+      ]
+    }
+  ]
+}

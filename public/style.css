@@ -2,7 +2,7 @@ body {
   font-family: Roboto, sans;
   letter-spacing: .5px;
   padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 10rem;
 
   background-image: url(background.png);
   background-attachment: fixed;
@@ -122,6 +122,20 @@ a {
 
 .ttyd .entry a {
   color: red;
+}
+
+/* Luigi's Mansion Theme */
+
+.luigi-mansion .series-color {
+  color: rgb(55, 141, 24);
+}
+
+.luigi-mansion .entry {
+  background-color: rgb(114, 225, 137);
+}
+
+.luigi-mansion .entry a {
+  color: rgb(176, 36, 186);
 }
 
 /* Heartgold Theme */

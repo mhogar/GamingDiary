@@ -1,0 +1,10 @@
+{
+    "title": "(3.1) Luigi's Spooky Story",
+    "dates": "Oct 31, 2024 - Dec 10, 2024",
+    "description": "Luigi's Mansion (2001) - GCN",
+    "entries": "entries.json",
+    "theme": "luigi-mansion",
+    "background": "../mansion.png",
+    "thumbnail": "t01.png",
+    "stylesheets": ["../style.css"]
+}

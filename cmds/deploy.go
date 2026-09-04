@@ -40,16 +40,16 @@ func (cmd *DeployCommand) Initialize() error {
 }
 
 func (cmd DeployCommand) Run(args []string) error {
-	dest := cmd.Flags.String("dest", "", "the destination path")
+	public := cmd.Flags.String("public", "", "the public path")
 	cmd.ParseFlags(args)
 
-	if *dest == "" {
-		return errors.New("\"dest\" cannot be empty")
+	if *public == "" {
+		return errors.New("\"public\" cannot be empty")
 	}
 
-	err := os.MkdirAll(*dest, 0755)
+	err := os.MkdirAll(*public, 0755)
 	if err != nil {
-		return errors.Chain(err, "error creating dest directory")
+		return errors.Chain(err, "error creating public directory")
 	}
 
 	f, err := os.Create(fmt.Sprintf("logs/deploy-%s.txt", time.Now().Format(time.DateTime)))
@@ -65,10 +65,10 @@ func (cmd DeployCommand) Run(args []string) error {
 	}
 
 	style.Bold.Println("root")
-	cmd.copyFiles(*dest, "public", []string{"index.html", "style.css", "script.js", "background.png"})
+	cmd.copyFiles(*public, "public", []string{"index.html", "style.css", "script.js", "background.png"})
 
 	for _, series := range root.Series {
-		err := cmd.copySeries(*dest, series)
+		err := cmd.copySeries(*public, series)
 		if err != nil {
 			return errors.Chain(err, fmt.Sprintf("error copying \"%s\" files", series))
 		}
