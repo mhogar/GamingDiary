@@ -2,7 +2,7 @@ package shake_it_videos
 
 import (
 	"fmt"
-	"local/data"
+	"gamingdiary/data"
 	"os"
 	"path/filepath"
 	"regexp"

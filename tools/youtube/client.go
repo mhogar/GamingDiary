@@ -2,7 +2,7 @@ package youtube
 
 import (
 	"context"
-	"local/tools/oauth"
+	"gamingdiary/tools/oauth"
 	"os"
 
 	"github.com/binarysoupdev/go-extensions/errors"

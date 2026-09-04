@@ -35,5 +35,5 @@ func (s tokenServer) Close() {
 }
 
 func (s tokenServer) URL() string {
-	return "http://localhost" + s.server.Addr
+	return "http://gamingdiaryhost" + s.server.Addr
 }

@@ -2,7 +2,7 @@ package heartgold
 
 import (
 	"fmt"
-	"local/data"
+	"gamingdiary/data"
 	"os"
 	"path/filepath"
 	"regexp"

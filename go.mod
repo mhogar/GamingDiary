@@ -1,4 +1,4 @@
-module local
+module gamingdiary
 
 go 1.25.0
 

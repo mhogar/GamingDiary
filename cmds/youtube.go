@@ -3,8 +3,8 @@ package cmds
 import (
 	"context"
 	"fmt"
-	"local/data"
-	client "local/tools/youtube"
+	"gamingdiary/data"
+	client "gamingdiary/tools/youtube"
 	"os"
 	"path/filepath"
 	"strconv"

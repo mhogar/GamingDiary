@@ -2,8 +2,8 @@ package cmds
 
 import (
 	"fmt"
-	"local/data"
-	"local/templates"
+	"gamingdiary/data"
+	"gamingdiary/templates"
 	"math"
 	"os"
 	"path/filepath"

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"local/cmds"
+	"gamingdiary/cmds"
 	"os"
 
 	"github.com/binarysoupdev/go-commando/command"

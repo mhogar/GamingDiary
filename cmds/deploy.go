@@ -2,7 +2,7 @@ package cmds
 
 import (
 	"fmt"
-	"local/data"
+	"gamingdiary/data"
 	"log"
 	"os"
 	"path/filepath"
