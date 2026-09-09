@@ -23,5 +23,5 @@ data/shake_it/videos/youtube/*
 
 data/heartgold/download/*
 
-public/heartgold/entries/*
-!public/heartgold/entries/t00.png
+series/heartgold/entries/*
+!series/heartgold/entries/t00.png
