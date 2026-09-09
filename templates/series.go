@@ -37,5 +37,6 @@ func RenderSeriesPage(path string, data SeriesPage) error {
 	}
 	defer file.Close()
 
+	file.WriteString(AUTO_GENERATED_HEADER)
 	return t.Execute(file, data)
 }

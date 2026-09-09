@@ -7,6 +7,8 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
+const AUTO_GENERATED_HEADER = "<!-- AUTO GENERATED DO NOT EDIT -->\n"
+
 type HomePage struct {
 	VideoCount    int
 	TotalDuration string
@@ -34,5 +36,6 @@ func RenderHomePage(path string, data HomePage) error {
 	}
 	defer file.Close()
 
+	file.WriteString(AUTO_GENERATED_HEADER)
 	return t.Execute(file, data)
 }

@@ -51,10 +51,10 @@ func (cmd *RenderCommand) Initialize() error {
 }
 
 func (cmd RenderCommand) Run(args []string) error {
-	dest := cmd.Flags.String("dest", "public", "the destination path")
+	dest := cmd.Flags.String("dest", "series", "the destination path")
 	cmd.ParseFlags(args)
 
-	root, err := json.UnmarshalFile[data.Root]("data/index.json")
+	root, err := json.UnmarshalFile[data.Root]("series/root.json")
 	if err != nil {
 		return errors.Chain(err, "error reading root file")
 	}
