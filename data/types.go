@@ -30,6 +30,7 @@ type Entry struct {
 	Duration    float32  `json:"duration"`
 	Thumbnail   string   `json:"thumbnail"`
 	Video       string   `json:"video"`
-	Youtube     string   `json:"youtube"`
+	Youtube     string   `json:"youtube,omitempty"` // Deprecated
+	YoutubeId   string   `json:"youtube_id"`
 	Groups      []string `json:"groups"`
 }

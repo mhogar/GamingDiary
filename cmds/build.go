@@ -7,7 +7,6 @@ import (
 	"gamingdiary/data/heartgold"
 	luigi_mansion_videos "gamingdiary/data/luigi_mansion/videos"
 	shake_it_videos "gamingdiary/data/shake_it/videos"
-	sunshine_chapters "gamingdiary/data/sunshine/chapters"
 	sunshine_shorts "gamingdiary/data/sunshine/shorts"
 	ttyd_battles "gamingdiary/data/ttyd/battles"
 	ttyd_chapters "gamingdiary/data/ttyd/chapters"
@@ -157,8 +156,6 @@ func (cmd BuildCommand) runBuild(path, name, entires, public string) error {
 
 func (cmd BuildCommand) selectParser(series string) (Parser, error) {
 	switch series {
-	case "sunshine/chapters":
-		return sunshine_chapters.Parser{}, nil
 	case "sunshine/shorts":
 		return sunshine_shorts.Parser{}, nil
 	case "ttyd/chapters":

@@ -47,9 +47,12 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	}
 	style.BoldInfo.Println(*series)
 
-	var videos []*youtube.Video
-	var err error
+	s, err := cmd.selectSeries(*series)
+	if err != nil {
+		return err
+	}
 
+	var videos []*youtube.Video
 	if *cache != "" {
 		videos, err = cmd.loadCachedData(*cache)
 	} else {
@@ -59,13 +62,22 @@ func (cmd YoutubeCommand) Run(args []string) error {
 		return err
 	}
 
-	if err := cmd.createEntries(filepath.Join("series", *series), videos); err != nil {
+	if err := cmd.createEntries(filepath.Join("series", *series), s, videos); err != nil {
 		return errors.Chain(err, "error creating entires")
 	}
 	return nil
 }
 
-func (cmd YoutubeCommand) createEntries(path string, videos []*youtube.Video) error {
+func (cmd YoutubeCommand) selectSeries(name string) (yt_data.Series, error) {
+	switch name {
+	case "sunshine/chapters":
+		return yt_data.SunshineChapters{}, nil
+	default:
+		return nil, errors.Format("invalid series \"%s\"", name)
+	}
+}
+
+func (cmd YoutubeCommand) createEntries(path string, series yt_data.Series, videos []*youtube.Video) error {
 	var errs errors.Errors
 
 	// TODO: sort by publish date
@@ -74,7 +86,7 @@ func (cmd YoutubeCommand) createEntries(path string, videos []*youtube.Video) er
 	for i, video := range videos {
 		index := fmt.Sprintf("%02d", i)
 
-		if err := cmd.createEntry(filepath.Join(path, fmt.Sprintf("entry%s.json", index)), video); err != nil {
+		if err := cmd.createEntry(filepath.Join(path, fmt.Sprintf("entry%s.json", index)), index, series, video); err != nil {
 			errs.Add(errors.Format("[%s] %s", index, err))
 		}
 	}
@@ -82,19 +94,21 @@ func (cmd YoutubeCommand) createEntries(path string, videos []*youtube.Video) er
 	return errs.Collapse("\n  ")
 }
 
-func (cmd YoutubeCommand) createEntry(path string, video *youtube.Video) error {
+func (cmd YoutubeCommand) createEntry(path, index string, series yt_data.Series, video *youtube.Video) error {
 	duration, err := cmd.parseDuration(video.ContentDetails.Duration)
 	if err != nil {
 		return err
 	}
 
 	entry := data.Entry{
-		Date:     video.Snippet.PublishedAt,
-		Duration: float32(duration),
-		Youtube:  video.Id,
+		Date:      video.Snippet.PublishedAt,
+		Duration:  float32(duration),
+		YoutubeId: video.Id,
 	}
 
-	//TODO: parse from series
+	if err := series.BuildEntry(index, video, &entry); err != nil {
+		return err
+	}
 
 	if err := json.MarshalFilePretty(entry, path, "    "); err != nil {
 		return errors.Chain(err, "error saving entry file")
