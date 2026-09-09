@@ -1,0 +1,11 @@
+{
+    "title": "(1) The Sunshine Story",
+    "dates": "May 27, 2024 - Jun 24, 2024",
+    "description": "Super Mario Sunshine (2002) - GCN/Switch",
+    "theme": "sunshine",
+    "background": "isle_delfino.jpg",
+    "thumbnail": "chapters/t00.png",
+    "sub_series": {
+        "series": "chapters"
+    }
+}

@@ -1,12 +1,5 @@
 {
     "series": [
-        "sunshine/chapters", 
-        "sunshine/shorts", 
-        "ttyd/chapters", 
-        "ttyd/battles",
-        "ttyd/shorts",
-        "luigi_mansion/videos",
-        "shake_it/videos",
-        "heartgold"
+        "sunshine"
     ]
 }

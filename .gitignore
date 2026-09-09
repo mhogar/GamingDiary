@@ -10,6 +10,8 @@ logs/*
 *.png~
 *.jpg~
 
+youtube/*
+
 data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
 
