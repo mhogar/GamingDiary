@@ -74,13 +74,13 @@ func (yt YTClient) GetItemsForPlaylist(ctx context.Context, id string) ([]*youtu
 	return items, nil
 }
 
-func (yt YTClient) GetVideos(ctx context.Context, ids ...string) ([]*youtube.Video, error) {
+func (yt YTClient) GetVideos(ctx context.Context, part []string, ids ...string) ([]*youtube.Video, error) {
 	videos := []*youtube.Video{}
 
 	for {
 		min := min(len(ids), MAX_VIDEO_QUERY)
 
-		err := yt.service.Videos.List([]string{"snippet", "contentDetails"}).Id(ids[0:min]...).Pages(ctx, func(res *youtube.VideoListResponse) error {
+		err := yt.service.Videos.List(part).Id(ids[0:min]...).Pages(ctx, func(res *youtube.VideoListResponse) error {
 			videos = append(videos, res.Items...)
 			return nil
 		})

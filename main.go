@@ -15,7 +15,7 @@ func main() {
 		cmds.NewRenameCommand(),
 		cmds.NewBuildCommand(),
 		cmds.NewDeployCommand(),
-		cmds.NewYouTubeCommand(),
+		cmds.NewYoutubeCommand(),
 	)
 
 	if len(os.Args) < 2 {

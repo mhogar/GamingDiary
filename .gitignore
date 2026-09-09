@@ -11,6 +11,7 @@ logs/*
 *.jpg~
 
 youtube/*
+!youtube/.keep
 
 data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
