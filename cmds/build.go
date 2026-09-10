@@ -34,23 +34,23 @@ type SeriesHeaderData struct {
 
 //=======================================
 
-type RenderCommand struct {
+type BuildCommand struct {
 	command.CommandBase
 	command.FlagCommand
 }
 
-func NewRenderCommand() *RenderCommand {
-	return &RenderCommand{
-		CommandBase: command.NewCommandBase("render", "render the template"),
+func NewBuildCommand() *BuildCommand {
+	return &BuildCommand{
+		CommandBase: command.NewCommandBase("build", "build the app from the templates"),
 	}
 }
 
-func (cmd *RenderCommand) Initialize() error {
+func (cmd *BuildCommand) Initialize() error {
 	cmd.InitFlagSet(cmd.Name, cmd.Description)
 	return nil
 }
 
-func (cmd RenderCommand) Run(args []string) error {
+func (cmd BuildCommand) Run(args []string) error {
 	dest := cmd.Flags.String("dest", "series", "the destination path")
 	cmd.ParseFlags(args)
 
@@ -101,7 +101,7 @@ func (cmd RenderCommand) Run(args []string) error {
 	return cmd.renderHomePage(*dest, homePage)
 }
 
-func (cmd RenderCommand) renderHomePage(dest string, data HomePageData) error {
+func (cmd BuildCommand) renderHomePage(dest string, data HomePageData) error {
 	page := templates.HomePage{
 		VideoCount:    data.VideoCount,
 		TotalDuration: cmd.formatDurationHMS(data.TotalDuration),
@@ -136,7 +136,7 @@ func (cmd RenderCommand) renderHomePage(dest string, data HomePageData) error {
 	return nil
 }
 
-func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry, resourcePath, public string) error {
+func (cmd *BuildCommand) renderSeries(series data.Series, entires []data.Entry, resourcePath, public string) error {
 	page := templates.SeriesPage{
 		Title:        series.Title,
 		Dates:        series.Dates,
@@ -176,12 +176,12 @@ func (cmd *RenderCommand) renderSeries(series data.Series, entires []data.Entry,
 	return nil
 }
 
-func (RenderCommand) formatDurationTimestamp(duration float32) string {
+func (BuildCommand) formatDurationTimestamp(duration float32) string {
 	d := int(math.Round(float64(duration)))
 	return fmt.Sprintf("%02d:%02d:%02d", d/(60*60), (d/60)%60, d%60)
 }
 
-func (RenderCommand) formatDurationHMS(duration float32) string {
+func (BuildCommand) formatDurationHMS(duration float32) string {
 	d := int(math.Round(float64(duration)))
 	return fmt.Sprintf("%dh %dm %ds", d/(60*60), (d/60)%60, d%60)
 }
