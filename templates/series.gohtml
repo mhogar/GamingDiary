@@ -19,10 +19,10 @@
           <div class="grid-container">
             <img src="{{.Thumbnail}}" width="100%" onerror="this.onerror=null; this.src='{{.DefaultThumbnail}}';"/>
             <div class="entry-body">
-              <p><a class="video-link" href="{{.Video}}" target="_blank">Play Video</a></p>
+              <p class="card-header"><a href="{{.Video}}" target="_blank">Play Video</a></p>
               <p>[{{.Duration}}]</p>
               <hr />
-              <p><a class="youtube-link" href="{{.Youtube}}" target="_blank">{{.Youtube}}</a></p>
+              <p class="youtube-link"><a href="{{.Youtube}}" target="_blank">{{.Youtube}}</a></p>
               <p>{{.Description}}</p>
             </div>
           </div>

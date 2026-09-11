@@ -6,6 +6,7 @@
     "background": "isle_delfino.jpg",
     "thumbnail": "chapters/t00.png",
     "sub_series": {
-        "series": "chapters"
+        "series": "chapters",
+        "shorts": "shorts"
     }
 }
