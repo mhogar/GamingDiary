@@ -182,6 +182,7 @@ func (cmd *BuildCommand) renderSubSeries(series data.Series, path, public string
 			Title:            entry.Title,
 			Description:      entry.Description,
 			Duration:         cmd.formatDurationTimestamp(entry.Duration),
+			Date:             entry.Date,
 			Thumbnail:        entry.Thumbnail,
 			DefaultThumbnail: filepath.Join("..", series.Thumbnail),
 			Video:            entry.Video,

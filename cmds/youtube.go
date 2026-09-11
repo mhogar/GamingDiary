@@ -100,8 +100,13 @@ func (cmd YoutubeCommand) createEntry(path, index string, series yt_data.Series,
 		return err
 	}
 
+	date, err := time.Parse(time.RFC3339, video.Snippet.PublishedAt)
+	if err != nil {
+		return errors.Chain(err, "error parsing date")
+	}
+
 	entry := data.Entry{
-		Date:      video.Snippet.PublishedAt,
+		Date:      date.Format(data.ENTRY_DATE_FORMAT),
 		Duration:  float32(duration),
 		YoutubeId: video.Id,
 	}

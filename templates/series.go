@@ -14,6 +14,7 @@ type Entry struct {
 	Title            string
 	Description      string
 	Duration         string
+	Date             string
 	Thumbnail        string
 	DefaultThumbnail string
 	Video            string
