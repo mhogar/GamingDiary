@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gamingdiary/data"
 	"gamingdiary/templates"
+	"gamingdiary/util"
 	"math"
 	"os"
 	"path/filepath"
@@ -30,7 +31,7 @@ type SeriesHeaderData struct {
 	TotalDuration float32
 	Thumbnail     string
 	Theme         string
-	SubSeries     map[string]string
+	SubSeries     []data.SubSeries
 }
 
 //=======================================
@@ -88,15 +89,13 @@ func (cmd BuildCommand) Run(args []string) error {
 			//TotalDuration: entries.TotalDuration,
 			Thumbnail: series.Thumbnail,
 			Theme:     series.Theme,
-			SubSeries: map[string]string{},
+			SubSeries: series.SubSeries,
 		}
 		//homePage.VideoCount += entries.VideoCount
 		//homePage.TotalDuration += entries.TotalDuration
 
-		for key, dir := range series.SubSeries {
-			header.SubSeries[data.Capitalize(key)] = filepath.Join(name, dir, "index.html")
-
-			if err := cmd.renderSubSeries(series, filepath.Join(seriesPath, dir), filepath.Join(*dest, name, dir)); err != nil {
+		for _, subSeries := range series.SubSeries {
+			if err := cmd.renderSubSeries(series, filepath.Join(seriesPath, subSeries.Path), filepath.Join(*dest, name, subSeries.Path)); err != nil {
 				return errors.ChainFormat(err, "error rendering series \"%s\"", name)
 			}
 		}
@@ -119,15 +118,25 @@ func (cmd BuildCommand) renderHomePage(dest string, data HomePageData) error {
 	}
 
 	for i, header := range data.Series {
+		links := make([]templates.SubSeriesLink, len(header.SubSeries))
+		for i, subSeries := range header.SubSeries {
+			links[i] = templates.SubSeriesLink{
+				Title:     util.Capitalize(subSeries.Title),
+				Link:      filepath.Join(header.Path, subSeries.Path, "index.html"),
+				Separator: " | ",
+			}
+		}
+		links[len(links)-1].Separator = ""
+
 		page.Series[i] = templates.SeriesHeader{
-			Title:         fmt.Sprintf("(%d) %s", i+1, header.Title),
-			Dates:         header.Dates,
-			Description:   header.Description,
-			VideoCount:    header.VideoCount,
-			TotalDuration: cmd.formatDurationTimestamp(header.TotalDuration),
-			Thumbnail:     filepath.Join(header.Path, header.Thumbnail),
-			SubSeries:     header.SubSeries,
-			Theme:         header.Theme,
+			Title:          fmt.Sprintf("(%d) %s", i+1, header.Title),
+			Dates:          header.Dates,
+			Description:    header.Description,
+			VideoCount:     header.VideoCount,
+			TotalDuration:  cmd.formatDurationTimestamp(header.TotalDuration),
+			Thumbnail:      filepath.Join(header.Path, header.Thumbnail),
+			SubSeriesLinks: links,
+			Theme:          header.Theme,
 		}
 	}
 

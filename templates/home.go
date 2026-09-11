@@ -8,14 +8,20 @@ type HomePage struct {
 }
 
 type SeriesHeader struct {
-	Title         string
-	Dates         string
-	Description   string
-	VideoCount    int
-	TotalDuration string
-	Thumbnail     string
-	SubSeries     map[string]string
-	Theme         string
+	Title          string
+	Dates          string
+	Description    string
+	VideoCount     int
+	TotalDuration  string
+	Thumbnail      string
+	SubSeriesLinks []SubSeriesLink
+	Theme          string
+}
+
+type SubSeriesLink struct {
+	Title     string
+	Link      string
+	Separator string
 }
 
 func RenderHomePage(path string, data HomePage) error {

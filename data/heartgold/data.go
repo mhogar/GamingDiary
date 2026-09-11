@@ -3,6 +3,7 @@ package heartgold
 import (
 	"fmt"
 	"gamingdiary/data"
+	"gamingdiary/util"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -36,7 +37,7 @@ func (p Parser) ParseEntry(path string) (data.Entry, error) {
 	title := strings.SplitN(lines[2], " | ", 2)
 
 	return data.Entry{
-		Title:       fmt.Sprintf("Entry %s | %s", index, data.Capitalize(title[0])),
+		Title:       fmt.Sprintf("Entry %s | %s", index, util.Capitalize(title[0])),
 		Description: lines[7],
 		Thumbnail:   fmt.Sprintf("entries/t%s.png", index),
 		Video:       fmt.Sprintf("entries/v%s.mp4", index),

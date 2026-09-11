@@ -3,6 +3,7 @@ package shake_it_videos
 import (
 	"fmt"
 	"gamingdiary/data"
+	"gamingdiary/util"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -48,7 +49,7 @@ func (p Parser) ParseEntry(path string) (data.Entry, error) {
 func (Parser) buildAreaTitle(area string) string {
 	tokens := strings.SplitN(area, "-", 2)
 	if len(tokens) < 2 {
-		return data.Capitalize(area)
+		return util.Capitalize(area)
 	}
 	return fmt.Sprintf("Area %s", area[1:])
 }

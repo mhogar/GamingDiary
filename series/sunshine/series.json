@@ -5,8 +5,14 @@
     "theme": "sunshine",
     "background": "isle_delfino.jpg",
     "thumbnail": "chapters/t00.png",
-    "sub_series": {
-        "series": "chapters",
-        "shorts": "shorts"
-    }
+    "sub_series": [
+        {
+            "title": "series",
+            "path": "chapters"
+        },
+        {
+            "title": "shorts",
+            "path": "shorts"
+        }
+    ]
 }
