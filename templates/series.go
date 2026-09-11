@@ -21,6 +21,7 @@ type Entry struct {
 	Video            string
 	Youtube          string
 	Classes          []string
+	Local            bool
 }
 
 func RenderSeriesPage(path string, data SeriesPage) error {

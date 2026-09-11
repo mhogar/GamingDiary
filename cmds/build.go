@@ -47,6 +47,8 @@ type SubSeriesStats struct {
 type BuildCommand struct {
 	command.CommandBase
 	command.FlagCommand
+
+	local bool
 }
 
 func NewBuildCommand() *BuildCommand {
@@ -63,6 +65,7 @@ func (cmd *BuildCommand) Initialize() error {
 func (cmd BuildCommand) Run(args []string) error {
 	//series := cmd.Flags.String("series", "", "name of the series")
 	dest := cmd.Flags.String("dest", "series", "the destination path")
+	cmd.Flags.BoolVar(&cmd.local, "local", false, "build using local thumbnails and videos")
 	cmd.ParseFlags(args)
 
 	// if *series == "" {
@@ -204,8 +207,9 @@ func (cmd *BuildCommand) renderSubSeries(series data.Series, subSeries data.SubS
 			Thumbnail:        entry.Thumbnail,
 			DefaultThumbnail: filepath.Join("..", series.Thumbnail),
 			Video:            entry.Video,
-			Youtube:          fmt.Sprintf("https://www.youtube.com/watch?v=%s", entry.YoutubeId),
+			Youtube:          entry.YoutubeId,
 			Classes:          entry.Groups,
+			Local:            cmd.local,
 		}
 	}
 

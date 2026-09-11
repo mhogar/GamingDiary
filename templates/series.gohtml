@@ -17,12 +17,12 @@
         <h2 class="list-toggle entry-title{{range .Classes}} {{.}}{{end}}">{{.Title}}</h2>
         <div class="collapsable entry">
           <div class="grid-container">
-            <img src="{{.Thumbnail}}" width="100%" onerror="this.onerror=null; this.src='{{.DefaultThumbnail}}';"/>
+            <img src="{{if .Local}}{{.Thumbnail}}{{else}}https://i.ytimg.com/vi/{{.Youtube}}/maxresdefault.jpg{{end}}" width="100%" onerror="this.onerror=null; this.src='{{.DefaultThumbnail}}';"/>
             <div class="entry-body">
-              <p class="card-header"><a href="{{.Video}}" target="_blank">Play Video</a></p>
+              <p class="card-header"><a href="{{if .Local}}{{.Video}}{{else}}https://www.youtube.com/watch?v={{.Youtube}}{{end}}" target="_blank">Play Video</a></p>
               <p>[{{.Duration}}] | {{.Date}}</p>
               <hr />
-              <p class="youtube-link"><a href="{{.Youtube}}" target="_blank">{{.Youtube}}</a></p>
+              {{if .Local}}<p class="youtube-link"><a href="https://www.youtube.com/watch?v={{.Youtube}}" target="_blank">https://www.youtube.com/watch?v={{.Youtube}}</a></p>{{end}}
               <p>{{.Description}}</p>
             </div>
           </div>
