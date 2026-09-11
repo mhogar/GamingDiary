@@ -1,13 +1,14 @@
 package templates
 
 type SeriesPage struct {
-	Title        string
-	Dates        string
-	Background   string
-	Entries      []Entry
-	Theme        string
-	Stylesheets  []string
-	ResourcePath string
+	Title         string
+	TotalDuration string
+	Dates         string
+	Background    string
+	Entries       []Entry
+	Theme         string
+	Stylesheets   []string
+	ResourcePath  string
 }
 
 type Entry struct {

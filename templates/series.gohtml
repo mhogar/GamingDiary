@@ -9,7 +9,7 @@
 <body class="{{.Theme}}" style="background-image: url('{{.Background}}');">
   <div class="page-container">
     <h1 class="series-title series-color">{{.Title}}</h1>
-    <h3 class="dates">{{.Dates}}</h3>
+    <h3 class="dates">[{{.TotalDuration}}] | {{.Dates}}</h3>
     <hr class="divider" />
     <ul>
       {{range .Entries}}
