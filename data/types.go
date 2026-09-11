@@ -5,18 +5,17 @@ type Root struct {
 }
 
 type Series struct {
-	Title           string            `json:"title"`
-	Dates           string            `json:"dates"`
-	Description     string            `json:"description"`
-	Entries         string            `json:"entries"`
-	Theme           string            `json:"theme"`
-	Background      string            `json:"background"`
-	Thumbnail       string            `json:"thumbnail"`
-	Stylesheets     []string          `json:"stylesheets"`
-	Groups          map[string]string `json:"groups"`
-	YoutubePlaylist string            `json:"youtube_playlist"`
+	Title       string            `json:"title"`
+	Dates       string            `json:"dates"`
+	Description string            `json:"description"`
+	Theme       string            `json:"theme"`
+	Background  string            `json:"background"`
+	Thumbnail   string            `json:"thumbnail"`
+	Stylesheets []string          `json:"stylesheets"`
+	SubSeries   map[string]string `json:"sub_series"`
 }
 
+// Deprecated
 type Entries struct {
 	VideoCount    int     `json:"video_count"`
 	TotalDuration float32 `json:"total_duration"`

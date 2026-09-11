@@ -17,7 +17,7 @@
                 <div class="grid-container">
                     <img src="{{.Thumbnail}}" width="100%"/>
                     <div class="entry-body">
-                    <p><a class="video-link" href="{{.Link}}">Watch Series</a></p>
+                    <p>{{range $name, $link := .SubSeries}}<a class="video-link" href="{{$link}}">Watch {{$name}}</a>{{end}}</p>
                     <p><b>{{.VideoCount}} Videos</b> [{{.TotalDuration}}]</p>
                     <hr />
                     <p>{{.Dates}}</p>

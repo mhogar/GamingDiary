@@ -37,7 +37,7 @@ func (cmd *YoutubeCommand) Initialize() error {
 }
 
 func (cmd YoutubeCommand) Run(args []string) error {
-	series := cmd.Flags.String("series", "", "the name of the series")
+	series := cmd.Flags.String("series", "", "name of the series")
 	cache := cmd.Flags.String("cache", "", "use an existing cached data")
 	forceAuth := cmd.Flags.Bool("auth", false, "force re-authentication")
 	cmd.Flags.Parse(args)

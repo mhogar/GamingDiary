@@ -14,7 +14,7 @@ type SeriesHeader struct {
 	VideoCount    int
 	TotalDuration string
 	Thumbnail     string
-	Link          string
+	SubSeries     map[string]string
 	Theme         string
 }
 

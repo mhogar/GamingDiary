@@ -85,7 +85,7 @@ func (cmd DeployCommand) copySeries(dest, name string) error {
 		return errors.Chain(err, "error reading data file")
 	}
 
-	entires, err := json.UnmarshalFile[data.Entries](filepath.Join("data", name, series.Entries))
+	entires, err := json.UnmarshalFile[data.Entries](filepath.Join("data", name, ""))
 	if err != nil {
 		return errors.Chain(err, "error reading entires file")
 	}
