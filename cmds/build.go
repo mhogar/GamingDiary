@@ -81,9 +81,9 @@ func (cmd BuildCommand) Run(args []string) error {
 		}
 
 		header := SeriesHeaderData{
-			Path:        name,
-			Title:       series.Title,
-			Dates:       series.Dates,
+			Path:  name,
+			Title: series.Title,
+			//Dates:       series.Dates,
 			Description: series.Description,
 			//VideoCount:    entries.VideoCount,
 			//TotalDuration: entries.TotalDuration,
@@ -164,7 +164,6 @@ func (cmd *BuildCommand) renderSubSeries(series data.Series, path, public string
 
 	page := templates.SeriesPage{
 		Title:        series.Title,
-		Dates:        series.Dates,
 		Background:   filepath.Join("..", series.Background),
 		Theme:        series.Theme,
 		Stylesheets:  series.Stylesheets,
@@ -190,6 +189,7 @@ func (cmd *BuildCommand) renderSubSeries(series data.Series, path, public string
 			Classes:          entry.Groups,
 		}
 	}
+	page.Dates = fmt.Sprintf("%s - %s", page.Entries[0].Date, page.Entries[len(page.Entries)-1].Date)
 
 	out := filepath.Join(public, "index.html")
 

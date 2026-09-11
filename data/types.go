@@ -10,7 +10,6 @@ type Root struct {
 
 type Series struct {
 	Title       string      `json:"title"`
-	Dates       string      `json:"dates"`
 	Description string      `json:"description"`
 	Theme       string      `json:"theme"`
 	Background  string      `json:"background"`
