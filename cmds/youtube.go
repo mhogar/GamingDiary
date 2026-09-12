@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"gamingdiary/data"
-	yt_data "gamingdiary/data/youtube"
+	"gamingdiary/data/series"
 	"gamingdiary/tools/youtube"
 	"path/filepath"
 	"regexp"
@@ -68,18 +68,18 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	return nil
 }
 
-func (cmd YoutubeCommand) selectSeries(name string) (yt_data.Series, error) {
+func (cmd YoutubeCommand) selectSeries(name string) (series.Series, error) {
 	switch name {
 	case "sunshine/chapters":
-		return yt_data.SunshineChapters{}, nil
+		return series.SunshineChapters{}, nil
 	case "shake_it/videos":
-		return yt_data.ShakeItVideos{}, nil
+		return series.ShakeItVideos{}, nil
 	default:
 		return nil, errors.Format("invalid series \"%s\"", name)
 	}
 }
 
-func (cmd YoutubeCommand) createEntries(path string, series yt_data.Series, videos []*youtube.Video) error {
+func (cmd YoutubeCommand) createEntries(path string, series series.Series, videos []*youtube.Video) error {
 	var errs errors.Errors
 
 	// TODO: sort by publish date
@@ -97,7 +97,7 @@ func (cmd YoutubeCommand) createEntries(path string, series yt_data.Series, vide
 	return errs.Collapse("\n  ")
 }
 
-func (cmd YoutubeCommand) createEntry(path, index string, series yt_data.Series, video *youtube.Video) error {
+func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, video *youtube.Video) error {
 	duration, err := cmd.parseDuration(video.ContentDetails.Duration)
 	if err != nil {
 		return err
@@ -115,7 +115,7 @@ func (cmd YoutubeCommand) createEntry(path, index string, series yt_data.Series,
 		YoutubeId: video.Id,
 	}
 
-	if err := series.BuildEntry(index, video, &entry); err != nil {
+	if err := series.BuildYoutubeEntry(index, video, &entry); err != nil {
 		return err
 	}
 
@@ -155,7 +155,7 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 }
 
 func (cmd YoutubeCommand) downloadNewData(series string, forceAuth bool) ([]*youtube.Video, error) {
-	meta, err := json.UnmarshalFile[yt_data.Meta](filepath.Join("series", series, "youtube.json"))
+	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join("series", series, "youtube.json"))
 	if err != nil {
 		return nil, errors.Chain(err, "error reading youtube meta file")
 	}
