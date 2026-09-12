@@ -72,6 +72,8 @@ func (cmd YoutubeCommand) selectSeries(name string) (yt_data.Series, error) {
 	switch name {
 	case "sunshine/chapters":
 		return yt_data.SunshineChapters{}, nil
+	case "shake_it/videos":
+		return yt_data.ShakeItVideos{}, nil
 	default:
 		return nil, errors.Format("invalid series \"%s\"", name)
 	}
@@ -90,6 +92,7 @@ func (cmd YoutubeCommand) createEntries(path string, series yt_data.Series, vide
 			errs.Add(errors.Format("[%s] %s", index, err))
 		}
 	}
+	fmt.Println()
 
 	return errs.Collapse("\n  ")
 }
@@ -106,6 +109,7 @@ func (cmd YoutubeCommand) createEntry(path, index string, series yt_data.Series,
 	}
 
 	entry := data.Entry{
+		Title:     video.Snippet.Title,
 		Date:      date.Format(data.ENTRY_DATE_FORMAT),
 		Duration:  float32(duration),
 		YoutubeId: video.Id,
@@ -119,7 +123,7 @@ func (cmd YoutubeCommand) createEntry(path, index string, series yt_data.Series,
 		return errors.Chain(err, "error saving entry file")
 	}
 
-	style.Create.Printf("+ %s\n", path)
+	fmt.Printf("\r... %s ", style.Create.Sprintf("+ %s ", path))
 	return nil
 }
 

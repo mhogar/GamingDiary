@@ -1,0 +1,8 @@
+{
+    "title": "Wario Land Shake-It",
+    "description": "Wario Land Shake It (2008) - Wii",
+    "theme": "shake-it",
+    "background": "globe.png",
+    "thumbnail": "videos/t01.png",
+    "stylesheets": ["groups.css"]
+}

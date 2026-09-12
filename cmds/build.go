@@ -99,6 +99,7 @@ func (cmd BuildCommand) Run(args []string) error {
 			Theme:       series.Theme,
 			SubSeries:   series.SubSeries,
 		}
+		//TODO: cache headers
 
 		for i, subSeries := range series.SubSeries {
 			stats, err := cmd.renderSubSeries(series, subSeries, filepath.Join(seriesPath, subSeries.Path), filepath.Join(*dest, name, subSeries.Path))
