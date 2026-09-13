@@ -4,5 +4,11 @@
     "theme": "shake-it",
     "background": "globe.png",
     "thumbnail": "videos/t01.png",
-    "stylesheets": ["groups.css"]
+    "stylesheets": ["groups.css"],
+    "sub_series": [
+        {
+            "title": "series",
+            "path": "videos"
+        }
+    ]
 }

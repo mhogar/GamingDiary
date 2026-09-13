@@ -36,6 +36,8 @@ func (s ShakeItVideos) BuildEntryFromYoutube(index string, video *youtube.Video,
 
 func (ShakeItVideos) calcLevel(i int) (int, int) {
 	switch {
+	case i == 0:
+		return 0, 1
 	case fitRange(&i, 1, 25):
 		return i/5 + 1, i%5 + 1
 	case i == 26:
@@ -51,8 +53,8 @@ func (ShakeItVideos) calcLevel(i int) (int, int) {
 	case i == 44:
 		return 6, 2
 	case i == 45:
-		return 6, 3
+		return 7, 1
 	default:
-		return 0, 0
+		return -1, -1
 	}
 }
