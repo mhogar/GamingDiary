@@ -24,6 +24,7 @@ type HomePageData struct {
 
 type SeriesHeaderData struct {
 	Path          string
+	Index         int
 	Title         string
 	StartDate     string
 	EndDate       string
@@ -114,7 +115,7 @@ func (cmd BuildCommand) buildHomePage(dest string, data HomePageData) error {
 		}
 
 		page.Series[i] = templates.SeriesHeader{
-			Title:          fmt.Sprintf("(%d) %s", i+1, header.Title),
+			Title:          fmt.Sprintf("(%d) %s", header.Index, header.Title),
 			Dates:          cmd.formatDateRange(header.StartDate, header.EndDate),
 			Description:    header.Description,
 			VideoCount:     header.VideoCount,
@@ -147,6 +148,7 @@ func (cmd BuildCommand) buildSeries(name, dest string, home *HomePageData) error
 
 	header := SeriesHeaderData{
 		Path:        name,
+		Index:       series.Index,
 		Title:       series.Title,
 		Description: series.Description,
 		Thumbnail:   series.Thumbnail,

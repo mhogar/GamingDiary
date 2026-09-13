@@ -5,6 +5,7 @@ type Root struct {
 }
 
 type Series struct {
+	Index       int         `json:"index"`
 	Title       string      `json:"title"`
 	Description string      `json:"description"`
 	Theme       string      `json:"theme"`
