@@ -6,6 +6,7 @@ gamingdiary
 *.kra~
 *.png~
 *.jpg~
+*.mp4
 
 data/logs/*
 !data/logs/.keep
@@ -26,5 +27,5 @@ data/shake_it/videos/youtube/*
 
 data/heartgold/download/*
 
-series/heartgold/entries/*
-!series/heartgold/entries/t00.png
+static/heartgold/entries/*
+!static/heartgold/entries/t00.png

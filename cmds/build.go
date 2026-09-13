@@ -62,7 +62,7 @@ func (cmd *BuildCommand) Initialize() error {
 
 func (cmd BuildCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
-	out := cmd.Flags.String("out", "series", "the destination path")
+	out := cmd.Flags.String("out", data.STATIC_DIR, "the destination path")
 	cmd.Flags.BoolVar(&cmd.local, "local", false, "build using local thumbnails and videos")
 	cmd.ParseFlags(args)
 
