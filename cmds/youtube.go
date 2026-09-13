@@ -62,29 +62,26 @@ func (cmd YoutubeCommand) Run(args []string) error {
 		return err
 	}
 
-	if err := cmd.createEntries(series, videos); err != nil {
-		return errors.Chain(err, "error creating entires")
-	}
-	return nil
+	return cmd.createEntries(series, videos)
 }
 
 func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.Video) error {
-	var errs errors.Errors
-
 	// TODO: sort by publish date
-	// TODO: better index system?
 
 	for i, video := range videos {
 		index := fmt.Sprintf("%02d", i)
 		path := filepath.Join(data.STATIC_DIR, series.GetName(), fmt.Sprintf("entry%s.json", index))
 
-		if err := cmd.createEntry(path, index, series, video); err != nil {
-			errs.Add(errors.Format("[%s] %s", index, err))
+		err := cmd.createEntry(path, index, series, video)
+		if err == nil {
+			fmt.Printf("\r... %s ", style.Create.Sprintf("[+] %s ", path))
+		} else {
+			style.Error.Printf("\n[x] %s\n", err)
 		}
 	}
 	fmt.Println()
 
-	return errs.Collapse("\n  ")
+	return nil
 }
 
 func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, video *youtube.Video) error {
@@ -114,8 +111,6 @@ func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, 
 	if err := json.MarshalFilePretty(entry, path, "    "); err != nil {
 		return errors.Chain(err, "error saving entry file")
 	}
-
-	fmt.Printf("\r... %s ", style.Create.Sprintf("+ %s ", path))
 	return nil
 }
 

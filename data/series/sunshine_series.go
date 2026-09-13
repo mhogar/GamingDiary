@@ -10,7 +10,7 @@ import (
 type SunshineChapters struct{}
 
 func (SunshineChapters) GetName() string {
-	return "sunshine/chapters"
+	return "sunshine/series"
 }
 
 func (SunshineChapters) BuildEntryFromYoutube(index string, video *youtube.Video, entry *data.Entry) error {
