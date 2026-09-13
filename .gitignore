@@ -14,18 +14,11 @@ data/logs/*
 data/youtube/*
 !data/youtube/.keep
 
-data/sunshine/chapters/youtube/*
-data/sunshine/shorts/download/*
-
 data/ttyd/chapters/youtube/*
 data/ttyd/battles/youtube/*
 data/ttyd/shorts/meta/*
-
 data/luigi_mansion/videos/meta/*
-
-data/shake_it/videos/youtube/*
-
 data/heartgold/download/*
 
-static/heartgold/entries/*
-!static/heartgold/entries/t00.png
+static/*/*/*.png
+!static/*/*/t00.png
