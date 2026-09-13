@@ -1,13 +1,18 @@
 package templates
 
-type HomePage struct {
+import "text/template"
+
+var ROOT_TEMPLATE = template.Must(template.ParseFiles("templates/root.gohtml"))
+
+type RootPage struct {
 	VideoCount    int
 	TotalDuration string
-	StartDate     string
+	Dates         string
 	Series        []SeriesHeader
 }
 
 type SeriesHeader struct {
+	Index          int
 	Title          string
 	Dates          string
 	Description    string
@@ -24,6 +29,6 @@ type SubSeriesLink struct {
 	Separator string
 }
 
-func RenderHomePage(path string, data HomePage) error {
-	return renderTemplate("templates/home.gohtml", path, data)
+func RenderRootPage(path string, data RootPage) error {
+	return renderTemplate(ROOT_TEMPLATE, path, data)
 }

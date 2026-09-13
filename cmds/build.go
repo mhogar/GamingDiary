@@ -8,6 +8,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"slices"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
@@ -15,32 +16,25 @@ import (
 	"github.com/binarysoupdev/got-style/style"
 )
 
-type HomePageData struct {
-	Series        []SeriesHeaderData
-	VideoCount    int
-	TotalDuration float32
-	StartDate     string
+type RootData struct {
+	Series map[string]SeriesData `json:"series"`
 }
 
-type SeriesHeaderData struct {
-	Path          string
-	Index         int
-	Title         string
-	StartDate     string
-	EndDate       string
-	Description   string
-	VideoCount    int
-	TotalDuration float32
-	Thumbnail     string
-	Theme         string
-	SubSeries     []string
+type SeriesData struct {
+	Index       int         `json:"index"`
+	Title       string      `json:"title"`
+	Description string      `json:"description"`
+	Thumbnail   string      `json:"thumbnail"`
+	Theme       string      `json:"theme"`
+	SubSeries   []string    `json:"sub_series"`
+	Stats       SeriesStats `json:"stats"`
 }
 
-type SubSeriesStats struct {
-	VideoCount    int
-	TotalDuration float32
-	StartDate     string
-	EndDate       string
+type SeriesStats struct {
+	VideoCount    int     `json:"video_count"`
+	TotalDuration float32 `json:"total_duration"`
+	StartDate     string  `json:"start_date"`
+	EndDate       string  `json:"end_date"`
 }
 
 //=======================================
@@ -64,128 +58,161 @@ func (cmd *BuildCommand) Initialize() error {
 }
 
 func (cmd BuildCommand) Run(args []string) error {
-	series := cmd.Flags.String("series", "", "name of the series")
+	s := cmd.Flags.String("series", "", "name of the series")
 	out := cmd.Flags.String("out", "series", "the destination path")
 	cmd.Flags.BoolVar(&cmd.local, "local", false, "build using local thumbnails and videos")
 	cmd.ParseFlags(args)
 
-	if *series == "" {
+	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
 	}
+	rootPath := filepath.Join(data.STATIC_DIR, "root.json")
 
-	// root, err := json.UnmarshalFile[data.Root]("series/root.json")
-	// if err != nil {
-	// 	return errors.Chain(err, "error reading root file")
-	// }
-
-	homePage := HomePageData{
-		Series: []SeriesHeaderData{},
+	root, err := json.UnmarshalFile[RootData](rootPath)
+	if err != nil {
+		root = RootData{
+			Series: map[string]SeriesData{},
+		}
 	}
 
-	err := cmd.buildSeries(*series, *out, &homePage)
-	if err != nil {
+	series := []string{}
+	switch *s {
+	case "root":
+		break
+	//case "all":
+	default:
+		series = []string{*s}
+	}
+
+	for _, s := range series {
+		data, err := cmd.buildSeries(*out, s)
+		if err == nil {
+			root.Series[s] = data
+		} else {
+			cmd.printError(err)
+		}
+	}
+
+	if err := cmd.buildRoot(*out, root); err != nil {
 		return err
 	}
-	homePage.StartDate = homePage.Series[0].StartDate
 
-	style.Bold.Println("root")
-	return cmd.buildHomePage(*out, homePage)
+	if err := json.MarshalFilePretty(root, rootPath, "    "); err != nil {
+		return errors.Chain(err, "error saving root file")
+	}
+	return nil
 }
 
-func (cmd BuildCommand) buildHomePage(dest string, data HomePageData) error {
-	page := templates.HomePage{
-		VideoCount:    data.VideoCount,
-		TotalDuration: cmd.formatDurationHMS(data.TotalDuration),
-		StartDate:     data.StartDate,
-		Series:        make([]templates.SeriesHeader, len(data.Series)),
-	}
-
-	for i, header := range data.Series {
-		links := make([]templates.SubSeriesLink, len(header.SubSeries))
-		for i, subSeries := range header.SubSeries {
-			links[i] = templates.SubSeriesLink{
-				Title:     util.Capitalize(subSeries),
-				Link:      filepath.Join(header.Path, subSeries, "index.html"),
-				Separator: " | ",
-			}
-		}
-
-		if len(links) > 0 {
-			links[len(links)-1].Separator = ""
-		}
-
-		page.Series[i] = templates.SeriesHeader{
-			Title:          fmt.Sprintf("(%d) %s", header.Index, header.Title),
-			Dates:          cmd.formatDateRange(header.StartDate, header.EndDate),
-			Description:    header.Description,
-			VideoCount:     header.VideoCount,
-			TotalDuration:  cmd.formatDurationTimestamp(header.TotalDuration),
-			Thumbnail:      filepath.Join(header.Path, header.Thumbnail),
-			SubSeriesLinks: links,
-			Theme:          header.Theme,
-		}
-	}
-
+func (cmd BuildCommand) buildRoot(dest string, root RootData) error {
+	style.Bold.Println("root")
 	out := filepath.Join(dest, "index.html")
 
-	err := templates.RenderHomePage(out, page)
-	if err != nil {
+	page := templates.RootPage{
+		Series:     make([]templates.SeriesHeader, 0, len(root.Series)),
+		VideoCount: 0,
+	}
+	var duration float32
+
+	for name, series := range root.Series {
+		tmpl := templates.SeriesHeader{
+			Index:          series.Index,
+			Title:          series.Title,
+			Dates:          cmd.formatDateRange(series.Stats.StartDate, series.Stats.EndDate),
+			Description:    series.Description,
+			VideoCount:     series.Stats.VideoCount,
+			TotalDuration:  cmd.formatDurationTimestamp(series.Stats.TotalDuration),
+			Thumbnail:      filepath.Join(name, series.Thumbnail),
+			SubSeriesLinks: cmd.buildSubSeriesLinks(name, series),
+			Theme:          series.Theme,
+		}
+
+		page.Series = append(page.Series, tmpl)
+		page.VideoCount += series.Stats.VideoCount
+		duration += series.Stats.TotalDuration
+		//TODO: calc start date from oldest date
+	}
+	page.TotalDuration = cmd.formatDurationHMS(duration)
+
+	if len(page.Series) > 0 {
+		slices.SortFunc(page.Series, func(a, b templates.SeriesHeader) int {
+			return a.Index - b.Index
+		})
+		page.Dates = fmt.Sprintf("%s - Present", "TODO")
+	}
+
+	if err := templates.RenderRootPage(out, page); err != nil {
 		return errors.Chain(err, "error rendering home page")
 	}
 
-	style.Create.Printf("+ %s\n", out)
+	cmd.printCreate(out)
 	return nil
 }
 
-func (cmd BuildCommand) buildSeries(name, dest string, home *HomePageData) error {
+func (cmd BuildCommand) buildSubSeriesLinks(name string, series SeriesData) []templates.SubSeriesLink {
+	if len(series.SubSeries) == 0 {
+		return nil
+	}
+	links := make([]templates.SubSeriesLink, len(series.SubSeries))
+
+	for i, subSeries := range series.SubSeries {
+		links[i] = templates.SubSeriesLink{
+			Title:     util.Capitalize(subSeries),
+			Link:      filepath.Join(name, subSeries, "index.html"),
+			Separator: " | ",
+		}
+	}
+
+	links[len(links)-1].Separator = ""
+	return links
+}
+
+func (cmd BuildCommand) buildSeries(dest, name string) (SeriesData, error) {
 	style.Bold.Println(name)
 	seriesPath := filepath.Join(data.STATIC_DIR, name)
 
-	series, err := json.UnmarshalFile[data.Series](filepath.Join(seriesPath, "series.json"))
+	s, err := json.UnmarshalFile[data.Series](filepath.Join(seriesPath, "series.json"))
 	if err != nil {
-		return errors.Chain(err, "error reading series file")
+		return SeriesData{}, errors.Chain(err, "error reading series file")
 	}
 
-	header := SeriesHeaderData{
-		Path:        name,
-		Index:       series.Index,
-		Title:       series.Title,
-		Description: series.Description,
-		Thumbnail:   series.Thumbnail,
-		Theme:       series.Theme,
-		SubSeries:   series.SubSeries,
+	series := SeriesData{
+		Index:       s.Index,
+		Title:       s.Title,
+		Description: s.Description,
+		Thumbnail:   s.Thumbnail,
+		Theme:       s.Theme,
+		SubSeries:   s.SubSeries,
 	}
 
-	for i, subSeries := range series.SubSeries {
-		stats, err := cmd.buildSubSeries(name, subSeries, series, filepath.Join(dest, name, subSeries))
+	for i, subSeries := range s.SubSeries {
+		stats, err := cmd.buildSubSeries(name, subSeries, s, filepath.Join(dest, name, subSeries))
 		if err != nil {
-			return errors.ChainFormat(err, "error rendering series \"%s\"", name)
+			cmd.printError(err)
+			continue
 		}
 
-		header.VideoCount += stats.VideoCount
-		header.TotalDuration += stats.TotalDuration
+		series.Stats.VideoCount += stats.VideoCount
+		series.Stats.TotalDuration += stats.TotalDuration
 
 		if i == 0 {
-			header.StartDate = stats.StartDate
-			header.EndDate = stats.EndDate
+			series.Stats.StartDate = stats.StartDate
+			series.Stats.EndDate = stats.EndDate
 		}
 	}
 
-	home.Series = append(home.Series, header)
-	home.VideoCount += header.VideoCount
-	home.TotalDuration += header.TotalDuration
-
-	return nil
+	return series, nil
 }
 
-func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series data.Series, dest string) (SubSeriesStats, error) {
+func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series data.Series, dest string) (SeriesStats, error) {
+	out := filepath.Join(dest, "index.html")
+
 	entries, err := filepath.Glob(filepath.Join(data.STATIC_DIR, seriesName, subSeries, "entry*.json"))
 	if err != nil {
-		return SubSeriesStats{}, errors.Chain(err, "error reading series directory")
+		return SeriesStats{}, errors.Chain(err, "error reading series directory")
 	}
 
 	if len(entries) == 0 {
-		return SubSeriesStats{}, errors.New("no entries found")
+		return SeriesStats{}, errors.New("no entries found")
 	}
 
 	page := templates.SeriesPage{
@@ -196,7 +223,7 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 		Entries:     make([]templates.Entry, len(entries)),
 	}
 
-	stats := SubSeriesStats{
+	stats := SeriesStats{
 		VideoCount: len(entries),
 	}
 
@@ -228,20 +255,24 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 	page.Dates = cmd.formatDateRange(stats.StartDate, stats.EndDate)
 	page.TotalDuration = cmd.formatDurationTimestamp(stats.TotalDuration)
 
-	out := filepath.Join(dest, "index.html")
-
-	err = os.MkdirAll(dest, 0755)
-	if err != nil {
+	if err := os.MkdirAll(dest, 0755); err != nil {
 		return stats, errors.Chain(err, "error creating series path")
 	}
 
-	err = templates.RenderSeriesPage(out, page)
-	if err != nil {
+	if err := templates.RenderSeriesPage(out, page); err != nil {
 		return stats, errors.Chain(err, "error rendering series page")
 	}
 
-	style.Create.Printf("+ %s\n", out)
+	cmd.printCreate(out)
 	return stats, nil
+}
+
+func (BuildCommand) printError(err error) {
+	style.Error.Printf("[x] %s\n", err)
+}
+
+func (BuildCommand) printCreate(file string) {
+	style.Create.Printf("[+] %s\n", file)
 }
 
 func (BuildCommand) formatDurationTimestamp(duration float32) string {
@@ -258,6 +289,5 @@ func (BuildCommand) formatDateRange(startDate, endDate string) string {
 	if startDate == "" && endDate == "" {
 		return ""
 	}
-
 	return fmt.Sprintf("%s - %s", startDate, endDate)
 }

@@ -1,5 +1,9 @@
 package templates
 
+import "text/template"
+
+var SERIES_TEMPLATE = template.Must(template.ParseFiles("templates/series.gohtml"))
+
 type SeriesPage struct {
 	Title         string
 	TotalDuration string
@@ -24,5 +28,5 @@ type Entry struct {
 }
 
 func RenderSeriesPage(path string, data SeriesPage) error {
-	return renderTemplate("templates/series.gohtml", path, data)
+	return renderTemplate(SERIES_TEMPLATE, path, data)
 }
