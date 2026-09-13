@@ -1,8 +1,12 @@
 package templates
 
-import "text/template"
+import (
+	"gamingdiary/data"
+	"path/filepath"
+	"text/template"
+)
 
-var SERIES_TEMPLATE = template.Must(template.ParseFiles("templates/series.gohtml"))
+var SERIES_TEMPLATE = template.Must(template.ParseFiles(filepath.Join(data.TEMPLATE_PATH, "series.gohtml")))
 
 type SeriesPage struct {
 	Title         string

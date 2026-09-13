@@ -1,8 +1,12 @@
 package templates
 
-import "text/template"
+import (
+	"gamingdiary/data"
+	"path/filepath"
+	"text/template"
+)
 
-var ROOT_TEMPLATE = template.Must(template.ParseFiles("templates/root.gohtml"))
+var ROOT_TEMPLATE = template.Must(template.ParseFiles(filepath.Join(data.TEMPLATE_PATH, "root.gohtml")))
 
 type RootPage struct {
 	VideoCount    int

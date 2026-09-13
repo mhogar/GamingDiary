@@ -3,7 +3,7 @@ package cmds
 import (
 	"fmt"
 	"gamingdiary/data"
-	"gamingdiary/templates"
+	"gamingdiary/data/templates"
 	"gamingdiary/util"
 	"math"
 	"os"

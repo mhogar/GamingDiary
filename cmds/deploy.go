@@ -52,7 +52,7 @@ func (cmd DeployCommand) Run(args []string) error {
 		return errors.Chain(err, "error creating public directory")
 	}
 
-	f, err := os.Create(fmt.Sprintf("logs/deploy-%s.txt", time.Now().Format(time.DateTime)))
+	f, err := os.Create(filepath.Join(data.LOGS_PATH, fmt.Sprintf("deploy-%s.txt", time.Now().Format(time.DateTime))))
 	if err != nil {
 		return errors.Chain(err, "error creating log file")
 	}

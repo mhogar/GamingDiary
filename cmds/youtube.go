@@ -164,7 +164,9 @@ func (cmd YoutubeCommand) downloadNewData(series series.Series, forceAuth bool) 
 		return nil, err
 	}
 
-	output := fmt.Sprintf("youtube/%s_%s.json", strings.ReplaceAll(series.GetName(), "/", "_"), time.Now().Format("2006-01-02_15:04:05"))
+	file := fmt.Sprintf("%s_%s.json", strings.ReplaceAll(series.GetName(), "/", "_"), time.Now().Format("2006-01-02_15:04:05"))
+	output := filepath.Join(data.YOUTUBE_DATA_PATH, file)
+
 	if err := json.MarshalFilePretty(videos, output, "  "); err != nil {
 		return nil, errors.Chain(err, "error saving videos json")
 	}

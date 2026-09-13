@@ -1,17 +1,17 @@
 .vscode
-
 .secrets
-gamingdiary
 
-logs/*
-!logs/.keep
+gamingdiary
 
 *.kra~
 *.png~
 *.jpg~
 
-youtube/*
-!youtube/.keep
+data/logs/*
+!data/logs/.keep
+
+data/youtube/*
+!data/youtube/.keep
 
 data/sunshine/chapters/youtube/*
 data/sunshine/shorts/download/*
