@@ -33,7 +33,7 @@ type SeriesHeaderData struct {
 	TotalDuration float32
 	Thumbnail     string
 	Theme         string
-	SubSeries     []data.SubSeries
+	SubSeries     []string
 }
 
 type SubSeriesStats struct {
@@ -104,8 +104,8 @@ func (cmd BuildCommand) buildHomePage(dest string, data HomePageData) error {
 		links := make([]templates.SubSeriesLink, len(header.SubSeries))
 		for i, subSeries := range header.SubSeries {
 			links[i] = templates.SubSeriesLink{
-				Title:     util.Capitalize(subSeries.Title),
-				Link:      filepath.Join(header.Path, subSeries.Path, "index.html"),
+				Title:     util.Capitalize(subSeries),
+				Link:      filepath.Join(header.Path, subSeries, "index.html"),
 				Separator: " | ",
 			}
 		}
@@ -157,7 +157,7 @@ func (cmd BuildCommand) buildSeries(name, dest string, home *HomePageData) error
 	}
 
 	for i, subSeries := range series.SubSeries {
-		stats, err := cmd.buildSubSeries(name, series, subSeries, filepath.Join(dest, name, subSeries.Path))
+		stats, err := cmd.buildSubSeries(name, subSeries, series, filepath.Join(dest, name, subSeries))
 		if err != nil {
 			return errors.ChainFormat(err, "error rendering series \"%s\"", name)
 		}
@@ -178,8 +178,8 @@ func (cmd BuildCommand) buildSeries(name, dest string, home *HomePageData) error
 	return nil
 }
 
-func (cmd *BuildCommand) buildSubSeries(seriesName string, series data.Series, subSeries data.SubSeries, dest string) (SubSeriesStats, error) {
-	entries, err := filepath.Glob(filepath.Join(data.STATIC_DIR, seriesName, subSeries.Path, "entry*.json"))
+func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series data.Series, dest string) (SubSeriesStats, error) {
+	entries, err := filepath.Glob(filepath.Join(data.STATIC_DIR, seriesName, subSeries, "entry*.json"))
 	if err != nil {
 		return SubSeriesStats{}, errors.Chain(err, "error reading series directory")
 	}
@@ -189,7 +189,7 @@ func (cmd *BuildCommand) buildSubSeries(seriesName string, series data.Series, s
 	}
 
 	page := templates.SeriesPage{
-		Title:       fmt.Sprintf("%s (%s)", series.Title, subSeries.Title),
+		Title:       fmt.Sprintf("%s (%s)", series.Title, subSeries),
 		Background:  series.Background,
 		Theme:       series.Theme,
 		Stylesheets: series.Stylesheets,

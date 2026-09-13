@@ -4,12 +4,7 @@
     "description": "Wario Land Shake It (2008) - Wii",
     "theme": "shake-it",
     "background": "globe.png",
-    "thumbnail": "videos/t01.png",
+    "thumbnail": "series/t01.png",
     "stylesheets": ["groups.css"],
-    "sub_series": [
-        {
-            "title": "series",
-            "path": "videos"
-        }
-    ]
+    "sub_series": ["series"]
 }

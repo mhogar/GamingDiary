@@ -9,13 +9,13 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type ShakeItVideos struct{}
+type ShakeItSeries struct{}
 
-func (ShakeItVideos) GetName() string {
-	return "shake_it/videos"
+func (ShakeItSeries) GetName() string {
+	return "shake_it/series"
 }
 
-func (s ShakeItVideos) BuildEntryFromYoutube(index string, video *youtube.Video, entry *data.Entry) error {
+func (s ShakeItSeries) BuildEntryFromYoutube(index string, video *youtube.Video, entry *data.Entry) error {
 	i, err := parseIndex(index)
 	if err != nil {
 		return err
@@ -34,7 +34,7 @@ func (s ShakeItVideos) BuildEntryFromYoutube(index string, video *youtube.Video,
 	return nil
 }
 
-func (ShakeItVideos) calcLevel(i int) (int, int) {
+func (ShakeItSeries) calcLevel(i int) (int, int) {
 	switch {
 	case i == 0:
 		return 0, 1
