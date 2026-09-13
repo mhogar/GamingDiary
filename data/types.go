@@ -1,5 +1,7 @@
 package data
 
+import "time"
+
 type Root struct {
 	Series []string `json:"series"`
 }
@@ -23,13 +25,13 @@ type Entries struct {
 }
 
 type Entry struct {
-	Title       string   `json:"title"`
-	Description string   `json:"description"`
-	Date        string   `json:"date"`
-	Duration    float32  `json:"duration"`
-	Thumbnail   string   `json:"thumbnail"`
-	Video       string   `json:"video"`
-	Youtube     string   `json:"youtube,omitempty"` // Deprecated
-	YoutubeId   string   `json:"youtube_id"`
-	Groups      []string `json:"groups"`
+	Title       string    `json:"title"`
+	Description string    `json:"description"`
+	Date        time.Time `json:"date"`
+	Duration    float32   `json:"duration"`
+	Thumbnail   string    `json:"thumbnail"`
+	Video       string    `json:"video"`
+	Youtube     string    `json:"youtube,omitempty"` // Deprecated
+	YoutubeId   string    `json:"youtube_id"`
+	Groups      []string  `json:"groups"`
 }

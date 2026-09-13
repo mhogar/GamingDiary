@@ -9,12 +9,15 @@ import (
 	"os"
 	"path/filepath"
 	"slices"
+	"time"
 
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
 	"github.com/binarysoupdev/got-style/style"
 )
+
+const DATE_FORMAT = "Jan 02, 2006"
 
 type RootData struct {
 	Series map[string]SeriesData `json:"series"`
@@ -31,10 +34,10 @@ type SeriesData struct {
 }
 
 type SeriesStats struct {
-	VideoCount    int     `json:"video_count"`
-	TotalDuration float32 `json:"total_duration"`
-	StartDate     string  `json:"start_date"`
-	EndDate       string  `json:"end_date"`
+	VideoCount    int       `json:"video_count"`
+	TotalDuration float32   `json:"total_duration"`
+	StartDate     time.Time `json:"start_date"`
+	EndDate       time.Time `json:"end_date"`
 }
 
 //=======================================
@@ -115,7 +118,9 @@ func (cmd BuildCommand) buildRoot(dest string, root RootData) error {
 		Series:     make([]templates.SeriesHeader, 0, len(root.Series)),
 		VideoCount: 0,
 	}
+
 	var duration float32
+	var startDate time.Time
 
 	for name, series := range root.Series {
 		tmpl := templates.SeriesHeader{
@@ -133,16 +138,20 @@ func (cmd BuildCommand) buildRoot(dest string, root RootData) error {
 		page.Series = append(page.Series, tmpl)
 		page.VideoCount += series.Stats.VideoCount
 		duration += series.Stats.TotalDuration
-		//TODO: calc start date from oldest date
-	}
-	page.TotalDuration = cmd.formatDurationHMS(duration)
 
-	if len(page.Series) > 0 {
-		slices.SortFunc(page.Series, func(a, b templates.SeriesHeader) int {
-			return a.Index - b.Index
-		})
-		page.Dates = fmt.Sprintf("%s - Present", "TODO")
+		if startDate.IsZero() || series.Stats.StartDate.Before(startDate) {
+			startDate = series.Stats.StartDate
+		}
 	}
+
+	page.TotalDuration = cmd.formatDurationHMS(duration)
+	if !startDate.IsZero() {
+		page.Dates = fmt.Sprintf("%s - Present", startDate.Format(DATE_FORMAT))
+	}
+
+	slices.SortFunc(page.Series, func(a, b templates.SeriesHeader) int {
+		return a.Index - b.Index
+	})
 
 	if err := templates.RenderRootPage(out, page); err != nil {
 		return errors.Chain(err, "error rendering home page")
@@ -185,7 +194,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (SeriesData, error) {
 		Description: s.Description,
 		Thumbnail:   s.Thumbnail,
 		Theme:       s.Theme,
-		SubSeries:   s.SubSeries,
+		SubSeries:   make([]string, 0, len(s.SubSeries)),
 	}
 
 	for i, subSeries := range s.SubSeries {
@@ -195,6 +204,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (SeriesData, error) {
 			continue
 		}
 
+		series.SubSeries = append(series.SubSeries, subSeries)
 		series.Stats.VideoCount += stats.VideoCount
 		series.Stats.TotalDuration += stats.TotalDuration
 
@@ -243,7 +253,7 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 			Title:            entry.Title,
 			Description:      entry.Description,
 			Duration:         cmd.formatDurationTimestamp(entry.Duration),
-			Date:             entry.Date,
+			Date:             entry.Date.Format(DATE_FORMAT),
 			Thumbnail:        entry.Thumbnail,
 			DefaultThumbnail: filepath.Join("..", series.Thumbnail),
 			Video:            entry.Video,
@@ -251,10 +261,13 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 			Classes:          entry.Groups,
 			Local:            cmd.local,
 		}
-	}
 
-	stats.StartDate = page.Entries[0].Date
-	stats.EndDate = page.Entries[len(page.Entries)-1].Date
+		if i == 0 {
+			stats.StartDate = entry.Date
+		} else if i == len(entries)-1 {
+			stats.EndDate = entry.Date
+		}
+	}
 
 	page.Dates = cmd.formatDateRange(stats.StartDate, stats.EndDate)
 	page.TotalDuration = cmd.formatDurationTimestamp(stats.TotalDuration)
@@ -289,9 +302,9 @@ func (BuildCommand) formatDurationHMS(duration float32) string {
 	return fmt.Sprintf("%dh %dm %ds", d/(60*60), (d/60)%60, d%60)
 }
 
-func (BuildCommand) formatDateRange(startDate, endDate string) string {
-	if startDate == "" && endDate == "" {
+func (BuildCommand) formatDateRange(startDate, endDate time.Time) string {
+	if startDate.IsZero() && endDate.IsZero() {
 		return ""
 	}
-	return fmt.Sprintf("%s - %s", startDate, endDate)
+	return fmt.Sprintf("%s - %s", startDate.Format(DATE_FORMAT), endDate.Format(DATE_FORMAT))
 }

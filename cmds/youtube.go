@@ -101,7 +101,7 @@ func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, 
 	entry := data.Entry{
 		YoutubeId: video.Id,
 		Title:     video.Snippet.Title,
-		Date:      date.Format(data.ENTRY_DATE_FORMAT),
+		Date:      date,
 		Duration:  float32(duration),
 		Thumbnail: fmt.Sprintf("t%s.png", index),
 		Video:     fmt.Sprintf("v%s.mp4", index),
