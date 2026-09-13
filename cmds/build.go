@@ -70,21 +70,10 @@ func (cmd BuildCommand) Run(args []string) error {
 
 	root, err := json.UnmarshalFile[RootData](rootPath)
 	if err != nil {
-		root = RootData{
-			Series: map[string]SeriesData{},
-		}
+		return errors.Chain(err, "error reading root file")
 	}
 
-	series := []string{}
-	switch *s {
-	case "root":
-		break
-	//case "all":
-	default:
-		series = []string{*s}
-	}
-
-	for _, s := range series {
+	for _, s := range cmd.selectSeries(*s, root.Series) {
 		data, err := cmd.buildSeries(*out, s)
 		if err == nil {
 			root.Series[s] = data
@@ -101,6 +90,21 @@ func (cmd BuildCommand) Run(args []string) error {
 		return errors.Chain(err, "error saving root file")
 	}
 	return nil
+}
+
+func (cmd BuildCommand) selectSeries(name string, series map[string]SeriesData) []string {
+	switch name {
+	case "root":
+		return []string{}
+	case "all":
+		s := make([]string, 0, len(series))
+		for name := range series {
+			s = append(s, name)
+		}
+		return s
+	default:
+		return []string{name}
+	}
 }
 
 func (cmd BuildCommand) buildRoot(dest string, root RootData) error {
