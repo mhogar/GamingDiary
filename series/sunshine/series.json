@@ -4,15 +4,6 @@
     "description": "Super Mario Sunshine (2002) - GCN/Switch",
     "theme": "sunshine",
     "background": "isle_delfino.jpg",
-    "thumbnail": "chapters/t00.png",
-    "sub_series": [
-        {
-            "title": "series",
-            "path": "chapters"
-        },
-        {
-            "title": "shorts",
-            "path": "shorts"
-        }
-    ]
+    "thumbnail": "series/t00.png",
+    "sub_series": ["series", "shorts"]
 }

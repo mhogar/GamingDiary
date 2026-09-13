@@ -15,6 +15,23 @@
                 "start_date": "Jan 19, 2025",
                 "end_date": "May 10, 2025"
             }
+        },
+        "sunshine": {
+            "index": 1,
+            "title": "The Sunshine Story",
+            "description": "Super Mario Sunshine (2002) - GCN/Switch",
+            "thumbnail": "series/t00.png",
+            "theme": "sunshine",
+            "sub_series": [
+                "series",
+                "shorts"
+            ],
+            "stats": {
+                "video_count": 26,
+                "total_duration": 43134.004,
+                "start_date": "May 27, 2024",
+                "end_date": "Jun 24, 2024"
+            }
         }
     }
 }
