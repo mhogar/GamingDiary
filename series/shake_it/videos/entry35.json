@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Boogie Mansion",
+    "title": "Area 5-8 | Boogie Mansion",
     "description": "Remembering Wario Land Shake It - Boogie Mansion",
     "date": "Apr 24, 2025",
     "duration": 1815,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t35.png",
+    "video": "v35.mp4",
     "youtube_id": "pX43rE2l6xQ",
-    "groups": null
+    "groups": [
+        "area5"
+    ]
 }

@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Sneak Peak",
+    "title": "Area 2-6 | Sneak Peak",
     "description": "Remembering Wario Land Shake It - Sneak Peak",
     "date": "Apr 26, 2025",
     "duration": 1539,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t37.png",
+    "video": "v37.mp4",
     "youtube_id": "tH3qRHC2sIA",
-    "groups": null
+    "groups": [
+        "area2"
+    ]
 }

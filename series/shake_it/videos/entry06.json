@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Just Plains",
+    "title": "Area 2-1 | Just Plains",
     "description": "Remembering Wario Land Shake It - Just Plains",
     "date": "Jan 24, 2025",
     "duration": 716,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t06.png",
+    "video": "v06.mp4",
     "youtube_id": "n2h1pgVnmn4",
-    "groups": null
+    "groups": [
+        "area2"
+    ]
 }

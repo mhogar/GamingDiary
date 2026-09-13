@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Bamboozle Village",
+    "title": "Area 5-6 | Bamboozle Village",
     "description": "Remembering Wario Land Shake It - Bamboozle Village",
     "date": "Apr 20, 2025",
     "duration": 1450,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t33.png",
+    "video": "v33.mp4",
     "youtube_id": "uKU6joNLJNI",
-    "groups": null
+    "groups": [
+        "area5"
+    ]
 }

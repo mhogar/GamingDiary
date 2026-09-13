@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Run-Down Pyramid",
+    "title": "Area 1-4 | Run-Down Pyramid",
     "description": "Remembering Wario Land Shake It - Run-Down Pyramid",
     "date": "Jan 22, 2025",
     "duration": 1178,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t04.png",
+    "video": "v04.mp4",
     "youtube_id": "zWlQadhFUDs",
-    "groups": null
+    "groups": [
+        "area1"
+    ]
 }

@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Airytale Castle",
+    "title": "Area 4-3 | Airytale Castle",
     "description": "Remembering Wario Land Shake It - Airytale Castle",
     "date": "Feb 23, 2025",
     "duration": 1230,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t18.png",
+    "video": "v18.mp4",
     "youtube_id": "5cQggf98ttQ",
-    "groups": null
+    "groups": [
+        "area4"
+    ]
 }

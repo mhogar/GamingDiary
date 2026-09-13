@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Lowdown Depths",
+    "title": "Area 2-7 | Lowdown Depths",
     "description": "Remembering Wario Land Shake It - Lowdown Depths",
     "date": "Apr 27, 2025",
     "duration": 1436,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t38.png",
+    "video": "v38.mp4",
     "youtube_id": "xwz9xjpsAEk",
-    "groups": null
+    "groups": [
+        "area2"
+    ]
 }

@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - [REMATCH] Hot Roderick Race",
+    "title": "Area 2-8 | [REMATCH] Hot Roderick Race",
     "description": "Remembering Wario Land Shake It - [REMATCH] Hot Roderick Race",
     "date": "Apr 28, 2025",
     "duration": 647,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t39.png",
+    "video": "v39.mp4",
     "youtube_id": "-A7EjTlwPUs",
-    "groups": null
+    "groups": [
+        "area2"
+    ]
 }

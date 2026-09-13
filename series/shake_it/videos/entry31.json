@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Derailed Express",
+    "title": "Area 3-7 | Derailed Express",
     "description": "Remembering Wario Land Shake It - Derailed Express",
     "date": "Apr 14, 2025",
     "duration": 1318,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t31.png",
+    "video": "v31.mp4",
     "youtube_id": "C22hmq6nEYQ",
-    "groups": null
+    "groups": [
+        "area3"
+    ]
 }

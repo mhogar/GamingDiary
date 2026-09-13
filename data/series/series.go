@@ -3,9 +3,26 @@ package series
 import (
 	"gamingdiary/data"
 	"gamingdiary/tools/youtube"
+
+	"github.com/binarysoupdev/go-extensions/errors"
 )
 
+var series = []Series{
+	SunshineChapters{},
+	ShakeItVideos{},
+}
+
 type Series interface {
-	BuildYoutubeEntry(index string, video *youtube.Video, entry *data.Entry) error
-	UpgradeEntry(index string, entry *data.Entry) error
+	GetName() string
+	BuildEntryFromYoutube(index string, video *youtube.Video, entry *data.Entry) error
+}
+
+func Select(name string) (Series, error) {
+	for _, s := range series {
+		if s.GetName() == name {
+			return s, nil
+		}
+	}
+	return nil, errors.Format("invalid series \"%s\"", name)
+
 }

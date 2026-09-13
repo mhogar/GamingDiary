@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Mt. Lava Lava",
+    "title": "Area 2-3 | Mt. Lava Lava",
     "description": "Remembering Wario Land Shake It - Mt. Lava Lava",
     "date": "Feb 04, 2025",
     "duration": 1029,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t08.png",
+    "video": "v08.mp4",
     "youtube_id": "8pv9lrTUPps",
-    "groups": null
+    "groups": [
+        "area2"
+    ]
 }

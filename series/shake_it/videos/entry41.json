@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Riverbloat Rapids",
+    "title": "Area 4-7 | Riverbloat Rapids",
     "description": "Remembering Wario Land Shake It - Riverbloat Rapids",
     "date": "May 04, 2025",
     "duration": 1663,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t41.png",
+    "video": "v41.mp4",
     "youtube_id": "SEJvtTp87Fo",
-    "groups": null
+    "groups": [
+        "area4"
+    ]
 }

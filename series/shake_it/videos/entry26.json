@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - VS the Shake King",
+    "title": "Area 6-1 | VS the Shake King",
     "description": "Remembering Wario Land Shake It - VS the Shake King",
     "date": "Mar 11, 2025",
     "duration": 916,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t26.png",
+    "video": "v26.mp4",
     "youtube_id": "Ur-NPr9IMkg",
-    "groups": null
+    "groups": [
+        "area6"
+    ]
 }

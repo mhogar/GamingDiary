@@ -1,9 +1,5 @@
 package data
 
-const (
-	ENTRY_DATE_FORMAT = "Jan 02, 2006"
-)
-
 type Root struct {
 	Series []string `json:"series"`
 }

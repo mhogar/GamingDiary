@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Ropey Jungle",
+    "title": "Area 4-1 | Ropey Jungle",
     "description": "Remembering Wario Land Shake It - Ropey Jungle",
     "date": "Feb 18, 2025",
     "duration": 1100,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t16.png",
+    "video": "v16.mp4",
     "youtube_id": "dj--YTEg-Y0",
-    "groups": null
+    "groups": [
+        "area4"
+    ]
 }

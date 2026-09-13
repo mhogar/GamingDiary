@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Launchpad Labyrinth",
+    "title": "Area 4-6 | Launchpad Labyrinth",
     "description": "Remembering Wario Land Shake It - Launchpad Labyrinth",
     "date": "May 03, 2025",
     "duration": 1306,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t40.png",
+    "video": "v40.mp4",
     "youtube_id": "imLj0pQq_Jk",
-    "groups": null
+    "groups": [
+        "area4"
+    ]
 }

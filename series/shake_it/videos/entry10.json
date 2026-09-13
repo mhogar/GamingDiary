@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Hot Roderick Race",
+    "title": "Area 2-5 | Hot Roderick Race",
     "description": "Remembering Wario Land Shake It - Hot Roderick Race",
     "date": "Feb 06, 2025",
     "duration": 374,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t10.png",
+    "video": "v10.mp4",
     "youtube_id": "IMtT7GPx7D0",
-    "groups": null
+    "groups": [
+        "area2"
+    ]
 }

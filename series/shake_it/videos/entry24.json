@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Bad Manor",
+    "title": "Area 5-4 | Bad Manor",
     "description": "Remembering Wario Land Shake It - Bad Manor",
     "date": "Mar 07, 2025",
     "duration": 824,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t24.png",
+    "video": "v24.mp4",
     "youtube_id": "6Qcpc-Pmiw0",
-    "groups": null
+    "groups": [
+        "area5"
+    ]
 }

@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Rollanratl Battle",
+    "title": "Area 1-5 | Rollanratl Battle",
     "description": "Remembering Wario Land Shake It - Rollanratl Battle",
     "date": "Jan 23, 2025",
     "duration": 392,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t05.png",
+    "video": "v05.mp4",
     "youtube_id": "N6npf0myLI8",
-    "groups": null
+    "groups": [
+        "area1"
+    ]
 }

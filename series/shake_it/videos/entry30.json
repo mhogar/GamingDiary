@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Neon City",
+    "title": "Area 3-6 | Neon City",
     "description": "Remembering Wario Land Shake It - Neon City",
     "date": "Apr 10, 2025",
     "duration": 1514,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t30.png",
+    "video": "v30.mp4",
     "youtube_id": "kF2ylXMjcRA",
-    "groups": null
+    "groups": [
+        "area3"
+    ]
 }

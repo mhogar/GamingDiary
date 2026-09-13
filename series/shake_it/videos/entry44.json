@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - [REMATCH] VS the Shake King",
+    "title": "Area 6-2 | [REMATCH] VS the Shake King",
     "description": "Remembering Wario Land Shake It - [REMATCH] VS the Shake King",
     "date": "May 07, 2025",
     "duration": 1289,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t44.png",
+    "video": "v44.mp4",
     "youtube_id": "kUzQwuBB19g",
-    "groups": null
+    "groups": [
+        "area6"
+    ]
 }

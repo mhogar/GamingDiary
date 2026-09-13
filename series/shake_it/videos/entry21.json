@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Mount Bighill",
+    "title": "Area 5-1 | Mount Bighill",
     "description": "Remembering Wario Land Shake It - Mount Bighill",
     "date": "Feb 26, 2025",
     "duration": 931,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t21.png",
+    "video": "v21.mp4",
     "youtube_id": "ass_6nhuuJQ",
-    "groups": null
+    "groups": [
+        "area5"
+    ]
 }

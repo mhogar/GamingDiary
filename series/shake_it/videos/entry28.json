@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Gurgle Gulch",
+    "title": "Area 1-7 | Gurgle Gulch",
     "description": "Remembering Wario Land Shake It - Gurgle Gulch",
     "date": "Apr 07, 2025",
     "duration": 2321,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t28.png",
+    "video": "v28.mp4",
     "youtube_id": "pK6MXREwTfY",
-    "groups": null
+    "groups": [
+        "area1"
+    ]
 }

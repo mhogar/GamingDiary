@@ -22,7 +22,7 @@ var YT_DURATION_REGEX = regexp.MustCompile(`([0-9]+)([^0-9])`)
 
 func NewYoutubeCommand() *YoutubeCommand {
 	return &YoutubeCommand{
-		CommandBase: command.NewCommandBase("youtube", "Download data from Youtube"),
+		CommandBase: command.NewCommandBase("youtube", "Build entries from Youtube data"),
 	}
 }
 
@@ -37,17 +37,17 @@ func (cmd *YoutubeCommand) Initialize() error {
 }
 
 func (cmd YoutubeCommand) Run(args []string) error {
-	series := cmd.Flags.String("series", "", "name of the series")
+	s := cmd.Flags.String("series", "", "name of the series")
 	cache := cmd.Flags.String("cache", "", "use an existing cached data")
 	forceAuth := cmd.Flags.Bool("auth", false, "force re-authentication")
 	cmd.Flags.Parse(args)
 
-	if *series == "" {
+	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
 	}
-	style.BoldInfo.Println(*series)
+	style.BoldInfo.Println(*s)
 
-	s, err := cmd.selectSeries(*series)
+	series, err := series.Select(*s)
 	if err != nil {
 		return err
 	}
@@ -56,30 +56,19 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	if *cache != "" {
 		videos, err = cmd.loadCachedData(*cache)
 	} else {
-		videos, err = cmd.downloadNewData(*series, *forceAuth)
+		videos, err = cmd.downloadNewData(series, *forceAuth)
 	}
 	if err != nil {
 		return err
 	}
 
-	if err := cmd.createEntries(filepath.Join("series", *series), s, videos); err != nil {
+	if err := cmd.createEntries(series, videos); err != nil {
 		return errors.Chain(err, "error creating entires")
 	}
 	return nil
 }
 
-func (cmd YoutubeCommand) selectSeries(name string) (series.Series, error) {
-	switch name {
-	case "sunshine/chapters":
-		return series.SunshineChapters{}, nil
-	case "shake_it/videos":
-		return series.ShakeItVideos{}, nil
-	default:
-		return nil, errors.Format("invalid series \"%s\"", name)
-	}
-}
-
-func (cmd YoutubeCommand) createEntries(path string, series series.Series, videos []*youtube.Video) error {
+func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.Video) error {
 	var errs errors.Errors
 
 	// TODO: sort by publish date
@@ -87,8 +76,9 @@ func (cmd YoutubeCommand) createEntries(path string, series series.Series, video
 
 	for i, video := range videos {
 		index := fmt.Sprintf("%02d", i)
+		path := filepath.Join(data.STATIC_DIR, series.GetName(), fmt.Sprintf("entry%s.json", index))
 
-		if err := cmd.createEntry(filepath.Join(path, fmt.Sprintf("entry%s.json", index)), index, series, video); err != nil {
+		if err := cmd.createEntry(path, index, series, video); err != nil {
 			errs.Add(errors.Format("[%s] %s", index, err))
 		}
 	}
@@ -109,13 +99,15 @@ func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, 
 	}
 
 	entry := data.Entry{
+		YoutubeId: video.Id,
 		Title:     video.Snippet.Title,
 		Date:      date.Format(data.ENTRY_DATE_FORMAT),
 		Duration:  float32(duration),
-		YoutubeId: video.Id,
+		Thumbnail: fmt.Sprintf("t%s.png", index),
+		Video:     fmt.Sprintf("v%s.mp4", index),
 	}
 
-	if err := series.BuildYoutubeEntry(index, video, &entry); err != nil {
+	if err := series.BuildEntryFromYoutube(index, video, &entry); err != nil {
 		return err
 	}
 
@@ -154,8 +146,8 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 	return videos, nil
 }
 
-func (cmd YoutubeCommand) downloadNewData(series string, forceAuth bool) ([]*youtube.Video, error) {
-	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join("series", series, "youtube.json"))
+func (cmd YoutubeCommand) downloadNewData(series series.Series, forceAuth bool) ([]*youtube.Video, error) {
+	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join("series", series.GetName(), "youtube.json"))
 	if err != nil {
 		return nil, errors.Chain(err, "error reading youtube meta file")
 	}
@@ -177,7 +169,7 @@ func (cmd YoutubeCommand) downloadNewData(series string, forceAuth bool) ([]*you
 		return nil, err
 	}
 
-	output := fmt.Sprintf("youtube/%s_%s.json", strings.ReplaceAll(series, "/", "_"), time.Now().Format("2006-01-02_15:04:05"))
+	output := fmt.Sprintf("youtube/%s_%s.json", strings.ReplaceAll(series.GetName(), "/", "_"), time.Now().Format("2006-01-02_15:04:05"))
 	if err := json.MarshalFilePretty(videos, output, "  "); err != nil {
 		return nil, errors.Chain(err, "error saving videos json")
 	}

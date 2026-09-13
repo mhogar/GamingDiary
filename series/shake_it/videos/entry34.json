@@ -1,10 +1,12 @@
 {
-    "title": "Remembering Wario Land Shake It - Freezing Fields",
+    "title": "Area 5-7 | Freezing Fields",
     "description": "Remembering Wario Land Shake It - Freezing Fields",
     "date": "Apr 23, 2025",
     "duration": 1687,
-    "thumbnail": "",
-    "video": "",
+    "thumbnail": "t34.png",
+    "video": "v34.mp4",
     "youtube_id": "N8l_LFK7K1w",
-    "groups": null
+    "groups": [
+        "area5"
+    ]
 }
