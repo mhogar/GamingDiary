@@ -112,7 +112,7 @@ a {
 }
 
 .rainbow-text {
-  background-image: linear-gradient(to right, red, orange, yellow, rgb(9, 176, 9), rgb(30, 154, 255), rgb(128, 15, 209), violet);
+  background-image: linear-gradient(to right, red, orange, yellow, rgb(9, 176, 9), rgb(30, 154, 255), rgb(128, 15, 209));
   background-clip: text;
   color: transparent;
   display: inline-block;
