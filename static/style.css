@@ -195,3 +195,14 @@ a {
 .origami-king .entry a {
   color: rgb(255, 60, 0);
 }
+
+/* Luigi's Mansion 3 Theme */
+.luigi-mansion3 .series-color {
+  color: rgb(122, 225, 85);
+}
+.luigi-mansion3 .entry {
+  background-color: rgb(38, 231, 150);
+}
+.luigi-mansion3 .entry a {
+  color: rgb(255, 67, 234);
+}

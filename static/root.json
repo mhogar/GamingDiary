@@ -33,6 +33,22 @@
                 "end_date": "2024-12-10T22:00:35Z"
             }
         },
+        "luigi_mansion3": {
+            "index": 8,
+            "title": "Luigi's Mansion 3",
+            "description": "Luigi's Mansion 3 (2019) - Switch",
+            "thumbnail": "series/t00.png",
+            "theme": "luigi-mansion3",
+            "sub_series": [
+                "series"
+            ],
+            "stats": {
+                "video_count": 3,
+                "total_duration": 6630,
+                "start_date": "2025-10-07T00:16:54Z",
+                "end_date": "2025-10-07T22:14:20Z"
+            }
+        },
         "origami_king": {
             "index": 7,
             "title": "The Origami King",

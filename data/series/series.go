@@ -15,6 +15,7 @@ var series = []Series{
 	WinniePoohSeries{},
 	HeartgoldSeries{},
 	OrigamiKingSeries{},
+	LuigiMansion3Series{},
 }
 
 type Series interface {
