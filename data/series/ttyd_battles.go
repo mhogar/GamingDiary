@@ -15,12 +15,8 @@ func (TTYDBattles) GetName() string {
 	return "ttyd/battles"
 }
 
-func (s TTYDBattles) BuildEntryFromYoutube(index string, video *youtube.Video, entry *data.Entry) error {
-	i, err := parseIndex(index)
-	if err != nil {
-		return err
-	}
-	chapter, battle := s.calcChapter(i)
+func (s TTYDBattles) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+	chapter, battle := s.calcChapter(index)
 
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {

@@ -31,6 +31,7 @@ type YoutubeCommand struct {
 	command.CommandBase
 	command.FlagCommand
 
+	indexStart  int
 	indexFormat string
 }
 
@@ -43,10 +44,8 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
 	cache := cmd.Flags.String("cache", "", "use an existing cached data")
 	forceAuth := cmd.Flags.Bool("auth", false, "force re-authentication")
-	pad := cmd.Flags.Int("pad", 2, "amount of index padding")
+	index := cmd.Flags.String("index", "00", "starting index and padding")
 	cmd.Flags.Parse(args)
-
-	cmd.indexFormat = fmt.Sprintf("%%%dd", *pad)
 
 	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
@@ -57,6 +56,13 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	if err != nil {
 		return err
 	}
+
+	i64, err := strconv.ParseInt(*index, 10, 16)
+	if err != nil {
+		return errors.Chain(err, "invalid index")
+	}
+	cmd.indexStart = int(i64)
+	cmd.indexFormat = fmt.Sprintf("%%0%dd", len(*index))
 
 	var videos []*youtube.Video
 	if *cache != "" {
@@ -94,8 +100,8 @@ func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.
 	})
 
 	for i, v := range videosByDate {
-		index := fmt.Sprintf(cmd.indexFormat, i)
-		path := filepath.Join(data.STATIC_DIR, series.GetName(), fmt.Sprintf("entry%s.json", index))
+		index := i + cmd.indexStart
+		path := filepath.Join(data.STATIC_DIR, series.GetName(), fmt.Sprintf("entry%s.json", fmt.Sprintf(cmd.indexFormat, index)))
 
 		err := cmd.createEntry(path, index, series, v.Video, v.Date)
 		if err == nil {
@@ -109,21 +115,26 @@ func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.
 	return nil
 }
 
-func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, video *youtube.Video, date time.Time) error {
+func (cmd YoutubeCommand) createEntry(path string, index int, series series.Series, video *youtube.Video, date time.Time) error {
 	duration, err := cmd.parseDuration(video.ContentDetails.Duration)
 	if err != nil {
 		return err
 	}
 
 	entry := data.Entry{
-		Title:            video.Snippet.Title,
-		Date:             date,
-		Duration:         float32(duration),
-		Thumbnail:        fmt.Sprintf("t%s.png", index),
-		Video:            fmt.Sprintf("v%s.mp4", index),
-		YoutubeId:        video.Id,
-		YoutubeThumbnail: fmt.Sprintf("https://i.ytimg.com/vi/%s/maxresdefault.jpg", video.Id),
-		YoutubeVideo:     fmt.Sprintf("https://www.youtube.com/watch?v=%s", video.Id),
+		Title:        video.Snippet.Title,
+		Date:         date,
+		Duration:     float32(duration),
+		Thumbnail:    fmt.Sprintf("t%s.png", fmt.Sprintf(cmd.indexFormat, index)),
+		Video:        fmt.Sprintf("v%s.mp4", fmt.Sprintf(cmd.indexFormat, index)),
+		YoutubeId:    video.Id,
+		YoutubeVideo: fmt.Sprintf("https://www.youtube.com/watch?v=%s", video.Id),
+	}
+
+	if video.Snippet.Thumbnails.Maxres != nil {
+		entry.YoutubeThumbnail = video.Snippet.Thumbnails.Maxres.Url
+	} else {
+		entry.YoutubeThumbnail = video.Snippet.Thumbnails.Medium.Url
 	}
 
 	if err := series.BuildEntryFromYoutube(index, video, &entry); err != nil {

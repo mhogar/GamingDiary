@@ -9,14 +9,13 @@ import (
 
 var series = []Series{
 	SunshineChapters{},
+	TTYDSeries{}, TTYDBattles{}, TTYDShorts{},
 	ShakeItSeries{},
-	TTYDSeries{},
-	TTYDBattles{},
 }
 
 type Series interface {
 	GetName() string
-	BuildEntryFromYoutube(index string, video *youtube.Video, entry *data.Entry) error
+	BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error
 }
 
 func Select(name string) (Series, error) {

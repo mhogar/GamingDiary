@@ -6,5 +6,5 @@
     "background": "door.png",
     "thumbnail": "series/t00.png",
     "stylesheets": ["groups.css"],
-    "sub_series": ["series", "battles"]
+    "sub_series": ["series", "battles", "shorts"]
 }
