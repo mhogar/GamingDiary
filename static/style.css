@@ -20,24 +20,6 @@ body {
   box-sizing: border-box;
 }
 
-.root-title {
-  font-size: 55pt;
-  font-weight: 800;
-  margin-bottom: -15px;
-
-  color: white;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
-}
-
-.root-header {
-  color: rgb(50, 50, 50) !important;
-  font-weight: 800;
-}
-
-.video-stats {
-  font-size: 40px;
-}
-
 .series-title {
   font-size: 45pt;
   font-weight: 800;
@@ -46,9 +28,18 @@ body {
   text-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
 }
 
+.root.series-title {
+  color: yellow;
+}
+
 .dates {
   margin-top: -25px;
   color: whitesmoke;
+}
+
+.root.dates {
+  margin-top: -35px;
+  color: #1c1c1c;
 }
 
 .divider {
@@ -112,19 +103,6 @@ a {
 
 .youtube-link {
   text-decoration: none;
-}
-
-.rainbow-text span:nth-child(10n + 1) {
-  color: #ff3c00;
-}
-.rainbow-text span:nth-child(10n + 2) {
-  color: #ffe41f;
-}
-.rainbow-text span:nth-child(10n + 3) {
-  color: #95ee3c;
-}
-.rainbow-text span:nth-child(10n + 4) {
-  color: #3b6ee9;
 }
 
 /* Sunshine Theme */
