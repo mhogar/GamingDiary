@@ -4,7 +4,7 @@ body {
   padding-top: 2rem;
   padding-bottom: 10rem;
 
-  background-image: url(background.png);
+  background-image: url(banner.png);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -26,9 +26,13 @@ body {
   margin-bottom: -40px;
 }
 
+.root-header {
+  color: rgb(35, 35, 35) !important;
+  font-weight: 800;
+}
+
 .video-stats {
   font-size: 40px;
-  color: whitesmoke;
 }
 
 .series-title {
