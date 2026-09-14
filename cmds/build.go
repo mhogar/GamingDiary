@@ -265,7 +265,7 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 			Video:            entry.Video,
 			YoutubeThumbnail: entry.YoutubeThumbnail,
 			YoutubeVideo:     entry.YoutubeVideo,
-			Classes:          entry.Groups,
+			Group:            entry.Group,
 			Local:            cmd.local,
 		}
 

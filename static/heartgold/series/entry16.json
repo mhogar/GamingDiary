@@ -8,7 +8,5 @@
     "youtube_id": "2F8wZB2RJUg",
     "youtube_thumbnail": "https://i.ytimg.com/vi/2F8wZB2RJUg/maxresdefault.jpg",
     "youtube_video": "https://www.youtube.com/watch?v=2F8wZB2RJUg",
-    "groups": [
-        "badge4"
-    ]
+    "group": "badge4"
 }

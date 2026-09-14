@@ -8,6 +8,7 @@ import (
 
 var scripts = []Scripts{
 	YoutubeURLs{},
+	EntrySingleGroup{},
 }
 
 type Scripts interface {

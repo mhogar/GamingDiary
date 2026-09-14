@@ -8,7 +8,5 @@
     "youtube_id": "3PGV-_CxtQ4",
     "youtube_thumbnail": "https://i.ytimg.com/vi/3PGV-_CxtQ4/maxresdefault.jpg",
     "youtube_video": "https://www.youtube.com/watch?v=3PGV-_CxtQ4",
-    "groups": [
-        "area1"
-    ]
+    "group": "area1"
 }

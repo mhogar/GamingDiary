@@ -34,5 +34,6 @@ type Entry struct {
 	YoutubeId        string    `json:"youtube_id"`
 	YoutubeThumbnail string    `json:"youtube_thumbnail"`
 	YoutubeVideo     string    `json:"youtube_video"`
-	Groups           []string  `json:"groups"`
+	Groups           []string  `json:"groups,omitempty"` // Deprecated
+	Group            string    `json:"group"`
 }

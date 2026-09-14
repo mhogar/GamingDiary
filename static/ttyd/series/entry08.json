@@ -8,7 +8,5 @@
     "youtube_id": "Jg-23q3K-08",
     "youtube_thumbnail": "https://i.ytimg.com/vi/Jg-23q3K-08/maxresdefault.jpg",
     "youtube_video": "https://www.youtube.com/watch?v=Jg-23q3K-08",
-    "groups": [
-        "chapter1"
-    ]
+    "group": "chapter1"
 }

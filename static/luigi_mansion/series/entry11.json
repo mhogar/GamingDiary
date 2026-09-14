@@ -8,7 +8,5 @@
     "youtube_id": "tIBSI_qW8wc",
     "youtube_thumbnail": "https://i.ytimg.com/vi/tIBSI_qW8wc/maxresdefault.jpg",
     "youtube_video": "https://www.youtube.com/watch?v=tIBSI_qW8wc",
-    "groups": [
-        "area4"
-    ]
+    "group": "area4"
 }

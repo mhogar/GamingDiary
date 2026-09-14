@@ -8,7 +8,5 @@
     "youtube_id": "l0BKcNYJiSk",
     "youtube_thumbnail": "https://i.ytimg.com/vi/l0BKcNYJiSk/maxresdefault.jpg",
     "youtube_video": "https://www.youtube.com/watch?v=l0BKcNYJiSk",
-    "groups": [
-        "chapter8"
-    ]
+    "group": "chapter8"
 }
