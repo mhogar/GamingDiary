@@ -13,5 +13,5 @@ data/logs/*
 data/youtube/*
 !data/youtube/.keep
 
-static/*/*/*.png
-!static/*/*/t00.png
+public/*/*/*.png
+!public/*/*/t00.png
