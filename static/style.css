@@ -20,6 +20,17 @@ body {
   box-sizing: border-box;
 }
 
+.root-title {
+  font-size: 55pt;
+  font-weight: 800;
+  margin-bottom: -40px;
+}
+
+.video-stats {
+  font-size: 40px;
+  color: whitesmoke;
+}
+
 .series-title {
   font-size: 45pt;
   font-weight: 800;
@@ -94,6 +105,14 @@ a {
 
 .youtube-link {
   text-decoration: none;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to right, red, orange, yellow, rgb(9, 176, 9), rgb(30, 154, 255), rgb(128, 15, 209), violet);
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  text-shadow: none;
 }
 
 /* Sunshine Theme */
