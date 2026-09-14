@@ -18,7 +18,7 @@
     <ul>
         {{range .Series}}
         <li class="{{.Theme}}">
-            <h1 class="entry-title list-toggle">Series {{.Index | printf "%02d"}} | <span class="series-color">{{.Title}}</span></h1>
+            <h1 class="entry-title list-toggle">Series {{.Index | printf "%02d"}} | {{.Title}}</h1>
             <div class="entry collapsable">
                 <div class="grid-container">
                     <img src="{{.Thumbnail}}" width="100%"/>

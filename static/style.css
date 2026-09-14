@@ -115,13 +115,13 @@ a {
 }
 
 .rainbow-text span:nth-child(10n + 1) {
-  color: #ff0500;
+  color: #ff3c00;
 }
 .rainbow-text span:nth-child(10n + 2) {
   color: #ffe41f;
 }
 .rainbow-text span:nth-child(10n + 3) {
-  color: #9af63e;
+  color: #95ee3c;
 }
 .rainbow-text span:nth-child(10n + 4) {
   color: #3b6ee9;
