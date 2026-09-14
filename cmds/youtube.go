@@ -21,11 +21,11 @@ import (
 
 var YT_DURATION_REGEX = regexp.MustCompile(`([0-9]+)([^0-9])`)
 
-func NewYoutubeCommand() *YoutubeCommand {
-	return &YoutubeCommand{
-		CommandBase: command.NewCommandBase("youtube", "Build entries from Youtube data"),
-	}
+type YoutubeMeta struct {
+	Playlist string `json:"playlist"`
 }
+
+//===================================================
 
 type YoutubeCommand struct {
 	command.CommandBase
@@ -33,6 +33,12 @@ type YoutubeCommand struct {
 
 	indexStart  int
 	indexFormat string
+}
+
+func NewYoutubeCommand() *YoutubeCommand {
+	return &YoutubeCommand{
+		CommandBase: command.NewCommandBase("youtube", "Build entries from Youtube data"),
+	}
 }
 
 func (cmd *YoutubeCommand) Initialize() error {
@@ -177,7 +183,7 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 }
 
 func (cmd YoutubeCommand) downloadData(series series.Series, forceAuth bool) error {
-	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_DIR, series.GetName(), "youtube.json"))
+	meta, err := json.UnmarshalFile[YoutubeMeta](filepath.Join(data.STATIC_DIR, series.GetName(), "youtube.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading youtube meta file")
 	}
