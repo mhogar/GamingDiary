@@ -47,10 +47,10 @@ func (s TTYDBattles) calcChapter(i int) (int, int) {
 		return 4, i + 1
 	}
 	if shiftRange(&i, 2) {
-		return 5, i
+		return 5, i + 1
 	}
 	if shiftRange(&i, 2) {
-		return 6, i
+		return 6, i + 1
 	}
 	if shiftRange(&i, 1) {
 		return 7, i + 1
