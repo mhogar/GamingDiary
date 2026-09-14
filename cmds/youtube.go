@@ -142,7 +142,7 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 }
 
 func (cmd YoutubeCommand) downloadNewData(series series.Series, forceAuth bool) ([]*youtube.Video, error) {
-	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join("series", series.GetName(), "youtube.json"))
+	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_DIR, series.GetName(), "youtube.json"))
 	if err != nil {
 		return nil, errors.Chain(err, "error reading youtube meta file")
 	}

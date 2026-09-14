@@ -1,0 +1,10 @@
+{
+    "index": 2,
+    "title": "The Thousand-Year Tale",
+    "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
+    "theme": "ttyd",
+    "background": "door.png",
+    "thumbnail": "series/t00.png",
+    "stylesheets": ["groups.css"],
+    "sub_series": ["series", "battles"]
+}

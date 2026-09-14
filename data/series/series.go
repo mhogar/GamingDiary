@@ -10,6 +10,7 @@ import (
 var series = []Series{
 	SunshineChapters{},
 	ShakeItSeries{},
+	TTYDSeries{},
 }
 
 type Series interface {

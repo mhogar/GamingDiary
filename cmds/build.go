@@ -200,7 +200,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (SeriesData, error) {
 	for i, subSeries := range s.SubSeries {
 		stats, err := cmd.buildSubSeries(name, subSeries, s, filepath.Join(dest, name, subSeries))
 		if err != nil {
-			cmd.printError(err)
+			style.Error.Printf("[x] (%s) %s\n", subSeries, err)
 			continue
 		}
 
@@ -222,7 +222,7 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 
 	entries, err := filepath.Glob(filepath.Join(data.STATIC_DIR, seriesName, subSeries, "entry*.json"))
 	if err != nil {
-		return SeriesStats{}, errors.Chain(err, "error reading series directory")
+		return SeriesStats{}, errors.Chain(err, "error reading directory")
 	}
 
 	if len(entries) == 0 {
@@ -241,10 +241,12 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 		VideoCount: len(entries),
 	}
 
+	var errs errors.Errors
 	for i, file := range entries {
 		entry, err := json.UnmarshalFile[data.Entry](file)
 		if err != nil {
-			return stats, errors.Chain(err, "error reading entry")
+			errs.Add(err)
+			continue
 		}
 
 		stats.TotalDuration += entry.Duration
@@ -267,6 +269,10 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 		} else if i == len(entries)-1 {
 			stats.EndDate = entry.Date
 		}
+	}
+
+	if len(errs) > 0 {
+		return stats, errors.Chain(errs.Collapse("\n  "), "error building entry")
 	}
 
 	page.Dates = cmd.formatDateRange(stats.StartDate, stats.EndDate)
