@@ -1,0 +1,9 @@
+{
+    "index": 5,
+    "title": "Rumbly Tumbly Adventure",
+    "description": "Winnie the Pooh's Rumbly Tumbly Adventure (2005) - GCN",
+    "theme": "pooh",
+    "background": "background.png",
+    "thumbnail": "title.jpg",
+    "sub_series": ["series"]
+}

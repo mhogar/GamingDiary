@@ -12,6 +12,7 @@ var series = []Series{
 	TTYDSeries{}, TTYDBattles{}, TTYDShorts{},
 	LuigiMansionSeries{}, LuigiMansionShorts{},
 	ShakeItSeries{},
+	WinniePoohSeries{},
 	HeartgoldSeries{},
 }
 
