@@ -14,11 +14,5 @@ data/logs/*
 data/youtube/*
 !data/youtube/.keep
 
-data/ttyd/chapters/youtube/*
-data/ttyd/battles/youtube/*
-data/ttyd/shorts/meta/*
-data/luigi_mansion/videos/meta/*
-data/heartgold/download/*
-
 static/*/*/*.png
 !static/*/*/t00.png

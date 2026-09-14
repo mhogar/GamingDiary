@@ -1,5 +1,21 @@
 {
     "series": {
+        "heartgold": {
+            "index": 5,
+            "title": "Pokémon Heartgold",
+            "description": "Pokémon Heartgold - Nintendo DS (2010)",
+            "thumbnail": "series/t00.png",
+            "theme": "heartgold",
+            "sub_series": [
+                "series"
+            ],
+            "stats": {
+                "video_count": 27,
+                "total_duration": 40439,
+                "start_date": "2025-06-25T20:45:34Z",
+                "end_date": "2026-09-05T15:00:30Z"
+            }
+        },
         "luigi_mansion": {
             "index": 3,
             "title": "Luigi's Spooky Story",

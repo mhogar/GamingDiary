@@ -1,0 +1,10 @@
+{
+    "index": 5,
+    "title": "Pokémon Heartgold",
+    "description": "Pokémon Heartgold - Nintendo DS (2010)",
+    "theme": "heartgold",
+    "background": "JohtoMap.jpg",
+    "thumbnail": "series/t00.png",
+    "stylesheets": ["groups.css"],
+    "sub_series": ["series"]
+}
