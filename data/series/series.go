@@ -10,6 +10,7 @@ import (
 var series = []Series{
 	SunshineChapters{}, SunshineShorts{},
 	TTYDSeries{}, TTYDBattles{}, TTYDShorts{},
+	LuigiMansionSeries{}, LuigiMansionShorts{},
 	ShakeItSeries{},
 }
 

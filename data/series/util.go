@@ -1,20 +1,5 @@
 package series
 
-import (
-	"strconv"
-
-	"github.com/binarysoupdev/go-extensions/errors"
-)
-
-func parseIndex(index string) (int, error) {
-	i, err := strconv.ParseInt(index, 10, 16)
-	if err != nil {
-		return -1, errors.Chain(err, "invalid index")
-	}
-
-	return int(i), nil
-}
-
 func inRange(i, start, end int) bool {
 	return i >= start && i <= end
 }

@@ -1,5 +1,22 @@
 {
     "series": {
+        "luigi_mansion": {
+            "index": 3,
+            "title": "Luigi's Spooky Story",
+            "description": "Luigi's Mansion (2001) - GCN",
+            "thumbnail": "series/t00.png",
+            "theme": "luigi-mansion",
+            "sub_series": [
+                "series",
+                "shorts"
+            ],
+            "stats": {
+                "video_count": 14,
+                "total_duration": 18132,
+                "start_date": "2024-10-31T22:27:54Z",
+                "end_date": "2024-12-10T22:00:35Z"
+            }
+        },
         "shake_it": {
             "index": 4,
             "title": "Wario Land Shake-It",

@@ -42,7 +42,8 @@ func (cmd *YoutubeCommand) Initialize() error {
 
 func (cmd YoutubeCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
-	cache := cmd.Flags.String("cache", "", "use an existing cached data")
+	parse := cmd.Flags.String("parse", "", "parse existing data")
+	download := cmd.Flags.Bool("download", false, "download new data")
 	forceAuth := cmd.Flags.Bool("auth", false, "force re-authentication")
 	index := cmd.Flags.String("index", "00", "starting index and padding")
 	cmd.Flags.Parse(args)
@@ -50,12 +51,15 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
 	}
-	style.BoldInfo.Println(*s)
+	if !*download && *parse == "" {
+		return errors.New("\"parse\" cannot be empty")
+	}
 
 	series, err := series.Select(*s)
 	if err != nil {
 		return err
 	}
+	style.BoldInfo.Println(*s)
 
 	i64, err := strconv.ParseInt(*index, 10, 16)
 	if err != nil {
@@ -64,16 +68,14 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	cmd.indexStart = int(i64)
 	cmd.indexFormat = fmt.Sprintf("%%0%dd", len(*index))
 
-	var videos []*youtube.Video
-	if *cache != "" {
-		videos, err = cmd.loadCachedData(*cache)
-	} else {
-		videos, err = cmd.downloadNewData(series, *forceAuth)
+	if *download {
+		return cmd.downloadData(series, *forceAuth)
 	}
+
+	videos, err := cmd.loadCachedData(*parse)
 	if err != nil {
 		return err
 	}
-
 	return cmd.createEntries(series, videos)
 }
 
@@ -174,38 +176,38 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 	return videos, nil
 }
 
-func (cmd YoutubeCommand) downloadNewData(series series.Series, forceAuth bool) ([]*youtube.Video, error) {
+func (cmd YoutubeCommand) downloadData(series series.Series, forceAuth bool) error {
 	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_DIR, series.GetName(), "youtube.json"))
 	if err != nil {
-		return nil, errors.Chain(err, "error reading youtube meta file")
+		return errors.Chain(err, "error reading youtube meta file")
 	}
 
 	ctx := context.Background()
 
 	client, err := youtube.NewClient(ctx, forceAuth)
 	if err != nil {
-		return nil, errors.Chain(err, "error creating youtube client")
+		return errors.Chain(err, "error creating youtube client")
 	}
 
 	ids, err := cmd.loadVideoIdsFromPlaylist(client, ctx, meta.Playlist)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	videos, err := cmd.downloadVideoData(client, ctx, ids)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	file := fmt.Sprintf("%s_%s.json", strings.ReplaceAll(series.GetName(), "/", "_"), time.Now().Format("2006-01-02_15:04:05"))
 	output := filepath.Join(data.YOUTUBE_DATA_PATH, file)
 
 	if err := json.MarshalFilePretty(videos, output, "  "); err != nil {
-		return nil, errors.Chain(err, "error saving videos json")
+		return errors.Chain(err, "error saving videos json")
 	}
 
 	style.Create.Printf("+ %s\n", output)
-	return videos, nil
+	return nil
 }
 
 func (cmd YoutubeCommand) loadVideoIdsFromPlaylist(yt *youtube.YTClient, ctx context.Context, playlist string) ([]string, error) {
