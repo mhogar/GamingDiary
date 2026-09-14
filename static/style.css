@@ -23,11 +23,14 @@ body {
 .root-title {
   font-size: 55pt;
   font-weight: 800;
-  margin-bottom: -40px;
+  margin-bottom: -15px;
+
+  color: white;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
 .root-header {
-  color: rgb(35, 35, 35) !important;
+  color: rgb(50, 50, 50) !important;
   font-weight: 800;
 }
 
@@ -111,12 +114,17 @@ a {
   text-decoration: none;
 }
 
-.rainbow-text {
-  background-image: linear-gradient(to right, red, orange, yellow, rgb(9, 176, 9), rgb(30, 154, 255), rgb(128, 15, 209));
-  background-clip: text;
-  color: transparent;
-  display: inline-block;
-  text-shadow: none;
+.rainbow-text span:nth-child(10n + 1) {
+  color: #ff0500;
+}
+.rainbow-text span:nth-child(10n + 2) {
+  color: #ffe41f;
+}
+.rainbow-text span:nth-child(10n + 3) {
+  color: #9af63e;
+}
+.rainbow-text span:nth-child(10n + 4) {
+  color: #3b6ee9;
 }
 
 /* Sunshine Theme */
