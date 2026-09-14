@@ -1,8 +1,7 @@
 .vscode
 .secrets
 
-gamingdiary
-
+app
 *.kra~
 *.png~
 *.jpg~

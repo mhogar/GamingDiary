@@ -1,11 +1,11 @@
 package cmds
 
 import (
+	"app/data"
+	"app/data/series"
+	"app/tools/youtube"
 	"context"
 	"fmt"
-	"gamingdiary/data"
-	"gamingdiary/data/series"
-	"gamingdiary/tools/youtube"
 	"path/filepath"
 	"regexp"
 	"slices"

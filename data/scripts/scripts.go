@@ -1,7 +1,7 @@
 package scripts
 
 import (
-	"gamingdiary/data"
+	"app/data"
 
 	"github.com/binarysoupdev/go-extensions/errors"
 )

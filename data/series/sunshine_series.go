@@ -1,9 +1,9 @@
 package series
 
 import (
+	"app/data"
+	"app/tools/youtube"
 	"fmt"
-	"gamingdiary/data"
-	"gamingdiary/tools/youtube"
 	"strings"
 
 	"github.com/binarysoupdev/go-extensions/errors"

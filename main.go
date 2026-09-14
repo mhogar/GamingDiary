@@ -1,8 +1,8 @@
 package main
 
 import (
+	"app/cmds"
 	"fmt"
-	"gamingdiary/cmds"
 	"os"
 
 	"github.com/binarysoupdev/go-commando/command"

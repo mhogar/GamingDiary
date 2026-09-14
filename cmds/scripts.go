@@ -1,9 +1,9 @@
 package cmds
 
 import (
+	"app/data"
+	"app/data/scripts"
 	"fmt"
-	"gamingdiary/data"
-	"gamingdiary/data/scripts"
 	"path/filepath"
 
 	"github.com/binarysoupdev/go-commando/command"

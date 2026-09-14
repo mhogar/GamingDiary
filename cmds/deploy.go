@@ -1,8 +1,8 @@
 package cmds
 
 import (
+	"app/data"
 	"fmt"
-	"gamingdiary/data"
 	"log"
 	"os"
 	"path/filepath"

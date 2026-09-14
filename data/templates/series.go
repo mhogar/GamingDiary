@@ -1,7 +1,7 @@
 package templates
 
 import (
-	"gamingdiary/data"
+	"app/data"
 	"path/filepath"
 	"text/template"
 )

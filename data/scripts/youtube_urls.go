@@ -1,8 +1,8 @@
 package scripts
 
 import (
+	"app/data"
 	"fmt"
-	"gamingdiary/data"
 )
 
 type YoutubeURLs struct{}

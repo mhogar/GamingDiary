@@ -1,10 +1,10 @@
 package series
 
 import (
+	"app/data"
+	"app/tools/youtube"
+	"app/util"
 	"fmt"
-	"gamingdiary/data"
-	"gamingdiary/tools/youtube"
-	"gamingdiary/util"
 	"strings"
 
 	"github.com/binarysoupdev/go-extensions/errors"

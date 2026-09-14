@@ -1,10 +1,10 @@
 package cmds
 
 import (
+	"app/data"
+	"app/data/templates"
+	"app/util"
 	"fmt"
-	"gamingdiary/data"
-	"gamingdiary/data/templates"
-	"gamingdiary/util"
 	"math"
 	"os"
 	"path/filepath"

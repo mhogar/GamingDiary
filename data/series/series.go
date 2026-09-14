@@ -1,8 +1,8 @@
 package series
 
 import (
-	"gamingdiary/data"
-	"gamingdiary/tools/youtube"
+	"app/data"
+	"app/tools/youtube"
 
 	"github.com/binarysoupdev/go-extensions/errors"
 )
