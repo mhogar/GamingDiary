@@ -40,11 +40,12 @@
             "thumbnail": "series/t00.png",
             "theme": "ttyd",
             "sub_series": [
-                "series"
+                "series",
+                "battles"
             ],
             "stats": {
-                "video_count": 83,
-                "total_duration": 130506,
+                "video_count": 109,
+                "total_duration": 144510,
                 "start_date": "2024-06-05T16:00:44Z",
                 "end_date": "2024-10-10T15:00:41Z"
             }

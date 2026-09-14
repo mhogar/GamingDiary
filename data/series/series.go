@@ -11,6 +11,7 @@ var series = []Series{
 	SunshineChapters{},
 	ShakeItSeries{},
 	TTYDSeries{},
+	TTYDBattles{},
 }
 
 type Series interface {

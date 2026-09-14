@@ -8,6 +8,7 @@ import (
 	"gamingdiary/tools/youtube"
 	"path/filepath"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -66,13 +67,32 @@ func (cmd YoutubeCommand) Run(args []string) error {
 }
 
 func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.Video) error {
-	// TODO: sort by publish date
+	type video struct {
+		Video *youtube.Video
+		Date  time.Time
+	}
 
-	for i, video := range videos {
+	videosByDate := make([]video, len(videos))
+	for i, v := range videos {
+		date, err := time.Parse(time.RFC3339, v.Snippet.PublishedAt)
+		if err != nil {
+			return errors.Chain(err, "error parsing date")
+		}
+
+		videosByDate[i] = video{
+			Video: v,
+			Date:  date,
+		}
+	}
+	slices.SortFunc(videosByDate, func(a, b video) int {
+		return a.Date.Compare(b.Date)
+	})
+
+	for i, v := range videosByDate {
 		index := fmt.Sprintf("%02d", i)
 		path := filepath.Join(data.STATIC_DIR, series.GetName(), fmt.Sprintf("entry%s.json", index))
 
-		err := cmd.createEntry(path, index, series, video)
+		err := cmd.createEntry(path, index, series, v.Video, v.Date)
 		if err == nil {
 			fmt.Printf("\r... %s ", style.Create.Sprintf("[+] %s ", path))
 		} else {
@@ -84,15 +104,10 @@ func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.
 	return nil
 }
 
-func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, video *youtube.Video) error {
+func (cmd YoutubeCommand) createEntry(path, index string, series series.Series, video *youtube.Video, date time.Time) error {
 	duration, err := cmd.parseDuration(video.ContentDetails.Duration)
 	if err != nil {
 		return err
-	}
-
-	date, err := time.Parse(time.RFC3339, video.Snippet.PublishedAt)
-	if err != nil {
-		return errors.Chain(err, "error parsing date")
 	}
 
 	entry := data.Entry{
