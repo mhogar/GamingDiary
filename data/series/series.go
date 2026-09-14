@@ -8,7 +8,7 @@ import (
 )
 
 var series = []Series{
-	SunshineChapters{},
+	SunshineChapters{}, SunshineShorts{},
 	TTYDSeries{}, TTYDBattles{}, TTYDShorts{},
 	ShakeItSeries{},
 }
