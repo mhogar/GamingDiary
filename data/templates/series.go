@@ -26,7 +26,8 @@ type Entry struct {
 	Thumbnail        string
 	DefaultThumbnail string
 	Video            string
-	Youtube          string
+	YoutubeThumbnail string
+	YoutubeVideo     string
 	Classes          []string
 	Local            bool
 }

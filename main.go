@@ -14,6 +14,7 @@ func main() {
 		cmds.NewBuildCommand(),
 		cmds.NewDeployCommand(),
 		cmds.NewYoutubeCommand(),
+		cmds.NewScriptsCommand(),
 	)
 
 	if len(os.Args) < 2 {

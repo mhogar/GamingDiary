@@ -26,5 +26,4 @@ func Select(name string) (Series, error) {
 		}
 	}
 	return nil, errors.Format("invalid series \"%s\"", name)
-
 }

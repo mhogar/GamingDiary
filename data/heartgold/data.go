@@ -41,8 +41,8 @@ func (p Parser) ParseEntry(path string) (data.Entry, error) {
 		Description: lines[7],
 		Thumbnail:   fmt.Sprintf("entries/t%s.png", index),
 		Video:       fmt.Sprintf("entries/v%s.mp4", index),
-		Youtube:     lines[0],
-		Groups:      []string{p.selectGroup(index)},
+		//Youtube:     lines[0],
+		Groups: []string{p.selectGroup(index)},
 	}, nil
 }
 

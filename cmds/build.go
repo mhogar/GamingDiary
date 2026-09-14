@@ -263,7 +263,8 @@ func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series dat
 			Thumbnail:        entry.Thumbnail,
 			DefaultThumbnail: filepath.Join("..", series.Thumbnail),
 			Video:            entry.Video,
-			Youtube:          entry.YoutubeId,
+			YoutubeThumbnail: entry.YoutubeThumbnail,
+			YoutubeVideo:     entry.YoutubeVideo,
 			Classes:          entry.Groups,
 			Local:            cmd.local,
 		}

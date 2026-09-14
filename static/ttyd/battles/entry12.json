@@ -6,6 +6,8 @@
     "thumbnail": "t12.png",
     "video": "v12.mp4",
     "youtube_id": "36-sJJHytuM",
+    "youtube_thumbnail": "https://i.ytimg.com/vi/36-sJJHytuM/maxresdefault.jpg",
+    "youtube_video": "https://www.youtube.com/watch?v=36-sJJHytuM",
     "groups": [
         "chapter4"
     ]

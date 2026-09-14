@@ -1,8 +1,12 @@
 {
     "title": "Short 10 | I Take Long Showers",
     "description": "From Chapter 11",
+    "date": "0001-01-01T00:00:00Z",
     "duration": 18.005,
     "thumbnail": "../chapters/t11.png",
     "video": "s10_c11.mp4",
-    "youtube_id": "POaSBwvGLQo"
+    "youtube_id": "POaSBwvGLQo",
+    "youtube_thumbnail": "https://i.ytimg.com/vi/POaSBwvGLQo/maxresdefault.jpg",
+    "youtube_video": "https://www.youtube.com/watch?v=POaSBwvGLQo",
+    "groups": null
 }

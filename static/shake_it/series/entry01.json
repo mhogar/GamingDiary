@@ -6,6 +6,8 @@
     "thumbnail": "t01.png",
     "video": "v01.mp4",
     "youtube_id": "xHBhrhST96s",
+    "youtube_thumbnail": "https://i.ytimg.com/vi/xHBhrhST96s/maxresdefault.jpg",
+    "youtube_video": "https://www.youtube.com/watch?v=xHBhrhST96s",
     "groups": [
         "area1"
     ]
