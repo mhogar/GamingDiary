@@ -121,6 +121,7 @@ func (cmd BuildCommand) buildRoot(dest string, root RootData) error {
 
 	var duration float32
 	var startDate time.Time
+	var endDate time.Time
 
 	for name, series := range root.Series {
 		tmpl := templates.SeriesHeader{
@@ -142,11 +143,14 @@ func (cmd BuildCommand) buildRoot(dest string, root RootData) error {
 		if startDate.IsZero() || series.Stats.StartDate.Before(startDate) {
 			startDate = series.Stats.StartDate
 		}
+		if endDate.IsZero() || series.Stats.EndDate.After(endDate) {
+			endDate = series.Stats.EndDate
+		}
 	}
 
 	page.TotalDuration = cmd.formatDurationHMS(duration)
-	if !startDate.IsZero() {
-		page.Dates = fmt.Sprintf("%s - Present", startDate.Format(DATE_FORMAT))
+	if len(page.Series) > 0 {
+		page.Dates = fmt.Sprintf("%s - %s", startDate.Format(DATE_FORMAT), endDate.Format(DATE_FORMAT))
 	}
 
 	slices.SortFunc(page.Series, func(a, b templates.SeriesHeader) int {
