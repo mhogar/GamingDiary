@@ -62,14 +62,14 @@ func (cmd *BuildCommand) Initialize() error {
 
 func (cmd BuildCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
-	out := cmd.Flags.String("out", data.PUBLIC_DIR, "the destination path")
+	out := cmd.Flags.String("out", data.PUBLIC_PATH, "the destination path")
 	cmd.Flags.BoolVar(&cmd.local, "local", false, "build using local thumbnails and videos")
 	cmd.ParseFlags(args)
 
 	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
 	}
-	rootPath := filepath.Join(data.STATIC_DIR, "root.json")
+	rootPath := filepath.Join(data.STATIC_PATH, "root.json")
 
 	root, err := json.UnmarshalFile[RootData](rootPath)
 	if err != nil {
@@ -185,7 +185,7 @@ func (cmd BuildCommand) buildSubSeriesLinks(name string, series SeriesData) []te
 
 func (cmd BuildCommand) buildSeries(dest, name string) (SeriesData, error) {
 	style.Bold.Println(name)
-	seriesPath := filepath.Join(data.STATIC_DIR, name)
+	seriesPath := filepath.Join(data.STATIC_PATH, name)
 
 	s, err := json.UnmarshalFile[data.Series](filepath.Join(seriesPath, "series.json"))
 	if err != nil {
@@ -224,7 +224,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (SeriesData, error) {
 func (cmd *BuildCommand) buildSubSeries(seriesName, subSeries string, series data.Series, dest string) (SeriesStats, error) {
 	out := filepath.Join(dest, "index.html")
 
-	entries, err := filepath.Glob(filepath.Join(data.STATIC_DIR, seriesName, subSeries, "entry*.json"))
+	entries, err := filepath.Glob(filepath.Join(data.STATIC_PATH, seriesName, subSeries, "entry*.json"))
 	if err != nil {
 		return SeriesStats{}, errors.Chain(err, "error reading directory")
 	}

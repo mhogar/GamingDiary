@@ -42,7 +42,7 @@ func (cmd ScriptsCommand) Run(args []string) error {
 	}
 	style.Bold.Println(script.GetName())
 
-	files, err := filepath.Glob(filepath.Join(data.STATIC_DIR, "*", "*", "entry*.json"))
+	files, err := filepath.Glob(filepath.Join(data.STATIC_PATH, "*", "*", "entry*.json"))
 	if err != nil {
 		return errors.Chain(err, "error finding entry files")
 	}

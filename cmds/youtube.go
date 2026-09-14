@@ -109,7 +109,7 @@ func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.
 
 	for i, v := range videosByDate {
 		index := i + cmd.indexStart
-		path := filepath.Join(data.STATIC_DIR, series.GetName(), fmt.Sprintf("entry%s.json", fmt.Sprintf(cmd.indexFormat, index)))
+		path := filepath.Join(data.STATIC_PATH, series.GetName(), fmt.Sprintf("entry%s.json", fmt.Sprintf(cmd.indexFormat, index)))
 
 		err := cmd.createEntry(path, index, series, v.Video, v.Date)
 		if err == nil {
@@ -183,7 +183,7 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 }
 
 func (cmd YoutubeCommand) downloadData(series series.Series, forceAuth bool) error {
-	meta, err := json.UnmarshalFile[YoutubeMeta](filepath.Join(data.STATIC_DIR, series.GetName(), "youtube.json"))
+	meta, err := json.UnmarshalFile[YoutubeMeta](filepath.Join(data.STATIC_PATH, series.GetName(), "youtube.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading youtube meta file")
 	}
