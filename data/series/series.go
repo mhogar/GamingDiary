@@ -14,6 +14,7 @@ var series = []Series{
 	ShakeItSeries{},
 	WinniePoohSeries{},
 	HeartgoldSeries{},
+	OrigamiKingSeries{},
 }
 
 type Series interface {
