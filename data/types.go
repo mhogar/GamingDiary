@@ -2,10 +2,6 @@ package data
 
 import "time"
 
-type Root struct {
-	Series []string `json:"series"`
-}
-
 type Series struct {
 	Index       int      `json:"index"`
 	Title       string   `json:"title"`

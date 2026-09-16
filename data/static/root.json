@@ -1,4 +1,6 @@
 {
+    "background": "banner.png",
+    "logo": "logo_v2.png",
     "series": {
         "heartgold": {
             "index": 6,
