@@ -2,6 +2,12 @@ package data
 
 import "time"
 
+type Root struct {
+	Background string                 `json:"background"`
+	Logo       string                 `json:"logo"`
+	Series     map[string]SeriesCache `json:"series"`
+}
+
 type Series struct {
 	Index       int      `json:"index"`
 	Title       string   `json:"title"`
@@ -13,11 +19,21 @@ type Series struct {
 	SubSeries   []string `json:"sub_series"`
 }
 
-// Deprecated
-type Entries struct {
-	VideoCount    int     `json:"video_count"`
-	TotalDuration float32 `json:"total_duration"`
-	Entries       []Entry `json:"entries"`
+type SeriesCache struct {
+	Index       int         `json:"index"`
+	Title       string      `json:"title"`
+	Description string      `json:"description"`
+	Thumbnail   string      `json:"thumbnail"`
+	Theme       string      `json:"theme"`
+	SubSeries   []string    `json:"sub_series"`
+	Stats       SeriesStats `json:"stats"`
+}
+
+type SeriesStats struct {
+	VideoCount    int       `json:"video_count"`
+	TotalDuration float32   `json:"total_duration"`
+	StartDate     time.Time `json:"start_date"`
+	EndDate       time.Time `json:"end_date"`
 }
 
 type Entry struct {

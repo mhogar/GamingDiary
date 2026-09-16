@@ -2,6 +2,7 @@ package main
 
 import (
 	"app/cmds"
+	build_cmd "app/cmds/build"
 	"fmt"
 	"os"
 
@@ -11,7 +12,7 @@ import (
 
 func main() {
 	runner := command.NewRunner(
-		cmds.NewBuildCommand(),
+		build_cmd.NewBuildCommand(),
 		cmds.NewYoutubeCommand(),
 		cmds.NewScriptsCommand(),
 	)

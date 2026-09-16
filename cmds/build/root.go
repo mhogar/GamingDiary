@@ -1,0 +1,94 @@
+package build_cmd
+
+import (
+	"app/data"
+	"app/data/templates"
+	"app/util"
+	"fmt"
+	"path/filepath"
+	"slices"
+	"time"
+
+	"github.com/binarysoupdev/go-extensions/errors"
+	"github.com/binarysoupdev/got-style/style"
+)
+
+func (cmd BuildCommand) buildRoot(dest string, root data.Root) error {
+	cmd.logBuild("ROOT")
+	style.New(style.BOLD, style.UNDERLINE).Println("root")
+	out := filepath.Join(dest, "index.html")
+
+	page := templates.RootPage{
+		Background: root.Background,
+		Logo:       root.Logo,
+		VideoCount: 0,
+		Series:     make([]templates.SeriesHeader, 0, len(root.Series)),
+	}
+
+	var duration float32
+	var startDate time.Time
+	var endDate time.Time
+
+	for name, series := range root.Series {
+		tmpl := templates.SeriesHeader{
+			Index:          series.Index,
+			Title:          series.Title,
+			Dates:          cmd.formatDateRange(series.Stats.StartDate, series.Stats.EndDate),
+			Description:    series.Description,
+			VideoCount:     series.Stats.VideoCount,
+			TotalDuration:  cmd.formatDurationTimestamp(series.Stats.TotalDuration),
+			Thumbnail:      filepath.Join(name, series.Thumbnail),
+			SubSeriesLinks: cmd.buildSubSeriesLinks(name, series),
+			Theme:          series.Theme,
+		}
+
+		page.Series = append(page.Series, tmpl)
+		page.VideoCount += series.Stats.VideoCount
+		duration += series.Stats.TotalDuration
+
+		if startDate.IsZero() || series.Stats.StartDate.Before(startDate) {
+			startDate = series.Stats.StartDate
+		}
+		if endDate.IsZero() || series.Stats.EndDate.After(endDate) {
+			endDate = series.Stats.EndDate
+		}
+	}
+
+	page.TotalDuration = cmd.formatDurationHMS(duration)
+	if len(page.Series) > 0 {
+		page.Dates = fmt.Sprintf("%s - %s", startDate.Format(data.DATE_FORMAT), endDate.Format(data.DATE_FORMAT))
+	}
+
+	slices.SortFunc(page.Series, func(a, b templates.SeriesHeader) int {
+		return a.Index - b.Index
+	})
+
+	if err := templates.RenderRootPage(out, page); err != nil {
+		cmd.logError(err, "render ROOT failed")
+		return errors.New("error rendering root")
+	}
+
+	style.Create.Printf("+ %s\n", out)
+	cmd.logCreate(out)
+
+	cmd.copyFiles(dest, data.PUBLIC_PATH, fileStats{Created: 1}, []string{"style.css", "script.js", root.Background, root.Logo})
+	return nil
+}
+
+func (cmd BuildCommand) buildSubSeriesLinks(name string, series data.SeriesCache) []templates.SubSeriesLink {
+	if len(series.SubSeries) == 0 {
+		return nil
+	}
+	links := make([]templates.SubSeriesLink, len(series.SubSeries))
+
+	for i, subSeries := range series.SubSeries {
+		links[i] = templates.SubSeriesLink{
+			Title:     util.Capitalize(subSeries),
+			Link:      filepath.Join(name, subSeries, "index.html"),
+			Separator: " | ",
+		}
+	}
+
+	links[len(links)-1].Separator = ""
+	return links
+}

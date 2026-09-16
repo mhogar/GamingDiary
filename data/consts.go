@@ -4,6 +4,8 @@ import "regexp"
 
 var ENTRY_REGEX = regexp.MustCompile(`entry([0-9]+)\.json`)
 
+const DATE_FORMAT = "Jan 02, 2006"
+
 const (
 	PUBLIC_PATH       = "public"
 	STATIC_PATH       = "data/static"
