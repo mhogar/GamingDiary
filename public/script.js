@@ -9,3 +9,17 @@ for (var i = 0; i < toggles.length; i++) {
         }
     });
 } 
+
+document.getElementById("scroll-to-bottom").addEventListener("click", function() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+});
+
+document.getElementById("scroll-to-top").addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});

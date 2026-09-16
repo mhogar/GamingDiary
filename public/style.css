@@ -54,12 +54,21 @@ ul {
 }
 
 a {
-  color: blue;
+  color: whitesmoke;
+  text-decoration: underline;
 }
 
 .list-toggle {
   cursor: pointer;
   user-select: none;
+}
+
+.scroll-button {
+  cursor: pointer;
+}
+
+.root.scroll-button {
+  color: #1c1c1c;
 }
 
 .collapsable {
