@@ -27,3 +27,11 @@ func capitalizeWord(word string, first bool) string {
 		return word
 	}
 }
+
+func Pluralize(singular, plural string, count int) string {
+	if count == 1 {
+		return singular
+	} else {
+		return plural
+	}
+}

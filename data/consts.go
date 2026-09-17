@@ -3,6 +3,7 @@ package data
 import "regexp"
 
 var ENTRY_REGEX = regexp.MustCompile(`entry([0-9]+)\.json`)
+var URL_REGEX = regexp.MustCompile(`^https?://`)
 
 const DATE_FORMAT = "Jan 02, 2006"
 

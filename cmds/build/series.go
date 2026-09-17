@@ -28,7 +28,6 @@ func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error)
 		Theme:       series.Theme,
 		SubSeries:   make([]string, 0, len(series.SubSeries)),
 	}
-	fs := fileStats{}
 
 	for i, subSeries := range series.SubSeries {
 		stats, err := cmd.buildSubSeries(filepath.Join(dest, name, subSeries), name, subSeries, series)
@@ -36,7 +35,6 @@ func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error)
 			cmd.printError(err.Error())
 			continue
 		}
-		fs.Created++
 
 		cache.SubSeries = append(cache.SubSeries, subSeries)
 		cache.Stats.VideoCount += stats.VideoCount
@@ -49,11 +47,14 @@ func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error)
 	}
 
 	cmd.printSeriesHeader(name)
+	fs := fileStats{}
 
 	files := make([]string, 0, 2+len(series.Stylesheets))
 	files = append(files, series.Background, series.Thumbnail)
 	files = append(files, series.Stylesheets...)
-	cmd.copyFiles(filepath.Join(dest, name), filepath.Join(data.PUBLIC_PATH, name), fs, files)
+
+	cmd.copyFiles(filepath.Join(dest, name), filepath.Join(data.PUBLIC_PATH, name), &fs, files)
+	fs.Print()
 
 	return cache, nil
 }
@@ -85,6 +86,7 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 	stats := data.SeriesStats{
 		VideoCount: len(entries),
 	}
+	fs := fileStats{}
 
 	for i, file := range entries {
 		entry, err := json.UnmarshalFile[data.Entry](file)
@@ -117,7 +119,8 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 		}
 
 		if cmd.local {
-			//TODO: copy files
+			files := []string{entry.Thumbnail, entry.Video}
+			cmd.copyFiles(dest, filepath.Join(data.PUBLIC_PATH, name), &fs, files)
 		}
 	}
 
@@ -133,6 +136,9 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 
 	cmd.logCreate(out)
 	cmd.printCreate(out)
+
+	fs.Created++
+	fs.Print()
 
 	return stats, nil
 }
