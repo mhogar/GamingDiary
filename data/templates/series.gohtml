@@ -10,6 +10,7 @@
   <div class="page-container">
     <h1 class="series-title series-color list-toggle">{{.Title}}</h1>
     <h3 class="dates">{{len .Entries}} Videos [{{.TotalDuration}}] {{if .Dates}}| {{.Dates}}{{end}}</h3>
+    {{if .YoutubePlaylist}}<a href="{{.YoutubePlaylist}}" target="_blank">Youtube Playlist</a>{{end}}
     <hr class="divider" />
     <a id="scroll-to-bottom" class="scroll-button">Bottom</a>
     <ul>

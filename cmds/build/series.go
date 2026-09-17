@@ -125,6 +125,11 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	page.Dates = cmd.formatDateRange(stats.StartDate, stats.EndDate)
 	page.TotalDuration = cmd.formatDurationTimestamp(stats.TotalDuration)
 
+	ytMeta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_PATH, name, data.YOUTUBE_META_FILE))
+	if err == nil {
+		page.YoutubePlaylist = fmt.Sprintf("https://www.youtube.com/playlist?list=%s", ytMeta.Playlist)
+	}
+
 	out := filepath.Join(dest, "index.html")
 
 	if err := templates.RenderSeriesPage(out, page); err != nil {

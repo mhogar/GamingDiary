@@ -9,13 +9,14 @@ import (
 var SERIES_TEMPLATE = template.Must(template.ParseFiles(filepath.Join(data.TEMPLATE_PATH, "series.gohtml")))
 
 type SeriesPage struct {
-	Title         string
-	TotalDuration string
-	Dates         string
-	Background    string
-	Entries       []Entry
-	Theme         string
-	Stylesheets   []string
+	Title           string
+	TotalDuration   string
+	Dates           string
+	YoutubePlaylist string
+	Background      string
+	Entries         []Entry
+	Theme           string
+	Stylesheets     []string
 }
 
 type Entry struct {

@@ -7,7 +7,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"regexp"
 	"slices"
 	"strconv"
 	"strings"
@@ -18,14 +17,6 @@ import (
 	"github.com/binarysoupdev/go-extensions/json"
 	"github.com/binarysoupdev/got-style/style"
 )
-
-var YT_DURATION_REGEX = regexp.MustCompile(`([0-9]+)([^0-9])`)
-
-type YoutubeMeta struct {
-	Playlist string `json:"playlist"`
-}
-
-//===================================================
 
 type YoutubeCommand struct {
 	command.CommandBase
@@ -156,7 +147,7 @@ func (cmd YoutubeCommand) createEntry(path string, index int, series series.Seri
 }
 
 func (cmd YoutubeCommand) parseDuration(str string) (int64, error) {
-	matches := YT_DURATION_REGEX.FindAllStringSubmatch(str, 2)
+	matches := data.YOUTUBE_DURATION_REGEX.FindAllStringSubmatch(str, 2)
 	if len(matches) == 0 {
 		return 0, errors.Format("invalid duration format \"%s\"", str)
 	}
@@ -183,7 +174,7 @@ func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) 
 }
 
 func (cmd YoutubeCommand) downloadData(series series.Series, forceAuth bool) error {
-	meta, err := json.UnmarshalFile[YoutubeMeta](filepath.Join(data.STATIC_PATH, series.GetName(), "youtube.json"))
+	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_PATH, series.GetName(), "youtube.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading youtube meta file")
 	}

@@ -49,3 +49,7 @@ type Entry struct {
 	Groups           []string  `json:"groups,omitempty"` // Deprecated
 	Group            string    `json:"group"`
 }
+
+type YoutubeMeta struct {
+	Playlist string `json:"playlist"`
+}
