@@ -24,7 +24,6 @@ type Entry struct {
 	Duration         string
 	Date             string
 	Thumbnail        string
-	DefaultThumbnail string
 	Video            string
 	YoutubeThumbnail string
 	YoutubeVideo     string

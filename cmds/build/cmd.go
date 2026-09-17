@@ -34,7 +34,7 @@ func (cmd *BuildCommand) Initialize() error {
 
 func (cmd BuildCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
-	out := cmd.Flags.String("out", data.PUBLIC_PATH, "the destination path")
+	public := cmd.Flags.String("public", data.PUBLIC_PATH, "the public path")
 	cmd.Flags.BoolVar(&cmd.local, "local", false, "build using local thumbnails and videos")
 	cmd.ParseFlags(args)
 
@@ -61,7 +61,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	cmd.logger = log.New(f, "", log.Ltime)
 
 	for _, s := range series {
-		data, err := cmd.buildSeries(*out, s)
+		data, err := cmd.buildSeries(*public, s)
 		if err == nil {
 			root.Series[s] = data
 		} else {
@@ -69,7 +69,7 @@ func (cmd BuildCommand) Run(args []string) error {
 		}
 	}
 
-	if err := cmd.buildRoot(*out, root); err != nil {
+	if err := cmd.buildRoot(*public, root); err != nil {
 		cmd.printError(err.Error())
 	}
 

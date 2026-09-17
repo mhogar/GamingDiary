@@ -53,13 +53,13 @@ func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error)
 	files = append(files, series.Background, series.Thumbnail)
 	files = append(files, series.Stylesheets...)
 
-	cmd.copyFiles(filepath.Join(dest, name), filepath.Join(data.PUBLIC_PATH, name), &fs, files)
+	cmd.copyFiles(filepath.Join(dest, name), filepath.Join(data.PUBLIC_PATH, name), &fs, files...)
 	fs.Print()
 
 	return cache, nil
 }
 
-func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, series data.Series) (data.SeriesStats, error) {
+func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, series data.Series) (data.SeriesStats, error) {
 	name := filepath.Join(seriesName, subSeries)
 	cmd.logBuild(name)
 	cmd.printSeriesHeader(name)
@@ -104,7 +104,6 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 			Duration:         cmd.formatDurationTimestamp(entry.Duration),
 			Date:             entry.Date.Format(data.DATE_FORMAT),
 			Thumbnail:        entry.Thumbnail,
-			DefaultThumbnail: filepath.Join("..", series.Thumbnail),
 			Video:            entry.Video,
 			YoutubeThumbnail: entry.YoutubeThumbnail,
 			YoutubeVideo:     entry.YoutubeVideo,
@@ -119,8 +118,7 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 		}
 
 		if cmd.local {
-			files := []string{entry.Thumbnail, entry.Video}
-			cmd.copyFiles(dest, filepath.Join(data.PUBLIC_PATH, name), &fs, files)
+			cmd.copyLocalFiles(dest, filepath.Join(data.PUBLIC_PATH, name), series, &page.Entries[i], &fs)
 		}
 	}
 
@@ -131,7 +129,7 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 
 	if err := templates.RenderSeriesPage(out, page); err != nil {
 		cmd.logError(err, "error rendering series page")
-		return stats, errors.Chain(err, "error rendering page")
+		return stats, errors.New("error rendering page")
 	}
 
 	cmd.logCreate(out)
@@ -141,4 +139,32 @@ func (cmd *BuildCommand) buildSubSeries(dest, seriesName, subSeries string, seri
 	fs.Print()
 
 	return stats, nil
+}
+
+func (cmd BuildCommand) copyLocalFiles(dest, src string, series data.Series, entry *templates.Entry, stats *fileStats) {
+	if ok := cmd.copyLocalFileIfExists(dest, src, entry.Thumbnail, stats); !ok {
+		entry.Thumbnail = filepath.Join("..", series.Thumbnail)
+	}
+
+	if ok := cmd.copyLocalFileIfExists(dest, src, entry.Video, stats); !ok {
+		entry.Video = ""
+	}
+}
+
+func (cmd BuildCommand) copyLocalFileIfExists(dest, src, file string, stats *fileStats) bool {
+	if data.URL_REGEX.MatchString(file) {
+		return true
+	}
+
+	src = filepath.Join(src, file)
+	dest = filepath.Join(dest, file)
+
+	_, err := os.Stat(src)
+	if err == nil {
+		cmd.copyFileIfNewer(dest, src, stats)
+		return true
+	}
+
+	_, err = os.Stat(dest)
+	return err == nil
 }

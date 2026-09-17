@@ -57,6 +57,11 @@ a {
   text-decoration: underline;
 }
 
+a.disabled {
+  color: black !important;
+  text-decoration: none !important;
+}
+
 .list-toggle {
   cursor: pointer;
   user-select: none;

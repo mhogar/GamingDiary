@@ -72,7 +72,7 @@ func (cmd BuildCommand) buildRoot(dest string, root data.Root) error {
 	cmd.printCreate(out)
 
 	fs := fileStats{Created: 1}
-	cmd.copyFiles(dest, data.PUBLIC_PATH, &fs, []string{"style.css", "script.js", root.Background, root.Logo})
+	cmd.copyFiles(dest, data.PUBLIC_PATH, &fs, "style.css", "script.js", root.Background, root.Logo)
 	fs.Print()
 
 	return nil
