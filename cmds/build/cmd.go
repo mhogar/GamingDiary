@@ -11,7 +11,6 @@ import (
 	"github.com/binarysoupdev/go-commando/command"
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
-	"github.com/binarysoupdev/got-style/style"
 )
 
 type BuildCommand struct {
@@ -66,16 +65,35 @@ func (cmd BuildCommand) Run(args []string) error {
 		if err == nil {
 			root.Series[s] = data
 		} else {
-			style.Error.Printf("[x] %s\n", err)
+			cmd.printError(err.Error())
 		}
 	}
 
 	if err := cmd.buildRoot(*out, root); err != nil {
-		return err
+		cmd.printError(err.Error())
 	}
 
 	if err := json.MarshalFilePretty(root, rootPath, "    "); err != nil {
 		return errors.Chain(err, "error saving root file")
 	}
 	return nil
+}
+
+func (cmd BuildCommand) selectSeries(name string, root data.Root) ([]string, error) {
+	switch name {
+	case "root":
+		return []string{}, nil
+	case "all":
+		s := make([]string, 0, len(root.Series))
+		for name := range root.Series {
+			s = append(s, name)
+		}
+		return s, nil
+	default:
+		stat, err := os.Stat(filepath.Join(data.STATIC_PATH, name))
+		if err != nil || !stat.IsDir() {
+			return nil, errors.Format("invalid series \"%s\"", name)
+		}
+		return []string{name}, nil
+	}
 }

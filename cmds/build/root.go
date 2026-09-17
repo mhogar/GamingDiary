@@ -10,13 +10,11 @@ import (
 	"time"
 
 	"github.com/binarysoupdev/go-extensions/errors"
-	"github.com/binarysoupdev/got-style/style"
 )
 
 func (cmd BuildCommand) buildRoot(dest string, root data.Root) error {
-	cmd.logBuild("ROOT")
-	style.New(style.BOLD, style.UNDERLINE).Println("root")
-	out := filepath.Join(dest, "index.html")
+	cmd.logBuild("root")
+	cmd.printSeriesHeader("root")
 
 	page := templates.RootPage{
 		Background: root.Background,
@@ -63,13 +61,15 @@ func (cmd BuildCommand) buildRoot(dest string, root data.Root) error {
 		return a.Index - b.Index
 	})
 
+	out := filepath.Join(dest, "index.html")
+
 	if err := templates.RenderRootPage(out, page); err != nil {
-		cmd.logError(err, "render ROOT failed")
+		cmd.logError(err, "error rendering root")
 		return errors.New("error rendering root")
 	}
 
-	style.Create.Printf("+ %s\n", out)
 	cmd.logCreate(out)
+	cmd.printCreate(out)
 
 	cmd.copyFiles(dest, data.PUBLIC_PATH, fileStats{Created: 1}, []string{"style.css", "script.js", root.Background, root.Logo})
 	return nil
