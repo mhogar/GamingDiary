@@ -5,6 +5,7 @@ import "regexp"
 var ENTRY_REGEX = regexp.MustCompile(`entry([0-9]+)\.json`)
 var URL_REGEX = regexp.MustCompile(`^https?://`)
 var YOUTUBE_DURATION_REGEX = regexp.MustCompile(`([0-9]+)([^0-9])`)
+var VIDEO_INDEX_REGEX = regexp.MustCompile(`v(.+)\.mp4`)
 
 const (
 	PUBLIC_PATH       = "public"

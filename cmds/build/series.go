@@ -9,6 +9,7 @@ import (
 
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
+	"github.com/binarysoupdev/got-style/style"
 )
 
 func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error) {
@@ -61,6 +62,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error)
 
 func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, series data.Series) (data.SeriesStats, error) {
 	name := filepath.Join(seriesName, subSeries)
+
 	cmd.logBuild(name)
 	cmd.printSeriesHeader(name)
 
@@ -69,6 +71,7 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 		cmd.logError(err, "error reading sub-series directory")
 		return data.SeriesStats{}, errors.New("error reading directory")
 	}
+	style.Info.Printf("%d entries\n", len(entries))
 
 	if err := os.MkdirAll(dest, 0755); err != nil {
 		cmd.logError(err, "error creating sub-series directory")
@@ -96,29 +99,14 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 			continue
 		}
 
-		stats.TotalDuration += entry.Duration
+		page.Entries[i] = cmd.buildPageEntry(dest, name, series, entry, &fs)
 
-		page.Entries[i] = templates.Entry{
-			Title:            entry.Title,
-			Description:      entry.Description,
-			Duration:         cmd.formatDurationTimestamp(entry.Duration),
-			Date:             entry.Date.Format(data.DATE_FORMAT),
-			Thumbnail:        entry.Thumbnail,
-			Video:            entry.Video,
-			YoutubeThumbnail: entry.YoutubeThumbnail,
-			YoutubeVideo:     entry.YoutubeVideo,
-			Group:            entry.Group,
-			Local:            cmd.local,
-		}
+		stats.TotalDuration += entry.Duration
 
 		if i == 0 {
 			stats.StartDate = entry.Date
 		} else if i == len(entries)-1 {
 			stats.EndDate = entry.Date
-		}
-
-		if cmd.local {
-			cmd.copyLocalFiles(dest, filepath.Join(data.PUBLIC_PATH, name), series, &page.Entries[i], &fs)
 		}
 	}
 
@@ -146,9 +134,34 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	return stats, nil
 }
 
+func (cmd BuildCommand) buildPageEntry(dest, name string, s data.Series, e data.Entry, stats *fileStats) templates.Entry {
+	entry := templates.Entry{
+		Title:        e.Title,
+		Description:  e.Description,
+		Duration:     cmd.formatDurationTimestamp(e.Duration),
+		Date:         e.Date.Format(data.DATE_FORMAT),
+		Video:        e.Video,
+		YoutubeVideo: e.YoutubeVideo,
+		Group:        e.Group,
+		Local:        cmd.local,
+	}
+
+	if cmd.local {
+		entry.Thumbnail = e.Thumbnail
+		cmd.copyLocalFiles(dest, filepath.Join(data.PUBLIC_PATH, name), s, &entry, stats)
+	} else {
+		entry.Thumbnail = e.YoutubeThumbnail
+	}
+
+	if entry.Thumbnail == "" {
+		entry.Thumbnail = filepath.Join("..", s.Thumbnail)
+	}
+	return entry
+}
+
 func (cmd BuildCommand) copyLocalFiles(dest, src string, series data.Series, entry *templates.Entry, stats *fileStats) {
 	if ok := cmd.copyLocalFileIfExists(dest, src, entry.Thumbnail, stats); !ok {
-		entry.Thumbnail = filepath.Join("..", series.Thumbnail)
+		entry.Thumbnail = ""
 	}
 
 	if ok := cmd.copyLocalFileIfExists(dest, src, entry.Video, stats); !ok {
@@ -157,6 +170,10 @@ func (cmd BuildCommand) copyLocalFiles(dest, src string, series data.Series, ent
 }
 
 func (cmd BuildCommand) copyLocalFileIfExists(dest, src, file string, stats *fileStats) bool {
+	if file == "" {
+		return false
+	}
+
 	if data.URL_REGEX.MatchString(file) {
 		return true
 	}

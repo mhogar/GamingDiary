@@ -20,16 +20,15 @@ type SeriesPage struct {
 }
 
 type Entry struct {
-	Title            string
-	Description      string
-	Duration         string
-	Date             string
-	Thumbnail        string
-	Video            string
-	YoutubeThumbnail string
-	YoutubeVideo     string
-	Group            string
-	Local            bool
+	Title        string
+	Description  string
+	Duration     string
+	Date         string
+	Thumbnail    string
+	Video        string
+	YoutubeVideo string
+	Group        string
+	Local        bool
 }
 
 func RenderSeriesPage(path string, data SeriesPage) error {

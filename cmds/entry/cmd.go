@@ -32,6 +32,7 @@ func (cmd *EntryCommand) Initialize() error {
 func (cmd EntryCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
 	index := cmd.Flags.String("index", "00", "starting index and padding")
+	video := cmd.Flags.String("video", "", "create entry from an exiting video")
 	youtube := cmd.Flags.String("youtube", "", "create entries from cached youtube data")
 	cmd.Flags.Parse(args)
 
@@ -50,8 +51,10 @@ func (cmd EntryCommand) Run(args []string) error {
 	style.BoldInfo.Println(*s)
 
 	switch {
+	case *video != "":
+		return cmd.createEntryFromVideo(*video, series)
 	case *youtube != "":
-		return cmd.createYoutubeEntries(*youtube, series)
+		return cmd.createEntriesFromYoutube(*youtube, series)
 	default:
 		return cmd.createEmptyEntry(series)
 	}

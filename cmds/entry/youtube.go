@@ -14,7 +14,7 @@ import (
 	"github.com/binarysoupdev/got-style/style"
 )
 
-func (cmd EntryCommand) createYoutubeEntries(cacheFile string, series series.Series) error {
+func (cmd EntryCommand) createEntriesFromYoutube(cacheFile string, series series.Series) error {
 	type video struct {
 		Video *youtube.Video
 		Date  time.Time

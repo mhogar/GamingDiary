@@ -10,6 +10,7 @@ import (
 type Series interface {
 	GetName() string
 	BuildNewEntry(index int, entry *data.Entry) error
+	BuildEntryFromVideo(index int, video string, entry *data.Entry) error
 	BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error
 }
 
@@ -19,8 +20,12 @@ func (seriesBase) BuildNewEntry(_ int, _ *data.Entry) error {
 	return nil
 }
 
+func (seriesBase) BuildEntryFromVideo(_ int, _ string, _ *data.Entry) error {
+	return nil
+}
+
 func (seriesBase) BuildEntryFromYoutube(_ int, _ *youtube.Video, _ *data.Entry) error {
-	return errors.New("not supported")
+	return nil
 }
 
 //=================================================

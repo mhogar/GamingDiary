@@ -27,3 +27,10 @@ func (s TTYDShorts) BuildEntryFromYoutube(index int, video *youtube.Video, entry
 	entry.Thumbnail = entry.YoutubeThumbnail
 	return nil
 }
+
+func (s TTYDShorts) BuildEntryFromVideo(index int, video string, entry *data.Entry) error {
+	entry.Title = fmt.Sprintf("Short %03d | ", index+1)
+	entry.Thumbnail = ""
+
+	return nil
+}
