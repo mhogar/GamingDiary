@@ -17,7 +17,7 @@ func (LuigiMansionShorts) GetName() string {
 	return "luigi_mansion/shorts"
 }
 
-func (s LuigiMansionShorts) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+func (s LuigiMansionShorts) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *data.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")

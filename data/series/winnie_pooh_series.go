@@ -19,7 +19,7 @@ func (WinniePoohSeries) GetName() string {
 	return "winnie_pooh/series"
 }
 
-func (s WinniePoohSeries) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+func (s WinniePoohSeries) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *data.Entry) error {
 	title := WINNIE_POOH_TITLE_REGEX.FindStringSubmatch(video.Snippet.Title)
 	if len(title) < 2 {
 		return errors.Format("invalid title")

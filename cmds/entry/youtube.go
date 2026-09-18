@@ -72,7 +72,7 @@ func (cmd EntryCommand) createYoutubeEntry(path string, index, videoIndex int, s
 		entry.YoutubeThumbnail = video.Snippet.Thumbnails.Medium.Url
 	}
 
-	if err := series.BuildEntryFromYoutube(videoIndex, video, &entry); err != nil {
+	if err := series.BuildEntryFromYoutube(index, videoIndex, video, &entry); err != nil {
 		return err
 	}
 

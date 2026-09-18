@@ -18,7 +18,7 @@ func (HeartgoldSeries) GetName() string {
 	return "heartgold/series"
 }
 
-func (s HeartgoldSeries) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+func (s HeartgoldSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")
@@ -31,7 +31,7 @@ func (s HeartgoldSeries) BuildEntryFromYoutube(index int, video *youtube.Video, 
 	}
 	entry.Description = description[2]
 
-	entry.Groups = []string{fmt.Sprintf("badge%d", s.calcBadge(index))}
+	entry.Groups = []string{fmt.Sprintf("badge%d", s.calcBadge(videoIndex))}
 
 	return nil
 }

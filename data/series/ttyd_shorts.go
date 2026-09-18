@@ -17,7 +17,7 @@ func (TTYDShorts) GetName() string {
 	return "ttyd/shorts"
 }
 
-func (s TTYDShorts) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+func (s TTYDShorts) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *data.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")

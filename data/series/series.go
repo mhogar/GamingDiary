@@ -11,7 +11,7 @@ type Series interface {
 	GetName() string
 	BuildNewEntry(index int, entry *data.Entry) error
 	BuildEntryFromVideo(index int, video string, entry *data.Entry) error
-	BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error
+	BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error
 }
 
 type seriesBase struct{}
@@ -24,7 +24,7 @@ func (seriesBase) BuildEntryFromVideo(_ int, _ string, _ *data.Entry) error {
 	return nil
 }
 
-func (seriesBase) BuildEntryFromYoutube(_ int, _ *youtube.Video, _ *data.Entry) error {
+func (seriesBase) BuildEntryFromYoutube(_, _ int, _ *youtube.Video, _ *data.Entry) error {
 	return nil
 }
 

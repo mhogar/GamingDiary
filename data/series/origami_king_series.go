@@ -18,7 +18,7 @@ func (OrigamiKingSeries) GetName() string {
 	return "origami_king/series"
 }
 
-func (s OrigamiKingSeries) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+func (s OrigamiKingSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")
@@ -31,7 +31,7 @@ func (s OrigamiKingSeries) BuildEntryFromYoutube(index int, video *youtube.Video
 	}
 	entry.Description = description[2]
 
-	entry.Group = fmt.Sprintf("chapter%d", s.calcChapter(index))
+	entry.Group = fmt.Sprintf("chapter%d", s.calcChapter(videoIndex))
 
 	return nil
 }

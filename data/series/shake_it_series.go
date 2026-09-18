@@ -17,8 +17,8 @@ func (ShakeItSeries) GetName() string {
 	return "shake_it/series"
 }
 
-func (s ShakeItSeries) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
-	area, level := s.calcLevel(index)
+func (s ShakeItSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.Video, entry *data.Entry) error {
+	area, level := s.calcLevel(videoIndex)
 
 	title := strings.SplitN(video.Snippet.Title, " - ", 2)
 	if len(title) < 2 {
