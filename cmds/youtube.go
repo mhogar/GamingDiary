@@ -7,8 +7,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"slices"
-	"strconv"
 	"strings"
 	"time"
 
@@ -21,9 +19,6 @@ import (
 type YoutubeCommand struct {
 	command.CommandBase
 	command.FlagCommand
-
-	indexStart  int
-	indexFormat string
 }
 
 func NewYoutubeCommand() *YoutubeCommand {
@@ -39,17 +34,11 @@ func (cmd *YoutubeCommand) Initialize() error {
 
 func (cmd YoutubeCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
-	parse := cmd.Flags.String("parse", "", "parse existing data")
-	download := cmd.Flags.Bool("download", false, "download new data")
 	forceAuth := cmd.Flags.Bool("auth", false, "force re-authentication")
-	index := cmd.Flags.String("index", "00", "starting index and padding")
 	cmd.Flags.Parse(args)
 
 	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
-	}
-	if !*download && *parse == "" {
-		return errors.New("\"parse\" cannot be empty")
 	}
 
 	series, err := series.Select(*s)
@@ -58,119 +47,7 @@ func (cmd YoutubeCommand) Run(args []string) error {
 	}
 	style.BoldInfo.Println(*s)
 
-	i64, err := strconv.ParseInt(*index, 10, 16)
-	if err != nil {
-		return errors.Chain(err, "invalid index")
-	}
-	cmd.indexStart = int(i64)
-	cmd.indexFormat = fmt.Sprintf("%%0%dd", len(*index))
-
-	if *download {
-		return cmd.downloadData(series, *forceAuth)
-	}
-
-	videos, err := cmd.loadCachedData(*parse)
-	if err != nil {
-		return err
-	}
-	return cmd.createEntries(series, videos)
-}
-
-func (cmd YoutubeCommand) createEntries(series series.Series, videos []*youtube.Video) error {
-	type video struct {
-		Video *youtube.Video
-		Date  time.Time
-	}
-
-	videosByDate := make([]video, len(videos))
-	for i, v := range videos {
-		date, err := time.Parse(time.RFC3339, v.Snippet.PublishedAt)
-		if err != nil {
-			return errors.Chain(err, "error parsing date")
-		}
-
-		videosByDate[i] = video{
-			Video: v,
-			Date:  date,
-		}
-	}
-	slices.SortFunc(videosByDate, func(a, b video) int {
-		return a.Date.Compare(b.Date)
-	})
-
-	for i, v := range videosByDate {
-		index := i + cmd.indexStart
-		path := filepath.Join(data.STATIC_PATH, series.GetName(), fmt.Sprintf("entry%s.json", fmt.Sprintf(cmd.indexFormat, index)))
-
-		err := cmd.createEntry(path, index, series, v.Video, v.Date)
-		if err == nil {
-			fmt.Printf("\r... %s ", style.Create.Sprintf("[+] %s ", path))
-		} else {
-			style.Error.Printf("\n[x] %s\n", err)
-		}
-	}
-	fmt.Println()
-
-	return nil
-}
-
-func (cmd YoutubeCommand) createEntry(path string, index int, series series.Series, video *youtube.Video, date time.Time) error {
-	duration, err := cmd.parseDuration(video.ContentDetails.Duration)
-	if err != nil {
-		return err
-	}
-
-	entry := data.Entry{
-		Title:        video.Snippet.Title,
-		Date:         date,
-		Duration:     float32(duration),
-		Thumbnail:    fmt.Sprintf("t%s.png", fmt.Sprintf(cmd.indexFormat, index)),
-		Video:        fmt.Sprintf("v%s.mp4", fmt.Sprintf(cmd.indexFormat, index)),
-		YoutubeId:    video.Id,
-		YoutubeVideo: fmt.Sprintf("https://www.youtube.com/watch?v=%s", video.Id),
-	}
-
-	if video.Snippet.Thumbnails.Maxres != nil {
-		entry.YoutubeThumbnail = video.Snippet.Thumbnails.Maxres.Url
-	} else {
-		entry.YoutubeThumbnail = video.Snippet.Thumbnails.Medium.Url
-	}
-
-	if err := series.BuildEntryFromYoutube(index, video, &entry); err != nil {
-		return err
-	}
-
-	if err := json.MarshalFilePretty(entry, path, "    "); err != nil {
-		return errors.Chain(err, "error saving entry file")
-	}
-	return nil
-}
-
-func (cmd YoutubeCommand) parseDuration(str string) (int64, error) {
-	matches := data.YOUTUBE_DURATION_REGEX.FindAllStringSubmatch(str, 2)
-	if len(matches) == 0 {
-		return 0, errors.Format("invalid duration format \"%s\"", str)
-	}
-
-	var duration int64
-	for _, match := range matches {
-		d, _ := strconv.ParseInt(match[1], 10, 16)
-
-		if match[2] == "M" {
-			duration += d * 60
-		} else {
-			duration += d
-		}
-	}
-	return duration, nil
-}
-
-func (cmd YoutubeCommand) loadCachedData(path string) ([]*youtube.Video, error) {
-	videos, err := json.UnmarshalFile[[]*youtube.Video](path)
-	if err != nil {
-		return nil, errors.Chain(err, "error loading youtube video cache")
-	}
-	return videos, nil
+	return cmd.downloadData(series, *forceAuth)
 }
 
 func (cmd YoutubeCommand) downloadData(series series.Series, forceAuth bool) error {
