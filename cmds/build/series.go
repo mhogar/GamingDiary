@@ -136,33 +136,27 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 
 func (cmd BuildCommand) buildPageEntry(dest, name string, s data.Series, e data.Entry, stats *fileStats) templates.Entry {
 	entry := templates.Entry{
-		Title:        e.Title,
-		Description:  e.Description,
-		Duration:     cmd.formatDurationTimestamp(e.Duration),
-		Date:         e.Date.Format(data.DATE_FORMAT),
-		Video:        e.Video,
-		YoutubeVideo: e.YoutubeVideo,
-		Group:        e.Group,
-		Local:        cmd.local,
+		Title:            e.Title,
+		Description:      e.Description,
+		Duration:         cmd.formatDurationTimestamp(e.Duration),
+		Date:             e.Date.Format(data.DATE_FORMAT),
+		Thumbnail:        e.Thumbnail,
+		YoutubeThumbnail: e.YoutubeThumbnail,
+		DefaultThumbnail: filepath.Join("..", s.Thumbnail),
+		Video:            e.Video,
+		YoutubeVideo:     e.YoutubeVideo,
+		Group:            e.Group,
+		Local:            cmd.local,
 	}
 
 	if cmd.local {
-		entry.Thumbnail = e.Thumbnail
-		cmd.copyLocalFiles(dest, filepath.Join(data.PUBLIC_PATH, name), s, &entry, stats)
-	} else {
-		entry.Thumbnail = e.YoutubeThumbnail
-	}
-
-	if entry.Thumbnail == "" {
-		entry.Thumbnail = filepath.Join("..", s.Thumbnail)
+		cmd.copyLocalFiles(dest, filepath.Join(data.PUBLIC_PATH, name), &entry, stats)
 	}
 	return entry
 }
 
-func (cmd BuildCommand) copyLocalFiles(dest, src string, series data.Series, entry *templates.Entry, stats *fileStats) {
-	if ok := cmd.copyLocalFileIfExists(dest, src, entry.Thumbnail, stats); !ok {
-		entry.Thumbnail = ""
-	}
+func (cmd BuildCommand) copyLocalFiles(dest, src string, entry *templates.Entry, stats *fileStats) {
+	cmd.copyLocalFileIfExists(dest, src, entry.Thumbnail, stats)
 
 	if ok := cmd.copyLocalFileIfExists(dest, src, entry.Video, stats); !ok {
 		entry.Video = ""
