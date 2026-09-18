@@ -17,7 +17,7 @@ func (LuigiMansionSeries) GetName() string {
 	return "luigi_mansion/series"
 }
 
-func (s LuigiMansionSeries) BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error {
+func (s LuigiMansionSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")
@@ -25,7 +25,7 @@ func (s LuigiMansionSeries) BuildEntryFromYoutube(index int, video *youtube.Vide
 	entry.Title = fmt.Sprintf("Chapter %02d | %s", index+1, title[0])
 
 	entry.Description = strings.SplitN(video.Snippet.Description, "\n", 2)[0]
-	entry.Groups = []string{fmt.Sprintf("area%d", s.calcArea(index))}
+	entry.Groups = []string{fmt.Sprintf("area%d", s.calcArea(videoIndex))}
 
 	return nil
 }
