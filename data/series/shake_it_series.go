@@ -9,7 +9,9 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type ShakeItSeries struct{}
+type ShakeItSeries struct {
+	seriesBase
+}
 
 func (ShakeItSeries) GetName() string {
 	return "shake_it/series"

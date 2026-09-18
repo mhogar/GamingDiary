@@ -10,7 +10,9 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type HeartgoldSeries struct{}
+type HeartgoldSeries struct {
+	seriesBase
+}
 
 func (HeartgoldSeries) GetName() string {
 	return "heartgold/series"

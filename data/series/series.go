@@ -7,6 +7,24 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
+type Series interface {
+	GetName() string
+	BuildNewEntry(index int, entry *data.Entry) error
+	BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error
+}
+
+type seriesBase struct{}
+
+func (seriesBase) BuildNewEntry(_ int, _ *data.Entry) error {
+	return nil
+}
+
+func (seriesBase) BuildEntryFromYoutube(_ int, _ *youtube.Video, _ *data.Entry) error {
+	return errors.New("not supported")
+}
+
+//=================================================
+
 var series = []Series{
 	SunshineChapters{}, SunshineShorts{},
 	TTYDSeries{}, TTYDBattles{}, TTYDShorts{},
@@ -16,11 +34,6 @@ var series = []Series{
 	HeartgoldSeries{},
 	OrigamiKingSeries{},
 	LuigiMansion3Series{},
-}
-
-type Series interface {
-	GetName() string
-	BuildEntryFromYoutube(index int, video *youtube.Video, entry *data.Entry) error
 }
 
 func Select(name string) (Series, error) {

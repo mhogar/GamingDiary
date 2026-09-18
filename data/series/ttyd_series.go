@@ -9,7 +9,9 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type TTYDSeries struct{}
+type TTYDSeries struct {
+	seriesBase
+}
 
 func (TTYDSeries) GetName() string {
 	return "ttyd/series"

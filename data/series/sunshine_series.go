@@ -9,7 +9,9 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type SunshineChapters struct{}
+type SunshineChapters struct {
+	seriesBase
+}
 
 func (SunshineChapters) GetName() string {
 	return "sunshine/series"

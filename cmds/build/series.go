@@ -64,7 +64,7 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	cmd.logBuild(name)
 	cmd.printSeriesHeader(name)
 
-	entries, err := filepath.Glob(filepath.Join(data.STATIC_PATH, name, "entry*.json"))
+	entries, err := filepath.Glob(filepath.Join(data.STATIC_PATH, name, data.ENTRY_PATTERN))
 	if err != nil {
 		cmd.logError(err, "error reading sub-series directory")
 		return data.SeriesStats{}, errors.New("error reading directory")

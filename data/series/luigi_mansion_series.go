@@ -9,7 +9,9 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type LuigiMansionSeries struct{}
+type LuigiMansionSeries struct {
+	seriesBase
+}
 
 func (LuigiMansionSeries) GetName() string {
 	return "luigi_mansion/series"

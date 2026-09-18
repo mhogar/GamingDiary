@@ -13,6 +13,7 @@ import (
 func main() {
 	runner := command.NewRunner(
 		build_cmd.NewBuildCommand(),
+		cmds.NewEntryCommand(),
 		cmds.NewYoutubeCommand(),
 		cmds.NewScriptsCommand(),
 	)

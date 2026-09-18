@@ -10,7 +10,9 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-type OrigamiKingSeries struct{}
+type OrigamiKingSeries struct {
+	seriesBase
+}
 
 func (OrigamiKingSeries) GetName() string {
 	return "origami_king/series"

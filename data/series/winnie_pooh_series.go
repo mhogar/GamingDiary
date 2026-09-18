@@ -11,7 +11,9 @@ import (
 
 var WINNIE_POOH_TITLE_REGEX = regexp.MustCompile(`^.*- (.+)\(`)
 
-type WinniePoohSeries struct{}
+type WinniePoohSeries struct {
+	seriesBase
+}
 
 func (WinniePoohSeries) GetName() string {
 	return "winnie_pooh/series"
