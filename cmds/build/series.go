@@ -109,7 +109,8 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 
 		if i == 0 {
 			stats.StartDate = entry.Date
-		} else if i == len(entries)-1 {
+		}
+		if i == len(entries)-1 {
 			stats.EndDate = entry.Date
 		}
 	}
