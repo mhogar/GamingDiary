@@ -11,25 +11,31 @@ import (
 	"time"
 
 	"github.com/binarysoupdev/go-extensions/errors"
+	"github.com/binarysoupdev/go-extensions/json"
 )
 
-func (cmd BuildCommand) buildRoot(dest, appName string, root build.Root) error {
+func (cmd BuildCommand) buildRoot(dest, appName string, series build.SeriesMap) error {
 	cmd.logBuild("root")
 	cmd.printSeriesHeader("root")
 
+	root, err := json.UnmarshalFile[build.Root](filepath.Join(data.STATIC_PATH, "root.json"))
+	if err != nil {
+		return errors.Chain(err, "error reading root file")
+	}
+
 	page := templates.RootPage{
 		AppName:    util.Capitalize(appName),
-		Logo:       root.Logo,
+		Icon:       root.Icon,
 		Background: root.Background,
 		VideoCount: 0,
-		Series:     make([]templates.SeriesHeader, 0, len(root.Series)),
+		Series:     make([]templates.SeriesHeader, 0, len(series)),
 	}
 
 	var duration float32
 	var startDate time.Time
 	var endDate time.Time
 
-	for name, series := range root.Series {
+	for name, series := range series {
 		tmpl := templates.SeriesHeader{
 			Index:          series.Index,
 			Title:          series.Title,
@@ -74,7 +80,7 @@ func (cmd BuildCommand) buildRoot(dest, appName string, root build.Root) error {
 	cmd.printCreate(out)
 
 	fs := fileStats{Created: 1}
-	cmd.copyFiles(dest, data.PUBLIC_PATH, &fs, "style.css", "script.js", root.Background, root.Logo)
+	cmd.copyFiles(dest, data.PUBLIC_PATH, &fs, "style.css", "script.js", root.Icon, root.Background)
 	fs.Print()
 
 	return nil

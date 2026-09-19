@@ -1,7 +1,8 @@
 package build
 
 type Root struct {
-	Background string                 `json:"background"`
-	Logo       string                 `json:"logo"`
-	Series     map[string]SeriesCache `json:"series"`
+	Icon       string `json:"icon"`
+	Background string `json:"background"`
 }
+
+type SeriesMap map[string]SeriesCache

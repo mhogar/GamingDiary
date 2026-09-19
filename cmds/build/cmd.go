@@ -46,14 +46,13 @@ func (cmd BuildCommand) Run(args []string) error {
 	if *p == "" {
 		return errors.New("\"public\" cannot be empty")
 	}
-	rootPath := filepath.Join(data.STATIC_PATH, "root.json")
 
-	root, err := json.UnmarshalFile[build.Root](rootPath)
+	series, err := json.UnmarshalFile[build.SeriesMap](data.SERIES_CACHE_PATH)
 	if err != nil {
-		return errors.Chain(err, "error reading root file")
+		series = build.SeriesMap{}
 	}
 
-	series, err := cmd.selectSeries(*s, root)
+	seriesList, err := cmd.selectSeries(*s, series)
 	if err != nil {
 		return err
 	}
@@ -71,32 +70,30 @@ func (cmd BuildCommand) Run(args []string) error {
 	defer f.Close()
 	cmd.logger = log.New(f, "", log.Ltime)
 
-	for _, s := range series {
+	for _, s := range seriesList {
 		data, err := cmd.buildSeries(public, s)
 		if err == nil {
-			root.Series[s] = data
+			series[s] = data
 		} else {
 			cmd.printError(err.Error())
 		}
 	}
 
-	if err := cmd.buildRoot(public, appName, root); err != nil {
+	if err := cmd.buildRoot(public, appName, series); err != nil {
 		cmd.printError(err.Error())
 	}
 
-	if err := json.MarshalFilePretty(root, rootPath, "    "); err != nil {
-		return errors.Chain(err, "error saving root file")
-	}
+	_ = json.MarshalFilePretty(series, data.SERIES_CACHE_PATH, "  ")
 	return nil
 }
 
-func (cmd BuildCommand) selectSeries(name string, root build.Root) ([]string, error) {
+func (cmd BuildCommand) selectSeries(name string, series build.SeriesMap) ([]string, error) {
 	switch name {
 	case "root":
 		return []string{}, nil
 	case "all":
-		s := make([]string, 0, len(root.Series))
-		for name := range root.Series {
+		s := make([]string, 0, len(series))
+		for name := range series {
 			s = append(s, name)
 		}
 		return s, nil

@@ -14,6 +14,7 @@ const (
 	YOUTUBE_DATA_PATH = "data/youtube"
 	TEMPLATE_PATH     = "data/templates"
 	CONFIG_PATH       = "config.json"
+	SERIES_CACHE_PATH = "data/cache/series.json"
 )
 
 const (

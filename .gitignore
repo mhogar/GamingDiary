@@ -9,11 +9,11 @@ config.json
 *.jpg~
 *.mp4
 
+data/cache/*
+!data/cache/.keep
+
 data/logs/*
 !data/logs/.keep
-
-data/youtube/cache/*
-!data/youtube/cache/.keep
 
 public/*/*/*.png
 !public/*/*/t00.png

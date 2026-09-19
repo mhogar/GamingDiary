@@ -10,7 +10,7 @@ var ROOT_TEMPLATE = template.Must(template.ParseFiles(filepath.Join(data.TEMPLAT
 
 type RootPage struct {
 	AppName       string
-	Logo          string
+	Icon          string
 	Background    string
 	VideoCount    int
 	TotalDuration string
