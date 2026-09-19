@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 	"fmt"
 	"strings"
@@ -17,7 +17,7 @@ func (ShakeItSeries) GetName() string {
 	return "shake_it/series"
 }
 
-func (s ShakeItSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.Video, entry *data.Entry) error {
+func (s ShakeItSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.Video, entry *build.Entry) error {
 	area, level := s.calcLevel(videoIndex)
 
 	title := strings.SplitN(video.Snippet.Title, " - ", 2)
@@ -27,8 +27,8 @@ func (s ShakeItSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.V
 	entry.Title = fmt.Sprintf("Area %d-%d | %s", area, level, title[1])
 
 	entry.Description = video.Snippet.Title
-	entry.Groups = []string{fmt.Sprintf("area%d", area)}
 
+	entry.Group = fmt.Sprintf("area%d", area)
 	return nil
 }
 

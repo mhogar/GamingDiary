@@ -2,6 +2,7 @@ package build_cmd
 
 import (
 	"app/data"
+	"app/data/build"
 	"app/data/templates"
 	"app/util"
 	"fmt"
@@ -12,7 +13,7 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-func (cmd BuildCommand) buildRoot(dest, appName string, root data.Root) error {
+func (cmd BuildCommand) buildRoot(dest, appName string, root build.Root) error {
 	cmd.logBuild("root")
 	cmd.printSeriesHeader("root")
 
@@ -79,7 +80,7 @@ func (cmd BuildCommand) buildRoot(dest, appName string, root data.Root) error {
 	return nil
 }
 
-func (cmd BuildCommand) buildSubSeriesLinks(name string, series data.SeriesCache) []templates.SubSeriesLink {
+func (cmd BuildCommand) buildSubSeriesLinks(name string, series build.SeriesCache) []templates.SubSeriesLink {
 	if len(series.SubSeries) == 0 {
 		return nil
 	}

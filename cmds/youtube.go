@@ -3,6 +3,7 @@ package cmds
 import (
 	"app/data"
 	"app/data/series"
+	youtube_data "app/data/youtube"
 	"app/tools/youtube"
 	"context"
 	"fmt"
@@ -51,7 +52,7 @@ func (cmd YoutubeCommand) Run(args []string) error {
 }
 
 func (cmd YoutubeCommand) downloadData(series series.Series, forceAuth bool) error {
-	meta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_PATH, series.GetName(), "youtube.json"))
+	meta, err := json.UnmarshalFile[youtube_data.Meta](filepath.Join(data.STATIC_PATH, series.GetName(), "youtube.json"))
 	if err != nil {
 		return errors.Chain(err, "error reading youtube meta file")
 	}

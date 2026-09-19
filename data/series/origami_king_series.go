@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 	"app/util"
 	"fmt"
@@ -18,7 +18,7 @@ func (OrigamiKingSeries) GetName() string {
 	return "origami_king/series"
 }
 
-func (s OrigamiKingSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error {
+func (s OrigamiKingSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *build.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")

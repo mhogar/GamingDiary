@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 	"fmt"
 	"strings"
@@ -17,7 +17,7 @@ func (TTYDShorts) GetName() string {
 	return "ttyd/shorts"
 }
 
-func (s TTYDShorts) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *data.Entry) error {
+func (s TTYDShorts) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *build.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")
@@ -28,7 +28,7 @@ func (s TTYDShorts) BuildEntryFromYoutube(index, _ int, video *youtube.Video, en
 	return nil
 }
 
-func (s TTYDShorts) BuildEntryFromVideo(index int, video string, entry *data.Entry) error {
+func (s TTYDShorts) BuildEntryFromVideo(index int, video string, entry *build.Entry) error {
 	entry.Title = fmt.Sprintf("Short %03d | ", index+1)
 	entry.Thumbnail = ""
 

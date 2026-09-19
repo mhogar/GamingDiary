@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 
 	"github.com/binarysoupdev/go-extensions/errors"
@@ -9,22 +9,22 @@ import (
 
 type Series interface {
 	GetName() string
-	BuildNewEntry(index int, entry *data.Entry) error
-	BuildEntryFromVideo(index int, video string, entry *data.Entry) error
-	BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error
+	BuildNewEntry(index int, entry *build.Entry) error
+	BuildEntryFromVideo(index int, video string, entry *build.Entry) error
+	BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *build.Entry) error
 }
 
 type seriesBase struct{}
 
-func (seriesBase) BuildNewEntry(_ int, _ *data.Entry) error {
+func (seriesBase) BuildNewEntry(_ int, _ *build.Entry) error {
 	return nil
 }
 
-func (seriesBase) BuildEntryFromVideo(_ int, _ string, _ *data.Entry) error {
+func (seriesBase) BuildEntryFromVideo(_ int, _ string, _ *build.Entry) error {
 	return nil
 }
 
-func (seriesBase) BuildEntryFromYoutube(_, _ int, _ *youtube.Video, _ *data.Entry) error {
+func (seriesBase) BuildEntryFromYoutube(_, _ int, _ *youtube.Video, _ *build.Entry) error {
 	return nil
 }
 

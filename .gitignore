@@ -12,8 +12,8 @@ config.json
 data/logs/*
 !data/logs/.keep
 
-data/youtube/*
-!data/youtube/.keep
+data/youtube/cache/*
+!data/youtube/cache/.keep
 
 public/*/*/*.png
 !public/*/*/t00.png

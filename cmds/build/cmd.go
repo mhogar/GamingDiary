@@ -2,6 +2,7 @@ package build_cmd
 
 import (
 	"app/data"
+	"app/data/build"
 	"app/data/config"
 	"fmt"
 	"log"
@@ -47,7 +48,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	}
 	rootPath := filepath.Join(data.STATIC_PATH, "root.json")
 
-	root, err := json.UnmarshalFile[data.Root](rootPath)
+	root, err := json.UnmarshalFile[build.Root](rootPath)
 	if err != nil {
 		return errors.Chain(err, "error reading root file")
 	}
@@ -89,7 +90,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	return nil
 }
 
-func (cmd BuildCommand) selectSeries(name string, root data.Root) ([]string, error) {
+func (cmd BuildCommand) selectSeries(name string, root build.Root) ([]string, error) {
 	switch name {
 	case "root":
 		return []string{}, nil

@@ -2,6 +2,7 @@ package entry_cmd
 
 import (
 	"app/data"
+	"app/data/build"
 	"app/data/series"
 	"app/tools/ffmpeg"
 	"fmt"
@@ -24,7 +25,7 @@ func (cmd EntryCommand) createEntryFromVideo(video string, series series.Series)
 		return errors.Chain(err, "error calculating video duration")
 	}
 
-	entry := data.Entry{
+	entry := build.Entry{
 		Date:     time.Now().Truncate(time.Second),
 		Duration: duration,
 		Video:    filepath.Base(video),

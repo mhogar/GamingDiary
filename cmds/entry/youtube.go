@@ -2,6 +2,7 @@ package entry_cmd
 
 import (
 	"app/data"
+	"app/data/build"
 	"app/data/series"
 	"app/tools/youtube"
 	"fmt"
@@ -57,7 +58,7 @@ func (cmd EntryCommand) createYoutubeEntry(path string, index, videoIndex int, s
 		return err
 	}
 
-	entry := data.Entry{
+	entry := build.Entry{
 		Title:        video.Snippet.Title,
 		Date:         date,
 		Duration:     float32(duration),

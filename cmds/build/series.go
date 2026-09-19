@@ -2,7 +2,9 @@ package build_cmd
 
 import (
 	"app/data"
+	"app/data/build"
 	"app/data/templates"
+	"app/data/youtube"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -12,16 +14,16 @@ import (
 	"github.com/binarysoupdev/got-style/style"
 )
 
-func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error) {
+func (cmd BuildCommand) buildSeries(dest, name string) (build.SeriesCache, error) {
 	seriesPath := filepath.Join(data.STATIC_PATH, name)
 
-	series, err := json.UnmarshalFile[data.Series](filepath.Join(seriesPath, "series.json"))
+	series, err := json.UnmarshalFile[build.Series](filepath.Join(seriesPath, "series.json"))
 	if err != nil {
 		cmd.logError(err, "invalid series file")
-		return data.SeriesCache{}, errors.New("invalid series file")
+		return build.SeriesCache{}, errors.New("invalid series file")
 	}
 
-	cache := data.SeriesCache{
+	cache := build.SeriesCache{
 		Index:       series.Index,
 		Title:       series.Title,
 		Description: series.Description,
@@ -60,7 +62,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (data.SeriesCache, error)
 	return cache, nil
 }
 
-func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, series data.Series) (data.SeriesStats, error) {
+func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, series build.Series) (build.SeriesStats, error) {
 	name := filepath.Join(seriesName, subSeries)
 
 	cmd.logBuild(name)
@@ -69,13 +71,13 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	entries, err := filepath.Glob(filepath.Join(data.STATIC_PATH, name, data.ENTRY_PATTERN))
 	if err != nil {
 		cmd.logError(err, "error reading sub-series directory")
-		return data.SeriesStats{}, errors.New("error reading directory")
+		return build.SeriesStats{}, errors.New("error reading directory")
 	}
 	style.Create.Printf("(%d entries)\n", len(entries))
 
 	if err := os.MkdirAll(dest, 0755); err != nil {
 		cmd.logError(err, "error creating sub-series directory")
-		return data.SeriesStats{}, errors.New("error creating out directory")
+		return build.SeriesStats{}, errors.New("error creating out directory")
 	}
 
 	page := templates.SeriesPage{
@@ -86,13 +88,13 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 		Entries:     make([]templates.Entry, len(entries)),
 	}
 
-	stats := data.SeriesStats{
+	stats := build.SeriesStats{
 		VideoCount: len(entries),
 	}
 	fs := fileStats{}
 
 	for i, file := range entries {
-		entry, err := json.UnmarshalFile[data.Entry](file)
+		entry, err := json.UnmarshalFile[build.Entry](file)
 		if err != nil {
 			cmd.logError(err, fmt.Sprintf("error reading entry file \"%s\"", file))
 			cmd.printError("invalid " + filepath.Base(file))
@@ -113,7 +115,7 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	page.Dates = cmd.formatDateRange(stats.StartDate, stats.EndDate)
 	page.TotalDuration = cmd.formatDurationTimestamp(stats.TotalDuration)
 
-	ytMeta, err := json.UnmarshalFile[data.YoutubeMeta](filepath.Join(data.STATIC_PATH, name, data.YOUTUBE_META_FILE))
+	ytMeta, err := json.UnmarshalFile[youtube.Meta](filepath.Join(data.STATIC_PATH, name, data.YOUTUBE_META_FILE))
 	if err == nil {
 		page.YoutubePlaylist = fmt.Sprintf("https://www.youtube.com/playlist?list=%s", ytMeta.Playlist)
 	}
@@ -134,7 +136,7 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	return stats, nil
 }
 
-func (cmd BuildCommand) buildPageEntry(dest, name string, s data.Series, e data.Entry, stats *fileStats) templates.Entry {
+func (cmd BuildCommand) buildPageEntry(dest, name string, s build.Series, e build.Entry, stats *fileStats) templates.Entry {
 	entry := templates.Entry{
 		Title:            e.Title,
 		Description:      e.Description,

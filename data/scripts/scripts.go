@@ -1,19 +1,18 @@
 package scripts
 
 import (
-	"app/data"
+	"app/data/build"
 
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
 var scripts = []Scripts{
 	YoutubeURLs{},
-	EntrySingleGroup{},
 }
 
 type Scripts interface {
 	GetName() string
-	Run(index string, entry *data.Entry) error
+	Run(index string, entry *build.Entry) error
 }
 
 func Select(name string) (Scripts, error) {

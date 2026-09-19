@@ -1,7 +1,7 @@
 package entry_cmd
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/data/series"
 	"time"
 
@@ -16,7 +16,7 @@ func (cmd EntryCommand) createEmptyEntry(series series.Series) error {
 		return errors.Chain(err, "error calculating next entry index")
 	}
 
-	entry := data.Entry{
+	entry := build.Entry{
 		Date: time.Now().Truncate(time.Second),
 	}
 

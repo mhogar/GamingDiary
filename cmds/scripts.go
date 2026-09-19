@@ -2,6 +2,7 @@ package cmds
 
 import (
 	"app/data"
+	"app/data/build"
 	"app/data/scripts"
 	"fmt"
 	"path/filepath"
@@ -68,7 +69,7 @@ func (cmd ScriptsCommand) runScript(path string, script scripts.Scripts) error {
 	}
 	index := matches[1]
 
-	entry, err := json.UnmarshalFile[data.Entry](path)
+	entry, err := json.UnmarshalFile[build.Entry](path)
 	if err != nil {
 		return errors.Chain(err, "error reading entry file")
 	}

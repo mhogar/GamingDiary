@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 	"app/util"
 	"fmt"
@@ -18,7 +18,7 @@ func (HeartgoldSeries) GetName() string {
 	return "heartgold/series"
 }
 
-func (s HeartgoldSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *data.Entry) error {
+func (s HeartgoldSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *build.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")
@@ -31,8 +31,7 @@ func (s HeartgoldSeries) BuildEntryFromYoutube(index, videoIndex int, video *you
 	}
 	entry.Description = description[2]
 
-	entry.Groups = []string{fmt.Sprintf("badge%d", s.calcBadge(videoIndex))}
-
+	entry.Group = fmt.Sprintf("badge%d", s.calcBadge(videoIndex))
 	return nil
 }
 

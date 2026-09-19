@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 	"fmt"
 	"strings"
@@ -17,7 +17,7 @@ func (TTYDSeries) GetName() string {
 	return "ttyd/series"
 }
 
-func (s TTYDSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.Video, entry *data.Entry) error {
+func (s TTYDSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.Video, entry *build.Entry) error {
 	chapter, sub := s.calcChapter(videoIndex)
 
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
@@ -27,8 +27,8 @@ func (s TTYDSeries) BuildEntryFromYoutube(_, videoIndex int, video *youtube.Vide
 	entry.Title = fmt.Sprintf("Chapter %d-%02d | %s", chapter, sub, title[0])
 
 	entry.Description = strings.Split(video.Snippet.Description, "\n")[0]
-	entry.Groups = []string{fmt.Sprintf("chapter%d", chapter)}
 
+	entry.Group = fmt.Sprintf("chapter%d", chapter)
 	return nil
 }
 

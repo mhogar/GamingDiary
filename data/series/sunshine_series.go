@@ -1,7 +1,7 @@
 package series
 
 import (
-	"app/data"
+	"app/data/build"
 	"app/tools/youtube"
 	"fmt"
 	"strings"
@@ -17,7 +17,7 @@ func (SunshineChapters) GetName() string {
 	return "sunshine/series"
 }
 
-func (SunshineChapters) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *data.Entry) error {
+func (SunshineChapters) BuildEntryFromYoutube(index, _ int, video *youtube.Video, entry *build.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
 		return errors.Format("invalid title")
