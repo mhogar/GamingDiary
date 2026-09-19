@@ -2,6 +2,8 @@
 .secrets
 
 app
+config.json
+
 *.kra~
 *.png~
 *.jpg~

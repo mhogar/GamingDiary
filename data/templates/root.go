@@ -9,8 +9,9 @@ import (
 var ROOT_TEMPLATE = template.Must(template.ParseFiles(filepath.Join(data.TEMPLATE_PATH, "root.gohtml")))
 
 type RootPage struct {
-	Background    string
+	AppName       string
 	Logo          string
+	Background    string
 	VideoCount    int
 	TotalDuration string
 	Dates         string

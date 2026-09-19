@@ -12,13 +12,14 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-func (cmd BuildCommand) buildRoot(dest string, root data.Root) error {
+func (cmd BuildCommand) buildRoot(dest, appName string, root data.Root) error {
 	cmd.logBuild("root")
 	cmd.printSeriesHeader("root")
 
 	page := templates.RootPage{
-		Background: root.Background,
+		AppName:    util.Capitalize(appName),
 		Logo:       root.Logo,
+		Background: root.Background,
 		VideoCount: 0,
 		Series:     make([]templates.SeriesHeader, 0, len(root.Series)),
 	}

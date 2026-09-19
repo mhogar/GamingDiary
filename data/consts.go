@@ -13,6 +13,7 @@ const (
 	LOGS_PATH         = "data/logs"
 	YOUTUBE_DATA_PATH = "data/youtube"
 	TEMPLATE_PATH     = "data/templates"
+	CONFIG_PATH       = "config.json"
 )
 
 const (

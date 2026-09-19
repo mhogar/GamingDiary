@@ -2,6 +2,7 @@ package build_cmd
 
 import (
 	"app/data"
+	"app/data/config"
 	"fmt"
 	"log"
 	"os"
@@ -34,12 +35,15 @@ func (cmd *BuildCommand) Initialize() error {
 
 func (cmd BuildCommand) Run(args []string) error {
 	s := cmd.Flags.String("series", "", "name of the series")
-	public := cmd.Flags.String("public", data.PUBLIC_PATH, "the public path")
+	p := cmd.Flags.String("public", data.PUBLIC_PATH, "the public path")
 	cmd.Flags.BoolVar(&cmd.local, "local", false, "build using local thumbnails and videos")
 	cmd.ParseFlags(args)
 
 	if *s == "" {
 		return errors.New("\"series\" cannot be empty")
+	}
+	if *p == "" {
+		return errors.New("\"public\" cannot be empty")
 	}
 	rootPath := filepath.Join(data.STATIC_PATH, "root.json")
 
@@ -53,6 +57,12 @@ func (cmd BuildCommand) Run(args []string) error {
 		return err
 	}
 
+	appName, public := cmd.selectPublicPath(*p)
+	stat, err := os.Stat(public)
+	if err != nil || !stat.IsDir() {
+		return errors.Format("invalid public path \"%s\"", public)
+	}
+
 	f, err := os.Create(filepath.Join(data.LOGS_PATH, fmt.Sprintf("build-%s.txt", time.Now().Format(time.DateTime))))
 	if err != nil {
 		return errors.Chain(err, "error creating log file")
@@ -61,7 +71,7 @@ func (cmd BuildCommand) Run(args []string) error {
 	cmd.logger = log.New(f, "", log.Ltime)
 
 	for _, s := range series {
-		data, err := cmd.buildSeries(*public, s)
+		data, err := cmd.buildSeries(public, s)
 		if err == nil {
 			root.Series[s] = data
 		} else {
@@ -69,7 +79,7 @@ func (cmd BuildCommand) Run(args []string) error {
 		}
 	}
 
-	if err := cmd.buildRoot(*public, root); err != nil {
+	if err := cmd.buildRoot(public, appName, root); err != nil {
 		cmd.printError(err.Error())
 	}
 
@@ -95,5 +105,19 @@ func (cmd BuildCommand) selectSeries(name string, root data.Root) ([]string, err
 			return nil, errors.Format("invalid series \"%s\"", name)
 		}
 		return []string{name}, nil
+	}
+}
+
+func (cmd BuildCommand) selectPublicPath(name string) (string, string) {
+	cfg, err := json.UnmarshalFile[config.Config](data.CONFIG_PATH)
+	if err != nil {
+		return "", name
+	}
+
+	path, ok := cfg.PublicPaths[name]
+	if ok {
+		return name, path
+	} else {
+		return "", name
 	}
 }
