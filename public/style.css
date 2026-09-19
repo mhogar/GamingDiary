@@ -27,7 +27,7 @@ body {
   text-shadow: 1px 1px black, 2px 2px black, 3px 3px black;
 }
 
-.root.series-title {
+.root .series-title {
   color: yellow;
 }
 
@@ -36,7 +36,7 @@ body {
   color: whitesmoke;
 }
 
-.root.dates {
+.root .dates {
   margin-top: -35px;
   color: #1c1c1c;
 }
@@ -57,6 +57,10 @@ a {
   text-decoration: underline;
 }
 
+.root a {
+  color: #1c1c1c;
+}
+
 a.disabled {
   color: black !important;
   text-decoration: none !important;
@@ -68,10 +72,6 @@ a.disabled {
 
 .scroll-button {
   cursor: pointer;
-}
-
-.root.scroll-button {
-  color: #1c1c1c;
 }
 
 .collapsable {

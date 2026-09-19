@@ -6,11 +6,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body style="background-image: url('{{.Background}}');">
-  <div class="page-container">
-    <h2 class="root series-title list-toggle">{{.VideoCount}} Videos ({{.TotalDuration}})</h2>
-    <h3 class="root dates">{{.Dates}}</h3>
+  <div class="page-container root ">
+    <h2 class="series-title list-toggle">{{.VideoCount}} Videos ({{.TotalDuration}})</h2>
+    <h3 class="dates">{{.Dates}}</h3>
+    <a href="https://www.youtube.com/channel/UCnf7PefD6MoIegZqr9INKDA/" target="_blank">Youtube Channel</a>
     <hr class="divider" />
-    <a id="scroll-to-bottom" class="root scroll-button">Bottom</a>
+    <a id="scroll-to-bottom" class="scroll-button">Bottom</a>
     <ul>
         {{range .Series}}
         <li class="{{.Theme}}">
@@ -30,7 +31,7 @@
         </li>
         {{end}}
     </ul>
-    <a id="scroll-to-top" class="root scroll-button">Top</a>
+    <a id="scroll-to-top" class="scroll-button">Top</a>
   </div>
   <script src="script.js"></script>
 </body>
