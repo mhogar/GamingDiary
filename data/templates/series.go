@@ -14,6 +14,7 @@ type SeriesPage struct {
 	TotalDuration   string
 	Dates           string
 	YoutubePlaylist string
+	Icon            string
 	Background      string
 	Entries         []Entry
 	Theme           string

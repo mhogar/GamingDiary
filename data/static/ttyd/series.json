@@ -3,6 +3,7 @@
     "title": "The Thousand-Year Tale",
     "description": "Paper Mario: The Thousand-Year Door (2024) - Switch",
     "theme": "ttyd",
+    "icon": "magical_map.png",
     "background": "door.png",
     "thumbnail": "series/t00.png",
     "stylesheets": ["groups.css"],

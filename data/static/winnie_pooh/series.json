@@ -3,6 +3,7 @@
     "title": "Rumbly Tumbly Adventure",
     "description": "(April Fools) Winnie the Pooh's Rumbly Tumbly Adventure (2005) - GCN",
     "theme": "pooh",
+    "icon": "pooh.png",
     "background": "background.png",
     "thumbnail": "title.jpg",
     "sub_series": ["series", "bonus"]

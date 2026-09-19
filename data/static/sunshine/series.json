@@ -3,6 +3,7 @@
     "title": "The Sunshine Story",
     "description": "Super Mario Sunshine (2002) - GCN/Switch",
     "theme": "sunshine",
+    "icon": "shine_sprite.png",
     "background": "isle_delfino.jpg",
     "thumbnail": "series/t00.png",
     "sub_series": ["series", "shorts"]

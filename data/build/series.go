@@ -7,6 +7,7 @@ type Series struct {
 	Title       string   `json:"title"`
 	Description string   `json:"description"`
 	Theme       string   `json:"theme"`
+	Icon        string   `json:"icon"`
 	Background  string   `json:"background"`
 	Thumbnail   string   `json:"thumbnail"`
 	Stylesheets []string `json:"stylesheets"`

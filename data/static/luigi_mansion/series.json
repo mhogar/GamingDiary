@@ -3,6 +3,7 @@
     "title": "Luigi's Spooky Story",
     "description": "Luigi's Mansion (2001) - GCN",
     "theme": "luigi-mansion",
+    "icon": "king_boo.png",
     "background": "mansion.png",
     "thumbnail": "series/t00.png",
     "stylesheets": ["groups.css"],

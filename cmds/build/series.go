@@ -54,7 +54,7 @@ func (cmd BuildCommand) buildSeries(dest, name string) (build.SeriesCache, error
 	fs := fileStats{}
 
 	files := make([]string, 0, 2+len(series.Stylesheets))
-	files = append(files, series.Background, series.Thumbnail)
+	files = append(files, series.Background, series.Icon, series.Thumbnail)
 	files = append(files, series.Stylesheets...)
 
 	cmd.copyFiles(filepath.Join(dest, name), filepath.Join(data.PUBLIC_PATH, name), &fs, files...)
@@ -84,6 +84,7 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	page := templates.SeriesPage{
 		Title:       series.Title,
 		SubTitle:    util.Capitalize(subSeries),
+		Icon:        series.Icon,
 		Background:  series.Background,
 		Theme:       series.Theme,
 		Stylesheets: series.Stylesheets,
@@ -106,7 +107,6 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 		page.Entries[i] = cmd.buildPageEntry(dest, name, series, entry, &fs)
 
 		stats.TotalDuration += entry.Duration
-
 		if i == 0 {
 			stats.StartDate = entry.Date
 		}
