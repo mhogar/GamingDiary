@@ -64,7 +64,6 @@ a.disabled {
 
 .list-toggle {
   cursor: pointer;
-  user-select: none;
 }
 
 .scroll-button {

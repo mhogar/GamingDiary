@@ -10,6 +10,7 @@ var SERIES_TEMPLATE = template.Must(template.ParseFiles(filepath.Join(data.TEMPL
 
 type SeriesPage struct {
 	Title           string
+	SubTitle        string
 	TotalDuration   string
 	Dates           string
 	YoutubePlaylist string

@@ -5,6 +5,7 @@ import (
 	"app/data/build"
 	"app/data/templates"
 	"app/data/youtube"
+	"app/util"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -81,7 +82,8 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 	}
 
 	page := templates.SeriesPage{
-		Title:       fmt.Sprintf("%s (%s)", series.Title, subSeries),
+		Title:       series.Title,
+		SubTitle:    util.Capitalize(subSeries),
 		Background:  series.Background,
 		Theme:       series.Theme,
 		Stylesheets: series.Stylesheets,
