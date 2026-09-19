@@ -71,7 +71,7 @@ func (cmd BuildCommand) buildSubSeries(dest, seriesName, subSeries string, serie
 		cmd.logError(err, "error reading sub-series directory")
 		return data.SeriesStats{}, errors.New("error reading directory")
 	}
-	style.Info.Printf("%d entries\n", len(entries))
+	style.Create.Printf("(%d entries)\n", len(entries))
 
 	if err := os.MkdirAll(dest, 0755); err != nil {
 		cmd.logError(err, "error creating sub-series directory")
