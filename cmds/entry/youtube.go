@@ -59,13 +59,12 @@ func (cmd EntryCommand) createYoutubeEntry(path string, index, videoIndex int, s
 	}
 
 	entry := build.Entry{
-		Title:        video.Snippet.Title,
-		Date:         date,
-		Duration:     float32(duration),
-		Thumbnail:    fmt.Sprintf("t%s.png", fmt.Sprintf(cmd.indexFormat, index)),
-		Video:        fmt.Sprintf("v%s.mp4", fmt.Sprintf(cmd.indexFormat, index)),
-		YoutubeId:    video.Id,
-		YoutubeVideo: fmt.Sprintf("https://www.youtube.com/watch?v=%s", video.Id),
+		Title:     video.Snippet.Title,
+		Date:      date,
+		Duration:  float32(duration),
+		Thumbnail: fmt.Sprintf("t%s.png", fmt.Sprintf(cmd.indexFormat, index)),
+		Video:     fmt.Sprintf("v%s.mp4", fmt.Sprintf(cmd.indexFormat, index)),
+		YoutubeId: video.Id,
 	}
 	if video.Snippet.Thumbnails.Maxres != nil {
 		entry.YoutubeThumbnail = video.Snippet.Thumbnails.Maxres.Url

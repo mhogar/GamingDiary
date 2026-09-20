@@ -56,7 +56,7 @@ func (cmd EntryCommand) Run(args []string) error {
 	case *youtube != "":
 		return cmd.createEntriesFromYoutube(*youtube, series)
 	default:
-		return cmd.createEmptyEntry(series)
+		return cmd.createNewEntry(series)
 	}
 }
 

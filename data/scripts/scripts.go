@@ -6,9 +6,7 @@ import (
 	"github.com/binarysoupdev/go-extensions/errors"
 )
 
-var scripts = []Scripts{
-	YoutubeURLs{},
-}
+var scripts = []Scripts{}
 
 type Scripts interface {
 	GetName() string

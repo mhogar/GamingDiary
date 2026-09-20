@@ -10,7 +10,6 @@ type Entry struct {
 	Thumbnail        string    `json:"thumbnail"`
 	Video            string    `json:"video"`
 	YoutubeId        string    `json:"youtube_id"`
-	YoutubeThumbnail string    `json:"youtube_thumbnail"`
-	YoutubeVideo     string    `json:"youtube_video"`
-	Group            string    `json:"group"`
+	YoutubeThumbnail string    `json:"youtube_thumbnail,omitempty"`
+	Group            string    `json:"group,omitempty"`
 }

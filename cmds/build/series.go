@@ -146,10 +146,10 @@ func (cmd BuildCommand) buildPageEntry(dest, name string, s build.Series, e buil
 		Duration:         cmd.formatDurationTimestamp(e.Duration),
 		Date:             e.Date.Format(data.DATE_FORMAT),
 		Thumbnail:        e.Thumbnail,
-		YoutubeThumbnail: e.YoutubeThumbnail,
+		YoutubeThumbnail: cmd.buildYoutubeThumbnail(e),
 		DefaultThumbnail: filepath.Join("..", s.Thumbnail),
 		Video:            e.Video,
-		YoutubeVideo:     e.YoutubeVideo,
+		YoutubeVideo:     cmd.buildYoutubeVideo(e),
 		Group:            e.Group,
 		Local:            cmd.local,
 	}
@@ -158,6 +158,26 @@ func (cmd BuildCommand) buildPageEntry(dest, name string, s build.Series, e buil
 		cmd.copyLocalFiles(dest, filepath.Join(data.PUBLIC_PATH, name), &entry, stats)
 	}
 	return entry
+}
+
+func (cmd BuildCommand) buildYoutubeThumbnail(entry build.Entry) string {
+	switch {
+	case entry.YoutubeThumbnail != "":
+		return entry.YoutubeThumbnail
+	case entry.YoutubeId != "":
+		return fmt.Sprintf("https://i.ytimg.com/vi/%s/maxresdefault.jpg", entry.YoutubeId)
+	default:
+		return ""
+	}
+}
+
+func (cmd BuildCommand) buildYoutubeVideo(entry build.Entry) string {
+	switch {
+	case entry.YoutubeId != "":
+		return fmt.Sprintf("https://www.youtube.com/watch?v=%s", entry.YoutubeId)
+	default:
+		return ""
+	}
 }
 
 func (cmd BuildCommand) copyLocalFiles(dest, src string, entry *templates.Entry, stats *fileStats) {

@@ -18,6 +18,12 @@ func (HeartgoldSeries) GetName() string {
 	return "heartgold/series"
 }
 
+func (s HeartgoldSeries) BuildNewEntry(index int, entry *build.Entry) error {
+	entry.Title = fmt.Sprintf("Entry %02d | ", index)
+	entry.Group = fmt.Sprintf("badge%d", s.calcBadge(index))
+	return nil
+}
+
 func (s HeartgoldSeries) BuildEntryFromYoutube(index, videoIndex int, video *youtube.Video, entry *build.Entry) error {
 	title := strings.SplitN(video.Snippet.Title, " | ", 2)
 	if len(title) < 2 {
@@ -54,7 +60,7 @@ func (HeartgoldSeries) calcBadge(i int) int {
 	if shiftRange(&i, 5) {
 		return 5
 	}
-	if shiftRange(&i, 2) {
+	if shiftRange(&i, 3) {
 		return 6
 	}
 	return 0
