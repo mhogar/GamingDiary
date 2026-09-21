@@ -15,7 +15,6 @@ func main() {
 	runner := command.NewRunner(
 		build_cmd.NewBuildCommand(),
 		entry_cmd.NewEntryCommand(),
-		cmds.NewRenderCommand(),
 		cmds.NewYoutubeCommand(),
 		cmds.NewScriptsCommand(),
 	)
