@@ -7,7 +7,6 @@ import (
 	"app/tools/ffmpeg"
 	"fmt"
 	"path/filepath"
-	"time"
 
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
@@ -26,7 +25,7 @@ func (cmd EntryCommand) createEntryFromVideo(video string, series series.Series)
 	}
 
 	entry := build.Entry{
-		Date:     time.Now().Truncate(time.Second),
+		Date:     today(),
 		Duration: duration,
 		Video:    filepath.Base(video),
 	}

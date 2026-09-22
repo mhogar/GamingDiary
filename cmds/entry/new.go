@@ -5,7 +5,6 @@ import (
 	"app/data/build"
 	"app/data/series"
 	"fmt"
-	"time"
 
 	"github.com/binarysoupdev/go-extensions/errors"
 	"github.com/binarysoupdev/go-extensions/json"
@@ -19,9 +18,8 @@ func (cmd EntryCommand) createNewEntry(series series.Series) error {
 	}
 	matches := data.ENTRY_REGEX.FindStringSubmatch(path)
 
-	now := time.Now()
 	entry := build.Entry{
-		Date:      time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location()),
+		Date:      today(),
 		Thumbnail: fmt.Sprintf("t%s.png", matches[1]),
 		Video:     fmt.Sprintf("v%s.mp4", matches[1]),
 	}
