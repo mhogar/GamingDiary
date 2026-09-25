@@ -4,16 +4,8 @@
 app
 config.json
 
-*.kra~
-*.png~
-*.jpg~
-*.mp4
-
 data/cache/*
 !data/cache/.keep
 
 data/logs/*
 !data/logs/.keep
-
-public/*/*/*.png
-!public/*/*/t00.png
